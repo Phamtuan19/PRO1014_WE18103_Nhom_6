@@ -26,21 +26,54 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/icons/mdi.html">
-                <span class="menu-title">Icons</span>
+                <span class="menu-title">Products</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
+
+            <div class="collapse show" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.products.create') }}"> Thêm sản phẩm </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.products.index') }}"> Danh sách sản phẩm </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="menu-title">Forms</span>
+                <span class="menu-title">Publishing House</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
+
+            <div class="collapse show" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.publishing-house.create') }}"> Thêm danh mục </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.publishing-house.index') }}"> Danh sách danh mục </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="menu-title">Charts</span>
+                <span class="menu-title">Author</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
+
+            <div class="collapse show" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.author.create') }}"> Thêm danh mục </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.author.index') }}"> Danh sách danh mục </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">

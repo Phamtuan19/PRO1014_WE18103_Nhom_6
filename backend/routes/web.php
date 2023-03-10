@@ -8,9 +8,13 @@ use App\Http\Controllers\Admin\HomeController;
 
 use App\Http\Controllers\Admin\AdminController;
 
+use App\Http\Controllers\Admin\AuthorController;
+
 use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Admin\CustomersController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PublishingHouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +45,12 @@ Route::middleware('auth')->group(function () {
         Route::patch('/customers/replay/{user}', [CustomersController::class, 'replay'])->name('customers.replay');
 
         Route::resource('categories', CategoryController::class);
+
+        Route::resource('author', AuthorController::class);
+
+        Route::resource('publishing-house', PublishingHouseController::class);
+
+        Route::resource('products', ProductController::class);
+        Route::patch('/products/replay/{product}', [ProductController::class, 'replay'])->name('products.replay');
     });
 });

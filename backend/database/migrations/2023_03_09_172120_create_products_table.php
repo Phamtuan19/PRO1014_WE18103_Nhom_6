@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->text('title');
             $table->text('introduction'); // giới thiệu
             $table->date('publication_date'); // ngày xuất bản
+            $table->date('is_deleted'); //
             $table->timestamps();
         });
     }

@@ -16,6 +16,22 @@ class Author extends Model
         'slug',
     ];
 
+    public function queryAuthor($query, $orderBy = null, $orderType = null)
+    {
+        if (empty($orderBy)) {
+            $orderBy = 'created_at';
+        }
+
+        if (empty($orderType)) {
+            $orderType = "DESC";
+        }
+
+        // dd($orderType);
+        $query = $query->orderBy($orderBy, $orderType);
+
+        return $query;
+    }
+
     public function product (){
         return $this->hasMany(Product::class, 'id', 'author_id');
     }

@@ -26,3 +26,11 @@ function renSlug(title) {
     //In slug ra textbox có id “slug”
     return slug;
 }
+
+function uploadImage () {
+    $("#upload").onchange = function (e) {
+        console.log(e);
+    }
+}
+
+uploadImage();
