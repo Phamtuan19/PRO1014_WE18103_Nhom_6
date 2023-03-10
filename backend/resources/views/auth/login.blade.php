@@ -114,7 +114,7 @@
                                 <div class="form-group">
                                     <input type="text"
                                         class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                        id="exampleInputEmail1" name="email" value="{{ old('email') }}"
+                                        id="exampleInputEmail1" name="email" value="Phamtuan2hd@gmail.com"
                                         placeholder="email">
 
                                     @error('email')
@@ -126,7 +126,7 @@
                                 <div class="form-group">
                                     <input type="password"
                                         class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                        name="password" id="exampleInputPassword1" placeholder="Password">
+                                        name="password" id="exampleInputPassword1" placeholder="Password" value="admin1234">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
