@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Image;
 use App\Models\Author;
 use App\Models\Product;
+use App\Models\Warehouse;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\ProductDetail;
@@ -89,6 +90,16 @@ class ProductController extends Controller
         ];
 
         $saveProduct = $products->create($dataProduct);
+
+        $dataWarehouse = [
+            'product_id' => $saveProduct->id,
+            'import_quantity' => $request->quantity,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ];
+
+        Warehouse::create($dataWarehouse);
+
 
         if ($saveProduct) {
             $dataDetail = [

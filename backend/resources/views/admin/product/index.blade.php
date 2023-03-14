@@ -44,25 +44,31 @@
                                     </th>
                                     <th> Hình ảnh </th>
                                     <th>
-                                        <a href="?orderBy=author&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
-                                            class="{!! request()->orderBy == 'author' ? 'active_custom' : '' !!}">
+                                        <a href="?orderBy=author_id&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
+                                            class="{!! request()->orderBy == 'author_id' ? 'active_custom' : '' !!}">
                                             Tác giả
                                             <i class="fa-solid fa-right-left menu-icon__custom"></i>
                                         </a>
                                     </th>
                                     <th>
-                                        <a href="?orderBy=category&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
-                                            class="{!! request()->orderBy == 'category' ? 'active_custom' : '' !!}">
+                                        <a href="?orderBy=category_id&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
+                                            class="{!! request()->orderBy == 'category_id' ? 'active_custom' : '' !!}">
                                             Danh mục
                                             <i class="fa-solid fa-right-left menu-icon__custom"></i>
                                         </a>
                                     </th>
-                                    <th>Nhà xuất bản</th>
-                                    <th>Giá nhập</th>
-                                    <th>Giá bán</th>
                                     <th>
                                         <a href="?orderBy=created_at&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
                                             class="{!! request()->orderBy == 'created_at' ? 'active_custom' : '' !!}">
+                                            Nhà xuất bản
+                                            <i class="fa-solid fa-right-left menu-icon__custom"></i>
+                                        </a>
+                                    </th>
+                                    <th>Giá nhập</th>
+                                    <th>Giá bán</th>
+                                    <th>
+                                        <a href="?orderBy=publishing_house_id&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
+                                            class="{!! request()->orderBy == 'publishing_house_id' ? 'active_custom' : '' !!}">
                                             Thời gian tạo
                                             <i class="fa-solid fa-right-left menu-icon__custom"></i>
                                         </a>
@@ -140,9 +146,9 @@
                             </tbody>
                         </table>
 
-                        {{-- <div class="" style="float: right;">
+                        <div class="mt-3" style="float: right;">
                             {{ $products->appends(request()->all())->links() }}
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -38,6 +38,7 @@ class CreateRequest extends FormRequest
             'price' => 'required|integer',
             'promotion_price' => 'required|integer',
             'images' => 'required',
+            'quantity' => 'required|integer',
         ];
     }
 
@@ -68,6 +69,7 @@ class CreateRequest extends FormRequest
             'price' => 'Giá bán',
             'promotion_price' => 'Giá khuyến mại',
             'images' => 'Hình ảnh',
+            'quantity' => 'Số lượng',
         ];
     }
 }

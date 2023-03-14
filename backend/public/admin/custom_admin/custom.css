@@ -4,15 +4,14 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-
 .sidebar__custom {
-    position: fixed;
-    top: 72px;
+    /* position: fixed; */
+    /* top: 72px; */
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .main-panel__custom {
-    margin-left: 260px;
+    /* margin-left: 260px; */
 }
 
 .btn {

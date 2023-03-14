@@ -11,7 +11,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('admin.categories.index') }}" style="color: #0d6efd; font-weight: 600">Danh sách
+                        <a href="{{ route('admin.products.index') }}" style="color: #0d6efd; font-weight: 600">Danh sách
                             sản phẩm</a>
                     </li>
                 </ol>
@@ -193,6 +193,19 @@
                                                 name="promotion_price">
                                         </div>
                                         @error('promotion_price')
+                                            <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Số lượng nhập</label>
+                                        <div class="col-sm-12">
+                                            <input class="form-control" placeholder="Số lượng nhập sản phẩm ..."
+                                                name="quantity">
+                                        </div>
+                                        @error('quantity')
                                             <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
                                         @enderror
                                     </div>

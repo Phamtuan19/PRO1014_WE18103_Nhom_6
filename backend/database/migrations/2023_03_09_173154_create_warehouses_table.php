@@ -17,8 +17,8 @@ class CreateWarehousesTable extends Migration
             $table->integerIncrements('id');
             $table->integer('product_id');
             $table->integer('import_quantity'); // số lượng nhập
-            $table->integer('quantity_stock');
-            $table->integer('quantity_sold');
+            $table->integer('quantity_stock')->nullable();
+            $table->integer('quantity_sold')->nullable();
             $table->timestamps();
         });
     }
