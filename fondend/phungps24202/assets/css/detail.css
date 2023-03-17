@@ -1,0 +1,109 @@
+.detail{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+article.detail-box{
+    display: flex;
+}
+article .detail-box1{
+    
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+article .detail2-soluong button{
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    /* outline: none; */
+    background: none;
+    border: 1px solid black;
+    cursor: pointer;
+}
+article .detail2-soluong button:hover{
+    background-color: #ececec;
+}
+article .detail2-soluong button svg{
+    color: #909090;
+}
+article .detail2-soluong button svg:hover{
+    color: #4f4f4f;
+}
+
+
+article .detail2-soluong #amount{
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 28px;
+}
+article .detail-box2{
+    margin-left: 190px;
+}
+article .detail2-title h3{
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+article .detail2-author p{
+    font-size: 20px;
+    /* text-decoration: none; */
+}
+article .detail2-author a{
+    text-decoration: none;
+    color: #00B2EE;
+}
+article  span.text-muted{
+    font-size: 24px;
+    color: #909090;
+}
+article  span.text-muted a{
+    font-size: 16px;
+    color: #909090;
+}
+article .detail2-price{
+    font-size: 40px;
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+}
+ 
+article .detail-box2 p.transport{
+    font-size: 18px;
+}
+article .detail2-status p.status{
+    font-size: 18px;
+    font-weight: bold;
+}
+article .detail2-status p.status span{
+    margin-left: 50px;
+    color: #00B2EE;
+}
+article .detail2-soluong span.quantity{
+    font-size: 18px;
+
+    font-weight: bold;
+}
+article .detail2-buy button{
+    background-color: #4CAF50; /* Màu nền */
+    border: none; /* Không có đường viền */
+    color: white; /* Màu chữ */
+    padding: 12px 24px; /* Kích thước */
+    text-align: center; /* Căn giữa nội dung */
+    text-decoration: none; /* Không có đường gạch chân */
+    display: inline-block; /* Hiển thị là một khối */
+    font-size: 16px; /* Cỡ chữ */
+    cursor: pointer; /* Chỉ số hình cắt: khi rê chuột qua */
+    border-radius: 4px; /* Bo tròn các góc */
+    margin-top: 20px;
+}
+article .detail2-buy button:hover{
+    background-color: #3e8e41;
+}
+article .detail2-buy button.buy2{
+    background-color: #FFD700;
+}
+article .detail2-buy button.buy2:hover{
+    background-color: #CDAD00;
+}

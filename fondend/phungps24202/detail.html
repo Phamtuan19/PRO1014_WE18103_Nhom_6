@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/detail.css" />
+    <link
+      rel="stylesheet"
+      href="./assets/fonts/fontawesome-free-6.2.1-web/css/all.min.css"
+    />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300&family=Roboto&display=swap');
+      </style>
+  </head>
+  <body>
+    <header>123</header>
+    <nav>456</nav>
+    <div class="detail">
+      <section>
+        <article class="detail-box">
+          <div class="detail-box1">
+            <img
+              src="/assets/image/nxbtre_full_20142020_111442 (1).jpg"
+              width="350"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="detail-box2">
+            <div class="detail2-title">
+              <h3>
+                
+                Luyện viết tiếng Anh trình bày trên giấy ô li dành cho học sinh
+                lớp 3 tập 1 (16x24)
+              </h3>
+            </div>
+
+            <div class="detail2-author">
+              <p>Tác giả: <a href="#">TS.Phạm Văn Công </a></p>
+              <p>
+                Lĩnh vực: <a href="#">Sách thiếu nhi</a> | Loại sách: Sách in
+              </p>
+            </div>
+            <span class="text-muted"
+              >&#9733; &#9733; &#9733; &#9733; &#9733;(0 đánh giá) 
+              <a href="#">Click để đánh giá</a> 
+              </span>
+
+            <div class="detail2-price">18.200 đ</div>
+            <div class="detail2-price-origin" style="font-size: 20px;">
+                <del>20.200 đ</del>
+            </div>
+        
+            <p class="transport">Vận chuyển:</p>
+            <p class="transport">
+              Giảm 30% phí vận chuyển bởi Nhất Tín Express(NTX)
+            </p>
+            
+            <div class="detail2-status">
+              <p class="status">
+                Tình trạng: <span>Còn hàng</span>
+              </p>
+            </div>
+            <div class="detail2-soluong">
+                <span class="quantity">Số lượng: <br></span>
+              <button class="miuns-btn" onclick="handleMinus()">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 12h-15"
+                  />
+                </svg>
+              </button>
+                <input type="text" name="amount" id="amount" value="1">
+              <button class="plus-btn" onclick="handlePlus()">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="detail2-buy">
+                <button type="button" value="Mua ngay"><i class="fa-sharp fa-solid fa-dollar-sign"></i> Mua ngay</button>
+                <button class="buy2" type="button" value="Mua ngay">Cho vào giỏ hàng <i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+    <aside>789</aside>
+    <footer>111</footer>
+    <script>
+        let amountElement = document.getElementById('amount');
+        let amount = amountElement.value;
+        // console.log(amount);
+        // handlePlus
+        let render = (amount) => {
+            amountElement.value = amount
+        }
+        let handlePlus = () =>{
+            amount++
+            render(amount);
+        } 
+        // hadleMiuns
+        let handleMinus = () => {
+            if(amount > 1)
+                amount --;
+                render(amount);
+        }
+        amountElement.addEventListener('input', () => {
+            amount = amountElement.value;
+            amount = parseInt(amount);
+            amount = (isNaN(amount)||amount==0)?1:amount;
+            render(amount);
+            // console.log(amount);
+        } )
+      </script>
+
+  </body>
+  
+</html>

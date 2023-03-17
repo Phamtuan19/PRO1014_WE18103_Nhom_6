@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container-fuild {
+  width: 100%;
+}
+
+.container {
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block1 {
+  padding: 12px;
+}
+
+.block1 input[type="text"] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+.block1 .block1-box-search button {
+  height: auto;
+  margin-top: 10px;
+}
+hr {
+  margin-top: 10px;
+}
+.block1 h4.block1-title {
+  color: #0066ff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.block1 .block1-box-search {
+  display: flex;
+}
+.block1 select {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ffff;
+  color: darkgrey;
+  font-size: 17px;
+  border: none;
+}
+.product-info {
+  text-align: center;
+}
+
+/* Products List */
+.product-list {
+  display: flex;
+  gap: 24px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.product {
+  width: 22%;
+  padding: 24px 12px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.product-img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image {
+  border-radius: 5px;
+  height: 300px;
+}
+
+.product-img:hover .image {
+  transform: scale(1.1);
+}
+
+.product-title {
+  margin-top: 12px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+
+.product-name:hover {
+  color: red;
+}
+
+.product-author {
+  margin-top: 12px;
+  font-size: 18px;
+  color: #0066ff;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+.product-author:hover {
+  color: red;
+}
+
+.product-price {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.product-price__reduced {
+  margin-top: 0 !important;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.product-price__original {
+  font-size: 15px;
+  font-weight: 600;
+  color: red;
+}
