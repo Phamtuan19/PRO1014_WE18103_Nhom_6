@@ -13,8 +13,14 @@ use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Admin\CustomersController;
+
 use App\Http\Controllers\Admin\ProductController;
+
 use App\Http\Controllers\Admin\PublishingHouseController;
+
+use App\Http\Controllers\customer\auth\LoginController;
+
+use App\Http\Controllers\customer\auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +44,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
+
+        Route::get('/', function () {
+            return "<h1>Trang Admin</h1>";
+        });
+
         Route::resource('/users', AdminController::class);
         Route::patch('/users/replay/{user}', [AdminController::class, 'replay'])->name('users.replay');
 
@@ -54,3 +65,18 @@ Route::middleware('auth')->group(function () {
         Route::patch('/products/replay/{product}', [ProductController::class, 'replay'])->name('products.replay');
     });
 });
+
+
+Route::middleware('auth:customers')->group(function () {
+    Route::get('customer/home', function () {
+        return "<h1>Trang home</h1>";
+    })->name('customer.home');
+});
+
+Route::get('customer/login', [LoginController::class, 'index'])->name('customer.login');
+Route::post('post/login', [LoginController::class, 'login'])->name('post.login');
+
+// đăng ký
+Route::get('customer/register', [RegisterController::class, 'index'])->name('customer.register');
+
+Route::post('post/register', [RegisterController::class, 'register'])->name('post.register');
