@@ -87,7 +87,7 @@
                                                 alt="">
                                         </td>
                                         <td> {{ $product->author->name }} </td>
-                                        <td> {{ $product->categories->name }} </td>
+                                        <td> {{ !empty($product->categories->name) ? $product->categories->name : '' }} </td>
                                         <td> {{ $product->publishing_house->name }} </td>
                                         <td> {{ $product->detail->import_price }} </td>
                                         <td> {!! $product->detail->promotion_price != null

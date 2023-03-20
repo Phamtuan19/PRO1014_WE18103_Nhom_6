@@ -49,6 +49,7 @@
                                             <i class="fa-solid fa-right-left menu-icon__custom"></i>
                                         </a>
                                     </th>
+                                    <th>Danh mục con</th>
                                     <th>
                                         <a href="?orderBy=created_at&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
                                             class="{!! request()->orderBy == 'created_at' ? 'active_custom' : '' !!}">
@@ -60,26 +61,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $index => $category)
+                                @foreach ($storecatalog as $index => $category)
                                     {{-- @dd($category) --}}
-                                    <tr>
-                                        <td> {{ $index }} </td>
+                                    <tr style="color: #0d6efd; font-weight: 600; font-size: 24px">
+                                        <td> {{ $index + 1 }} </td>
 
                                         {{-- <td> {{ str_repeat('---', $category['level']) }} </td> --}}
-                                        <td> {{ $category['level'] >= 1 ? str_repeat('---', $category['level']) . ' ' . $category['name'] : $category['name'] }} </td>
+                                        <td> {{ $category['name'] }}
+                                        </td>
 
                                         <td> {{ $category['slug'] }} </td>
-                                        <td> {{ !empty($category['created_at']) ? substr ($category['created_at'], 0, 10) : '' }} </td>
+                                        <td> {{ !empty($category['created_at']) ? substr($category['created_at'], 0, 10) : '' }}
+                                        </td>
+                                        <td></td>
                                         <td>
                                             <div class="d-flex justify-content-between">
 
-                                                <a href="{{ route('admin.categories.show', $category['id']) }}"
+                                                <a href="{{ route('admin.storecatalog.show', $category['id']) }}"
                                                     class="" style="color: black; padding: 6px">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
 
                                                 <form id="form-modal"
-                                                    action="{{ route('admin.categories.destroy', $category['id']) }}"
+                                                    action="{{ route('admin.storecatalog.destroy', $category['id']) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -93,8 +97,59 @@
                                             </div>
                                         </td>
                                     </tr>
+
+                                    @if (count($category['categories']) > 0)
+                                        @foreach ($category['categories'] as $cur => $item)
+                                            <tr>
+                                                <td> --- </td>
+
+                                                {{-- <td> {{ str_repeat('---', $category['level']) }} </td> --}}
+                                                <td> {{ $item['name'] }}
+                                                </td>
+
+                                                <td> {{ $item['slug'] }} </td>
+                                                <td> {{ !empty($item['created_at']) ? substr($item['created_at'], 0, 10) : '' }}
+                                                </td>
+                                                <td><i class="fa-solid fa-check" style="color: chartreuse"></i></td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    @if (count($category['author']) > 0)
+                                        @foreach ($category['author'] as $cur => $item)
+                                            <tr>
+                                                <td> --- </td>
+
+                                                {{-- <td> {{ str_repeat('---', $category['level']) }} </td> --}}
+                                                <td> {{ $item['name'] }}
+                                                </td>
+
+                                                <td> {{ $item['slug'] }} </td>
+                                                <td> {{ !empty($item['created_at']) ? substr($item['created_at'], 0, 10) : '' }}
+                                                </td>
+                                                <td><i class="fa-solid fa-check" style="color: chartreuse"></i></td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    @if (count($category['author']) > 0)
+                                        @foreach ($category['author'] as $cur => $item)
+                                            <tr>
+                                                <td> --- </td>
+
+                                                {{-- <td> {{ str_repeat('---', $category['level']) }} </td> --}}
+                                                <td> {{ $item['name'] }}
+                                                </td>
+
+                                                <td> {{ $item['slug'] }} </td>
+                                                <td> {{ !empty($item['created_at']) ? substr($item['created_at'], 0, 10) : '' }}
+                                                </td>
+                                                <td><i class="fa-solid fa-check" style="color: chartreuse"></i></td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 @endforeach
-                                {{-- {!! displaySubMenu($categories) !!} --}}
                             </tbody>
                         </table>
 

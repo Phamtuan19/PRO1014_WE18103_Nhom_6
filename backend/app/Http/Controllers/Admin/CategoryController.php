@@ -37,7 +37,12 @@ class CategoryController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $categories = $query->queryCategory($query, $orderBy, $orderType)->paginate(1);
+        $categories = $query->queryCategory($query, $orderBy, $orderType)->get()->toArray();
+        // dd($categories);
+        // dd(data_tree($categories, 0));
+        // dd($categories->toArray());
+
+        $categories = data_tree($categories, 0);
 
         return view('admin.categories.index', compact('categories'));
     }

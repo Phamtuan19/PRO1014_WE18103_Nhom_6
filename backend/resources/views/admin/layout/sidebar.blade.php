@@ -43,6 +43,23 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">
+                <span class="menu-title">Danh mục bán hàng</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+
+            <div class="collapse show" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.storecatalog.create') }}"> Thêm thư mục </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.storecatalog.index') }}"> Danh sách </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
                 <span class="menu-title">Publishing House</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>

@@ -28,13 +28,14 @@ function isActiveCustomer($email)
 }
 
 
-function showCategories($categories, $parentId = null, $char = '')
+function showCategories($categories, $parentId = 1, $char = '')
 {
     if ($categories) {
+        $result = [];
         foreach ($categories as $key => $category) {
             if ($category->parent_id == $parentId) {
 
-                echo '<option value="' . $category->id . '">' . $char . $category->name . '</option>';
+                $result[] = $category;
 
                 // Xóa chuyên mục đã lặp
                 unset($categories[$key]);
@@ -43,7 +44,23 @@ function showCategories($categories, $parentId = null, $char = '')
                 showCategories($categories, $category->id, $char . '---- ');
             }
         }
+
+        return $result;
     }
 }
 
 
+function data_tree($data, $parent_id = 0, $level = 0)
+{
+    $result = [];
+    foreach ($data as $item) {
+        if ($item['parent_id'] == $parent_id) {
+            $item['level'] = $level;
+            $result[] = $item;
+            $child = data_tree($data, $item['id'], $level + 1);
+            $result = array_merge($result, $child);
+        }
+    }
+
+    return $result;
+}
