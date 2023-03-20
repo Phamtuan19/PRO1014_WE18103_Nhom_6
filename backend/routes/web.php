@@ -39,9 +39,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::middleware('auth')->group(function () {
+Route::middleware('custom.auth')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -67,7 +65,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth:customers')->group(function () {
+Route::middleware('customer.auth')->group(function () {
     Route::get('customer/home', function () {
         return "<h1>Trang home</h1>";
     })->name('customer.home');

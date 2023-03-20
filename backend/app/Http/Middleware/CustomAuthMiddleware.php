@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerMiddleware
+class CustomAuthMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,10 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // Middleware người dùng
-        if (Auth::guard('customers')->check()) {
+        // Middleware admin
+        if (Auth::check() && Auth::user()->position_id != 3) {
             return $next($request);
         }
         return redirect('/');
-        // abort(403);
     }
 }
