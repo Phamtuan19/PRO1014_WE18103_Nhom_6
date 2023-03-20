@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <div class="cart">
+    <div class="cart" style="position: relative;">
         
         <div class="cart_top">
             <progress max="100" value="35"></progress>
@@ -53,7 +53,7 @@
             <p class="title_dc_nhanhang">2. Sản phẩm ( <span>1</span> sp)</p>
             <table class="title_item" >
                 <thead>
-                    <tr><th>stt</th>
+                    <tr><th>STT</th>
                         <th style="text-align: left;">Sản phẩm</th>
                         <th>Đơn giá</th>
                         <th>Số lượng</th>
@@ -157,17 +157,17 @@
                 <tr>
                     <td>Tổng tiền sách</td>
                     <td><del>175.000 đ</del></td>
-                    <td id="font800">131.250 đ</td>
+                    <td id="font600">131.250 đ</td>
                 </tr>
                 <tr>
                     <td>Phí vận chuyển</td>
                     <td><del>23.000 đ</del></td>
-                    <td id="font800" >17.000 đ</td>
+                    <td id="font600" >17.000 đ</td>
                 </tr>
                 <tr>
-                    <td id="font800"  >Tổng</td>
+                    <td id="font600"  >Tổng</td>
                     <td><del>198.000 đ</del></td>
-                    <td id="font800" >148.250 đ</td>
+                    <td id="font600" >148.250 đ</td>
                 </tr>
             </tbody>
         </table>
@@ -180,7 +180,56 @@
             <div class="thanhtoan_xacnhan_close">
                 <label for="xacnhan_pay"><i class="fa-solid fa-xmark"></i></label>
             </div>
-            <p id="font600" style="color:#02bbff;">Xác nhận mua hàng</p>
+            <p id="font800" style="color:#02bbff;">Xác nhận mua hàng</p>
+            <p>Trước khi thanh toán, quý khách vui lòng xác nhận các thông tin mua hàng sau đây:</p>
+            <p id="font_size18">1. Thông tin nhận hàng</p>
+            <p>Số điện thoại:<span style="margin-left: 36px;" id="font_size18">0949520467</span></p>
+            <p>Địa chỉ nhận hàng: <span id="font_size18">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</span></p>
+            <p id="font_size18">2. Xác nhận một số thông tin trong đơn hàng:</p>
+            <p>Đơn hàng của quý khách hiện có <span id="font_size18">1 sản phẩm</span> có số lượng đặt hàng ít nhất là 1 như sau:</p>
+            <table class="title_item" >
+                <thead>
+                    <tr><th>STT</th>
+                        <th style="text-align: left;">Sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="item_book_in-cart">
+                        <td>1</td>
+                        <td class="item_book_cart_specifically">
+                            <div class="cart_book_title">
+                                <p class="title_book">
+                                    Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
+                                </p>
+                                <p class="tacgia_book">
+                                    Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)
+                                </p>
+                                <p class="nxb_book">
+                                    NXB: Quân đội Nhân dân
+                                </p>
+                               
+                            </div>
+                            <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
+                        </td>
+                        <td class="price_in_cart" >
+                            <p class="price_item_cart">131.250 đ</p>
+                            <p class="sale_price_item_cart"> <del> 175.000 đ </del>| - 25%</p>
+                        </td>
+                        <td style="text-align: center;">
+                            <p class="soluong_item">1</p>
+                        </td>
+                        <td class="price_in_cart" >
+                            <p class="price_item_cart" style="color: red ;" id="font600" >131.250 đ</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="xacnhan_dathang">
+                <a href="#" ><p>Xác nhận và đặt hàng</p></a>
+            </div>
         </div>
        </div>
     </div>
