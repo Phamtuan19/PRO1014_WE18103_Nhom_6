@@ -1,0 +1,319 @@
+.cart_top{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    width: 70%;
+    height: 90px;
+    text-align: center;
+    margin: 0 auto;
+
+}
+.text_trangthai{
+    color: #6d5a5a;
+}
+.item_trangthai .trangthai{
+    width: 66px;
+    height: 48px;
+    margin: 1% 5%;
+    padding: 1% 0;
+    text-align: center;
+    line-height: 48px;
+    background-color: #02bbff;
+    border-radius: 50%;
+    color: #6d5a5a;
+}
+.item_trangthai2 .trangthai{
+    width: 66px;
+    height: 48px;
+    margin: 1% 5%;
+    padding: 1% 0;
+    text-align: center;
+    line-height: 48px;
+    background-color: white;
+    border: 1px solid #02bbff;
+    border-radius: 50%;
+    color: black;
+}
+.item_trangthai3 .trangthai{
+    width: 66px;
+    height: 48px;
+    margin: 1% 5%;
+    padding: 1% 0;
+    text-align: center;
+    line-height: 48px;
+    background-color: white;
+    border: 1px solid #02bbff;
+    border-radius: 50%;
+    color: black;
+}
+.item_trangthai4 .trangthai{
+    width: 66px;
+    height: 48px;
+    margin: 1% 5%;
+    padding: 1% 0;
+    text-align: center;
+    line-height: 48px;
+    background-color: white;
+    border: 1px solid #02bbff;
+    border-radius: 50%;
+    color: black;
+}
+.cart_bottom img{
+    width: 25%;
+}
+.cart_bottom button{
+    width: 150px;
+    background-color: #02bbff;
+    border: 0;
+    height: 30px;
+}
+.center-cart{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-row-gap:12px;
+}
+.cart>p{
+    font-size: 23px;
+    text-align: center;
+    width: 12%;
+    border-bottom: 1px solid #02bbff;
+}
+.cart_bottom>p{
+    font-weight: 600;
+}
+.cart{
+    margin: -20px 10% 0px 10%;
+    background-color: white;
+    height: 110%;
+    padding: 2%;
+}
+progress{
+    position: absolute;
+    width: 80%;
+    top:75%;
+    left: 6%;
+}
+.item_trangthai{
+    position: absolute;
+    left: 10%;
+}
+.item_trangthai2{
+    position: absolute;
+    left: 30%;
+}
+.item_trangthai3{
+    position: absolute;
+    left: 50%;
+}
+.item_trangthai4{
+    position: absolute;
+    left: 70%;
+}
+body{
+    background-color: rgb(220, 220, 220);
+}
+.book_title p{
+    color: #02bbff;
+    font-size: 110%;
+}
+.book_title {
+    position: relative;
+}
+.book_title p{
+    position: absolute;
+    top:-72%;
+}
+.item_book_in-cart td .item_book_cart_specifically{
+    border: 1px solid black;
+    max-width: 100%;
+}
+.item_book_cart_specifically .cart_book_title{
+    width: 70%;
+}
+.cart_book_title .title_book{
+    font-weight: 600;
+}
+.price_in_cart{
+    text-align: center;
+}
+.buttons_added {
+    opacity:1;
+    display:inline-block;
+    display:-ms-inline-flexbox;
+    display:inline-flex;
+    white-space:nowrap;
+    vertical-align:top;
+    justify-content: center;
+}
+.is-form {
+    overflow:hidden;
+    position:relative;
+    background-color:#f9f9f9;
+    height:2.2rem;
+    width:1.9rem;
+    padding:0;
+    text-shadow:1px 1px 1px #fff;
+    border:1px solid #ddd;
+}
+.is-form:focus,.input-text:focus {
+    outline:none;
+}
+.is-form.minus {
+    border-radius:4px 0 0 4px;
+}
+.is-form.plus {
+    border-radius:0 4px 4px 0;
+}
+.input-qty {
+    width: 16%;
+    background-color:#fff;
+    height:2.2rem;
+    text-align:center;
+    font-size:1rem;
+    display:inline-block;
+    vertical-align:top;
+    margin:0;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    border-left:0;
+    border-right:0;
+    padding:0;
+}
+.input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance:none;
+    margin:0;
+}
+.item_book_cart_specifically{
+    position: relative;
+}
+.item_book_cart_specifically img{
+    position: absolute;
+    top: 18px;
+    right: 50px;
+    width: 15%;
+}
+.cart_book_remote a{
+    color: #02bbff;
+    text-decoration: none;
+}
+
+.cart_book_remote a:hover{
+    color: red;
+    text-decoration: underline;
+}
+.cart_clickALl span{
+    font-size: 120%;
+}
+.pay_in_cart{
+    background-color: #02bbff;
+    border: 1px solid #02bbff;
+    border-radius: 5px;
+    font-size: 140%;
+    font-weight: 600;
+    padding: 1%;
+    color: white;
+    margin-left: 80%;
+    margin-top: 10%;
+}
+/* thanh toan */
+.back_thanhtoan{
+    background-color: #fcfcfc;
+    border: 1px solid #02bbff;
+    border-radius: 5px;
+    font-size: 140%;
+    font-weight: 600;
+    padding: 1%;
+    color: #02bbff;
+    left: 60%;
+    top: 76%;
+    position: absolute;
+}
+.item_trangthai2 .trangthai{
+    width: 66px;
+    height: 48px;
+    margin: 1% 5%;
+    padding: 1% 0;
+    text-align: center;
+    line-height: 48px;
+    background-color: #02bbff;
+    border: 1px solid #02bbff;
+    border-radius: 50%;
+    color: #6d5a5a;
+}
+.thanhtoan_dvvc{
+        font-size: 80%;
+    }
+.thanhtoan_dvvc span{
+        font-weight: 600;
+    }
+.all_price_book_delivery{
+    float: right;
+    margin-bottom: 3%;
+}
+.all_price_book_delivery th{
+    width: 21%;
+}
+.all_price_book_delivery{
+    max-height: 100%;
+}
+#font600{
+    font-weight: 600;
+    font-size: 21px;
+}
+#font800{
+    font-weight: 800;
+    font-size: 23px;
+}
+.title_dc_nhanhang{
+    font-weight: 600;
+    font-size: 150%;
+    color: #02bbff;
+}
+.box_hinhthuc_thanhtoan_left input,label{
+    margin: 10px 0;
+}
+.box_hinhthuc_thanhtoan_left{
+    width: 50%;
+    float: left;
+}
+.box_hinhthuc_thanhtoan_right{
+    float: right;
+    width: 50%;
+}
+.thanhtoan_overlay{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom:0;
+    background-color: rgba(0, 0, 0,0.3);
+    display: none;
+}
+.thanhtoan_xacnhan{
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    max-width: 90%;
+    max-height: 90%;
+    background-color: white;
+    border-radius: 1%;
+    padding: 1% 2%;
+    display: none;
+}
+.thanhtoan_xacnhan_close{
+    position: absolute;
+    right: 5%;
+}
+.xac_nhan:checked~.thanhtoan_overlay{
+    display: block;
+}
+.xac_nhan:checked~.thanhtoan_xacnhan{
+    display: block;
+}
+.xac_nhan{
+    display: none;
+}
