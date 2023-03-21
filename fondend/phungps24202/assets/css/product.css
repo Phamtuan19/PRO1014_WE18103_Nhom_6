@@ -24,10 +24,9 @@ body {
 .container .category-title{
   padding-left: 13.2px;
   color: #007bff;
-  font-size: 0.95vw;
+  font-size: 19px;
   line-height: 1.24vw;
   font-weight: 400;
-  /* font-family: "Roboto",sans-serif; */
   margin-bottom: 1.06vw;
   margin-top: 1.52vw;
 }
@@ -38,15 +37,25 @@ body {
   border-radius: 0px;
   padding-bottom: 0.25vw;
   margin-bottom: 0.84vw;
+  
 }
 
+.category-box .category-box_search{
+  position: relative;
+}
+.category-box .category-box_icon{
+  position: absolute;
+  bottom: 2px;
+  right: 0px;
+  font-size: 20px;
+  color: #9a9a9a;
 
+}
 .category-box .category-box_search input{
     outline: none;
     padding: 0px;
     border-radius: 0px;
-    font-size: 0.95vw;
-    
+    font-size: 25px;
     color: #9a9a9a;
     font-weight: 400;
     border: 0px;
@@ -54,7 +63,10 @@ body {
     height: 100%;
     text-align: left;
     padding-left: 4px;
+    
 }
+
+
 .category-box .category-box_line{
   border-bottom: 1px solid #9a9a9a;;
   margin-top: 12px;
@@ -63,7 +75,7 @@ body {
   outline: none;
   padding: 0px;
   border-radius: 0px;
-  font-size: 0.95vw;
+  font-size: 25px;
   line-height: 1.24vw;
   color: #9a9a9a;
   font-weight: 400;
@@ -71,7 +83,7 @@ body {
   box-shadow: none;
   height: 100%;
   text-align: left;
-  
+  width: 270px;
 }
 
 /* category-product */
@@ -92,6 +104,7 @@ body {
 .category-title {
   margin-top: 12px;
 }
+
 .category-name {
   font-size: 18px;
   font-weight: 600;
