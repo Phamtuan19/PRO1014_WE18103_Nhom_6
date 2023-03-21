@@ -336,3 +336,10 @@ body{
     text-decoration: none;
     float: right;
 }
+#scoll{
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+.close_xacnhan_pay{
+    position: fixed;
+}
