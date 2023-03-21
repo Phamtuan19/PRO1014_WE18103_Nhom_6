@@ -106,9 +106,9 @@
 .header__cart-item {
     align-self: center;
 }
-.cart__icon a img {
-    width: 100%;
-    height: 100%;
+.cart__icon i {
+    font-size: 1vw;
+    color: var(--white-color);
 }
 .header-with-menu {
     text-align: center;
