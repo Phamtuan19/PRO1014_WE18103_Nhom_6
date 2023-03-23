@@ -3,10 +3,12 @@
     justify-content: center;
     gap: 40px;
     position: relative;
-    width: 70%;
+    width: 80%;
     height: 90px;
     text-align: center;
     margin: 0 auto;
+    left: 48px;
+    top:-10px;
 
 }
 .text_trangthai{
@@ -91,7 +93,7 @@
 }
 progress{
     position: absolute;
-    width: 80%;
+    width: 70%;
     top:75%;
     left: 6%;
 }
@@ -101,11 +103,11 @@ progress{
 }
 .item_trangthai2{
     position: absolute;
-    left: 30%;
+    left: 35%;
 }
 .item_trangthai3{
     position: absolute;
-    left: 50%;
+    left: 58%;
 }
 .item_trangthai4{
     position: absolute;
@@ -192,7 +194,7 @@ body{
     position: absolute;
     top: 18px;
     right: 50px;
-    width: 15%;
+    width: 12%;
 }
 .cart_book_remote a{
     color: #02bbff;
@@ -262,7 +264,9 @@ body{
     font-weight: 600;
     font-size: 21px;
 }
-
+#fontbold{
+    font-weight: bold;
+}
 #font_size18{
     font-size: 16px;
     font-weight: 600;
@@ -291,6 +295,13 @@ body{
     bottom:-10%;
     background-color: rgba(0, 0, 0,0.3);
     display: none;
+}
+.click_chitiet{
+    position: relative;
+}
+.click_tr_in_table{
+    width: 100%;
+    background-color: rgba(0, 0, 0,0.3);
 }
 .thanhtoan_xacnhan{
     position: fixed;
@@ -342,4 +353,48 @@ body{
 }
 .close_xacnhan_pay{
     position: fixed;
+}
+/* trạng thái đơn hàng */
+
+.button_trangthai_donhang{
+    background-color: #6565ee;
+    border: 0;
+    padding: 6% 7%;
+    border-radius: 8px;
+    color: white;
+}
+.button_cttrangthai_donhang{
+    border: 0;
+    color: white;
+    padding: 2%;
+    border-radius: 10px;
+    float: right;
+}
+.donhang_dadat{
+    width: 100%;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.donhang_dadat tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+progress {
+    border: none;
+    background: crimson;
+    border-radius: 2px;
+}
+progress {
+    color: #02bbff;
+}
+progress::-webkit-progress-value {
+    background: #02bbff;
+}
+progress::-moz-progress-bar {
+    background: #02bbff;
+}
+table tbody{
+    color: rgba(0,0,0,.5)!important;
 }

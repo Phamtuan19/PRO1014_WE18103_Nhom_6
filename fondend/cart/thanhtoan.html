@@ -6,16 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="css-infor-user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-    
+
+        select{
+    display: block;
+    width: 80%;
+    min-height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+    .adress{
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+    }
+    .adress_all  input{
+    display: block;
+    width: 75%;
+    min-height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}   
+.adress input{
+    display: block;
+    width: 75%;
+    min-height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}   
+    .adress_all input{
+        width: 30%;
+    }
     </style>
 </head>
 <body>
     <div class="cart" style="position: relative;">
         
         <div class="cart_top">
-            <progress max="100" value="35"></progress>
+            <progress max="100" value="45"></progress>
             <div class="item_trangthai">
                 <p class="text_trangthai">Giỏ hàng</p>
                 <div class="trangthai">
@@ -34,20 +87,55 @@
                     <i class="fa-solid fa-truck"></i>
                 </div>
             </div>
-            <div class="item_trangthai4">
-                <p class="text_trangthai">Đã nhận hàng</p>
-                <div class="trangthai">
-                    <i class="fa-regular fa-circle-check"></i>
-                </div>
-            </div>
         </div>
         <p>Thanh Toán</p>
         <div class="diachi_nhanhang_">
             <p class="title_dc_nhanhang">1-Địa chỉ nhận hàng:</p>
-            <p class="ten_taikhoan">Nguyễn Tiến Lâm</p>
+            <!-- <p class="ten_taikhoan">Nguyễn Tiến Lâm</p>
             <p class="sdt_nhanhang_">0949520467</p>
-            <p class="diachi_nhanhang_taikhoan">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</p>
+            <p class="diachi_nhanhang_taikhoan">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</p> -->
         </div>
+        <div style="position: relative;" class="">
+        <form action="">
+        <div class="adress_all">
+            <label class="labes" for="">Tên</label>
+            <input type="text" value="Nguyễn Tiến Lâm"  >
+            <label class="labes" for="">Số Điện Thoại</label>
+            <input type="text" value="0949520467"  >
+        </div>
+        <div class="adress" >
+            <div class="">
+                <label class="labes" >Quốc gia </label><br>
+                <select name="quocgia" id="quocgia">
+                    <option value="Việt Nam">Việt Nam</option>
+                    <option value="ThaiLand">ThaiLand</option>
+                    <option value="Laos">Laos</option>
+                    <option value="America">America</option>
+                </select>
+            </div>
+            <div class="">
+                <label class="labes" >Tỉnh / Thành Phố  </label><br>
+                <select name="quocgia" id="quocgia">
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Gia Lai">Gia Lai</option>
+                    <option value="Cao Bằng">Cao Bằng</option>
+                    <option value="Thái Bình">Thái Bình</option>
+                </select>
+            </div>
+            <div class="">
+                <label class="labes" >Quận / Huyện   </label><br>
+                <select name="quocgia" id="quocgia">
+                    <option value="Hà Nội">Nam Từ Liêm</option>
+                    <option value="Gia Lai">Gia Lai</option>
+                    <option value="Cao Bằng">Cao Bằng</option>
+                    <option value="Thái Bình">Thái Bình</option>
+                </select>
+            </div>
+            <div class=""><label class="labes" >Số nhà & tên đường </label><br><input rows="2" cols="50" type="text"   value="180 Tây Mỗ"></div>
+            </div>
+            <button style="position: absolute; right: 5%;bottom: 0px;background-color: red;color: white;border: 0;padding: 3px 1%;border-radius: 5px;" type="submit">Ok</button>
+        </form>
+    </div>
         <div class="cart_bottom">
             <!-- //nếu có sản phẩm  -->
             <p class="title_dc_nhanhang">2. Sản phẩm ( <span>1</span> sp)</p>
@@ -256,7 +344,7 @@
                 </tbody>
             </table>
             <div class="xacnhan_dathang">
-                <a href="#" ><p>Xác nhận và đặt hàng</p></a>
+                <a href="trangthaidonhang.html"><p onclick='return confirm("Bạn chắc chắn đặt hàng?")'' >Xác nhận và đặt hàng</p></a>
             </div>
         </div>
        </div>
