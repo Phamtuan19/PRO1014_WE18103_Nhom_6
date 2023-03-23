@@ -80,7 +80,8 @@
     font-size: 23px;
     text-align: center;
     width: 18%;
-    border-bottom: 1px solid #02bbff;
+    color: #1da1f2;
+    font-weight: bolder;
 }
 .cart_bottom>p{
     font-weight: 600;
@@ -216,7 +217,7 @@ body{
     font-weight: 600;
     padding: 1%;
     color: white;
-    margin-left: 80%;
+    margin-left: 74%;
     margin-top: 10%;
 }
 /* thanh toan */
@@ -228,8 +229,8 @@ body{
     font-weight: 600;
     padding: 1%;
     color: #02bbff;
-    left: 60%;
-    top: 76%;
+    left: 55%;
+    top: -25%;
     position: absolute;
 }
 .item_trangthai2 .trangthai{
@@ -246,18 +247,20 @@ body{
 }
 .thanhtoan_dvvc{
         font-size: 80%;
+
     }
 .thanhtoan_dvvc span{
         font-weight: 600;
     }
-.all_price_book_delivery{
-    float: right;
+.phi_vc{
+    width: 64%;
     margin-bottom: 3%;
+    margin-left: 36%;
 }
-.all_price_book_delivery th{
+.phi_vc th{
     width: 21%;
 }
-.all_price_book_delivery{
+.phi_vc{
     max-height: 100%;
 }
 #font600{
@@ -271,9 +274,14 @@ body{
     font-size: 16px;
     font-weight: 600;
 }
+#font_size18_blue{
+    font-size: 19px;
+    font-weight: 600;
+    color: #02bbff;
+}
 .title_dc_nhanhang{
     font-weight: 600;
-    font-size: 150%;
+    font-size: 135%;
     color: #02bbff;
 }
 .box_hinhthuc_thanhtoan_left input,label{

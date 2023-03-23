@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="css-infor-user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-
+        th, td {
+    border-bottom: 1px solid #ddd;
+}
         select{
     display: block;
     width: 80%;
@@ -180,11 +182,71 @@
                     </tr>
                     <tr class="cart_clickALl" >
                         <th></th>
-                        <td class="thanhtoan_dvvc" > <span>Đơn vị vận chuyển: Nhất Tín</span>   <span>- Phí vận chuyển:</span> <span style="color: red;" >17.000 đ</span> <del>23.000 đ</del> (-27%) </td>
+                        <td class="thanhtoan_dvvc" >
+                            <span>Đơn vị vận chuyển: Nhất Tín</span>  
+                            <span>- Phí vận chuyển:</span> 
+                            <span style="color: red;" >17.000 đ</span> 
+                            <del>23.000 đ</del> (-27%)
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                     </tr>
                 </tbody>
             </table>
-            <table class="all_price_book_delivery" >
+            <div class="phi_vc">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tổng tiền sách</td>
+                            <td><del>175.000 đ</del></td>
+                            <td id="font600">131.250 đ</td>
+                        </tr>
+                        <tr>
+                            <td>Phí vận chuyển</td>
+                            <td><del>23.000 đ</del></td>
+                            <td id="font600" >17.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td id="font600"  >Tổng</td>
+                            <td><del>198.000 đ</del></td>
+                            <td id="font600" >148.250 đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="clear: both;" ></div>
+        </div>
+        <div class="box_hinhthuc_thanhtoan">
+            <p class="title_dc_nhanhang">3. Chọn hình thức thanh toán</p>
+            <div class="box_hinhthuc_thanhtoan_left">
+                <input type="radio" name="thanhtoan" >
+                <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br>
+                <input type="radio" name="thanhtoan" >
+                <label for="">Chuyển khoản ngân hàng <br>
+                    <p style="font-size: 70%;margin-left: 2%;" >
+                        Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br>
+                        Số TK: 19037017691017 <br>
+                        Ngân hàng Techcombank CN Nguyễn Văn Trỗi
+                    </p></label><br>
+            </div>
+            <div class="box_hinhthuc_thanhtoan_rigth">
+                <p style="color:#02bbff ;" >Ghi chú</p>
+                <!-- nếu checkGhichu=true thì nhận nội dung ghi chú về đơn hàng -->
+                <input type="checkbox"  name="checkGhichu" id="">
+                <label style="color:#02bbff ;" for="">Nếu khách hàng có ghi chú về đơn hàng, xin hãy nhập vào đây</label><br>
+                <textarea id="w3review" name="w3review" rows="7" cols="50" placeholder="Ghi vào đây" ></textarea>
+            </div>
+        </div>
+        <div class="phi_vc">
+            <table>
                 <thead>
                     <tr>
                         <th></th>
@@ -210,55 +272,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div style="clear: both;" ></div>
         </div>
-        <div class="box_hinhthuc_thanhtoan">
-            <p class="title_dc_nhanhang">3. Chọn hình thức thanh toán</p>
-            <div class="box_hinhthuc_thanhtoan_left">
-                <input type="radio" name="thanhtoan" >
-                <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br>
-                <input type="radio" name="thanhtoan" >
-                <label for="">Chuyển khoản ngân hàng <br>
-                    <p style="font-size: 70%;margin-left: 2%;" >
-                        Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br>
-                        Số TK: 19037017691017 <br>
-                        Ngân hàng Techcombank CN Nguyễn Văn Trỗi
-                    </p></label><br>
-            </div>
-            <div class="box_hinhthuc_thanhtoan_rigth">
-                <p style="color:#02bbff ;" >Ghi chú</p>
-                <!-- nếu checkGhichu=true thì nhận nội dung ghi chú về đơn hàng -->
-                <input type="checkbox"  name="checkGhichu" id="">
-                <label style="color:#02bbff ;" for="">Nếu khách hàng có ghi chú về đơn hàng, xin hãy nhập vào đây</label><br>
-                <textarea id="w3review" name="w3review" rows="7" cols="50" placeholder="Ghi vào đây" ></textarea>
-            </div>
-        </div>
-        <table class="all_price_book_delivery" >
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Tổng tiền sách</td>
-                    <td><del>175.000 đ</del></td>
-                    <td id="font600">131.250 đ</td>
-                </tr>
-                <tr>
-                    <td>Phí vận chuyển</td>
-                    <td><del>23.000 đ</del></td>
-                    <td id="font600" >17.000 đ</td>
-                </tr>
-                <tr>
-                    <td id="font600"  >Tổng</td>
-                    <td><del>198.000 đ</del></td>
-                    <td id="font600" >148.250 đ</td>
-                </tr>
-            </tbody>
-        </table>
        <div style="position: relative;" >
         <a href="index.html"><button class="back_thanhtoan"> Quay lại <<=</button></a>
         <a style="text-decoration: none;" href="#" ><label for="xacnhan_pay"  class="pay_in_cart"> Đặt Hàng =>></label></a>
@@ -268,12 +282,13 @@
             <div class="thanhtoan_xacnhan_close">
                 <label class="close_xacnhan_pay" for="xacnhan_pay"><i class="fa-solid fa-xmark"></i></label>
             </div>
-            <p id="font800" style="color:#02bbff;">Xác nhận mua hàng</p>
+            <p  style="color:#02bbff;font-size: 25px;font-weight: bold;">Xác nhận mua hàng</p>
             <p>Trước khi thanh toán, quý khách vui lòng xác nhận các thông tin mua hàng sau đây:</p>
-            <p id="font_size18">1. Thông tin nhận hàng</p>
-            <p>Số điện thoại:<span style="margin-left: 36px;" id="font_size18">0949520467</span></p>
-            <p>Địa chỉ nhận hàng: <span id="font_size18">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</span></p>
-            <p id="font_size18">2. Xác nhận một số thông tin trong đơn hàng:</p>
+            <p id="font_size18_blue">1. Thông tin nhận hàng</p>
+            <p>Số điện thoại:<span style="margin-left: 88px;" id="font_size18">0949520467</span></p>
+            <p>Địa chỉ nhận hàng: <span style="margin-left: 45px;" id="font_size18">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</span></p>
+            <p>Phương thức thanh toán: <span id="font_size18">Nhân viên giao sách thu tiền trực tiếp</span></p>
+            <p id="font_size18_blue">2. Xác nhận một số thông tin trong đơn hàng:</p>
             <p>Đơn hàng của quý khách hiện có <span id="font_size18">1 sản phẩm</span> có số lượng đặt hàng ít nhất là 1 như sau:</p>
             <table class="title_item" >
                 <thead>
@@ -313,36 +328,36 @@
                             <p class="price_item_cart" style="color: red ;" id="font600" >131.250 đ</p>
                         </td>
                     </tr>
-                    <tr class="item_book_in-cart">
-                        <td>1</td>
-                        <td class="item_book_cart_specifically">
-                            <div class="cart_book_title">
-                                <p class="title_book">
-                                    Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
-                                </p>
-                                <p class="tacgia_book">
-                                    Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)
-                                </p>
-                                <p class="nxb_book">
-                                    NXB: Quân đội Nhân dân
-                                </p>
-                               
-                            </div>
-                            <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
-                        </td>
-                        <td class="price_in_cart" >
-                            <p class="price_item_cart">131.250 đ</p>
-                            <p class="sale_price_item_cart"> <del> 175.000 đ </del>| - 25%</p>
-                        </td>
-                        <td style="text-align: center;">
-                            <p class="soluong_item">1</p>
-                        </td>
-                        <td class="price_in_cart" >
-                            <p class="price_item_cart" style="color: red ;" id="font600" >131.250 đ</p>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
+            <div class="phi_vc">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tổng tiền sách</td>
+                            <td><del>175.000 đ</del></td>
+                            <td id="font600">131.250 đ</td>
+                        </tr>
+                        <tr>
+                            <td>Phí vận chuyển</td>
+                            <td><del>23.000 đ</del></td>
+                            <td id="font600" >17.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td id="font600"  >Tổng</td>
+                            <td><del>198.000 đ</del></td>
+                            <td id="font600" >148.250 đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="xacnhan_dathang">
                 <a href="trangthaidonhang.html"><p onclick='return confirm("Bạn chắc chắn đặt hàng?")'' >Xác nhận và đặt hàng</p></a>
             </div>
