@@ -1,147 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <style>
-            .slider {
-                width: 100%;
-                height: 200px;
-                position: relative;
-                margin: auto;
-                overflow-x: scroll;
-                overflow-y: hidden;
-            }
-
-            .slider::-webkit-scrollbar {
-                display: none;
-            }
-
-            .slider .slide {
-                display: flex;
-                position: absolute;
-                left: 0;
-                transition: 0.3s left ease-in-out;
-            }
-
-            .slider .item {
-                margin-right: 10px;
-            }
-
-            .slider .item:last-child {
-                margin-right: 0;
-            }
-
-            .ctrl {
-                text-align: center;
-                margin-top: 5px;
-            }
-
-            .ctrl-btn {
-                padding: 20px 20px;
-                min-width: 50px;
-                background: #fff;
-                border: none;
-                font-weight: 600;
-                text-align: center;
-                cursor: pointer;
-                outline: none;
-
-                position: absolute;
-                top: 50%;
-                margin-top: -27.5px;
-            }
-
-            .ctrl-btn.pro-prev {
-                left: 0;
-            }
-
-            .ctrl-btn.pro-next {
-                right: 0;
-            }
-        </style>
+        <title>Search box with default text</title>
     </head>
+
     <body>
-        <div class="slider" id="slider">
-            <div class="slide" id="slide">
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-            </div>
-            <button class="ctrl-btn pro-prev">Prev</button>
-            <button class="ctrl-btn pro-next">Next</button>
-        </div>
-        <script type="text/javascript">
-            'use strict';
+        <h1 style="color: green">GeeksforGeeks</h1>
+        <p>Search word in HTML using JavaScript</p>
+        <form>
+            <input type="text" name="Search" id="Search" />
+            <input type="submit" name="submit" value="Search" />
+        </form>
+        <script>
+            // Text to be displayed on search box by default
+            const defaultTextValue = 'Search...';
 
-            productScroll();
+            // Here input id should match with the
+            // parameter of getElementById
+            let searchBox = document.getElementById('Search');
 
-            function productScroll() {
-                let slider = document.getElementById('slider');
-                let next = document.getElementsByClassName('pro-next');
-                let prev = document.getElementsByClassName('pro-prev');
-                let slide = document.getElementById('slide');
-                let item = document.getElementById('slide');
+            // Default text to be displayed
+            searchBox.value = defaultTextValue;
 
-                for (let i = 0; i < next.length; i++) {
-                    //refer elements by class name
-
-                    let position = 0; //slider postion
-
-                    prev[i].addEventListener('click', function () {
-                        //click previos button
-                        if (position > 0) {
-                            //avoid slide left beyond the first item
-                            position -= 1;
-                            translateX(position); //translate items
-                        }
-                    });
-
-                    next[i].addEventListener('click', function () {
-                        if (position >= 0 && position < hiddenItems()) {
-                            //avoid slide right beyond the last item
-                            position += 1;
-                            translateX(position); //translate items
-                        }
-                    });
+            // Search box on focus
+            searchBox.onfocus = function () {
+                if (this.value == defaultTextValue) {
+                    // Clears the search box
+                    this.value = '';
                 }
+            };
 
-                function hiddenItems() {
-                    //get hidden items
-                    let items = getCount(item, false);
-                    let visibleItems = slider.offsetWidth / 210;
-                    return items - Math.ceil(visibleItems);
+            // Search box when clicked outside
+            searchBox.onblur = function () {
+                if (this.value == '') {
+                    // Restores the search box with default value
+                    this.value = defaultTextValue;
                 }
-            }
-
-            function translateX(position) {
-                //translate items
-                slide.style.left = position * -210 + 'px';
-            }
-
-            function getCount(parent, getChildrensChildren) {
-                //count no of items
-                let relevantChildren = 0;
-                let children = parent.childNodes.length;
-                for (let i = 0; i < children; i++) {
-                    if (parent.childNodes[i].nodeType != 3) {
-                        if (getChildrensChildren) relevantChildren += getCount(parent.childNodes[i], true);
-                        relevantChildren++;
-                    }
-                }
-                return relevantChildren;
-            }
+            };
         </script>
     </body>
 </html>
