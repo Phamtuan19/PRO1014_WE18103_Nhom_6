@@ -198,16 +198,13 @@ body{
     width: 12%;
 }
 .cart_book_remote a{
-    color: #02bbff;
+    color: #a24981;
     text-decoration: none;
 }
 
 .cart_book_remote a:hover{
     color: red;
     text-decoration: underline;
-}
-.cart_clickALl span{
-    font-size: 120%;
 }
 .pay_in_cart{
     background-color: #02bbff;
@@ -219,6 +216,10 @@ body{
     color: white;
     margin-left: 74%;
     margin-top: 10%;
+}
+th {
+    background-color: #1c7dbaa7;
+    color: white;
 }
 /* thanh toan */
 .back_thanhtoan{
@@ -246,9 +247,8 @@ body{
     color: #6d5a5a;
 }
 .thanhtoan_dvvc{
-        font-size: 80%;
-
-    }
+    font-size: 80%;
+}
 .thanhtoan_dvvc span{
         font-weight: 600;
     }
