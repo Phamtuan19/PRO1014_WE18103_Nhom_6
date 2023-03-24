@@ -55,10 +55,7 @@ h1, h2, h3 {
 
 }
 
-.featured .featured_fluid {
-    /* background-color: red; */
-    
-}
+
 .featured article.featured_fluid img {
 	width: 100%;
     padding: 16px 24px;
@@ -121,6 +118,9 @@ h1, h2, h3 {
 .sidebar {
 	flex: 0 0 calc(25% - 10px);
 	margin-left: 20px;
+    background-color: white;
+    height: 703.5px;
+    padding: 10px;
 }
 
 .search-box {
@@ -134,11 +134,12 @@ h1, h2, h3 {
     
     .search-box input[type="text"] {
     border-radius: 5px;
-    border: none;
-    font-size: 1.2em;
+    border: 1px inset #b1154a;
+        font-size: 1.2em;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
+    
     }
     
     .search-box button {
@@ -148,7 +149,7 @@ h1, h2, h3 {
     color: #fff;
     font-size: 1.2em;
     padding: 10px;
-    margin-left: 10px;
+    
     }
     
     .categories {
@@ -166,7 +167,8 @@ h1, h2, h3 {
     }
     
     .categories li {
-    margin-bottom: 10px;
+    
+    line-height: 1.9;
     }
     
     .categories a {
@@ -178,12 +180,10 @@ h1, h2, h3 {
     }
     
     .top-sellers {
-    margin-bottom: 40px;
-    }
-    
-    .top-sellers h2 {
     margin-bottom: 10px;
     }
+    
+    
     
     .top-sellers ol {
     list-style: decimal;
@@ -191,7 +191,7 @@ h1, h2, h3 {
     }
     
     .top-sellers li {
-    margin-bottom: 10px;
+    line-height: 1.9;
     }
     
     .top-sellers a {
