@@ -1,0 +1,53 @@
+.box-progress {
+    height: 10px;
+    width: 100%;
+}
+
+.progress {
+    background: black;
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: relative;
+    display: flex;
+    height: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.progress-value {
+    animation: 3s normal forwards;
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 100px;
+    background: #e03f97;
+    background: -webkit-linear-gradient(to right, #f47c34, #e03f97);
+    background: -o-linear-gradient(to right, #f47c34, #e03f97);
+    background: -moz-linear-gradient(to right, #f47c34, #e03f97);
+    background: -ms-linear-gradient(to right, #f47c34, #e03f97);
+    background: linear-gradient(to right, #f47c34, #e03f97);
+    height: 100%;
+    /* width: 0; */
+}
+
+.box-progress {
+    position: relative;
+}
+
+.legend-box {
+    position: absolute;
+    bottom: -3px;
+    cursor: pointer;
+}
+
+.legend-dots {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 0.5rem;
+}
+
+.progress-value {
+    width: 100%;
+}

@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Admin\CustomersController;
-
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\customer\auth\LoginController;
 
 use App\Http\Controllers\Admin\PublishingHouseController;
@@ -73,7 +73,9 @@ Route::middleware('custom.auth')->group(function () {
 
         Route::resource('storecatalog', StoreCatalogController::class);
 
-        // Route::get('orders', [])
+        Route::get('orders', [OrderController::class, 'index'])->name('orders');
+        Route::get('orders/{code}', [OrderController::class, 'show'])->name('orders.show');
+        Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
     });
 });
 

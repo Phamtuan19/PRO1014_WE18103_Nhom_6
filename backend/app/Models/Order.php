@@ -4,7 +4,9 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\OrderNote;
+use App\Models\OrderDetail;
 use App\Models\DiscountCode;
+use App\Models\DeliveryAddress;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -43,7 +45,15 @@ class Order extends Model
         return $this->belongsTo(DiscountCode::class, 'discount_code_id', 'id');
     }
 
-    public function orderNote () {
-        return $this->belongsTo(OrderNote::class, 'order_note_id', 'id');
+    public function note () {
+        return $this->hasMany(OrderNote::class, 'order_id', 'id');
+    }
+
+    public function detail () {
+        return $this->hasMany(OrderDetail::class, 'order_id', 'id');
+    }
+
+    public function deliveryAddress () {
+        return $this->hasOne(DeliveryAddress::class, 'order_id', 'id');
     }
 }

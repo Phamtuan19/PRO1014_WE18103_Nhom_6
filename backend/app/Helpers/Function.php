@@ -64,3 +64,26 @@ function data_tree($data, $parent_id = 0, $level = 0)
 
     return $result;
 }
+
+function orderStatus($data)
+{
+    switch ($data) {
+        case 'pending':
+            echo '<span class="text-danger">Pending</span>';
+            break;
+        case 'processing':
+            echo '<span style="color: red">Processing</span>';
+            break;
+        case 'shipped':
+            echo '<span style="color: red">Shipped</span>';
+            break;
+        case 'delivered':
+            echo '<span class="text-success">Delivered</span>';
+            break;
+        case 'canceled':
+            echo '<span style="color: red">Canceled</span>';
+            break;
+        default:
+            null;
+    }
+}

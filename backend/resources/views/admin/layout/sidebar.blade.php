@@ -18,7 +18,7 @@
             </a>
             <div class="collapse show" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Danh sách đơn hàng</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.orders') }}">Danh sách đơn hàng</a></li>
                     {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a> --}}
                     </li>
                 </ul>

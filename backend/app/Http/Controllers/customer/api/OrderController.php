@@ -7,8 +7,9 @@ use App\Models\Product;
 use App\Models\OrderNote;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\ProductDetail;
+use App\Models\DeliveryAddress;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
@@ -27,12 +28,19 @@ class OrderController extends Controller
         $newOrder = $this->storeOrder($request, $total_quantity, $total_price);
 
         if ($newOrder) {
+
+            $newDeliveryAddress = $this->deliveryAddress($request, $newOrder);
+
             foreach ($products as $index => $product) {
                 $productItem = ProductDetail::where('product_id', $product['id'])->get();
                 $this->orderDetail($newOrder, $product['code'], $productItem[0], $product['quantity']);
             }
 
-            if ($this->orderNote($request, $newOrder)) {
+            $newNotes = $this->orderNote($request, $newOrder);
+
+            if ($newDeliveryAddress && $newNotes) {
+
+                // return $newOrder->id;
                 return response()->json(
                     [
                         "msg" => "Thêm sản phẩm thành công!",
@@ -40,7 +48,7 @@ class OrderController extends Controller
                     ],
                     200
                 );
-            }else {
+            } else {
                 return response()->json(
                     [
                         "msg" => "Thêm sản phẩm thất bại!",
@@ -92,13 +100,34 @@ class OrderController extends Controller
 
     public function orderNote($request, $newOrder)
     {
+
+        if($newOrder) {
+            $data = [
+                'order_id' => $newOrder->id,
+                'user_id' => !empty($request->user_id) ? $request->user_id : 1,
+                'note_takers' => $request->name . ' (khách hàng)',
+                'content' => $request->content_note,
+            ];
+
+            return OrderNote::create($data);
+        }
+
+        return 'error order note';
+    }
+
+    public function deliveryAddress($request, $newOrder)
+    {
         $data = [
+            'user_id' => $request->user_id,
             'order_id' => $newOrder->id,
-            'user_id' => !empty($request->user_id) ? $request->user_id : 1,
-            'note_takers' => $request->name . ' (khách hàng)',
-            'content' => $request->content_note,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'province_city' => $request->province_city,
+            'county_district' => $request->county_district,
+            'house_number_street_name' => $request->house_number_street_name
         ];
 
-        return OrderNote::create($data);
+        return DeliveryAddress::create($data);
     }
 }
