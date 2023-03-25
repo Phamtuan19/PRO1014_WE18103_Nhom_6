@@ -72,6 +72,8 @@ Route::middleware('custom.auth')->group(function () {
         Route::patch('/products/replay/{product}', [ProductController::class, 'replay'])->name('products.replay');
 
         Route::resource('storecatalog', StoreCatalogController::class);
+
+        // Route::get('orders', [])
     });
 });
 
