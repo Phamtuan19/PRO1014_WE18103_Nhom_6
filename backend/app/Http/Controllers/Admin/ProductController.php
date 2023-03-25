@@ -24,10 +24,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->session()->get('name', 'phamtuan')) {
-            dd($request->session()->get('name'));
-        }
-
         $query = new Product;
 
         $orderType = 'DESC';
