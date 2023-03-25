@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\customer\api\ApiController;
+use App\Http\Controllers\customer\api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('submenu', [ApiController::class, 'subMenu']);
+
+Route::post('order', [OrderController::class, 'store']);
+Route::get('search', [ApiController::class, 'search']);
+Route::get('listProducts', [ApiController::class, 'listProducts']);

@@ -12,14 +12,14 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
+                <span class="menu-title">Đơn hàng</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse show" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Danh sách đơn hàng</a></li>
+                    {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a> --}}
                     </li>
                 </ul>
             </div>
