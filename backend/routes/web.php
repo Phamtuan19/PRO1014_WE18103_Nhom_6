@@ -10,20 +10,21 @@ use App\Http\Controllers\Admin\HomeController;
 
 use App\Http\Controllers\Admin\AdminController;
 
+use App\Http\Controllers\Admin\OrderController;
+
 use App\Http\Controllers\Admin\AuthorController;
 
 use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Email\SendMailController;
 use App\Http\Controllers\Admin\CustomersController;
-use App\Http\Controllers\Admin\OrderController;
+
+use App\Http\Controllers\Admin\StoreCatalogController;
 use App\Http\Controllers\customer\auth\LoginController;
 
 use App\Http\Controllers\Admin\PublishingHouseController;
 use App\Http\Controllers\customer\auth\RegisterController;
-
-use App\Http\Controllers\Admin\StoreCatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,9 @@ Route::middleware('custom.auth')->group(function () {
         Route::get('orders', [OrderController::class, 'index'])->name('orders');
         Route::get('orders/{code}', [OrderController::class, 'show'])->name('orders.show');
         Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
+        Route::patch('order/status/{order}', [OrderController::class, 'orderStatusUpdate'])->name('orders.status.update');
+
+        Route::get('send/mail', [SendMailController::class, 'send_email']);
     });
 });
 
