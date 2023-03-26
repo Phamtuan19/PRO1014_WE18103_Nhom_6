@@ -57,10 +57,10 @@ function Validate(){
 
     //username
     if(usernameVal === ""){
-        setErrorMsg(username, 'first name cannot be blank');
+        setErrorMsg(username, 'Không được để trống');
     }
     else if(usernameVal.length <=2){
-        setErrorMsg(username, 'min 3 char');
+        setErrorMsg(username, 'tên quá ngắn');
     }
     else{
         setSuccessMsg(username);
@@ -68,20 +68,20 @@ function Validate(){
 
     //email
     if(emailVal === ""){
-        setErrorMsg(email, 'email cannot be blank');
+        setErrorMsg(email, 'Không được để trống');
     }
     else if(!isEmail(emailVal)){
-        setErrorMsg(email, 'email is not valid');
+        setErrorMsg(email, 'Chưa hợp lệ');
     }
     else{
         setSuccessMsg(email);
     }
     //mobile
     if(mobileVal === ""){
-        setErrorMsg(mobile, 'mobile cannot be blank');
+        setErrorMsg(mobile, 'Không được để trống');
     }
     else if(mobileVal.length != 10){
-        setErrorMsg(mobile, 'min 10 and max 10 char');
+        setErrorMsg(mobile, 'Số điệnn thoại phải là 10 số');
     }
     else{
         setSuccessMsg(mobile);
@@ -89,7 +89,10 @@ function Validate(){
 
     //confirm password
     if(adressVal === ""){
-        setErrorMsg(adress, 'confirm password cannot be blank');
+        setErrorMsg(adress, 'Không được để trống');
+    }
+    else if(adressVal.length <=5){
+        setErrorMsg(adress, 'Quá ngắn');
     }
     else{
         setSuccessMsg(adress);
@@ -97,22 +100,22 @@ function Validate(){
     SuccessMsg(usernameVal);
 
     if(password_newVal === ""){
-        setErrorMsg(password_new, 'vui lòng không để trống');
+        setErrorMsg(password_new, 'Không được để trống');
     }
     else{
         setSuccessMsg(password_new);
     }
     if(password_oldVal === ""){
-        setErrorMsg(password_old, 'vui lòng không để trống');
+        setErrorMsg(password_old, 'Không được để trống');
     }
     else{
         setSuccessMsg(password_old);
     }
     if(cpasswordVal === ""){
-        setErrorMsg(cpassword, 'vui lòng không để trống');
+        setErrorMsg(cpassword, 'Không được để trống');
     }
     else if(cpasswordVal != password_newVal){
-        setErrorMsg(cpassword, 'chua trung');                
+        setErrorMsg(cpassword, 'Chưa trùng');                
     }
     else{
         setSuccessMsg(cpassword);

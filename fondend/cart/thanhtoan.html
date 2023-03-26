@@ -46,6 +46,15 @@
     .adress_all input{
         width: 30%;
     }
+    .form-control input {
+    width: 40%;
+}
+.form .btn {
+    width: 22%;
+    position: absolute;
+    right: 0px;
+    bottom: -10%;
+}
     </style>
 </head>
 <body>
@@ -79,47 +88,98 @@
             <p class="sdt_nhanhang_">0949520467</p>
             <p class="diachi_nhanhang_taikhoan">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</p> -->
         </div>
-        <div style="position: relative;" class="">
-        <form action="">
-        <div class="adress_all">
-            <label class="labes" for="">Tên</label>
-            <input type="text" value="Nguyễn Tiến Lâm"  >
-            <label class="labes" for="">Số Điện Thoại</label>
-            <input type="text" value="0949520467"  >
-        </div>
-        <div class="adress" >
-            <div class="">
-                <label class="labes" >Quốc gia </label><br>
-                <select name="quocgia" id="quocgia">
-                    <option value="Việt Nam">Việt Nam</option>
-                    <option value="ThaiLand">ThaiLand</option>
-                    <option value="Laos">Laos</option>
-                    <option value="America">America</option>
-                </select>
+        <div style="position: relative;" class="" >  
+                <form action="" class="form" id="form">
+                    <div class="form-control">
+                        <label class="labes">Họ và tên</label>
+                        <input type="text" name="" id="username" placeholder="Họ tên" value="Nguyễn Tiến Lâm" autocomplete="off">
+                        
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <label class="labes">Số điện thoại</label>
+                        <input type="tel" name="" id="mobile" placeholder="Số điện thoại" value="0949520467"  autocomplete="off" >
+                        
+                        <small>Error Message</small>
+                    </div>
+                        <div class="form-control">
+                            <label class="labes">Email</label>
+                            <input type="text" name="" id="email" placeholder="Enter Your Email" value="ntl260303@gmail.com" autocomplete="off">
+                            
+                            <small>Error Message</small>
+                        </div>  
+                    <div class="adress" >
+                        <div  class="form-control">
+                            <label class="labes" >Quốc gia </label><br>
+                            <select name="quocgia" id="quocgia">
+                                <option value="Việt Nam">Việt Nam</option>
+                                <option value="ThaiLand">ThaiLand</option>
+                                <option value="Laos">Laos</option>
+                                <option value="America">America</option>
+                            </select>
+                        </div>
+                        <div  class="form-control">
+                            <label class="labes" >Tỉnh / Thành Phố  </label><br>
+                            <select name="quocgia" id="quocgia">
+                                <option value="Hà Nội">Hà Nội</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                            </select>
+                        </div>
+                        <div  class="form-control">
+                            <label class="labes" >Quận / Huyện   </label><br>
+                            <select name="quocgia" id="quocgia">
+                                <option value="Hà Nội">Nam Từ Liêm</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                            </select>
+                        </div>
+                        <div  class="form-control">
+                            <label class="labes" >Số nhà & tên đường </label><br>
+                            <input type="text" name="" id="adress" placeholder="Enter Your Email" autocomplete="off" style="width: 97%;"   value="180 Tây Mỗ">
+                            <small>Error Message</small>
+                        </div>
+                        
+                    </div>
+                    <input type="submit" value="Submit" class="btn">
+                </form>
             </div>
-            <div class="">
-                <label class="labes" >Tỉnh / Thành Phố  </label><br>
-                <select name="quocgia" id="quocgia">
-                    <option value="Hà Nội">Hà Nội</option>
-                    <option value="Gia Lai">Gia Lai</option>
-                    <option value="Cao Bằng">Cao Bằng</option>
-                    <option value="Thái Bình">Thái Bình</option>
-                </select>
+            <!-- ẩn đi form này -->
+            <div style="display: none;">
+                <form action="" class="form" id="form">           
+                <div class="edit_password">
+                    <div><span>Edit Password</span></div><br><br>
+                    <div  class="form-control"><label class="labes" >Tên đăng nhập</label><br><input type="text"  readonly  value="lamnt"></div> <br>
+                    <input type="checkbox"  class="thaydoi_password" name="" id=""><label for="">Thay đổi mật khẩu</label>
+                    
+                    <label class="thaydoi_hien" >
+                        <div class="form-control">
+                            <label class="labes">Mật khẩu cũ</label>
+                            <input type="password" name="" id="password_old" placeholder="Enter Your Password" autocomplete="off">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <div class="form-control">
+                            <label class="labes">Mật khẩu mới</label>
+                            <input type="password" name="" id="password_new" placeholder="Enter Your Password" autocomplete="off">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <div class="form-control">
+                            <label class="labes">Nhập lại mật khẩu mới</label>
+                            <input type="password" name="" id="cpassword" placeholder="Confirm Password" autocomplete="off">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                    </label>
+                </div>
+            </form> 
             </div>
-            <div class="">
-                <label class="labes" >Quận / Huyện   </label><br>
-                <select name="quocgia" id="quocgia">
-                    <option value="Hà Nội">Nam Từ Liêm</option>
-                    <option value="Gia Lai">Gia Lai</option>
-                    <option value="Cao Bằng">Cao Bằng</option>
-                    <option value="Thái Bình">Thái Bình</option>
-                </select>
-            </div>
-            <div class=""><label class="labes" >Số nhà & tên đường </label><br><input rows="2" cols="50" type="text"   value="180 Tây Mỗ"></div>
-            </div>
-            <button style="position: absolute; right: 5%;bottom: 0px;background-color: red;color: white;border: 0;padding: 3px 1%;border-radius: 5px;" type="submit">Ok</button>
-        </form>
-    </div>
         <div class="cart_bottom">
             <!-- //nếu có sản phẩm  -->
             <p class="title_dc_nhanhang">2. Sản phẩm ( <span>1</span> sp)</p>
@@ -340,5 +400,5 @@
        </div>
     </div>
 </body>
-<script src="js.js"></script>
+<script src="validate-information.js"></script>
 </html>
