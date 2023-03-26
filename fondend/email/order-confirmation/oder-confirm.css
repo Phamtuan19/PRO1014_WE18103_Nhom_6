@@ -10,17 +10,17 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-.container {
+/* .container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
    
-}
-.form-container {
+} */
+/* .form-container {
     width: 90%;
     padding: 15px;
-}
+} */
 
 .logo{
     padding: 20px 0;
@@ -63,7 +63,13 @@ td{
     color: #000;
 }
 .price{
-    color: crimson;
+    color: rgb(244, 54, 92);
     
+}
+th,td{
+    text-align: center;
+}
+tr,td{
+    text-align: center;
 }
 
