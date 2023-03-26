@@ -2,7 +2,7 @@
     width: 1200px;
     margin: 0 auto;
     padding: 15px;
-    border: 1px solid red;
+    border-bottom: 1px inset #d3c5ca;
 }
 .detail{
     
@@ -157,13 +157,13 @@ span.text-muted{
 }
 /* end-detail2 */
 
-/* comment */
-.title-comment{
-    border: 1px solid red;
+/* user */
+.user{
+    /* border: 1px inset #d3c5ca; */
     width: 1230px;
     margin: 0 auto;
 }
-.title-comment h3{
+.user-title h3{
     text-align: center;
     text-transform: uppercase;
     margin-top: 0.46875vw;
@@ -172,3 +172,162 @@ span.text-muted{
     color: #2b2b2b;
     font-weight: bold;
 }
+
+.user-form{
+    padding: 16px 20px;
+    position: relative;
+    width: 1190px;
+    /* border: 1px inset #d3c5ca; */
+}
+.form-group{
+    display: flex;
+    position: relative;
+}
+.form-group textarea{
+    height: 72px;
+    width: 100% ;
+    font-size: 16px;
+    line-height: 2; 
+    border-bottom: 1px solid #cbd1d6;
+    resize: none;
+    border-radius: 6px;
+}
+
+.form-group button{
+    height: 36px;
+    width: auto;
+    white-space: nowrap;
+    position: absolute;
+    right: 16px;
+    top: 36px;
+    font-weight: 300;
+    background: #cb1c22;;
+    color: #fff;
+    outline: none;
+    transform: translateY(-50%);
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 6px;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.form-group button:hover{
+    background: #900000;
+}
+/* comment */
+
+.user-wrapper .user-avatar img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+}
+.user-wrapper{
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.user-avatar{
+    margin: 16px;
+}
+.comment-body h4{
+    margin: 0;
+    margin-top: 16px;
+    font-size: 18px;
+  }
+.comment-body p{
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+.comment-body span {
+    color: #999;
+    font-size: 14px;
+  }
+
+
+  .related-title{
+    border-top: 1px solid #cbd1d6;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2b2b2b;
+  }
+.related-book{
+  display: flex;
+  gap: 24px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px;
+}
+.product{
+    width: 17%;
+  padding: 24px 12px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.product-img {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .image {
+    border-radius: 5px;
+    height: 300px;
+  }
+  
+  .product-img:hover .image {
+    transform: scale(1.1);
+  }
+  
+  .product-title {
+    margin-top: 12px;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+  }
+  
+  .product-name:hover {
+    color: red;
+  }
+  
+  .product-author {
+    margin-top: 12px;
+    font-size: 18px;
+    color: #0066ff;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+  }
+  .product-author:hover {
+    color: red;
+  }
+  
+  .product-price {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .product-price__reduced {
+    margin-top: 0 !important;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .product-price__original {
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+    padding-bottom: 20px;
+  }
+
+
+  
+
