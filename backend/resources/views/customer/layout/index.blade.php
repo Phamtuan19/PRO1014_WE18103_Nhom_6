@@ -10,18 +10,28 @@
     <link rel="stylesheet" href="{{ asset('customer/css/main.css') }}" />
     <script src="https://kit.fontawesome.com/03e43a0756.js" crossorigin="anonymous"></script>
 
+    @yield('link')
+
     <title>Document</title>
 </head>
 
-<body>
+<body id="main">
 
+    {{-- Header --}}
     @include('customer.layout.header')
-    @include('customer.homePage.index')
+
+    {{-- Content --}}
+    @yield('contents')
+
+    {{-- Footer --}}
     @include('customer.layout.footer')
 
 
-    <script src="{{ asset('customer/js/main.js') }}"></script>
-    <script src="{{ asset('customer/js/service.js') }}"></script>
+    {{-- Script Javacript --}}
+
+
+    <script type="module" src="{{ asset('customer/js/basie.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

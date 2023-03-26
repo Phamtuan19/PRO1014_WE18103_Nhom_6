@@ -1,0 +1,383 @@
+
+html {
+    line-height: 1.5;
+}
+#container-ct {
+    position: relative;
+}
+
+.container-ct {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    border-bottom: 1px inset #d3c5ca;
+}
+
+.detail {
+
+    display: flex;
+    padding: 0;
+}
+
+/* Danh mục  */
+.breadcrumb-bound ul.breadcrumb-navigation {
+    margin-bottom: 8.8px;
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.breadcrumb-bound li a {
+    color: #a3a3a3;
+    letter-spacing: 0;
+    font-size: 16px;
+}
+
+/* end danh mục */
+
+.detail-box1 {
+    width: 55%;
+    position: relative;
+    /* border: 1px solid red; */
+
+}
+
+.detail-box1_img {
+    width: 100%;
+
+    position: absolute;
+    text-align: center;
+    opacity: 1;
+    padding-top: 25px;
+    transition: all 0.3s ease;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    border-radius: 20px;
+}
+
+.detail-box1_img img {
+    width: 75%;
+}
+
+.detail-introduce h3 {
+    margin-top: 550px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #2b2b2b;
+}
+
+.detail-box1_describe {
+    font-size: 17px;
+    letter-spacing: 1px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #696969;
+}
+
+
+/* Box2 */
+.detail-box2 {
+    width: 45%;
+    padding: 12px 24px;
+    margin: 0 auto;
+}
+
+.detail-box2 .detail-box2_content {
+    position: sticky;
+    top: 30px;
+}
+
+
+.detail2-title h3 {
+
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.detail2-author p {
+    font-size: 20px;
+    /* text-decoration: none; */
+}
+
+.detail2-author a {
+    text-decoration: none;
+    color: #00B2EE;
+    font-weight: 400;
+}
+
+span.text-muted {
+    font-size: 24px;
+    color: #909090;
+}
+
+span.text-muted a {
+    font-size: 16px;
+    color: #909090;
+}
+
+.detail2-price {
+    /* margin-top: 12px; */
+    display: flex;
+    align-items: center;
+}
+
+.detail2-price__reduced {
+    font-size: 40px;
+    font-weight: 600;
+    color: red;
+}
+
+.detali2-price__original {
+    font-size: 24px;
+    font-weight: 600;
+    /* margin-top: 56px; */
+    margin-left: 20px;
+}
+
+.detail-box2 p.transport {
+    font-size: 18px;
+}
+
+.detail2-status p.status {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.detail2-status p.status span {
+    margin-left: 50px;
+    color: #00B2EE;
+}
+
+.detail2-soluong span.quantity {
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.detail2-buy button {
+    background-color: #4CAF50;
+    /* Màu nền */
+    border: none;
+    /* Không có đường viền */
+    color: white;
+    /* Màu chữ */
+    padding: 12px 24px;
+    /* Kích thước */
+    text-align: center;
+    /* Căn giữa nội dung */
+    text-decoration: none;
+    /* Không có đường gạch chân */
+    display: inline-block;
+    /* Hiển thị là một khối */
+    font-size: 16px;
+    /* Cỡ chữ */
+    cursor: pointer;
+    /* Chỉ số hình cắt: khi rê chuột qua */
+    border-radius: 4px;
+    /* Bo tròn các góc */
+    margin-top: 20px;
+}
+
+.detail2-buy button:hover {
+    background-color: #3e8e41;
+}
+
+.detail2-buy button.buy2 {
+    background-color: #FFD700;
+}
+
+.detail2-buy button.buy2:hover {
+    background-color: #CDAD00;
+}
+
+/* end-detail2 */
+
+/* user */
+.user {
+    /* border: 1px inset #d3c5ca; */
+    width: 1230px;
+    margin: 0 auto;
+}
+
+.user-title h3 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0.46875vw;
+    margin-bottom: 0.85vw;
+    font-size: 20px;
+    color: #2b2b2b;
+    font-weight: bold;
+}
+
+.user-form {
+    padding: 16px 20px;
+    position: relative;
+    width: 1190px;
+    /* border: 1px inset #d3c5ca; */
+}
+
+.form-group {
+    display: flex;
+    position: relative;
+}
+
+.form-group textarea {
+    height: 72px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 2;
+    border-bottom: 1px solid #cbd1d6;
+    resize: none;
+    border-radius: 6px;
+}
+
+.form-group button {
+    height: 36px;
+    width: auto;
+    white-space: nowrap;
+    position: absolute;
+    right: 16px;
+    top: 36px;
+    font-weight: 300;
+    background: #cb1c22;
+    ;
+    color: #fff;
+    outline: none;
+    transform: translateY(-50%);
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 6px;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background: #900000;
+}
+
+/* comment */
+
+.user-wrapper .user-avatar img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+}
+
+.user-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.user-avatar {
+    margin: 16px;
+}
+
+.comment-body h4 {
+    margin: 0;
+    margin-top: 16px;
+    font-size: 18px;
+}
+
+.comment-body p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.comment-body span {
+    color: #999;
+    font-size: 14px;
+}
+
+
+.related-title {
+    border-top: 1px solid #cbd1d6;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2b2b2b;
+}
+
+.related-book {
+    display: flex;
+    gap: 24px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.product {
+    width: 17%;
+    padding: 24px 12px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.product-img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.image {
+    border-radius: 5px;
+    height: 300px;
+}
+
+.product-img:hover .image {
+    transform: scale(1.1);
+}
+
+.product-title {
+    margin-top: 12px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+}
+
+.product-name:hover {
+    color: red;
+}
+
+.product-author {
+    margin-top: 12px;
+    font-size: 18px;
+    color: #0066ff;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+}
+
+.product-author:hover {
+    color: red;
+}
+
+.product-price {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.product-price__reduced {
+    margin-top: 0 !important;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.product-price__original {
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+    padding-bottom: 20px;
+}

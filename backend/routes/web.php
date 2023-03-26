@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\StoreCatalogController;
 use App\Http\Controllers\customer\auth\LoginController;
 
 use App\Http\Controllers\Admin\PublishingHouseController;
+use App\Http\Controllers\customer\CustomerPageController;
 use App\Http\Controllers\customer\auth\RegisterController;
 
 /*
@@ -84,11 +85,9 @@ Route::middleware('custom.auth')->group(function () {
 });
 
 
-// Route::middleware('customer.auth')->group(function () {
-    Route::get('customer/home', function () {
-        return view('customer.layout.index');
-    })->name('customer.home');
-// });
+
+Route::get('home', [CustomerPageController::class, 'index'])->name('customer.home');
+Route::get('product-detail/{product}', [CustomerPageController::class, 'productDetail'])->name('customer.home');
 
 Route::get('customer/login', [LoginController::class, 'index'])->name('customer.login');
 Route::post('post/login', [LoginController::class, 'login'])->name('post.login');

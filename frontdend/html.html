@@ -1,146 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+        <title>Autocomplete Search Box | CodingNepal</title>
+        <link rel="stylesheet" href="style.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <style>
-            .slider {
-                width: 100%;
-                height: 200px;
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #6d7b98;
+                font-size: 18px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .container {
+            }
+
+            .wrapper {
+                margin: 0 auto;
+                background: #ffffff;
+                border-radius: 5px;
+                box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.15);
                 position: relative;
-                margin: auto;
-                overflow-x: scroll;
-                overflow-y: hidden;
+                width: 450px;
             }
 
-            .slider::-webkit-scrollbar {
-                display: none;
-            }
-
-            .slider .slide {
-                display: flex;
-                position: absolute;
-                left: 0;
-                transition: 0.3s left ease-in-out;
-            }
-
-            .slider .item {
-                margin-right: 10px;
-            }
-
-            .slider .item:last-child {
-                margin-right: 0;
-            }
-
-            .ctrl {
-                text-align: center;
-                margin-top: 5px;
-            }
-
-            .ctrl-btn {
-                padding: 20px 20px;
-                min-width: 50px;
-                background: #fff;
+            input {
+                width: 100%;
                 border: none;
-                font-weight: 600;
-                text-align: center;
-                cursor: pointer;
+                height: 50px;
+                border-radius: 5px;
+                padding: 0px 40px 0px 10px;
+                font-size: 18px;
+                box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            input:focus {
                 outline: none;
+            }
 
+            button {
                 position: absolute;
-                top: 50%;
-                margin-top: -27.5px;
-            }
-
-            .ctrl-btn.pro-prev {
-                left: 0;
-            }
-
-            .ctrl-btn.pro-next {
+                border: none;
+                background: none;
+                top: 0;
                 right: 0;
+                height: 50px;
+                line-height: 50px;
+                padding: 0;
+                width: 50px;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+            button i {
+                width: 100%;
+                color: #6d7b98;
+                line-height: 50px;
+                font-size: 22px;
+            }
+
+            .results {
+                padding: 0px;
+            }
+
+            .results ul {
+                margin: 0;
+                padding: 0;
+            }
+            .results ul li {
+                list-style: none;
+                border-radius: 3px;
+                opacity: 0;
+                display: none;
+                padding: 8px 12px;
+                transition: all 0.5s linear;
+            }
+
+            .show .results ul li {
+                opacity: 1;
+                display: block;
+            }
+
+            .show .results {
+                padding: 10px;
+            }
+
+            .results ul li:hover {
+                background: #ececec;
             }
         </style>
     </head>
     <body>
-        <div class="slider" id="slider">
-            <div class="slide" id="slide">
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product1" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product2" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
-                <img class="item" src="http://via.placeholder.com/200x200?text=Product3" />
+        <div class="container">
+            <div class="wrapper">
+                <input type="text" name="search" id="search" placeholder="Type to search" autocomplete="chrome-off" />
+                <button><i class="fa fa-search"></i></button>
+                <div class="results">
+                    <ul></ul>
+                </div>
             </div>
-            <button class="ctrl-btn pro-prev">Prev</button>
-            <button class="ctrl-btn pro-next">Next</button>
         </div>
         <script type="text/javascript">
-            'use strict';
+            let searchable = ['Elastic', 'PHP', 'Something about CSS', 'How to code', 'JavaScript', 'Coding', 'Some other item'];
 
-            productScroll();
+            const searchInput = document.getElementById('search');
+            const searchWrapper = document.querySelector('.wrapper');
+            const resultsWrapper = document.querySelector('.results');
 
-            function productScroll() {
-                let slider = document.getElementById('slider');
-                let next = document.getElementsByClassName('pro-next');
-                let prev = document.getElementsByClassName('pro-prev');
-                let slide = document.getElementById('slide');
-                let item = document.getElementById('slide');
-
-                for (let i = 0; i < next.length; i++) {
-                    //refer elements by class name
-
-                    let position = 0; //slider postion
-
-                    prev[i].addEventListener('click', function () {
-                        //click previos button
-                        if (position > 0) {
-                            //avoid slide left beyond the first item
-                            position -= 1;
-                            translateX(position); //translate items
-                        }
-                    });
-
-                    next[i].addEventListener('click', function () {
-                        if (position >= 0 && position < hiddenItems()) {
-                            //avoid slide right beyond the last item
-                            position += 1;
-                            translateX(position); //translate items
-                        }
+            searchInput.addEventListener('keyup', () => {
+                let results = [];
+                let input = searchInput.value;
+                if (input.length) {
+                    results = searchable.filter((item) => {
+                        return item.toLowerCase().includes(input.toLowerCase());
                     });
                 }
+                renderResults(results);
+            });
 
-                function hiddenItems() {
-                    //get hidden items
-                    let items = getCount(item, false);
-                    let visibleItems = slider.offsetWidth / 210;
-                    return items - Math.ceil(visibleItems);
+            function renderResults(results) {
+                if (!results.length) {
+                    return searchWrapper.classList.remove('show');
                 }
-            }
 
-            function translateX(position) {
-                //translate items
-                slide.style.left = position * -210 + 'px';
-            }
+                const content = results
+                    .map((item) => {
+                        return `<li>${item}</li>`;
+                    })
+                    .join('');
 
-            function getCount(parent, getChildrensChildren) {
-                //count no of items
-                let relevantChildren = 0;
-                let children = parent.childNodes.length;
-                for (let i = 0; i < children; i++) {
-                    if (parent.childNodes[i].nodeType != 3) {
-                        if (getChildrensChildren) relevantChildren += getCount(parent.childNodes[i], true);
-                        relevantChildren++;
-                    }
-                }
-                return relevantChildren;
+                searchWrapper.classList.add('show');
+                resultsWrapper.innerHTML = `<ul>${content}</ul>`;
             }
         </script>
     </body>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Categories;
 use App\Models\StoreCatalog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
@@ -28,15 +29,46 @@ class ApiController extends Controller
         return $products;
     }
 
-    public function listProducts (Request $request) {
+    public function listProducts(Request $request)
+    {
+        $products = DB::table('products')
+            ->select(
+                'products.*',
+                'products_detail.price as price',
+                'products_detail.promotion_price as promotion_price',
+                'image.image_url as image_url',
+                'author.name as author_name',
+                'warehouses.quantity_sold as quantity_sold'
+            )
+            ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
+            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            ->leftJoin('author', 'author.id', '=', 'products.author_id')
+            ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
+            ->orderBy('quantity_sold', 'desc')
+            // ->limit(6)
+            ->get();
 
-        $products = Product::with('detail', 'image');
+        return $products;
+    }
 
-
-
-        $products =$products->orderBy('created_at', 'DESC');
-
-        $products = $products->get();
+    public function listProductsSale()
+    {
+        $products = DB::table('products')
+            ->select(
+                'products.*',
+                'products_detail.price as price',
+                'products_detail.promotion_price as promotion_price',
+                'image.image_url as image_url',
+                'author.name as author_name',
+                'warehouses.quantity_sold as quantity_sold'
+            )
+            ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
+            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            ->leftJoin('author', 'author.id', '=', 'products.author_id')
+            ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
+            ->orderBy('quantity_sold', 'desc')
+            ->limit(6)
+            ->get();
 
         return $products;
     }

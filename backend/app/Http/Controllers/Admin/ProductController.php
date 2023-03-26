@@ -42,7 +42,7 @@ class ProductController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete)->paginate(1);
+        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete)->paginate(15);
 
         // dd($products);
 
@@ -137,6 +137,7 @@ class ProductController extends Controller
                     ];
 
                     Image::insert($dataImage);
+                    // dd('ok');
                 }
             }
         }
