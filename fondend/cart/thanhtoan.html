@@ -262,15 +262,18 @@
         <div class="box_hinhthuc_thanhtoan">
             <p class="title_dc_nhanhang">3. Chọn hình thức thanh toán</p>
             <div class="box_hinhthuc_thanhtoan_left">
-                <input type="radio" name="thanhtoan" >
-                <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br>
-                <input type="radio" name="thanhtoan" >
-                <label for="">Chuyển khoản ngân hàng <br>
-                    <p style="font-size: 70%;margin-left: 2%;" >
-                        Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br>
-                        Số TK: 19037017691017 <br>
-                        Ngân hàng Techcombank CN Nguyễn Văn Trỗi
-                    </p></label><br>
+                <form action="" method="POST">
+                    <input type="radio" name="thanhtoan"onclick="reset_msg();" >
+                        <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br>
+                        <input type="radio" name="thanhtoan"onclick="reset_msg();" >
+                        <label for="">Chuyển khoản ngân hàng <br>
+                            <p style="font-size: 70%;margin-left: 2%;" >
+                                Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br>
+                                Số TK: 19037017691017 <br>
+                                Ngân hàng Techcombank CN Nguyễn Văn Trỗi
+                            </p></label><br>
+                    <div id="msg"></div>
+                </form>
             </div>
             <div class="box_hinhthuc_thanhtoan_rigth">
                 <p style="color:#02bbff ;" >Ghi chú</p>
@@ -310,7 +313,7 @@
         </div>
        <div style="position: relative;" >
         <a href="index.html"><button class="back_thanhtoan"> Quay lại <<=</button></a>
-        <a style="text-decoration: none;" href="#" ><label for="xacnhan_pay"  class="pay_in_cart"> Đặt Hàng =>></label></a>
+        <a style="text-decoration: none;" href="#" ><label for="xacnhan_pay"  onclick="return send();"   class="pay_in_cart"> Đặt Hàng =>></label></a>
         <input type="checkbox" class="xac_nhan" name="" id="xacnhan_pay">
         <label for="xacnhan_pay" class="thanhtoan_overlay"></label>
         <div class="thanhtoan_xacnhan" id="scoll">

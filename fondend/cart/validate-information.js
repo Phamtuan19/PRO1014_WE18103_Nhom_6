@@ -135,4 +135,22 @@ function setSuccessMsg(input){
     const formControl = input.parentElement;
     formControl.className = "form-control success";
 }
+//validate phương thức thanh toán
+function send() {
+    var thanhtoans = document.getElementsByName("thanhtoan");
+    if (thanhtoans[0].checked == true) {
+        // Nhân viên giao sách thu tiền trực tiếp
+    } else if (thanhtoans[1].checked == true) {
+        // Chuyển khoản ngân hàng
+    } else {
+        // nếu chưa chọn
+        var msg = '<span style="color:red;">Vui lòng chọn phương thức thanh toán!</span><br /><br />';
+        document.getElementById('msg').innerHTML = msg;
+        return false;
+    }
+    return true;
+}
 
+function reset_msg() {
+    document.getElementById('msg').innerHTML = '';
+}
