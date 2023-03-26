@@ -1,12 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap");
+
 .cart_top{
     display: flex;
     justify-content: center;
     gap: 40px;
     position: relative;
-    width: 70%;
+    width: 80%;
     height: 90px;
     text-align: center;
     margin: 0 auto;
+    left: 48px;
+    top:-10px;
 
 }
 .text_trangthai{
@@ -77,8 +81,9 @@
 .cart>p{
     font-size: 23px;
     text-align: center;
-    width: 12%;
-    border-bottom: 1px solid #02bbff;
+    width: 18%;
+    color: #1da1f2;
+    font-weight: bolder;
 }
 .cart_bottom>p{
     font-weight: 600;
@@ -91,7 +96,7 @@
 }
 progress{
     position: absolute;
-    width: 80%;
+    width: 70%;
     top:75%;
     left: 6%;
 }
@@ -101,11 +106,11 @@ progress{
 }
 .item_trangthai2{
     position: absolute;
-    left: 30%;
+    left: 35%;
 }
 .item_trangthai3{
     position: absolute;
-    left: 50%;
+    left: 58%;
 }
 .item_trangthai4{
     position: absolute;
@@ -192,19 +197,16 @@ body{
     position: absolute;
     top: 18px;
     right: 50px;
-    width: 15%;
+    width: 12%;
 }
 .cart_book_remote a{
-    color: #02bbff;
+    color: #a24981;
     text-decoration: none;
 }
 
 .cart_book_remote a:hover{
     color: red;
     text-decoration: underline;
-}
-.cart_clickALl span{
-    font-size: 120%;
 }
 .pay_in_cart{
     background-color: #02bbff;
@@ -214,8 +216,12 @@ body{
     font-weight: 600;
     padding: 1%;
     color: white;
-    margin-left: 80%;
+    margin-left: 74%;
     margin-top: 10%;
+}
+th {
+    background-color: #1c7dbaa7;
+    color: white;
 }
 /* thanh toan */
 .back_thanhtoan{
@@ -226,8 +232,8 @@ body{
     font-weight: 600;
     padding: 1%;
     color: #02bbff;
-    left: 60%;
-    top: 76%;
+    left: 55%;
+    top: -25%;
     position: absolute;
 }
 .item_trangthai2 .trangthai{
@@ -243,32 +249,41 @@ body{
     color: #6d5a5a;
 }
 .thanhtoan_dvvc{
-        font-size: 80%;
-    }
+    font-size: 80%;
+}
 .thanhtoan_dvvc span{
         font-weight: 600;
     }
-.all_price_book_delivery{
-    float: right;
+.phi_vc{
+    width: 64%;
     margin-bottom: 3%;
+    margin-left: 36%;
 }
-.all_price_book_delivery th{
+.phi_vc th{
     width: 21%;
 }
-.all_price_book_delivery{
+.phi_vc{
     max-height: 100%;
 }
 #font600{
     font-weight: 600;
     font-size: 21px;
 }
-#font800{
-    font-weight: 800;
-    font-size: 23px;
+#fontbold{
+    font-weight: bold;
+}
+#font_size18{
+    font-size: 16px;
+    font-weight: 600;
+}
+#font_size18_blue{
+    font-size: 19px;
+    font-weight: 600;
+    color: #02bbff;
 }
 .title_dc_nhanhang{
     font-weight: 600;
-    font-size: 150%;
+    font-size: 135%;
     color: #02bbff;
 }
 .box_hinhthuc_thanhtoan_left input,label{
@@ -286,23 +301,31 @@ body{
     position: fixed;
     right: 0;
     left: 0;
-    top: 0;
-    bottom:0;
+    top: -10%;
+    bottom:-10%;
     background-color: rgba(0, 0, 0,0.3);
     display: none;
 }
+.click_chitiet{
+    position: relative;
+}
+.click_tr_in_table{
+    width: 100%;
+    background-color: rgba(0, 0, 0,0.3);
+}
 .thanhtoan_xacnhan{
     position: fixed;
-    top: 10%;
+    top: 1%;
     left: 10%;
     right: 10%;
     bottom: 10%;
     max-width: 90%;
-    max-height: 90%;
+    height: 550px;
     background-color: white;
     border-radius: 1%;
     padding: 1% 2%;
     display: none;
+    z-index: 1;
 }
 .thanhtoan_xacnhan_close{
     position: absolute;
@@ -316,4 +339,161 @@ body{
 }
 .xac_nhan{
     display: none;
+}
+body{
+    font-family: "Roboto Light", sans-serif
+}
+.xacnhan_dathang p{
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background: #ff990f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+.xacnhan_dathang a{
+    text-decoration: none;
+    float: right;
+}
+#scoll{
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+.close_xacnhan_pay{
+    position: fixed;
+}
+/* trạng thái đơn hàng */
+
+.button_trangthai_donhang{
+    background-color: #6565ee;
+    border: 0;
+    padding: 6% 7%;
+    border-radius: 8px;
+    color: white;
+}
+.button_cttrangthai_donhang{
+    border: 0;
+    color: white;
+    padding: 2%;
+    border-radius: 10px;
+    float: right;
+}
+.donhang_dadat{
+    width: 100%;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.donhang_dadat tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+progress {
+    border: none;
+    background: crimson;
+    border-radius: 2px;
+}
+progress {
+    color: #02bbff;
+}
+progress::-webkit-progress-value {
+    background: #02bbff;
+}
+progress::-moz-progress-bar {
+    background: #02bbff;
+}
+table tbody{
+    color: rgba(0,0,0,.5)!important;
+}
+
+
+.form-control{
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input{
+    width: 100%;
+    border: 2px solid #f0f0f0;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 12px;
+    display: block;
+}
+.form-control select{
+    width: 100%;
+    border: 2px solid #f0f0f0;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 12px;
+    display: block;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input{
+    border-color: #39df7e;
+}
+
+.form-control.error input{
+    border-color: #df3434;
+}
+
+.form-control i {
+    position: absolute;
+    right: 12px;
+    top: 40px;
+    visibility: hidden;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form-control small{
+    color: #df3434;
+    position: absolute;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.success i.fa-check-circle{
+    color: #39df7e;
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle{
+    color: #df3434;
+    visibility: visible;
+}
+
+.form .btn{
+    background: #b25dda;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    display: block;
+    font-size: 16px;
+    padding: 15px 0;
+    margin-top: 15px;
+    width: 100%;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form .btn:hover{
+    background: #c59cd8;
 }

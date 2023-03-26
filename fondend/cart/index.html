@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<style>
+    th, td {
+    border-bottom: 1px solid #ddd;
+}
+</style>
 <body>
     <div class="cart">
-        
         <div class="cart_top">
             <progress max="100" value="15"></progress>
             <div class="item_trangthai">
@@ -21,7 +25,7 @@
             </div>
             <div class="item_trangthai2">
                 <p class="text_trangthai">Thanh toán</p>
-                <div class="trangthai">
+                <div class="trangthai" style=" background-color: white;border: 1px solid #02bbff;" >
                     <i class="fa-regular fa-credit-card"></i>
                 </div>
             </div>
@@ -29,12 +33,6 @@
                 <p class="text_trangthai">Giao hàng</p>
                 <div class="trangthai">
                     <i class="fa-solid fa-truck"></i>
-                </div>
-            </div>
-            <div class="item_trangthai4">
-                <p class="text_trangthai">Đã nhận hàng</p>
-                <div class="trangthai">
-                    <i class="fa-regular fa-circle-check"></i>
                 </div>
             </div>
         </div>
@@ -63,7 +61,10 @@
                         <td>
                             <input type="checkbox" type="checkbox" name="checkboxArr[]" id="checkall"  class="all">
                         </td>
-                        <td><p>Công ty Cổ phần Tri thức Văn hóa Sách Việt Nam - Vinabook JSC (1 sản phẩm)</p></td>
+                        <td><p >Công ty Cổ phần Tri thức Văn hóa Sách Việt Nam - Vinabook JSC (1 sản phẩm)</p></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr class="item_book_in-cart">
                         <td><input type="checkbox" type="checkbox" name="checkboxArr[]"id="checkall" class="allcheck"></td>
@@ -78,7 +79,7 @@
                                 <p class="nxb_book">
                                     NXB: Quân đội Nhân dân
                                 </p>
-                                <div class="cart_book_remote"><a href="#" onclick="return confirm('ban co chac muon xoa') " >xoa</a></div>
+                                <div class="cart_book_remote"><a href="#" onclick="return confirm('ban co chac muon xoa') " ><i class="fa-solid fa-trash-can fa-xs" style="color: #a24981;"></i></a></div>
                             </div>
                             <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
                         </td>
@@ -112,5 +113,5 @@
         <a href="thanhtoan.html" ><button class="pay_in_cart"> Thanh Toán <i class="fa-regular fa-credit-card"></i></button></a>
     </div>
 </body>
-<script src="js.js"></script>
+<script src="cart.js"></script>
 </html>

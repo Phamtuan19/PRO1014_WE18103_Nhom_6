@@ -1,47 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="css.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-        <style></style>
-    </head>
-    <body>
-        <div class="cart">
-            <div class="cart_top">
-                <progress max="100" value="35"></progress>
-                <div class="item_trangthai">
-                    <p class="text_trangthai">Giỏ hàng</p>
-                    <div class="trangthai">
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="item_trangthai2">
-                    <p class="text_trangthai">Thanh toán</p>
-                    <div class="trangthai">
-                        <i class="fa-regular fa-credit-card"></i>
-                    </div>
-                </div>
-                <div class="item_trangthai3">
-                    <p class="text_trangthai">Giao hàng</p>
-                    <div class="trangthai">
-                        <i class="fa-solid fa-truck"></i>
-                    </div>
-                </div>
-                <div class="item_trangthai4">
-                    <p class="text_trangthai">Đã nhận hàng</p>
-                    <div class="trangthai">
-                        <i class="fa-regular fa-circle-check"></i>
-                    </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="css-infor-user.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        th,
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        select {
+            display: block;
+            width: 80%;
+            border: 2px solid #f0f0f0;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 12px;
+            display: block;
+        }
+
+        .adress {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .adress_all input {
+            display: block;
+            width: 75%;
+            border: 2px solid #f0f0f0;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 12px;
+            display: block;
+        }
+
+        .adress input {
+            display: block;
+            width: 75%;
+            border: 2px solid #f0f0f0;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 12px;
+            display: block;
+        }
+
+        .adress_all input {
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart" style="position: relative;">
+
+        <div class="cart_top">
+            <progress max="100" value="45"></progress>
+            <div class="item_trangthai">
+                <p class="text_trangthai">Giỏ hàng</p>
+                <div class="trangthai">
+                    <i class="fa-solid fa-cart-plus"></i>
                 </div>
             </div>
             <p>Thanh Toán</p>
@@ -69,16 +95,20 @@
                             <td>1</td>
                             <td class="item_book_cart_specifically">
                                 <div class="cart_book_title">
-                                    <p class="title_book">Quân Đội Nga - Những Bí Mật Bạn Chưa Biết</p>
-                                    <p class="tacgia_book">Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)</p>
+                                    <p class="title_book">Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
+                                    </p>
+                                    <p class="tacgia_book">Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu
+                                        tầm, tuyển dịch)</p>
                                     <p class="nxb_book">NXB: Quân đội Nhân dân</p>
                                 </div>
-                                <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="" />
+                                <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg"
+                                    alt="" />
                             </td>
                             <td class="price_in_cart">
                                 <p class="price_item_cart">131.250 đ</p>
                                 <p class="sale_price_item_cart"><del> 175.000 đ </del>| - 25%</p>
-                                <p class="giamgiachung">Giảm giá chung: 25%. Tương đương 43.750 đ</p>
+                                <p class="giamgiachung">Giảm giá chung: 25%. Tương đương 43.750 đ
+                                </p>
                             </td>
                             <td style="text-align: center">
                                 <p class="soluong_item">1</p>
@@ -90,7 +120,9 @@
                         <tr class="cart_clickALl">
                             <th></th>
                             <td class="thanhtoan_dvvc">
-                                <span>Đơn vị vận chuyển: Nhất Tín</span> <span>- Phí vận chuyển:</span> <span style="color: red">17.000 đ</span> <del>23.000 đ</del> (-27%)
+                                <span>Đơn vị vận chuyển: Nhất Tín</span> <span>- Phí vận
+                                    chuyển:</span> <span style="color: red">17.000 đ</span>
+                                <del>23.000 đ</del> (-27%)
                             </td>
                         </tr>
                     </tbody>
@@ -129,23 +161,25 @@
                     <input type="radio" name="thanhtoan" />
                     <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br />
                     <input type="radio" name="thanhtoan" />
-                    <label for=""
-                        >Chuyển khoản ngân hàng <br />
+                    <label for="">Chuyển khoản ngân hàng <br />
                         <p style="font-size: 70%; margin-left: 2%">
                             Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br />
                             Số TK: 19037017691017 <br />
                             Ngân hàng Techcombank CN Nguyễn Văn Trỗi
-                        </p></label
-                    ><br />
+                        </p>
+                    </label><br />
                 </div>
                 <div class="box_hinhthuc_thanhtoan_rigth">
                     <p style="color: #02bbff">Ghi chú</p>
                     <!-- nếu checkGhichu=true thì nhận nội dung ghi chú về đơn hàng -->
                     <input type="checkbox" name="checkGhichu" id="" />
-                    <label style="color: #02bbff" for="">Nếu khách hàng có ghi chú về đơn hàng, xin hãy nhập vào đây</label><br />
-                    <textarea id="w3review" name="w3review" rows="7" cols="50" placeholder="Ghi vào đây"></textarea>
+                    <label style="color: #02bbff" for="">Nếu khách hàng có ghi chú về đơn hàng, xin
+                        hãy nhập vào đây</label><br />
+                    <textarea id="w3review" name="w3review" rows="7" cols="50"
+                        placeholder="Ghi vào đây"></textarea>
                 </div>
             </div>
+
             <table class="all_price_book_delivery">
                 <thead>
                     <tr>
@@ -173,18 +207,25 @@
                 </tbody>
             </table>
             <div style="position: relative">
-                <a href="index.html"><button class="back_thanhtoan">Quay lại <<=</button></a>
-                <a style="text-decoration: none" href="#"><label for="xacnhan_pay" class="pay_in_cart"> Đặt Hàng =>></label></a>
+                <a href="index.html">
+                    <button class="back_thanhtoan">Quay lại <<= </button>
+                </a>
+                <a style="text-decoration: none" href="#">
+                    <label for="xacnhan_pay" class="pay_in_cart"> Đặt Hàng =>></label>
+                </a>
                 <input type="checkbox" class="xac_nhan" name="" id="xacnhan_pay" />
                 <label for="xacnhan_pay" class="thanhtoan_overlay"></label>
                 <div class="thanhtoan_xacnhan">
                     <div class="thanhtoan_xacnhan_close">
-                        <label for="xacnhan_pay"><i class="fa-solid fa-xmark"></i></label>
+                        <label for="xacnhan_pay">
+                            <i class="fa-solid fa-xmark"></i>
+                        </label>
                     </div>
                     <p id="font600" style="color: #02bbff">Xác nhận mua hàng</p>
                 </div>
             </div>
         </div>
-    </body>
-    <script src="js.js"></script>
+</body>
+<script src="js.js"></script>
+
 </html>
