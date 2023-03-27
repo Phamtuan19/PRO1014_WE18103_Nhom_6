@@ -23,9 +23,9 @@ class CreateOrdersTable extends Migration
             $table->dateTime('date_confirmation')->nullable(); // ngày xác nhận
             $table->dateTime('date_delivered')->nullable(); // ngày giao hàng
             // $table->string('order_notes_id')->nullable(); // ghi chú của người dùng
-            $table->string('order_status'); // trạng thái đơn hàng
+            $table->string('order_status_id'); // trạng thái đơn hàng
             $table->boolean('payment_form'); // hình thức thanh toán
-            $table->string('payment_status')->nullable(); // trạng thái thanh toán
+            $table->string('payment_status_id')->nullable(); // trạng thái thanh toán
             $table->tinyInteger('quantity'); // số lượng sản phẩm của đơn hàng
             $table->integer('total_price'); // tổng số tiền của đơn hàng
             $table->integer('shipping_fee')->nullable(); // phí vận chuyển

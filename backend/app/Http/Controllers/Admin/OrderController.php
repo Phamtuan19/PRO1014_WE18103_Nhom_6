@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Error;
+use Exception;
 use App\Models\Order;
+use App\Models\OrderNote;
 use App\Models\OrderDetail;
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\OrderNote;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -21,13 +24,8 @@ class OrderController extends Controller
     public function show($code)
     {
         $order = Order::where('code_order', $code)->get();
-        $status = [
-            'pending' => 11,
-            'processing' => 30,
-            'shipped' => 52,
-            'delivered' => 75,
-            'Canceled' => 95.4,
-        ];
+
+        $status = OrderStatus::all();
 
         $detail = OrderDetail::where('order_id', $order[0]->id)->get();
 
@@ -47,10 +45,24 @@ class OrderController extends Controller
             'content' => $request->content
         ];
 
-        if(OrderNote::create($data)) {
-            return back()->with('msg', 'Thêm ghi chú thành công');
+        try {
+            if (OrderNote::create($data))
+                return back()->with('msg', 'cập nhật thành công');
+        } catch (Exception $e) {
+            return back()->with('msg', 'cập nhật thất bại');
         }
+    }
 
-        return back()->with('msg', 'Thêm ghi chú thất bại');
+    public function orderStatusUpdate(Request $request, Order $order)
+    {
+        // dd($order);
+        $order->order_status_id = $request->order_status;
+
+        try {
+            if ($order->save())
+                return back()->with('msg', 'cập nhật thành công');
+        } catch (Exception $e) {
+            return back()->with('msg', 'cập nhật thất bại');
+        }
     }
 }

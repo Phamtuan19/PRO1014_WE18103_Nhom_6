@@ -10,70 +10,135 @@
 @endsection
 
 @section('contents')
-    <div class="content-wrapper">
-        <div class="page-header">
+    <div class="content-wrapper" style="background: #F4F6F8; padding: 36px">
 
 
-        </div>
-        <div class="page-header">
-            <h3 class="page-title"> Chi tiết đơn hàng </h3>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('admin.categories.index') }}" style="color: #0d6efd; font-weight: 600">Danh sách
-                            sản phẩm</a>
-                    </li>
-                </ol>
-            </nav>
-        </div>
-
+        @if (session('msg'))
+            <div class="alert alert-success text-center">
+                {{ session('msg') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-body" style="padding: 2.5rem 1rem;">
+                    <div class="card-body" style="padding: 0 1rem 2.5rem 1rem;">
 
-                        @if (session('msg'))
-                            <div class="alert alert-success text-center">
-                                {{ session('msg') }}
-                            </div>
-                        @endif
+                        <div class="d-flex"
+                            style="align-items: center; height: 3.5rem; margin: 0 -1rem; border-bottom: 1px solid #ccc; box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px; justify-content: space-between">
+                            <h3 style="margin-bottom: 0; border-radius: 5px; margin-left: 12px; font-size: 1.55rem">
+                                <a href="#" style="color: #000">
+                                    <span class="page-title-icon bg-gradient-primary text-white me-2"
+                                        style="border-radius: 5px">
+                                        <i class="mdi mdi-arrow-left"></i>
+                                    </span>
+                                    Trở lại
+                                </a>
+                            </h3>
 
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12" style="margin-bottom: 2.5rem !important">
-                                    <h4 class="card-title">Trạng thái đơn hàng</h4>
+                            <form class="d-flex" action="{{ route('admin.orders.status.update', $order[0]->id) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+
+                                <select class="form-control order-status__select" name="order_status"
+                                    style="margin-right: 12px; height: 36px !important; width: 150px; color #000">
+                                    @foreach ($status as $value)
+                                        <option value="{{ $value->id }}"
+                                            {{ $order[0]->order_status_id === $value->id ? 'selected' : false }}>
+                                            {{ $value->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                <button class="btn btn-gradient-success btn-fw"
+                                    style="height: 36px !important; margin-right: 12px">Chuyển
+                                    trạng thái
+                                </button>
+                            </form>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="" style="display: flex;padding-top: 28px 0;flex-direction: column;">
+                                    <span style="font-size: 48px; font-weight: 600;">{{ $order[0]->code_order }}</span>
+                                    <p>
+                                        <small style="font-size: 16px; font-weight: 600">Ngày tạo: </small>
+                                        <small>{{ $order[0]->created_at }}</small>
+                                    </p>
+                                    <p class="single-printr">
+                                        <i class="mdi mdi-printer"></i>
+                                        In Đơn Hàng
+                                    </p>
                                 </div>
-
-                                <div class="col-12">
-                                    <div class="box-progress">
-                                        <div class="progress">
-                                            <div class="progress-value"></div>
+                            </div>
+                            <div class="col-8">
+                                <div class="track">
+                                    @foreach ($status as $value)
+                                        <div class="step">
+                                            {{-- <span class="step-time">10-03-2023 14:50</span> --}}
+                                            <span class="icon">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="text">{{ $value->name }}</span>
                                         </div>
-
-                                        @foreach ($status as $key => $value)
-                                            <div class="legend-box" style="left: {{ $value }}%;">
-                                                <span class="legend-dots"
-                                                    style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>
-                                                <p style="position: absolute; right: -15px; top: -22px;">{{ $key }}
-                                                </p>
-                                                <p style="position: absolute; right: 10px; top: 25px">Time</p>
-                                            </div>
-                                        @endforeach
-
+                                    @endforeach
+                                    {{-- <div class="step active">
+                                        <span class="step-time">10-03-2023 14:50</span>
+                                        <span class="icon">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="text">chờ xử lý</span>
                                     </div>
+                                    <div class="step active">
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span class="text">đang xử lý</span>
+                                    </div>
+                                    <div class="step">
+                                        <span class="icon">
+                                            <i class="fa fa-truck"></i>
+                                        </span>
+                                        <span class="text">đã vận chuyển</span>
+                                    </div>
+                                    <div class="step">
+                                        <span class="icon">
+                                            <i class="fa fa-box"></i>
+                                        </span>
+                                        <span class="text">Thành công</span>
+                                    </div>
+                                    <div class="step">
+                                        <span class="icon">
+                                            <i class="fa fa-box"></i>
+                                        </span>
+                                        <span class="text">Hủy</span>
+                                    </div> --}}
+
                                 </div>
                             </div>
                         </div>
 
-                        <br><br>
-
                         <div class="col-12 mt-4">
                             <div class="row">
+                                {{-- Danh sách sản phẩm --}}
                                 <div class="col-8">
 
-                                    <h4 class="card-title">Danh sách sản phẩm</h4>
-
-                                    <table class="table table-hover" style="cursor: pointer">
+                                    <div class="d-flex"
+                                        style="flex-direction: column; justify-content: flex-end; align-items: center">
+                                        <table class="table table-hover" style="border: 1px solid #ccc">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tổng tiền:</th>
+                                                    <th>{{ $order[0]->total_price }} VND</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Mã giảm giá:</th>
+                                                    <th>0 VND</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <table class="table table-hover" style="cursor: pointer; border: 1px solid #ccc">
                                         <thead>
                                             <tr>
                                                 <th> # </th>
@@ -104,16 +169,11 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-
-                                    <div class="d-flex" style="justify-content: flex-end; align-items: center">
-                                        <span style="font-weight: 500; margin-right: 12px">Tổng tiền:  </span>
-                                        <span style="font-weight: 600">{{ $order[0]->total_price }} VND</span>
-                                    </div>
                                 </div>
-
+                                {{-- END --}}
+                                {{-- Thông tin người mua hàng --}}
                                 <div class="col-4">
-                                    <h4 class="card-title">Hoverable Table</h4>
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" style="border: 1px solid #ccc">
                                         <thead>
                                             <tr>
                                                 <th style="padding: 15px !important">Người nhận:</th>
@@ -140,22 +200,27 @@
                                         </thead>
 
                                     </table>
-                                    @foreach ($order[0]->note as $note)
-                                        <div style="padding: 15px; line-height: 1.5rem; border-bottom: 1px solid #f2edf3">
-                                            <span
-                                                style="margin-right: 12px; font-family: ubuntu-medium, sans-serif; font-weight: initial">Notes
-                                                ({{ $note->note_takers }})
-                                                : </span>
-                                            <span class="text-danger"
-                                                style="font-family: ubuntu-medium, sans-serif; font-weight: initial">{{ $note->content }}
-                                            </span>
-                                        </div>
-                                    @endforeach
-                                    <button type="button" class="btn btn-gradient-primary me-2 mt-3" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" style="height: 40px !important">
-                                        Thêm ghi chú
-                                    </button>
+                                    <div class="" style="border: 1px solid #ccc">
+                                        @foreach ($order[0]->note as $note)
+                                            <div
+                                                style="padding: 15px; line-height: 1.5rem; border-bottom: 1px solid #f2edf3">
+                                                <span
+                                                    style="margin-right: 12px; font-family: ubuntu-medium, sans-serif; font-weight: initial">Notes
+                                                    ({{ $note->note_takers }})
+                                                    : </span>
+                                                <span class="text-danger"
+                                                    style="font-family: ubuntu-medium, sans-serif; font-weight: initial">{{ $note->content }}
+                                                </span>
+                                            </div>
+                                        @endforeach
+                                        <button type="button" class="btn btn-gradient-primary me-2 m-3"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            style="height: 40px !important">
+                                            Thêm ghi chú
+                                        </button>
+                                    </div>
                                 </div>
+                                {{-- END --}}
                             </div>
                         </div>
                     </div>
@@ -188,10 +253,19 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('js')
     <script>
-        $('#myModal').on('shown.bs.modal', function() {
-            $('#myInput').trigger('focus')
+        // window.onload = function() {
+        const steps = document.querySelectorAll('.step');
+        const orderStatus = document.querySelector('.order-status__select');
+
+        steps.forEach((value, index) => {
+            if (index + 1 <= Number(orderStatus.value)) {
+                value.classList.add('active');
+            }
         })
+        // }
     </script>
 @endsection

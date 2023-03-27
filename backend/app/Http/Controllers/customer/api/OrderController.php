@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\customer\api;
 
+use Exception;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderNote;
@@ -15,10 +16,22 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        $products = json_decode($request->products, true);
+
+        // return $request->all();
+
+        $products = $request->products;
+
+        // return response()->json(
+        //     [
+        //         'products' => $request->products,
+        //         "msg" => "thêm sản phẩm thành công",
+        //         "status" => true
+        //     ],
+        //     200
+        // );
 
         $total_price = array_reduce($products, function ($accumulator, $item) {
-            return $accumulator + ($item['quantity'] * $item['price']);
+            return $accumulator + ($item['quantity'] * $item['sale']);
         }, 0);
 
         $total_quantity = array_reduce($products, function ($accumulator, $item) {
@@ -37,26 +50,28 @@ class OrderController extends Controller
             }
 
             $newNotes = $this->orderNote($request, $newOrder);
+        }
 
-            if ($newDeliveryAddress && $newNotes) {
-
-                // return $newOrder->id;
-                return response()->json(
+        try {
+            if ($newOrder && $newDeliveryAddress && $newNotes) {
+                return  response()->json(
                     [
-                        "msg" => "Thêm sản phẩm thành công!",
-                        "status" => true
+                        "msg" => "thêm sản phẩm thành công",
+                        "status" => true,
+                        "status_code" => 200
                     ],
                     200
                 );
-            } else {
-                return response()->json(
-                    [
-                        "msg" => "Thêm sản phẩm thất bại!",
-                        "status" => true
-                    ],
-                    500
-                );
             }
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    "msg" => $e->getMessage(),
+                    "status" => true,
+                    "status_code" => 500
+                ],
+                500
+            );
         }
     }
 
@@ -69,7 +84,7 @@ class OrderController extends Controller
                 'discount_code_id' => $request->discount_code_id,
                 'order_status' => 'pending',
                 'payment_form' => $request->payment_form,
-                'payment_status' => null,
+                'payment_status_id' => null,
                 'quantity' => $total_quantity, // default
                 'total_price' => $total_price, // default
                 'shipping_fee' => null,
@@ -101,7 +116,7 @@ class OrderController extends Controller
     public function orderNote($request, $newOrder)
     {
 
-        if($newOrder) {
+        if ($newOrder) {
             $data = [
                 'order_id' => $newOrder->id,
                 'user_id' => !empty($request->user_id) ? $request->user_id : 1,

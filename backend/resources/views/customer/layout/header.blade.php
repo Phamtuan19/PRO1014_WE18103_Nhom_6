@@ -1,4 +1,7 @@
-<div class="header">
+<div id="toast">
+
+</div>
+<div class="header" >
     <div class="header-with-search">
         <div class="header__logo">
             <a href="#">
@@ -15,7 +18,8 @@
 
             <div class="header__cart-item">
                 <div class="header-nav__icon">
-                    <a href="#">
+                    <a href="{{ route('shopping/cart') }}">
+                        <span class="cart-total__quantity">0</span>
                         <i class="fa-solid fa-cart-shopping header-icons"></i>
                     </a>
                 </div>
@@ -53,25 +57,7 @@
     </div>
     <div class="header-with-menu">
         <ul class="navbar-menu">
-            {{-- <li class="menu-slected"><a href="#">Sàn sách in</a></li>
-            <li><a href="#">Sách điện tử</a></li>
-            <li><a href="#">Sàn giao dịch bản quyền </a></li>
-            <li><a href="#">Gian hàng sách</a></li>
-            <li><a href="#">Các cơ sở thông tin và truyền thông</a></li>
-            <li class="menu-child">
-                <a href="#">Đại sứ thắp lửa</a>
-                <ul>
-                    <li><a href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li><a href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li><a href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li><a href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li><a href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li><a href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Nhà tài trợ</a></li>
-            <li><a href="#">Tin tức - Sự kiện</a></li>
-            <li><a href="#">Sách đã xem</a></li> --}}
+
         </ul>
     </div>
 </div>

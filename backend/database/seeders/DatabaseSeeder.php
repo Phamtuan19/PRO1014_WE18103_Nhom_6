@@ -33,12 +33,47 @@ class DatabaseSeeder extends Seeder
         //     'updated_at' => date('Y-m-d H:i:s'),
         // ]);
 
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => "admin@gmail.com",
-            'phone' => "0346027346",
-            'position_id' => 1,
-            'password' => Hash::make('admin1234'),
+        // DB::table('users')->insert([
+        //     'name' => 'Admin',
+        //     'email' => "admin@gmail.com",
+        //     'phone' => "0346027346",
+        //     'position_id' => 1,
+        //     'password' => Hash::make('admin1234'),
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        DB::table('order_status')->insert([
+            'name' => 'Chưa xác nhận',
+            'slug' => 'chua-xac-nhan',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('order_status')->insert([
+            'name' => 'Đã xác nhận',
+            'slug' => 'da-xac-nhan',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('order_status')->insert([
+            'name' => 'Đang vận chuyển',
+            'slug' => 'da-van-chuyen',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('order_status')->insert([
+            'name' => 'Thành công',
+            'slug' => 'thanh-cong',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('order_status')->insert([
+            'name' => 'Hủy hàng',
+            'slug' => 'huy-hang',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

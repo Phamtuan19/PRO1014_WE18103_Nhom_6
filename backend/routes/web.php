@@ -10,20 +10,22 @@ use App\Http\Controllers\Admin\HomeController;
 
 use App\Http\Controllers\Admin\AdminController;
 
+use App\Http\Controllers\Admin\OrderController;
+
 use App\Http\Controllers\Admin\AuthorController;
 
 use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Email\SendMailController;
 use App\Http\Controllers\Admin\CustomersController;
-use App\Http\Controllers\Admin\OrderController;
+
+use App\Http\Controllers\Admin\StoreCatalogController;
 use App\Http\Controllers\customer\auth\LoginController;
 
 use App\Http\Controllers\Admin\PublishingHouseController;
+use App\Http\Controllers\customer\CustomerPageController;
 use App\Http\Controllers\customer\auth\RegisterController;
-
-use App\Http\Controllers\Admin\StoreCatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,15 +78,16 @@ Route::middleware('custom.auth')->group(function () {
         Route::get('orders', [OrderController::class, 'index'])->name('orders');
         Route::get('orders/{code}', [OrderController::class, 'show'])->name('orders.show');
         Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
+        Route::patch('order/status/{order}', [OrderController::class, 'orderStatusUpdate'])->name('orders.status.update');
+
+        Route::get('send/mail', [SendMailController::class, 'send_email']);
     });
 });
 
 
-// Route::middleware('customer.auth')->group(function () {
-    Route::get('customer/home', function () {
-        return view('customer.layout.index');
-    })->name('customer.home');
-// });
+
+Route::get('home', [CustomerPageController::class, 'index'])->name('customer.home');
+Route::get('product-detail/{product}', [CustomerPageController::class, 'productDetail'])->name('customer.home');
 
 Route::get('customer/login', [LoginController::class, 'index'])->name('customer.login');
 Route::post('post/login', [LoginController::class, 'login'])->name('post.login');
@@ -98,3 +101,7 @@ Route::post('customer/logout', function () {
     Auth::guard('customers')->logout();
     return redirect(route('customer.login'));
 })->middleware('auth:customers')->name('customer.logout');
+
+
+Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->name('shopping/cart');
+Route::get('order', [CustomerPageController::class, 'order'])->name('order');

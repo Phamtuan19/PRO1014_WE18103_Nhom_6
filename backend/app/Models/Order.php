@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\OrderNote;
 use App\Models\OrderDetail;
+use App\Models\OrderStatus;
 use App\Models\DiscountCode;
 use App\Models\DeliveryAddress;
 use Illuminate\Database\Eloquent\Model;
@@ -24,10 +25,10 @@ class Order extends Model
         'date_order',
         'date_confirmation',
         'date_delivered',
-        'order_notes_id',
-        'order_status',
+        // 'order_notes_id',
+        'order_status_id',
         'payment_form',
-        'payment_status',
+        'payment_status_id',
         'quantity',
         'total_price',
         'shipping_fee',
@@ -55,5 +56,9 @@ class Order extends Model
 
     public function deliveryAddress () {
         return $this->hasOne(DeliveryAddress::class, 'order_id', 'id');
+    }
+
+    public function orderStatus () {
+        return $this->belongsTo(OrderStatus::class, 'order_status_id', 'id');
     }
 }
