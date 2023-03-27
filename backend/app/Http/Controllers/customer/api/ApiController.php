@@ -72,4 +72,31 @@ class ApiController extends Controller
 
         return $products;
     }
+
+    public function shoppingCart(Request $request)
+    {
+
+
+        $arrayCode = explode(',', request()->code);
+
+        if(is_array($arrayCode)){
+            // $products = DB::table('products')
+            //     ->whrerIn('product_code', $arrayCode)
+            //     // ->select(
+            //     //     'products.*',
+            //     //     'products_detail.price as price',
+            //     //     'products_detail.promotion_price as promotion_price',
+            //     //     'image.image_url as image_url',
+            //     // )
+            //     // ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
+            //     // ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            //     ->get();
+
+            $product = Product::with('detail', 'image', 'author')->whereIn('product_code', $arrayCode)->get();
+        }
+
+
+
+        return  $product;
+    }
 }

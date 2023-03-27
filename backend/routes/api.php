@@ -26,3 +26,4 @@ Route::post('order', [OrderController::class, 'store']);
 Route::get('search', [ApiController::class, 'search']);
 Route::get('list/products/sale', [ApiController::class, 'listProductsSale']);
 Route::get('list/products', [ApiController::class, 'listProducts']);
+Route::get('shopping/cart', [ApiController::class, 'shoppingCart']);

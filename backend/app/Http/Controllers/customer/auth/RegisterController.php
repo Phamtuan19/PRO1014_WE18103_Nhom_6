@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\customer\auth;
 
+use Exception;
+
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -13,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Providers\RouteServiceProvider;
-
 use App\Http\Requests\admin\User\CreateRequest;
 
 class RegisterController extends Controller
@@ -25,6 +26,7 @@ class RegisterController extends Controller
 
     public function register(CreateRequest $request)
     {
+        // dd($request->all());
         $data = [
             'name' => $request->name,
             'email' => $request->email,
@@ -35,10 +37,12 @@ class RegisterController extends Controller
             'updated_at' => date("Y-m-d H:i:s")
         ];
 
-        if (User::insert($data)) {
-            return redirect(RouteServiceProvider::CUSTOMERS);
+        try {
+            if (User::create($data)) {
+                return back()->with('msg', 'đăng ký thành công');
+            }
+        }catch (Exception $e) {
+            return back()->with('msg', $e->getMessage());
         }
-
-        return back();
     }
 }

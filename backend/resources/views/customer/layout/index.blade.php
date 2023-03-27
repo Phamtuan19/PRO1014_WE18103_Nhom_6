@@ -24,12 +24,13 @@
     @yield('contents')
 
     {{-- Footer --}}
-    @include('customer.layout.footer')
+    {{-- @dd(request()->path()) --}}
+    @if (request()->path() !== 'shopping/cart' && request()->path() !== 'order')
+        @include('customer.layout.footer')
+    @endif
 
 
     {{-- Script Javacript --}}
-
-
     <script type="module" src="{{ asset('customer/js/basie.js') }}"></script>
     @yield('js')
 </body>

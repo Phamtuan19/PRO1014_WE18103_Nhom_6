@@ -18,7 +18,8 @@
 
             <div class="header__cart-item">
                 <div class="header-nav__icon">
-                    <a href="#">
+                    <a href="{{ route('shopping/cart') }}">
+                        <span class="cart-total__quantity">0</span>
                         <i class="fa-solid fa-cart-shopping header-icons"></i>
                     </a>
                 </div>

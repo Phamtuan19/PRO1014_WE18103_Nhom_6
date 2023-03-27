@@ -14,6 +14,7 @@
                     <li><a href="#" title="Sách dành cho giới trẻ">Sách dành cho giới trẻ</a></li>
                     <li><span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</span></li>
                     <li><a href="#" title="Kỹ năng sống">Kỹ năng sống</a></li>
+
                 </ul>
             </div>
         </div>
@@ -50,8 +51,8 @@
                         <a href="#">Click để đánh giá</a>
                     </span>
                     <div class="detail2-price">
-                        <p class="detail2-price__reduced">18.200 đ</p>
-                        <del class="detali2-price__original">20.200 đ</del>
+                        <p class="detail2-price__reduced" data-price="{{ $product->detail->price }}">{{ $product->detail->price }}đ</p>
+                        <del class="detali2-price__original" data-sale="{{ $product->detail->promotion_price }}">{{ $product->detail->promotion_price }}đ</del>
                     </div>
 
                     <p class="transport">Giảm 30% phí vận chuyển bởi Nhất Tín Express(NTX)</p>
@@ -70,7 +71,7 @@
                         <button class="buy2 add-to__cart btn btn--success" data-id="{{ $product->id }}"
                             data-code="{{ $product->product_code }}">
                             Cho vào giỏ hàng
-                            <i class="bi bi-pci-card"></i>
+                            <i class="fa-solid fa-cart-shopping"></i>
                         </button>
                     </div>
                 </div>
@@ -197,5 +198,7 @@
 @section('js')
     <script type="module" src="{{ asset('customer/js/productDetail.js') }}"></script>
 
-    <script></script>
+    <script>
+
+    </script>
 @endsection

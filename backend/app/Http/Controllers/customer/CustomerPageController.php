@@ -39,4 +39,12 @@ class CustomerPageController extends Controller
             // dd($product->warehouses);
         return view('customer.productDetail.index', compact('product'));
     }
+
+    public function shoppingCart () {
+        return view('customer.shoppingCart.index');
+    }
+
+    public function order () {
+        return view('customer.order.index');
+    }
 }

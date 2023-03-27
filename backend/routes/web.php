@@ -101,3 +101,7 @@ Route::post('customer/logout', function () {
     Auth::guard('customers')->logout();
     return redirect(route('customer.login'));
 })->middleware('auth:customers')->name('customer.logout');
+
+
+Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->name('shopping/cart');
+Route::get('order', [CustomerPageController::class, 'order'])->name('order');

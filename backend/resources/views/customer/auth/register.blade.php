@@ -25,16 +25,6 @@
                     alt="" />
             </div>
             <div class="col-sm-12 col-lg-8">
-                <ul class="nav nav-pills mt-2" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-register-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-register" type="button" role="tab"
-                            aria-controls="pills-register" aria-selected="false">
-                            Đăng ký tài khoản
-                        </button>
-                    </li>
-                </ul>
-                <hr />
 
                 <div class="tab-content" id="pills-tabContent">
                     @if (session('msg'))
@@ -46,98 +36,91 @@
                     <!--  -->
                     <form action="{{ route('post.register') }}" method="POST">
                         @csrf
-                        <div class="fade show" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab"
-                            tabindex="0">
 
-                            <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label dp-flex">Họ và tên
-                                    <span class="ic-rq">(*)</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" />
-                                    @error('name')
-                                        <span class="text-danger">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label dp-flex">Họ và tên
+                                <span class="ic-rq">(*)</span>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" name="name" class="form-control" value="{{ old('name') }}" />
+                                @error('name')
+                                    <span class="text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
 
-                            <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label dp-flex">
-                                    Địa chỉ Email
-                                    <span class="ic-rq">(*)</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="email" class="form-control" value="{{ old('email') }}" />
-                                    @error('email')
-                                        <span class="text-danger">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label dp-flex">
+                                Địa chỉ Email
+                                <span class="ic-rq">(*)</span>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" name="email" class="form-control" value="{{ old('email') }}" />
+                                @error('email')
+                                    <span class="text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
 
-                            <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label dp-flex">
-                                    SĐT (Số điện thoại)
-                                    <span class="ic-rq">(*)</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" />
-                                    @error('phone')
-                                        <span class="text-danger">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label dp-flex">
+                                SĐT (Số điện thoại)
+                                <span class="ic-rq">(*)</span>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" />
+                                @error('phone')
+                                    <span class="text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
 
-                            <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label dp-flex">
-                                    Mật khẩu
-                                    <span class="ic-rq">(*)</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="password" name="password" class="form-control" />
-                                    @error('password')
-                                        <span class="text-danger">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label dp-flex">
+                                Mật khẩu
+                                <span class="ic-rq">(*)</span>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="password" name="password" class="form-control" />
+                                @error('password')
+                                    <span class="text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
 
-                            <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label dp-flex">
-                                    Nhập lại mật khẩu
-                                    <span class="ic-rq">(*)</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="password" name="password_confirmation" class="form-control" />
-                                    @error('password_confirmation')
-                                        <span class="text-danger">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label dp-flex">
+                                Nhập lại mật khẩu
+                                <span class="ic-rq">(*)</span>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="password" name="password_confirmation" class="form-control" />
+                                @error('password_confirmation')
+                                    <span class="text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
 
-                            <div class="mb-3 row">
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-8">
-                                    <button type="submit" class="btn btn-info btn-register-acc">
-                                        Đăng ký tài khoản
-                                    </button>
-                                </div>
+                        <div class="mb-3 row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-8">
+                                <button type="submit" class="btn btn-info btn-register-acc">
+                                    Đăng ký tài khoản
+                                </button>
                             </div>
-
                         </div>
                     </form>
-
-
                 </div>
-
             </div>
         </div>
     </div>

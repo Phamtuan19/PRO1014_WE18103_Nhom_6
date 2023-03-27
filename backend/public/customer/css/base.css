@@ -93,11 +93,24 @@ html {
 
 .header-nav__icon {
     padding: 12px;
+    position: relative;
 }
 
 .header-icons {
-    font-size: 20px;
+    font-size: 28px;
     color: var(--white-color);
+}
+
+.cart-total__quantity {
+    padding: 2px 7px;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    right: 0;
+    border: 1px solid #ccc;
 }
 
 
@@ -173,6 +186,7 @@ html {
     margin-top: 10px;
     background-color: var(--main-color);
     border-radius: 5px;
+    z-index: 9999;
 }
 
 .menu-child:hover ul {
@@ -578,3 +592,5 @@ p {
     color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
+
+

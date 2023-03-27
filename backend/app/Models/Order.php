@@ -28,7 +28,7 @@ class Order extends Model
         // 'order_notes_id',
         'order_status_id',
         'payment_form',
-        'payment_status',
+        'payment_status_id',
         'quantity',
         'total_price',
         'shipping_fee',
