@@ -94,4 +94,14 @@ function myFunction() {
     element.classList.toggle('dark-mode');
 }
 
-/* filter list search */
+/* Count cart header */
+// var idProduct = document.getElementsByClassName('item-child');
+// for (var i = 0; i <= idProduct.length; i++) {
+//     idProduct += i;
+// }
+var clicks = 0;
+
+function onClick() {
+    clicks += 1;
+    document.getElementById('count').innerHTML = clicks;
+}

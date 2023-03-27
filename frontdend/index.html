@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <!-- <link rel="stylesheet" href="./https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" /> -->
         <link rel="stylesheet" href="./assets/css/base.css" />
         <link rel="stylesheet" href="./assets/css/main.css" />
         <!-- <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.2.1-web/css/all.min.css" /> -->
@@ -31,7 +31,7 @@
                     <div class="wrapper">
                         <div class="search-input">
                             <a href="" target="_blank" hidden></a>
-                            <input type="text" placeholder="Type to search.." />
+                            <input onchange="mySearch()" type="text" placeholder="Type to search.." />
                             <div class="autocom-box">
                                 <!-- here list are inserted from javascript -->
                             </div>
@@ -49,6 +49,7 @@
                         inputBox.onkeyup = (e) => {
                             let userData = e.target.value; //user enetered data
                             let emptyArray = [];
+                            console.log(userData);
                             if (userData) {
                                 icon.onclick = () => {
                                     webLink = `https://www.google.com/search?q=${userData}`;
@@ -98,18 +99,19 @@
                     <div class="header__register header__cart">
                         <div class="header__register-item">
                             <div class="register__icon">
-                                <a href="#"
-                                    ><i class="fa-solid fa-user"></i>
-                                    <div class="register__title">
-                                        <a href="#"> <p>Đăng ký</p></a>
-                                        <a href="#"> <p>Đăng nhập</p></a>
-                                    </div></a
-                                >
+                                <a href="#"><i class="fa-solid fa-user"></i></a>
+                                <div class="register__title">
+                                    <a href="#"> <p>Đăng ký</p></a>
+                                    <a href="#"> <p>Đăng nhập</p></a>
+                                </div>
                             </div>
                         </div>
                         <div class="header__cart-item">
                             <div class="cart__icon">
-                                <i class="fa-solid fa-cart-shopping"></i>
+                                <a href="#"
+                                    ><p id="count">0</p>
+                                    <i class="fa-solid fa-cart-shopping"></i
+                                ></a>
                             </div>
                         </div>
                     </div>
@@ -196,6 +198,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -214,6 +217,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -232,6 +236,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -250,6 +255,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -268,6 +274,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -286,6 +293,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -304,6 +312,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -322,6 +331,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -340,6 +350,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                             </div>
@@ -367,6 +378,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -385,6 +397,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -403,6 +416,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -421,6 +435,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
@@ -439,6 +454,7 @@
                                                 <p>66.000đ</p>
                                             </div>
                                         </div>
+                                        <div class="item-button"><button onClick="onClick()">Thêm vào giỏ hàng</button></div>
                                     </div>
                                 </div>
                                 <div class="item-child">
