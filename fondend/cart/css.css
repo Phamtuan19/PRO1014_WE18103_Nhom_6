@@ -63,8 +63,11 @@
     border-radius: 50%;
     color: black;
 }
-.cart_bottom img{
-    width: 25%;
+table thead th{
+    font-size: 18px;
+}
+.cart img{
+    width: 55%;
 }
 .cart_bottom button{
     width: 150px;
@@ -79,10 +82,10 @@
     grid-row-gap:12px;
 }
 .cart>p{
-    font-size: 23px;
+    font-size: 27px;
     text-align: center;
     width: 18%;
-    color: #1da1f2;
+    color: #02bbff;
     font-weight: bolder;
 }
 .cart_bottom>p{
@@ -99,6 +102,8 @@ progress{
     width: 70%;
     top:75%;
     left: 6%;
+    height: 13%;
+    border-radius: 20px;
 }
 .item_trangthai{
     position: absolute;
@@ -130,18 +135,15 @@ body{
     position: absolute;
     top:-72%;
 }
-.item_book_in-cart td .item_book_cart_specifically{
-    border: 1px solid black;
-    max-width: 100%;
-}
 .item_book_cart_specifically .cart_book_title{
-    width: 70%;
+    width: 100%;
 }
 .cart_book_title .title_book{
     font-weight: 600;
 }
 .price_in_cart{
     text-align: center;
+    width: 15%;
 }
 .buttons_added {
     opacity:1;
@@ -193,12 +195,7 @@ body{
 .item_book_cart_specifically{
     position: relative;
 }
-.item_book_cart_specifically img{
-    position: absolute;
-    top: 18px;
-    right: 50px;
-    width: 12%;
-}
+
 .cart_book_remote a{
     color: #a24981;
     text-decoration: none;
@@ -218,10 +215,6 @@ body{
     color: white;
     margin-left: 74%;
     margin-top: 10%;
-}
-th {
-    background-color: #1c7dbaa7;
-    color: white;
 }
 /* thanh toan */
 .back_thanhtoan{
@@ -377,7 +370,7 @@ body{
 .button_cttrangthai_donhang{
     border: 0;
     color: white;
-    padding: 2%;
+    padding: 1%;
     border-radius: 10px;
     float: right;
 }

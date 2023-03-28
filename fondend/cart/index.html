@@ -15,7 +15,7 @@
 </style>
 <body>
     <div class="cart">
-        <div class="cart_top">
+        <!-- <div class="cart_top">
             <progress max="100" value="15"></progress>
             <div class="item_trangthai">
                 <p class="text_trangthai">Giỏ hàng</p>
@@ -35,7 +35,7 @@
                     <i class="fa-solid fa-truck"></i>
                 </div>
             </div>
-        </div>
+        </div> -->
         <p>Giỏ hàng</p>
         <!-- <div class="cart_bottom">//nếu không có sản phẩm nào
             <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
@@ -49,15 +49,17 @@
             <!-- //nếu có sản phẩm  -->
             <table>
                 <thead>
-                    <tr><th></th>
+                    <tr><th>STT</th>
+                        <th></th>
                         <th>Sản phẩm</th>
                         <th>Đơn giá</th>
                         <th>Số lượng</th>
                         <th>Thành tiền</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="book_title">
+                    <!-- <tr class="book_title">
                         <td>
                             <input type="checkbox" type="checkbox" name="checkboxArr[]" id="checkall"  class="all">
                         </td>
@@ -65,9 +67,12 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                    </tr>
+                    </tr> -->
                     <tr class="item_book_in-cart">
-                        <td><input type="checkbox" type="checkbox" name="checkboxArr[]"id="checkall" class="allcheck"></td>
+                        <th>1</th>
+                        <th><img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
+                        </th>
+                        <!-- <td><input type="checkbox" type="checkbox" name="checkboxArr[]"id="checkall" class="allcheck"></td> -->
                         <td class="item_book_cart_specifically">
                             <div class="cart_book_title">
                                 <p class="title_book">
@@ -79,14 +84,12 @@
                                 <p class="nxb_book">
                                     NXB: Quân đội Nhân dân
                                 </p>
-                                <div class="cart_book_remote"><a href="#" onclick="return confirm('ban co chac muon xoa') " ><i class="fa-solid fa-trash-can fa-xs" style="color: #a24981;"></i></a></div>
+                                
                             </div>
-                            <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
                         </td>
                         <td class="price_in_cart" >
                             <p class="price_item_cart">131.250 đ</p>
                             <p class="sale_price_item_cart"> <del> 175.000 đ </del>| - 25%</p>
-                            <p class="giamgiachung">Giảm giá chung: 25%. Tương đương 43.750 đ</p>
                         </td>
                         <td>
                             <div class="buttons_added">
@@ -97,15 +100,19 @@
                         </td>
                         <td class="price_in_cart" >
                             <p class="price_item_cart">131.250 đ</p>
-                            <p class="sale_price_item_cart"> <del> 175.000 đ </del>| - 25%</p>
                         </td>
+                        <td><div class="cart_book_remote"><a href="#" onclick="return confirm('ban co chac muon xoa') " ><i class="fa-solid fa-trash-can fa-xl" style="color: #a24981;"></i></a></div></td>
                     </tr>
                     <tr class="cart_clickALl" >
-                        <th><input type="checkbox"class="all2" onclick="hehe()" ></th>
-                        <th class="cart_book_remote" ><span>Chọn tất cả (1sp)</span><a href="#">Xóa</a> <i>(Xóa toàn bộ 1sản phẩm)</i> </th>
+                        <th></th>
+                        <th></th>
+                        <!-- <th><input type="checkbox"class="all2" onclick="hehe()" ></th>
+                        <th class="cart_book_remote" ><span>Chọn tất cả (1sp)</span><a href="#">Xóa</a> <i>(Xóa toàn bộ 1sản phẩm)</i> </th> -->
                         <th> <span>Tổng tiền hàng</span> (1 sản phẩm)</th>
+                        <th></th>
                         <th><del>175.000 đ</del></th>
                         <th style="font-size: 150%;" >131.250 đ</th>
+                        <th></th>
                     </tr>
                 </tbody>
             </table>
