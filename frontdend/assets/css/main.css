@@ -384,13 +384,17 @@ p {
     display: none;
 }
 .product {
-    display: flex;
+    display: grid;
     justify-items: center;
     align-items: center;
-    gap: 18px 0;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px 20px;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 6px;
+}
+.product .item-child {
+    width: 100%;
 }
 .ctr-btn.pre {
     left: 0;
@@ -490,6 +494,7 @@ p {
     bottom: 2%;
     left: 25%;
     cursor: pointer;
+    text-align: center;
 }
 .item-child:hover .item-button button {
     display: block;
@@ -499,7 +504,7 @@ p {
     padding: 10px;
     border-radius: 5px;
     width: 50%;
-    font-size: 1.2rem;
+    font-size: 0.8vw;
 }
 .item-child .item-button button:hover {
     background-color: var(--main-color);
