@@ -6,111 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="css-infor-user.css">
+    <link rel="stylesheet" href="pay.css">
+    <!-- <link rel="stylesheet" href="css-infor-user.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        table thead th {
-    font-size: 14px;
-}
-.cart_book_title .title_book {
-    font-weight: 600;
-    font-size: 12px;
-}   
-    .tacgia_book{
-        font-size: 12px;
-    }
-    .nxb_book{
-        font-size: 12px;
-    }
-    .price_in_cart {
-    font-size: 12px;
-}
-    .sale_price_item_cart{
-        font-size: 12px;
-    }
-        th, td {
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-
-}
-        select{
-    display: block;
-    width: 80%;
-    border: 2px solid #f0f0f0;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 12px;
-    display: block;
-}
-    .adress{
-        display: grid;
-        grid-template-columns: 1fr 1fr ;
-    }
-    .adress_all  input{
-    display: block;
-    width: 75%;
-    border: 2px solid #f0f0f0;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 12px;
-    display: block;
-}   
-.adress input{
-    display: block;
-    width: 75%;
-    border: 2px solid #f0f0f0;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 12px;
-    display: block;
-}   
-.soluong_item{
-    font-size: 12px;
-}
-    .adress_all input{
-        width: 30%;
-    }
-    .form-control input {
-    width: 75%;
-}
-.form .btn {
-    width: 22%;
-    position: absolute;
-    right: 20px;
-    bottom: -45px;
-    height: 31px;
-    line-height: 3px;
-}
-.over_fontsize td{
-    font-size: 16px;
-}
-    .thanhtoan_xacnhan .title_book{
-        font-size: 16px;
-    }
-    .thanhtoan_xacnhan .tacgia_book {
-    font-size: 16px;
-}
-    .thanhtoan_xacnhan .nxb_book {
-    font-size: 16px;
-}
-    .thanhtoan_xacnhan .sale_price_item_cart {
-    font-size: 16px;
-}
-    .thanhtoan_xacnhan .soluong_item {
-    font-size: 16px;
-}
-    </style>
+ 
 </head>
 <body>
-    <div class="cart" style="position: relative;">
+    <div class="cart">
         <p>Thanh Toán</p>
-        <div class="gird_box2">
-            <div style="position: relative;" class="" >  
+        <div class="content">
+            <div class="pay_address mx px-3" >  
                 <p class="title_dc_nhanhang">1-Địa chỉ nhận hàng:</p>
                     <form action="" class="form" id="form">
                         <div class="form-control">
                             <label class="labes">Họ và tên</label>
-                            <input type="text" name="" id="username" placeholder="Họ tên" value="Nguyễn Tiến Lâm" autocomplete="off">
+                            <input type="text" class="form-input" name="" id="username" placeholder="Họ tên" value="Nguyễn Tiến Lâm" />
                             
                             <small>Error Message</small>
                         </div>
@@ -118,157 +28,85 @@
                         <div class="adress" >
                             <div class="form-control">
                                 <label class="labes">Số điện thoại</label>
-                                <input type="tel" name="" id="mobile" placeholder="Số điện thoại" value="0949520467"  autocomplete="off" >
+                                <input type="text" class="form-input" name="" id="mobile" placeholder="Số điện thoại" value="0949520467" />
                                 
                                 <small>Error Message</small>
                             </div>
                                 <div class="form-control">
                                     <label class="labes">Email</label>
-                                    <input type="text" name="" id="email" placeholder="Enter Your Email" value="ntl260303@gmail.com" autocomplete="off">
+                                    <input type="text" class="form-input" name="" id="email" placeholder="Enter Your Email" value="ntl260303@gmail.com" />
                                     
                                     <small>Error Message</small>
                                 </div>  
                             <div  class="form-control">
-                                <label class="labes" >Quốc gia </label><br>
-                                <select name="quocgia" id="quocgia">
+                                <label class="labes" >Quốc gia </label>
+                                <select name="quocgia" id="quocgia" class="form-input">
                                     <option value="Việt Nam">Việt Nam</option>
-                                    <option value="ThaiLand">ThaiLand</option>
-                                    <option value="Laos">Laos</option>
-                                    <option value="America">America</option>
                                 </select>
                             </div>
                             <div  class="form-control">
-                                <label class="labes" >Tỉnh / Thành Phố  </label><br>
+                                <label class="labes" >Tỉnh / Thành Phố  </label>
                                 <select name="quocgia" id="quocgia">
                                     <option value="Hà Nội">Hà Nội</option>
-                                    <option value="Gia Lai">Gia Lai</option>
-                                    <option value="Cao Bằng">Cao Bằng</option>
-                                    <option value="Thái Bình">Thái Bình</option>
                                 </select>
                             </div>
                             <div  class="form-control">
-                                <label class="labes" >Quận / Huyện   </label><br>
+                                <label class="labes" >Quận / Huyện   </label>
                                 <select name="quocgia" id="quocgia">
                                     <option value="Hà Nội">Nam Từ Liêm</option>
-                                    <option value="Gia Lai">Gia Lai</option>
-                                    <option value="Cao Bằng">Cao Bằng</option>
-                                    <option value="Thái Bình">Thái Bình</option>
                                 </select>
                             </div>
                             <div  class="form-control">
-                                <label class="labes" >Số nhà & tên đường </label><br>
-                                <input type="text" name="" id="adress" placeholder="Enter Your Email" autocomplete="off"   value="180 Tây Mỗ">
+                                <label class="labes" >Số nhà & tên đường </label>
+                                <input type="text" name="" id="adress" placeholder="Enter Your Email" value="180 Tây Mỗ" />
                                 <small>Error Message</small>
                             </div>
                         </div>
                         <div class="">
-                            <p style="color:#02bbff ;" >Ghi chú</p>
-                            <!-- nếu checkGhichu=true thì nhận nội dung ghi chú về đơn hàng -->
-                            <input type="checkbox"  name="checkGhichu" id="checkGhichu">
-                            <label style="color:#02bbff ;" for="">Nếu khách hàng có ghi chú về đơn hàng, xin hãy nhập vào đây</label><br>
-                            <textarea id="w3review" name="w3review" rows="7" cols="50"  placeholder="Ghi vào đây" ></textarea>
+                            <label style="color:#02bbff ;" for="">Ghi chú</label>
+                            <textarea id="w3review" name="" rows="7" cols="50"  placeholder="Ghi vào đây" ></textarea>
                         </div>
                         <input type="submit" value="Thay đổi" class="btn">
                     </form>
-                </div>
-                <!-- ẩn đi form này -->
-                <div style="display: none;">
-                    <form action="" class="form" id="form">           
-                    <div class="edit_password">
-                        <div><span>Edit Password</span></div><br><br>
-                        <div  class="form-control"><label class="labes" >Tên đăng nhập</label><br><input type="text"  readonly  value="lamnt"></div> <br>
-                        <input type="checkbox"  class="thaydoi_password" name="" id=""><label for="">Thay đổi mật khẩu</label>
-                        
-                        <label class="thaydoi_hien" >
-                            <div class="form-control">
-                                <label class="labes">Mật khẩu cũ</label>
-                                <input type="password" name="" id="password_old" placeholder="Enter Your Password" autocomplete="off">
-                                <i class="fas fa-check-circle"></i>
-                                <i class="fas fa-exclamation-circle"></i>
-                                <small>Error Message</small>
-                            </div>
-                            <div class="form-control">
-                                <label class="labes">Mật khẩu mới</label>
-                                <input type="password" name="" id="password_new" placeholder="Enter Your Password" autocomplete="off">
-                                <i class="fas fa-check-circle"></i>
-                                <i class="fas fa-exclamation-circle"></i>
-                                <small>Error Message</small>
-                            </div>
-                            <div class="form-control">
-                                <label class="labes">Nhập lại mật khẩu mới</label>
-                                <input type="password" name="" id="cpassword" placeholder="Confirm Password" autocomplete="off">
-                                <i class="fas fa-check-circle"></i>
-                                <i class="fas fa-exclamation-circle"></i>
-                                <small>Error Message</small>
-                            </div>
-                        </label>
-                    </div>
-                </form> 
-                </div>
-            <div class="cart_bottom">
+            </div>
+            <div class="cart_bottom mx px-3">
                 <!-- //nếu có sản phẩm  -->
-                <p class="title_dc_nhanhang">2. Sản phẩm ( <span>1</span> sp)</p>
+                <p class="title_dc_nhanhang">2. Sản phẩm</p>
                 <table class="title_item" >
                     <thead>
-                        <tr><th width="2%">STT</th>
-                            <th></th>
-                            <th width="26%" >Sản phẩm</th>
-                            <th width="10%"  >Đơn giá</th>
-                            <th width="15%"  >Khuyến mãi</th>
-                            <th width="14%"  >Số lượng</th>
-                            <th width="10%"  >Thành tiền</th>
-                            <th></th>
+                        <tr><th width="5%">STT</th>
+                            <th width="15%">Hình ảnh</th>
+                            <th width="25%">Sản phẩm</th>
+                            <th width="15%">Giá bán</th>
+                            <th width="15%">Giá sale</th>
+                            <th width="12%">Số lượng</th>
+                            <th width="10%">Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="item_book_in-cart">
                             <td>1</td>
-                            <td><img id="img" src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt=""></td>
-                            <td style="text-align: left;" class="item_book_cart_specifically">
+                            <td>
+                                <img id="img" class="image__product" src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT3rpjDVI43qBwLt8zuxxjlUrr2h3DdlrUzKsxTvCrKpZu0nNUuYuZrcfWbzUrXUweg0lv-RQHw6jOe&usqp=CAc" alt="">
+                            </td>
+                            <td>
                                 <div class="cart_book_title">
                                     <p class="title_book">
                                         Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
                                     </p>
                                     <p class="tacgia_book">
-                                        Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)
+                                        Tác giả: Mai Hương
                                     </p>
                                     <p class="nxb_book">
                                         NXB: Quân đội Nhân dân
                                     </p>
                                 </div>
                             </td>
-                            <td class="price_in_cart" >
+                            <td class="" >
                                 <p class="price_item_cart">131.250 đ</p>
                             </td>
-                            <td><p class="sale_price_item_cart"> 25%</p>
-                            </td>
-                            <td style="text-align: center;">
-                                <p class="soluong_item">1</p>
-                            </td>
-                            <td class="price_in_cart" >
-                                <p class="price_item_cart">131.250 đ</p>
-                            </td>
-                        </tr>
-                        <tr class="item_book_in-cart">
-                            <td>1</td>
-                            <td><img id="img" src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt=""></td>
-                            <td style="text-align: left;" class="item_book_cart_specifically">
-                                <div class="cart_book_title">
-                                    <p class="title_book">
-                                        Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
-                                    </p>
-                                    <p class="tacgia_book">
-                                        Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)
-                                    </p>
-                                    <p class="nxb_book">
-                                        NXB: Quân đội Nhân dân
-                                    </p>
-                                </div>
-                            </td>
-                            <td class="price_in_cart" >
-                                <p class="price_item_cart">131.250 đ</p>
-                            </td>
-                            <td><p class="sale_price_item_cart"> 25%</p>
+                            <td>
+                                <p class="sale_price_item_cart"> 25%</p>
                             </td>
                             <td style="text-align: center;">
                                 <p class="soluong_item">1</p>
@@ -283,14 +121,14 @@
                 <div class="box_hinhthuc_thanhtoan_left">
                     <form action="" class="hinhthuc_pay" method="POST">
                         <input type="radio" name="thanhtoan"onclick="reset_msg();" >
-                            <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br>
+                            <label for="">Nhân viên giao sách thu tiền trực tiếp</label>
                             <input type="radio" name="thanhtoan"onclick="reset_msg();" >
-                            <label for="">Chuyển khoản ngân hàng <br>
+                            <label for="">Chuyển khoản ngân hàng 
                                 <p style="font-size: 70%;margin-left: 2%;" >
-                                    Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br>
-                                    Số TK: 19037017691017 <br>
+                                    Tên tài khoản: CTCP PTGPGD VIVI EDUCATION 
+                                    Số TK: 19037017691017 
                                     Ngân hàng Techcombank CN Nguyễn Văn Trỗi
-                                </p></label><br>
+                                </p></label>
                         <div id="msg"></div>
                     </form>
                 </div>
@@ -359,13 +197,13 @@
                         <td><img style="padding: 10% 0;" id="img" src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt=""></td>
                         <td style="text-align: left;" class="item_book_cart_specifically">
                             <div class="cart_book_title">
-                                <p class="title_book">
+                                <p class="">
                                     Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
                                 </p>
-                                <p class="tacgia_book">
+                                <p class="">
                                     Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)
                                 </p>
-                                <p class="nxb_book">
+                                <p class="">
                                     NXB: Quân đội Nhân dân
                                 </p>
                                
