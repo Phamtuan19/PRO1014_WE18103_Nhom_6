@@ -63,11 +63,14 @@
     border-radius: 50%;
     color: black;
 }
+#img{
+    text-align: center;
+}
 table thead th{
     font-size: 18px;
 }
 .cart img{
-    width: 55%;
+    width: 90%;
 }
 .cart_bottom button{
     width: 150px;
@@ -283,8 +286,8 @@ body{
     margin: 10px 0;
 }
 .box_hinhthuc_thanhtoan_left{
-    width: 50%;
-    float: left;
+    width: 100%;
+    float: right;
 }
 .box_hinhthuc_thanhtoan_right{
     float: right;
@@ -423,7 +426,7 @@ table tbody{
     display: block;
 }
 .form-control select{
-    width: 100%;
+    width: 90%;
     border: 2px solid #f0f0f0;
     font-size: 14px;
     border-radius: 5px;
@@ -489,4 +492,12 @@ table tbody{
 
 .form .btn:hover{
     background: #c59cd8;
+}
+.gird_box2{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.hinhthuc_pay{
+    font-size: 15px;
+    margin-left: 20px;
 }

@@ -11,69 +11,33 @@
 <style>
     th, td {
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
+    
 </style>
 <body>
     <div class="cart">
-        <!-- <div class="cart_top">
-            <progress max="100" value="15"></progress>
-            <div class="item_trangthai">
-                <p class="text_trangthai">Giỏ hàng</p>
-                <div class="trangthai">
-                    <i class="fa-solid fa-cart-plus"></i>
-                </div>
-            </div>
-            <div class="item_trangthai2">
-                <p class="text_trangthai">Thanh toán</p>
-                <div class="trangthai" style=" background-color: white;border: 1px solid #02bbff;" >
-                    <i class="fa-regular fa-credit-card"></i>
-                </div>
-            </div>
-            <div class="item_trangthai3">
-                <p class="text_trangthai">Giao hàng</p>
-                <div class="trangthai">
-                    <i class="fa-solid fa-truck"></i>
-                </div>
-            </div>
-        </div> -->
         <p>Giỏ hàng</p>
-        <!-- <div class="cart_bottom">//nếu không có sản phẩm nào
-            <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
-            <hr>
-            <div class="center-cart">
-                <img src="https://phukiencongnghe365.com/wp-content/uploads/2021/08/icon-gio-hang-chuan-600x574.jpg" alt="">
-            <a href="#"><button value="Tiep tuc mua hang">Tiep tuc mua hang</button></a>
-            </div>
-        </div> -->
         <div class="cart_bottom">
             <!-- //nếu có sản phẩm  -->
             <table>
                 <thead>
-                    <tr><th>STT</th>
+                    <tr><th width="2%">STT</th>
                         <th></th>
-                        <th>Sản phẩm</th>
-                        <th>Đơn giá</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
+                        <th width="28%"  >Sản phẩm</th>
+                        <th width="8%"  >Đơn giá</th>
+                        <th width="15%"  >Khuyến mãi</th>
+                        <th width="14%"  >Số lượng</th>
+                        <th width="10%"  >Thành tiền</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr class="book_title">
-                        <td>
-                            <input type="checkbox" type="checkbox" name="checkboxArr[]" id="checkall"  class="all">
-                        </td>
-                        <td><p >Công ty Cổ phần Tri thức Văn hóa Sách Việt Nam - Vinabook JSC (1 sản phẩm)</p></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr> -->
                     <tr class="item_book_in-cart">
                         <th>1</th>
-                        <th><img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
-                        </th>
+                        <td><img id="img" src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt=""></td>
                         <!-- <td><input type="checkbox" type="checkbox" name="checkboxArr[]"id="checkall" class="allcheck"></td> -->
-                        <td class="item_book_cart_specifically">
+                        <td style="text-align: left;" class="item_book_cart_specifically">
                             <div class="cart_book_title">
                                 <p class="title_book">
                                     Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
@@ -89,7 +53,8 @@
                         </td>
                         <td class="price_in_cart" >
                             <p class="price_item_cart">131.250 đ</p>
-                            <p class="sale_price_item_cart"> <del> 175.000 đ </del>| - 25%</p>
+                        </td>
+                        <td><p class="sale_price_item_cart"> 25%</p>
                         </td>
                         <td>
                             <div class="buttons_added">
@@ -106,9 +71,8 @@
                     <tr class="cart_clickALl" >
                         <th></th>
                         <th></th>
-                        <!-- <th><input type="checkbox"class="all2" onclick="hehe()" ></th>
-                        <th class="cart_book_remote" ><span>Chọn tất cả (1sp)</span><a href="#">Xóa</a> <i>(Xóa toàn bộ 1sản phẩm)</i> </th> -->
                         <th> <span>Tổng tiền hàng</span> (1 sản phẩm)</th>
+                        <th></th>
                         <th></th>
                         <th><del>175.000 đ</del></th>
                         <th style="font-size: 150%;" >131.250 đ</th>
