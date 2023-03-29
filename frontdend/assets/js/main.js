@@ -146,14 +146,14 @@ window.onload = function () {
     function addToCartClicked(event) {
         button = event.target;
         var cartItem = button.closest('.item-child');
-        var price = cartItem.getElementsByClassName('discount')[0].innerText;
-
+        var price = cartItem.getElementsByClassName('price')[0].innerText;
+        var sale = cartItem.getElementsByClassName('sale')[0].innerText;
         var imageSrc = cartItem.getElementsByClassName('product-image')[0].src;
-        addItemToCart(price, imageSrc);
+        addItemToCart(price, imageSrc, sale);
         updateCartPrice();
     }
 
-    function addItemToCart(price, imageSrc) {
+    function addItemToCart(price, imageSrc, sale) {
         var productRow = document.createElement('div');
         productRow.classList.add('product-row');
         var productRows = document.getElementsByClassName('product-rows')[0];
@@ -161,7 +161,7 @@ window.onload = function () {
 
         for (var i = 0; i < cartImage.length; i++) {
             if (cartImage[i].src == imageSrc) {
-                alert('Sản phẩm này đã có trong giỏ hàng0');
+                alert('Sản phẩm này đã có trong giỏ hàng');
                 return;
             }
         }
@@ -170,6 +170,7 @@ window.onload = function () {
   <div class="product-row">
         <img class="cart-image" src="${imageSrc}" alt="">
         <span class ="cart-price">${price} </span>
+        <span class ="cart-sale">Giảm giá: ${sale} </span>
         <input class="product-quantity" type="number" value="1">
         <button class="remove-btn">Remove</button>
         </div>
@@ -219,9 +220,12 @@ window.onload = function () {
         for (var i = 0; i < productRow.length; i += 2) {
             cartRow = productRow[i];
             var priceElement = cartRow.getElementsByClassName('cart-price')[0];
+            var saleElement = cartRow.getElementsByClassName('cart-sale')[0];
             var quantityElement = cartRow.getElementsByClassName('product-quantity')[0];
-            var price = parseFloat(priceElement.innerText.replace('$', ''));
+            var price = priceElement.innerText.replace('đ', '');
+            var sale = saleElement.innerText.replace('%', '');
             var quantity = quantityElement.value;
+            console.log(sale);
             total = total + price * quantity;
         }
         document.getElementsByClassName('total-price')[0].innerText = total + ' VNĐ';
