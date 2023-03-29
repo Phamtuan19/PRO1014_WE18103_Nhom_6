@@ -60,7 +60,7 @@ h1, h2, h3 {
 	width: 100%;
     padding: 16px 24px;
 	height: 0 auto;
-    
+    border-radius: 30px;
 }
 
 .overlay {
@@ -109,7 +109,7 @@ h1, h2, h3 {
 	height: auto;
 }
 .content{
-    width: 90%;
+    width: 100%;
     padding: 20px;
 }
 
@@ -124,32 +124,40 @@ h1, h2, h3 {
 }
 
 .search-box {
-	margin-bottom: 40px;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.search-box label {
-    display: block;
-    margin-bottom: 10px;
-    }
+
     
     .search-box input[type="text"] {
     border-radius: 5px;
     border: 1px inset #b1154a;
-        font-size: 1.2em;
+    font-size: 1.2em;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 10px 40px 10px 10px ;
     width: 100%;
+    top: 0;
+
+}
     
-    }
-    
-    .search-box button {
+    .search-box button{
     background-color: #3B3B98;
     border: none;
     border-radius: 5px;
     color: #fff;
     font-size: 1.2em;
-    padding: 10px;
+    position: absolute;
+    right: 0;
+    height: 80%;
+    cursor: pointer;
     
+    text-align: center;
+    }
+    .search-box_button{
+        position: absolute;
+        margin-bottom: 100px;
     }
     
     .categories {
