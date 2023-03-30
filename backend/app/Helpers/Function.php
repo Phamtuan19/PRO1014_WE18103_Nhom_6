@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Order;
 
 
 // fomat money
@@ -86,4 +87,12 @@ function orderStatus($data)
         default:
             null;
     }
+}
+
+function CodeOrder () {
+    $code = "OD".str_replace(":", "", date("H:i:s"));
+
+    $codeOrder = Order::where('code_order', $code)->get();
+
+    return count($codeOrder) > 0 ? CodeOrder() : $code;
 }

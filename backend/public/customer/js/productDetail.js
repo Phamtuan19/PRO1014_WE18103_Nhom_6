@@ -1,9 +1,29 @@
 
-import { renderTotalCard, showSuccessToast } from './basie.js';
+import { renderTotalCard, showSuccessToast, showErrorToast } from './basie.js';
+import { service } from './service.js';
+import { slideshow } from './slideshow.js';
 
 const addCart = document.querySelector('.add-to__cart');
-const dataPrice = document.querySelector('.detail2-price__reduced');
-const dataSale = document.querySelector('.detali2-price__original');
+
+function imageProduct() {
+    const code = window.location.pathname.replace('/product-detail/', '');
+
+    service.getImgaeProduct(code)
+        .then(function (response) {
+            if (response.status !== 200) {
+                throw new Error(response.status);
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            slideshow(data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+}
+
+imageProduct()
 
 addCart.onclick = () => {
     const id = addCart.dataset.id;
@@ -19,11 +39,9 @@ addCart.onclick = () => {
     if (cartItem) {
         cartItem.id = id;
         cartItem.code = code;
-        cartItem.price = dataPrice.dataset.price;
-        cartItem.sale = dataSale.dataset.sale;
         cartItem.quantity = cartItem.quantity;
         localStorage.setItem('local-cart', JSON.stringify(localCart));
-        showSuccessToast("Thêm sản phẩm thành công")
+        showErrorToast("Sản phẩm đã tồn tại")
         renderTotalCard()
     }
     else {
@@ -31,8 +49,6 @@ addCart.onclick = () => {
             {
                 id,
                 code,
-                price: dataPrice.dataset.price,
-                sale: dataSale.dataset.sale,
                 quantity: 1,
             }
         );
