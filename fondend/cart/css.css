@@ -229,7 +229,7 @@ body{
     padding: 1%;
     color: #02bbff;
     left: 55%;
-    top: -25%;
+    top: -33%;
     position: absolute;
 }
 .item_trangthai2 .trangthai{
@@ -495,7 +495,7 @@ table tbody{
 }
 .gird_box2{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 1fr 1fr;
 }
 .hinhthuc_pay{
     font-size: 15px;
