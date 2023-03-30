@@ -45,11 +45,10 @@ select {
     padding: 12px;
     display: block;
 }
-
 .adress {
-    display: flex;
-    gap: 12px;
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: 6px;
 }
 
 .adress_all input {
