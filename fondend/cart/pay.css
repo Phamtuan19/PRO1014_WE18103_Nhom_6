@@ -17,7 +17,16 @@ table thead th {
     font-size: 12px;
     color: #000;
 }
+.cart_book_title2 .title_book {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+.cart_book_title2  {
+    font-weight: 600;
+    font-size: 16px;
 
+}
 .content {
     display: flex;
 }
