@@ -1,0 +1,112 @@
+table thead th {
+    font-size: 14px;
+}
+
+.cart {
+    margin: 24px 5%;
+    background-color: white;
+    padding: 12px 24px;
+}
+
+.cart_book_title {
+    text-align: left !important;
+}
+
+.cart_book_title .title_book {
+    font-weight: 600;
+    font-size: 12px;
+    color: #000;
+}
+
+.content {
+    display: flex;
+}
+
+.tacgia_book,
+.nxb_book,
+.price_item_cart,
+.sale_price_item_cart {
+    font-size: 12px;
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    padding: 15px 12px !important;
+}
+
+select {
+    display: block;
+    width: 80%;
+    border: 2px solid #f0f0f0;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 12px;
+    display: block;
+}
+
+.adress {
+    display: flex;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.adress_all input {
+    display: block;
+    width: 75%;
+    border: 2px solid #f0f0f0;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 12px;
+    display: block;
+}
+
+.adress input {
+    display: block;
+    width: 75%;
+    border: 2px solid #f0f0f0;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 12px;
+    display: block;
+}
+
+.soluong_item {
+    font-size: 12px;
+}
+
+.form-control input {
+    width: 100%;
+}
+
+.form .btn {
+    width: 22%;
+}
+
+.over_fontsize td {
+    font-size: 16px;
+}
+
+.image__product {
+    width: 110.188px !important;
+    height: 162.475px !important;
+}
+
+.pay_address {
+    width: 40%;
+}
+
+.cart_bottom {
+    width: 60%;
+}
+
+.mx-3 {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.px-3 {
+    padding-left: 12px;
+    padding-right: 12px;
+}
