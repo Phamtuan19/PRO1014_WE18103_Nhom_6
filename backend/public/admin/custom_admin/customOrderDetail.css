@@ -1,0 +1,78 @@
+.track {
+    position: relative;
+    background-color: #ddd;
+    height: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+.track .step {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 25%;
+    margin-top: -18px;
+    text-align: center;
+    position: relative;
+}
+
+.track .step.active:before {
+    background: #FF5722;
+}
+
+.track .step::before {
+    height: 7px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 18px;
+}
+
+.track .step.active .icon {
+    background: #ee5435;
+    color: #fff;
+}
+
+.track .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 100%;
+    background: #ddd;
+}
+
+.track .step.active .text {
+    color: #000;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.track .text {
+    display: block;
+    margin-top: 7px;
+}
+
+.step-time {
+    min-width: 125px;
+    position: absolute;
+    left: 0;
+    top: -25px;
+    font-weight: 600;
+}
+
+.single-printr {
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.single-printr:hover {
+    color: #b66dff;
+}

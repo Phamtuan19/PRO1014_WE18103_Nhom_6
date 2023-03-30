@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css-infor-user.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .thanhtoan_xacnhan{
+    text-align: left;
+}
+.donhang_dadat th, td {
+    border-bottom: 1px solid #ddd;
+}
+</style>
+<body> 
+    <div class="body_infor_user">
+        <div class="container_infor_user">
+                <div class="img_infor">
+                    <div>
+                        <img  width="150px" id="img_user" src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/237009736_847906282500010_2076148638421832487_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_ohc=uTp6NsR-Xu4AX_Whw1w&_nc_ht=scontent.fhan14-1.fna&oh=00_AfDzb5sTPoCGEKu8144cAtvpAMU-k_u-N2V2YkQVbs5VFA&oe=642017CC">
+                        <p style="font-weight: bold;">Nguyễn Tiến Lâm</p>
+                        <span style="color: rgba(0,0,0,.5)!important;">ntl260303@gmail.com</span><br><br>
+                        <input type="checkbox" class="xac_nhan" name="" id="donhang">
+                        <label for="donhang" class="thanhtoan_overlay"></label>
+                        <label for="donhang" style="color: rgba(0,0,0,.5)!important; text-decoration: none;" ><i class="fa-solid fa-check-to-slot"></i>Đơn hàng đã đặt</label>
+                        <div class="thanhtoan_xacnhan" id="scoll">
+                            <div class="thanhtoan_xacnhan_close">
+                                <label class="close_xacnhan_pay" for="donhang"><i class="fa-solid fa-xmark"></i></label>
+                            </div>
+                            <p id="font800" style="color:#02bbff;">Đơn hàng đã đặt</p>
+                            <table class="donhang_dadat">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Thành tiền</th>
+                                        <th>Tình trạng</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="click_chitiet" >
+                                        <label for="xacnhan_pay" class="click_tr_in_table">
+                                        <td>1</td>
+                                        <td>MX093677</td>
+                                        <td id="fontbold" >131.250đ</td>
+                                        <td>
+                                            <p>Đã thanh toán</p>
+                                            <p>Đang vận chuyển <i class="fa-solid fa-car-side"></i></p>
+                                        </td>
+                                        <td>
+                                            <label for="xacnhan_pay" class="button_trangthai_donhang" >Chi tiết đơn hàng</label>
+                                            <input type="checkbox" class="xac_nhan" name="" id="xacnhan_pay">
+                                            <label for="xacnhan_pay" class="thanhtoan_overlay"></label>
+                                            <div class="thanhtoan_xacnhan" id="scoll">
+                                                <div class="thanhtoan_xacnhan_close">
+                                                    <label class="close_xacnhan_pay" for="xacnhan_pay"><i class="fa-solid fa-xmark"></i></label>
+                                                </div>
+                                                <p id="font600" style="color:#02bbff;">Chi tiết đơn hàng</p>
+                                                <p>Mã đơn hàng:MX093677</p>
+                                                <span style="font-weight: bold;">Tình trạng:</span>
+                                                <span>Đã thanh toán <i class="fa-solid fa-check"></i>,</span>
+                                                <span>Đang vận chuyển <i class="fa-solid fa-car-side"></i></span>
+                                                <p>Tên người nhận:<span id="font600">Nguyễn Tiến Lâm</span>
+                                                <p>Số điện thoại:<span style="margin-left: 36px;" id="font_size18">0949520467</span></p>
+                            <p>Địa chỉ nhận hàng: <span id="font_size18">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</span></p>
+                            <table class="title_item" >
+                                <thead>
+                                    <tr><th>STT</th>
+                                        <th style="text-align: left;">Sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="item_book_in-cart">
+                                        <td>1</td>
+                                        <td class="item_book_cart_specifically">
+                                            <div class="cart_book_title">
+                                                <p class="title_book">
+                                                    Quân Đội Nga - Những Bí Mật Bạn Chưa Biết
+                                                </p>
+                                                <p class="tacgia_book">
+                                                    Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)
+                                                </p>
+                                                <p class="nxb_book">
+                                                    NXB: Quân đội Nhân dân
+                                                </p>
+                                               
+                                            </div>
+                                            <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="">
+                                        </td>
+                                        <td class="price_in_cart" >
+                                            <p class="price_item_cart">131.250 đ</p>
+                                            <p class="sale_price_item_cart"> <del> 175.000 đ </del>| - 25%</p>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <p class="soluong_item">1</p>
+                                        </td>
+                                        <td class="price_in_cart" >
+                                            <p class="price_item_cart" style="color: red ;" id="font600" >131.250 đ</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                                                <!-- nếu chưa giao hàng thì có thể xóa -->
+                                                <button style="background-color: red;" class="button_cttrangthai_donhang" onclick=' return confirm("bạn có chắc chắn xóa")' >Xóa <i class="fa-solid fa-trash-can"></i></button>
+                                            </div>  
+                                        </td>
+                                    </label>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>MX03223537</td>
+                                        <td id="fontbold">131.250đ</td>
+                                        <td>
+                                            <p>Giao Hàng Thành Công <i class="fa-sharp fa-solid fa-circle-check"></i>   </p>
+                                        </td>
+                                        <td>
+                                            <label for="xacnhan_pay" class="button_trangthai_donhang" >Chi tiết đơn hàng</label>
+                                                <input type="checkbox" class="xac_nhan" name="" id="xacnhan_pay">
+                                                <label for="xacnhan_pay" class="thanhtoan_overlay"></label>
+                                                <div class="thanhtoan_xacnhan" id="scoll">
+                                                    <div class="thanhtoan_xacnhan_close">
+                                                        <label class="close_xacnhan_pay" for="xacnhan_pay"><i class="fa-solid fa-xmark"></i></label>
+                                                    </div>
+                                                    <p id="font800" style="color:#02bbff;">Chi tiết đơn hàng</p>
+                                                </div>    
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div>
+                </div>
+                <div class="infor_user">
+                    <div>
+                        <div>
+                            <h4 class="text-right">Thông tin tài khoản</h4>
+                        </div>
+                        <div>
+                            <div><label class="labes" >Name</label><br><input type="text"   value="Nguyễn Tiến Lâm"></div>
+                        </div>
+                        <div>
+                            <div><label class="labes" >Mobile Number</label><br><input type="text"   value="0949520467"></div>
+                            <div><label class="labes" >Email ID</label><br><input type="text"   value="ntl260303@gmail.com"></div>
+                            <div class="adress" >
+                                <div class="">
+                                    <label class="labes" >Quốc gia </label><br>
+                                    <select name="quocgia" id="quocgia">
+                                        <option value="Việt Nam">Việt Nam</option>
+                                        <option value="ThaiLand">ThaiLand</option>
+                                        <option value="Laos">Laos</option>
+                                        <option value="America">America</option>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <label class="labes" >Tỉnh / Thành Phố  </label><br>
+                                    <select name="quocgia" id="quocgia">
+                                        <option value="Hà Nội">Hà Nội</option>
+                                        <option value="Gia Lai">Gia Lai</option>
+                                        <option value="Cao Bằng">Cao Bằng</option>
+                                        <option value="Thái Bình">Thái Bình</option>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <label class="labes" >Quận / Huyện   </label><br>
+                                    <select name="quocgia" id="quocgia">
+                                        <option value="Hà Nội">Nam Từ Liêm</option>
+                                        <option value="Gia Lai">Gia Lai</option>
+                                        <option value="Cao Bằng">Cao Bằng</option>
+                                        <option value="Thái Bình">Thái Bình</option>
+                                    </select>
+                                </div>
+                                <div class=""><label class="labes" >Số nhà & tên đường </label><br><input type="text" required   value="180 Tây Mỗ"></div>
+                                
+                            </div>
+                           
+                        </div>
+                        <div style="width: 100%;height: 100px;line-height: 100px; text-align: center;" ><a href="#"><button class="profile_button" type="submit">Update User</button></a></div>
+                    </div>
+                </div>
+                <div>
+                    
+                    <div class="edit_password">
+                        <div><span>Edit Password</span></div><br><br>
+                        <div><label class="labes" >Tên đăng nhập</label><br><input type="text"  readonly  value="lamnt"></div> <br>
+                        <input type="checkbox"  class="thaydoi_password" name="" id=""><label for="">Thay đổi mật khẩu</label>
+                        <label class="thaydoi_hien" >
+                            <div><label class="labes" >Mật khẩu cũ</label><br><input type="text"  id="password_old"  value=""></div>
+                            <div><label class="labes" >Mật khẩu mới</label><br><input type="text"  id="password_new"  value=""></div>
+                            <div><label class="labes"   >Nhập lại mật khẩu mới</label><input type="text"  id="password_new"  value=""></div>
+                            <div style="width: 100%;height: 100px;line-height: 100px; text-align: center;" ><a href="#"><button class="profile_button" type="button">Save Password</button></a></div>
+                        </label>
+                    </div>
+                </div>
+        </div>  
+    </div>
+</body>
+</html>

@@ -36,6 +36,12 @@
                                             <i class="fa-solid fa-right-left menu-icon__custom"></i>
                                         </a>
                                     </th>
+                                    {{-- <th>
+                                        <a href="#" class="{!! request()->orderBy == 'name' ? 'active_custom' : '' !!}">
+                                            Danh mục con
+                                            <i class="fa-solid fa-right-left menu-icon__custom"></i>
+                                        </a>
+                                    </th> --}}
                                     <th>
                                         <a href="?orderBy=slug&orderType={{ request()->orderType == 'ASC' ? 'DESC' : 'ASC' }}"
                                             class="{!! request()->orderBy == 'email' ? 'active_custom' : '' !!}">
@@ -55,21 +61,25 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $index => $category)
+                                    {{-- @dd($category) --}}
                                     <tr>
                                         <td> {{ $index }} </td>
-                                        <td> {{ $category->name }} </td>
-                                        <td> {{ $category->slug }} </td>
-                                        <td> {{ date_format($category->created_at, 'd-m-Y') }} </td>
+
+                                        {{-- <td> {{ str_repeat('---', $category['level']) }} </td> --}}
+                                        <td> {{ $category['level'] >= 1 ? str_repeat('---', $category['level']) . ' ' . $category['name'] : $category['name'] }} </td>
+
+                                        <td> {{ $category['slug'] }} </td>
+                                        <td> {{ !empty($category['created_at']) ? substr ($category['created_at'], 0, 10) : '' }} </td>
                                         <td>
                                             <div class="d-flex justify-content-between">
 
-                                                <a href="{{ route('admin.categories.show', $category->id) }}" class=""
-                                                    style="color: black; padding: 6px">
+                                                <a href="{{ route('admin.categories.show', $category['id']) }}"
+                                                    class="" style="color: black; padding: 6px">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
 
                                                 <form id="form-modal"
-                                                    action="{{ route('admin.categories.destroy', $category->id) }}"
+                                                    action="{{ route('admin.categories.destroy', $category['id']) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -84,12 +94,13 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                {{-- {!! displaySubMenu($categories) !!} --}}
                             </tbody>
                         </table>
 
-                        <div class="mt-3" style="float: right;">
+                        {{-- <div class="mt-3" style="float: right;">
                             {{ $categories->appends(request()->all())->links() }}
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css.css" />
+        <link rel="stylesheet" href="css-infor-user.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <style>
+            th,
+            td {
+                border-bottom: 1px solid #ddd;
+            }
+            select {
+                display: block;
+                width: 80%;
+                border: 2px solid #f0f0f0;
+                font-size: 14px;
+                border-radius: 5px;
+                padding: 12px;
+                display: block;
+            }
+            .adress {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .adress_all input {
+                display: block;
+                width: 75%;
+                border: 2px solid #f0f0f0;
+                font-size: 14px;
+                border-radius: 5px;
+                padding: 12px;
+                display: block;
+            }
+            .adress input {
+                display: block;
+                width: 75%;
+                border: 2px solid #f0f0f0;
+                font-size: 14px;
+                border-radius: 5px;
+                padding: 12px;
+                display: block;
+            }
+            .adress_all input {
+                width: 30%;
+            }
+            .form-control input {
+                width: 40%;
+            }
+            .form .btn {
+                width: 22%;
+                position: absolute;
+                right: 0px;
+                bottom: -10%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="cart" style="position: relative">
+            <div class="cart_top">
+                <progress max="100" value="45"></progress>
+                <div class="item_trangthai">
+                    <p class="text_trangthai">Giỏ hàng</p>
+                    <div class="trangthai">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                </div>
+                <p>Thanh Toán</p>
+                <div class="diachi_nhanhang_">
+                    <p class="title_dc_nhanhang">1-Địa chỉ nhận hàng:</p>
+                    <p class="ten_taikhoan">Nguyễn Tiến Lâm</p>
+                    <p class="sdt_nhanhang_">0949520467</p>
+                    <p class="diachi_nhanhang_taikhoan">180 Tây Mỗ,Nam Từ Liêm,Hà Nội,Việt Nam</p>
+                </div>
+                <div class="item_trangthai3">
+                    <p class="text_trangthai">Giao hàng</p>
+                    <div class="trangthai">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                </div>
+            </div>
+            <p>Thanh Toán</p>
+            <div class="diachi_nhanhang_">
+                <p class="title_dc_nhanhang">1-Địa chỉ nhận hàng:</p>
+            </div>
+            <div style="position: relative" class="">
+                <form action="" class="form" id="form">
+                    <div class="form-control">
+                        <label class="labes">Họ và tên</label>
+                        <input type="text" name="" id="username" placeholder="Họ tên" value="Nguyễn Tiến Lâm" autocomplete="off" />
+
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <label class="labes">Số điện thoại</label>
+                        <input type="tel" name="" id="mobile" placeholder="Số điện thoại" value="0949520467" autocomplete="off" />
+
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <label class="labes">Email</label>
+                        <input type="text" name="" id="email" placeholder="Enter Your Email" value="ntl260303@gmail.com" autocomplete="off" />
+
+                        <small>Error Message</small>
+                    </div>
+                    <div class="adress">
+                        <div class="form-control">
+                            <label class="labes">Quốc gia </label><br />
+                            <select name="quocgia" id="quocgia">
+                                <option value="Việt Nam">Việt Nam</option>
+                                <option value="ThaiLand">ThaiLand</option>
+                                <option value="Laos">Laos</option>
+                                <option value="America">America</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label class="labes">Tỉnh / Thành Phố </label><br />
+                            <select name="quocgia" id="quocgia">
+                                <option value="Hà Nội">Hà Nội</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label class="labes">Quận / Huyện </label><br />
+                            <select name="quocgia" id="quocgia">
+                                <option value="Hà Nội">Nam Từ Liêm</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label class="labes">Số nhà & tên đường </label><br />
+                            <input type="text" name="" id="adress" placeholder="Enter Your Email" autocomplete="off" style="width: 97%" value="180 Tây Mỗ" />
+                            <small>Error Message</small>
+                        </div>
+                    </div>
+                    <input type="submit" value="Thay đổi" class="btn" />
+                </form>
+            </div>
+            <!-- ẩn đi form này -->
+            <div style="display: none">
+                <form action="" class="form" id="form">
+                    <div class="edit_password">
+                        <div><span>Edit Password</span></div>
+                        <div class="form-control">
+                            <label class="labes">Tên đăng nhập</label>
+                            <input type="text" readonly value="lamnt" />
+                        </div>
+                        <input type="checkbox" class="thaydoi_password" name="" id="" />
+                        <label for="">Thay đổi mật khẩu</label>
+                        <label class="thaydoi_hien">
+                            <div class="form-control">
+                                <label class="labes">Mật khẩu cũ</label>
+                                <input type="password" name="" id="password_old" placeholder="Enter Your Password" autocomplete="off" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message</small>
+                            </div>
+                            <div class="form-control">
+                                <label class="labes">Mật khẩu mới</label>
+                                <input type="password" name="" id="password_new" placeholder="Enter Your Password" autocomplete="off" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message</small>
+                            </div>
+                            <div class="form-control">
+                                <label class="labes">Nhập lại mật khẩu mới</label>
+                                <input type="password" name="" id="cpassword" placeholder="Confirm Password" autocomplete="off" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message</small>
+                            </div>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="cart_bottom">
+                <!-- //nếu có sản phẩm  -->
+                <p class="title_dc_nhanhang">2. Sản phẩm ( <span>1</span> sp)</p>
+                <table class="title_item">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th style="text-align: left">Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="item_book_in-cart">
+                            <td>1</td>
+                            <td class="item_book_cart_specifically">
+                                <div class="cart_book_title">
+                                    <p class="title_book">Quân Đội Nga - Những Bí Mật Bạn Chưa Biết</p>
+                                    <p class="tacgia_book">Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)</p>
+                                    <p class="nxb_book">NXB: Quân đội Nhân dân</p>
+                                </div>
+                                <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="" />
+                            </td>
+                            <td class="price_in_cart">
+                                <p class="price_item_cart">131.250 đ</p>
+                                <p class="sale_price_item_cart"><del> 175.000 đ </del>| - 25%</p>
+                                <p class="giamgiachung">Giảm giá chung: 25%. Tương đương 43.750 đ</p>
+                            </td>
+                            <td style="text-align: center">
+                                <p class="soluong_item">1</p>
+                            </td>
+                            <td class="price_in_cart">
+                                <p class="price_item_cart">131.250 đ</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="phi_vc">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>stt</th>
+                                <th style="text-align: left">Sản phẩm</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="item_book_in-cart">
+                                <td>1</td>
+                                <td class="item_book_cart_specifically">
+                                    <div class="cart_book_title">
+                                        <p class="title_book">Quân Đội Nga - Những Bí Mật Bạn Chưa Biết</p>
+                                        <p class="tacgia_book">Tác giả: Mai Hương, Văn Nam, Anh Ba (Sưu tầm, tuyển dịch)</p>
+                                        <p class="nxb_book">NXB: Quân đội Nhân dân</p>
+                                    </div>
+                                    <img src="https://book365.vn/upload/resize_cache/iblock/3c4/570_490_1/3c4bcadf08b7779ce399cfc77ad194a5.jpeg" alt="" />
+                                </td>
+                                <td class="price_in_cart">
+                                    <p class="price_item_cart">131.250 đ</p>
+                                    <p class="sale_price_item_cart"><del> 175.000 đ </del>| - 25%</p>
+                                    <p class="giamgiachung">Giảm giá chung: 25%. Tương đương 43.750 đ</p>
+                                </td>
+                                <td style="text-align: center">
+                                    <p class="soluong_item">1</p>
+                                </td>
+                                <td class="price_in_cart">
+                                    <p class="price_item_cart">131.250 đ</p>
+                                </td>
+                            </tr>
+                            <tr class="cart_clickALl">
+                                <th></th>
+                                <td class="thanhtoan_dvvc">
+                                    <span>Đơn vị vận chuyển: Nhất Tín</span> <span>- Phí vận chuyển:</span> <span style="color: red">17.000 đ</span> <del>23.000 đ</del> (-27%)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="all_price_book_delivery">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tổng tiền sách</td>
+                                <td><del>175.000 đ</del></td>
+                                <td id="font600">131.250 đ</td>
+                            </tr>
+                            <tr>
+                                <td>Phí vận chuyển</td>
+                                <td><del>23.000 đ</del></td>
+                                <td id="font600">17.000 đ</td>
+                            </tr>
+                            <tr>
+                                <td id="font600">Tổng</td>
+                                <td><del>198.000 đ</del></td>
+                                <td id="font600">148.250 đ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="clear: both"></div>
+                </div>
+                <div class="box_hinhthuc_thanhtoan">
+                    <p class="title_dc_nhanhang">3. Chọn hình thức thanh toán</p>
+                    <div class="box_hinhthuc_thanhtoan_left">
+                        <input type="radio" name="thanhtoan" />
+                        <label for="">Nhân viên giao sách thu tiền trực tiếp</label><br />
+                        <input type="radio" name="thanhtoan" />
+                        <label for=""
+                            >Chuyển khoản ngân hàng <br />
+                            <p style="font-size: 70%; margin-left: 2%">
+                                Tên tài khoản: CTCP PTGPGD VIVI EDUCATION <br />
+                                Số TK: 19037017691017 <br />
+                                Ngân hàng Techcombank CN Nguyễn Văn Trỗi
+                            </p> </label
+                        ><br />
+                    </div>
+                    <div class="box_hinhthuc_thanhtoan_rigth">
+                        <p style="color: #02bbff">Ghi chú</p>
+
+                        <input type="checkbox" name="checkGhichu" id="" />
+                        <label style="color: #02bbff" for="">Nếu khách hàng có ghi chú về đơn hàng, xin hãy nhập vào đây</label><br />
+                        <textarea id="w3review" name="w3review" rows="7" cols="50" placeholder="Ghi vào đây"></textarea>
+                    </div>
+                </div>
+
+                <table class="all_price_book_delivery">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tổng tiền sách</td>
+                            <td><del>175.000 đ</del></td>
+                            <td id="font800">131.250 đ</td>
+                        </tr>
+                        <tr>
+                            <td>Phí vận chuyển</td>
+                            <td><del>23.000 đ</del></td>
+                            <td id="font800">17.000 đ</td>
+                        </tr>
+                        <tr>
+                            <td id="font800">Tổng</td>
+                            <td><del>198.000 đ</del></td>
+                            <td id="font800">148.250 đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="position: relative">
+                    <a href="index.html">
+                        <button class="back_thanhtoan">Quay lại</button>
+                    </a>
+                    <a style="text-decoration: none" href="#">
+                        <label for="xacnhan_pay" class="pay_in_cart"> Đặt Hàng =>></label>
+                    </a>
+                    <input type="checkbox" class="xac_nhan" name="" id="xacnhan_pay" />
+                    <label for="xacnhan_pay" class="thanhtoan_overlay"></label>
+                    <div class="thanhtoan_xacnhan">
+                        <div class="thanhtoan_xacnhan_close">
+                            <label for="xacnhan_pay">
+                                <i class="fa-solid fa-xmark"></i>
+                            </label>
+                        </div>
+                        <p id="font600" style="color: #02bbff">Xác nhận mua hàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="validate-information.js"></script>
+</html>

@@ -48,7 +48,7 @@ class CreateRequest extends FormRequest
                 Rule::unique('users')->ignore($this->id, 'id'),
             ],
 
-            'position_id' => 'required',
+            // 'position_id' => 'required',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
         ];

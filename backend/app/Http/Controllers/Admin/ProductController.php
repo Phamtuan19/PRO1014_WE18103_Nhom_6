@@ -24,10 +24,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->session()->get('name', 'phamtuan')) {
-            dd($request->session()->get('name'));
-        }
-
         $query = new Product;
 
         $orderType = 'DESC';
@@ -46,7 +42,7 @@ class ProductController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete)->paginate(1);
+        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete)->paginate(15);
 
         // dd($products);
 
@@ -141,6 +137,7 @@ class ProductController extends Controller
                     ];
 
                     Image::insert($dataImage);
+                    // dd('ok');
                 }
             }
         }
