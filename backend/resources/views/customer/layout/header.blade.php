@@ -4,7 +4,7 @@
 <div class="header" >
     <div class="header-with-search">
         <div class="header__logo">
-            <a href="#">
+            <a href="{{ route('customer.home') }}">
                 <img src="https://bookbuy.vn/Images/frontend/base/logo-new.png" alt="" />
             </a>
         </div>
@@ -47,7 +47,7 @@
                         <a href="#">
                             Đăng ký
                         </a>
-                        <a href="#" class="header-login">
+                        <a href="{{ route('customer.login') }}" class="header-login">
                             Đăng nhập
                         </a>
                     @endif

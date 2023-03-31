@@ -1,7 +1,9 @@
 import { redirectUrl } from './service.js';
-import { formatCurrency } from './basie.js';
+import { formatCurrency, renderTotalCard } from './basie.js';
 import { runShoppingCart } from './shoppingCart.js';
 
+
+// Render menu header
 export const renderSubMenu = (data) => {
     const navBar = document.querySelector('.navbar-menu')
     const menu = [];
@@ -19,8 +21,8 @@ export const renderSubMenu = (data) => {
         return `
             <li class="menu-child" data-id="${e.id}">
                 <a href="#">${e.name}</a>
-                <ul class="">
-                ${categories}
+                <ul>
+                    ${categories}
                 </ul>
             </li>
             `
@@ -30,6 +32,7 @@ export const renderSubMenu = (data) => {
     navBar.innerHTML = render.join('');
 }
 
+// Render product page home
 export function productsItem(data, element) {
 
     const html = data.map(e => {
@@ -60,6 +63,8 @@ export function productsItem(data, element) {
 
     element.innerHTML = html.join('')
 }
+
+// Render trang giỏ hàng
 export function renderShoppingCart(data) {
     const html = data.map(e => {
         return `
@@ -101,6 +106,7 @@ export function renderShoppingCart(data) {
     deleteProductItem()
 }
 
+// Render trang đặt hàng
 export function order(data, element) {
     const html = data.map(e => {
         return `
@@ -166,21 +172,20 @@ export function quantityShoppingCartItem(array) {
 
 
 // Xóa sản phẩm trong giỏ hàng
-function deleteProductItem () {
+function deleteProductItem() {
     const deleteItem = document.querySelectorAll('.remove_product');
     const localCart = JSON.parse(localStorage.getItem("local-cart"));
 
     deleteItem.forEach((e) => {
         e.onclick = () => {
             const code = e.getAttribute('data-code');
-
             const cartItem = localCart.filter(value => value.code !== code);
 
-            if(cartItem) {
+            if (cartItem) {
                 localStorage.setItem("local-cart", JSON.stringify(cartItem));
                 runShoppingCart()
+                renderTotalCard()
             }
-
         }
     })
 }

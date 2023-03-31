@@ -31,7 +31,7 @@
 
 
     {{-- Script Javacript --}}
-    <script type="module" src="{{ asset('customer/js/basie.js') }}"></script>
+    <script type="module" src="{{ asset('customer/js/homePage.js') }}"></script>
     @yield('js')
 </body>
 

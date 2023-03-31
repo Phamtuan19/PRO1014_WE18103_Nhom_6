@@ -68,14 +68,6 @@ function getCount(parent, getChildrensChildren) {
     return relevantChildren;
 }
 
-const headerUser = document.querySelector('.header__register-item');
-const downUser = document.querySelector('.register__title');
-console.log(headerUser);
-headerUser.onclick = () => {
-    downUser.classList.toggle('d-none');
-}
-
-
 
 
 /* Count cart header */

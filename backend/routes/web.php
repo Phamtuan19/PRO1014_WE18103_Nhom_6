@@ -85,23 +85,4 @@ Route::middleware('custom.auth')->group(function () {
 });
 
 
-
-Route::get('home', [CustomerPageController::class, 'index'])->name('customer.home');
-Route::get('product-detail/{product}', [CustomerPageController::class, 'productDetail'])->name('customer.home');
-
-Route::get('customer/login', [LoginController::class, 'index'])->name('customer.login');
-Route::post('post/login', [LoginController::class, 'login'])->name('post.login');
-
-// đăng ký
-Route::get('customer/register', [RegisterController::class, 'index'])->name('customer.register');
-
-Route::post('post/register', [RegisterController::class, 'register'])->name('post.register');
-// logout
-Route::post('customer/logout', function () {
-    Auth::guard('customers')->logout();
-    return redirect(route('customer.login'));
-})->middleware('auth:customers')->name('customer.logout');
-
-
-Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->name('shopping/cart');
-Route::get('order', [CustomerPageController::class, 'order'])->name('order');
+include __DIR__.'/customer.php';

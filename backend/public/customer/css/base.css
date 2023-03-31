@@ -92,12 +92,12 @@ html {
 }
 
 .header-nav__icon {
-    padding: 12px;
+    padding: 12px !important;
     position: relative;
 }
 
 .header-icons {
-    font-size: 28px;
+    font-size: 28px !important;
     color: var(--white-color);
 }
 
@@ -124,6 +124,7 @@ html {
     right: 0;
     border-radius: 5px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 10;
 }
 
 .register__title a {

@@ -37,40 +37,76 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     {{-- Name - userID --}}
-                                    <div class="col-12 mb-3">
-                                        <label for="" class="form-label"
-                                            style="font-weight: 600; color: font-size: 16px">Tên khách hàng</label>
-                                        <input type="text" class="form-control order_name" name="name"
-                                            data-userId="{{ Auth::guard('customers')->user()->id }}"
-                                            value="{{ old('name') ? old('name') : Auth::guard('customers')->user()->name }}"
-                                            style="height: 46px; color: #86868B; font-size: 14px">
-                                        @error('name')
-                                            <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    {{-- phone --}}
-                                    <div class="col-6 mb-3">
-                                        <label for="" class="form-label"
-                                            style="font-weight: 600; color: font-size: 16px">Số điện thoại</label>
-                                        <input type="text" class="form-control order_phone" name="phone"
-                                            value="{{ old('phone') ? old('phone') : Auth::guard('customers')->user()->phone }}"
-                                            style="height: 46px; color: #86868B; font-size: 14px">
-                                        @error('phone')
-                                            <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    {{-- email --}}
-                                    <div class="col-6 mb-3">
-                                        <label for="" class="form-label"
-                                            style="font-weight: 600; color: font-size: 16px">Email <small>(không bắt
-                                                buộc)</small></label>
-                                        <input type="text" class="form-control order_email" name="email"
-                                            value="{{ old('email') ? old('email') : Auth::guard('customers')->user()->email }}"
-                                            style="height: 46px; color: #86868B; font-size: 14px">
-                                        @error('email')
-                                            <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                                    @if (Auth::guard('customers')->check('customers'))
+                                        <div class="col-12 mb-3">
+                                            <label for="" class="form-label"
+                                                style="font-weight: 600; color: font-size: 16px">Tên khách hàng</label>
+                                            <input type="text" class="form-control order_name" name="name"
+                                                data-userId="{{ Auth::guard('customers')->user()->id }}"
+                                                value="{{ old('name') ? old('name') : Auth::guard('customers')->user()->name }}"
+                                                style="height: 46px; color: #86868B; font-size: 14px">
+                                            @error('name')
+                                                <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- phone --}}
+                                        <div class="col-6 mb-3">
+                                            <label for="" class="form-label"
+                                                style="font-weight: 600; color: font-size: 16px">Số điện thoại</label>
+                                            <input type="text" class="form-control order_phone" name="phone"
+                                                value="{{ old('phone') ? old('phone') : Auth::guard('customers')->user()->phone }}"
+                                                style="height: 46px; color: #86868B; font-size: 14px">
+                                            @error('phone')
+                                                <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- email --}}
+                                        <div class="col-6 mb-3">
+                                            <label for="" class="form-label"
+                                                style="font-weight: 600; color: font-size: 16px">Email <small>(không bắt
+                                                    buộc)</small></label>
+                                            <input type="text" class="form-control order_email" name="email"
+                                                value="{{ old('email') ? old('email') : Auth::guard('customers')->user()->email }}"
+                                                style="height: 46px; color: #86868B; font-size: 14px">
+                                            @error('email')
+                                                <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    @else
+                                        <div class="col-12 mb-3">
+                                            <label for="" class="form-label"
+                                                style="font-weight: 600; color: font-size: 16px">Tên khách hàng</label>
+                                            <input type="text" class="form-control order_name" name="name"
+                                                data-userId="" value="{{ old('name') }}"
+                                                style="height: 46px; color: #86868B; font-size: 14px">
+                                            @error('name')
+                                                <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- phone --}}
+                                        <div class="col-6 mb-3">
+                                            <label for="" class="form-label"
+                                                style="font-weight: 600; color: font-size: 16px">Số điện thoại</label>
+                                            <input type="text" class="form-control order_phone" name="phone"
+                                                value="{{ old('phone') }}"
+                                                style="height: 46px; color: #86868B; font-size: 14px">
+                                            @error('phone')
+                                                <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- email --}}
+                                        <div class="col-6 mb-3">
+                                            <label for="" class="form-label"
+                                                style="font-weight: 600; color: font-size: 16px">Email <small>(không bắt
+                                                    buộc)</small></label>
+                                            <input type="text" class="form-control order_email" name="email"
+                                                value="{{ old('email') }}"
+                                                style="height: 46px; color: #86868B; font-size: 14px">
+                                            @error('email')
+                                                <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    @endif
 
                                     {{-- Thành phố --}}
                                     <div class="col-6 mb-4">
@@ -163,24 +199,26 @@
                                 </table>
 
                                 <div class="d-flex justify-content-between" style="flex: 1">
-                                    <p><b>Tổng Cộng: </b></p>
+                                    <p class="total__money">Tổng Cộng:</p>
                                     <input type="text" class="total-payment" name="total_money" value="0"
-                                        readonly style=" flex: 3; border: none; text-align: end; padding: 3px 0;">
+                                        readonly>
                                 </div>
 
-                                <p class="mt-3" style="font-weight: 600; color: font-size: 16px">
+                                <p class="mt-3" style="font-weight: 600; font-size: 16px">
                                     Hình thức giao hàng
                                 </p>
-                                <div class="form-check mt-1" style="vertical-align: inherit">
-                                    <input class="form-check-input" type="radio" value="1" checked
+                                <div class="form-check mt-1 d-flex align-items-center" style="vertical-align: inherit">
+                                    <input class="form-check-input mx-2" type="radio" value="1" checked
                                         name="delivery_form" id="delivery_form">
                                     <label class="form-check-label" for="delivery_form"
                                         style="padding: 3px 0; background-color: #fff; font-size: 16px">
                                         Thanh toán khi nhận hàng
                                     </label>
-                                    <br />
-                                    <input class="form-check-input" type="radio" value="2" name="delivery_form"
-                                        id="delivery_form">
+                                </div>
+
+                                <div class="form-check mt-1 d-flex align-items-center" style="vertical-align: inherit">
+                                    <input class="form-check-input mx-2" type="radio" value="2"
+                                        name="delivery_form" id="delivery_form">
                                     <label class="form-check-label" for="delivery_form"
                                         style="padding: 3px 0; background-color: #fff; font-size: 16px">
                                         Thanh toán khi nhận hàng

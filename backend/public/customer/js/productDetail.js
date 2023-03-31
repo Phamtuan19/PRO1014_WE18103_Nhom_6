@@ -29,11 +29,8 @@ addCart.onclick = () => {
     const id = addCart.dataset.id;
     const code = addCart.dataset.code;
 
-    // console.log(code);
-
     const localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
 
-    // if (localCart.length > 0) {
     const cartItem = localCart.find(value => value.code === code);
 
     if (cartItem) {

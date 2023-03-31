@@ -1,5 +1,5 @@
 import { productsItem } from './render__Html.js';
-import {service} from './service.js';
+import { service } from './service.js';
 
 
 // Api render products sale home page
@@ -27,3 +27,11 @@ service.getHomeProductList()
     .catch(function (error) {
         console.log(error);
     })
+
+
+const headerUser = document.querySelector('.header__register-item');
+const downUser = document.querySelector('.register__title');
+console.log(headerUser);
+headerUser.onclick = () => {
+    downUser.classList.toggle('d-none');
+}

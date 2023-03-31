@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderNote;
+use App\Models\Warehouse;
 use App\Models\OrderDetail;
 use App\Models\DiscountCode;
 use Illuminate\Http\Request;
@@ -52,7 +53,6 @@ class OrderController extends Controller
                 $productItem = ProductDetail::where('product_id', $product['id'])->get();
 
                 $this->orderDetail($newOrder, $product['code'], $productItem[0], $product['quantity']);
-
             }
 
 
@@ -60,10 +60,19 @@ class OrderController extends Controller
 
             try {
                 if ($newDeliveryAddress && $newNotes) {
-                    if ($discount !== null) {
-                        $discount->remaining_quantity = $discount->remaining_quantity - 1;
-                        if ($discount->save())
-                            return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
+                    // if ($discount !== null) {
+                    //     // $discount->remaining_quantity = $discount->remaining_quantity - 1;
+                    //     if ($discount->save())
+                    //         return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
+                    // }
+
+                    foreach ($products as $item) {
+                        $wareHouse = Warehouse::where("product_id", $item['id'])->get();
+
+                        $wareHouse->quantity_stock = $wareHouse->quantity_stock - $item['quantity'];
+                        $wareHouse->quantity_sold = $wareHouse->quantity_sold + $item['quantity'];
+
+                        $wareHouse->save();
                     }
 
                     return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);

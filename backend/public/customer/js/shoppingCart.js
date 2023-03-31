@@ -5,9 +5,10 @@ import { hendleClickQuantity, cartTotals } from './basie.js';
 export function runShoppingCart() {
     const localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
 
-    let listProductCode = localCart.map(e => e.code).join(',');
-
+    // console.log();
     if (localCart.length > 0) {
+        let listProductCode = localCart.map(e => e.code).join(',');
+
         service.getShoppingCart(listProductCode)
             .then(function (response) {
                 return response.json();
@@ -22,6 +23,8 @@ export function runShoppingCart() {
             .catch(function (error) {
                 console.log(error);
             })
+    }else {
+        document.querySelector('.row').innerHTML = '<h1>hello</h1>'
     }
 }
 

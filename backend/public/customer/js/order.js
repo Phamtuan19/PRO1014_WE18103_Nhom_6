@@ -119,7 +119,7 @@ if (localCart.length > 0) {
         })
         .then(function (data) {
             // console.log(localCart);
-            shoppintCart(data);
+            order(data);
             quantityShoppingCartItem(localCart);
             cartTotals()
             hendleClickQuantity()
