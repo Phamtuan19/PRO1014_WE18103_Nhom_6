@@ -12,10 +12,11 @@ use Illuminate\Validation\Rule;
 
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\admin\User\CreateRequest;
-
 use App\Http\Requests\admin\User\UpdateRequest;
 
 class CustomersController extends Controller
@@ -137,7 +138,8 @@ class CustomersController extends Controller
         $user->position_id = $request->position_id;
         $user->address = $request->address;
         $user->image_url = $request->image_url;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
+        $user->updated_at = date("Y-m-d H:i:s");
 
         if ($user->update()) {
             return back()->with('msg', "successfully");

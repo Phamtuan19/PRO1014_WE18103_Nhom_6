@@ -11,11 +11,11 @@ body {
 .top-pagination {
   text-align: center;
   margin-top: 100px;
-  padding-left: 1500px;
+  padding-left: 1070px;
 }
 
 .pagination {
-  display: inline-block;
+  display: flex;
 }
 
 .pagination a {
@@ -217,22 +217,22 @@ body {
 
 .product-price {
   margin-top: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  
+  position: relative;
 }
 
 .product-price__reduced {
   margin-top: 0 !important;
   font-size: 24px;
   font-weight: 600;
-  padding-left: 70px;
+  padding-left: 20px;
 }
 
 .product-price__original {
   font-size: 18px;
   font-weight: 600;
   color: red;
-  padding-right:  60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 17px;
 }

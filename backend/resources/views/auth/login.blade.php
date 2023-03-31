@@ -108,6 +108,12 @@
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
 
+                            @if (session('msg'))
+                                <div class="alert alert-danger text-center">
+                                    {{ session('msg') }}
+                                </div>
+                            @endif
+
                             <form class="pt-3" action="{{ route('login') }}" method="POST">
                                 @csrf
 
@@ -126,7 +132,8 @@
                                 <div class="form-group">
                                     <input type="password"
                                         class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                        name="password" id="exampleInputPassword1" placeholder="Password" value="admin1234">
+                                        name="password" id="exampleInputPassword1" placeholder="Password"
+                                        value="admin1234">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
