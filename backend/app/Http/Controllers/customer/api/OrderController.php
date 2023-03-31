@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderNote;
+use App\Models\Warehouse;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Models\ProductDetail;
@@ -54,24 +55,11 @@ class OrderController extends Controller
 
         try {
             if ($newOrder && $newDeliveryAddress && $newNotes) {
-                return  response()->json(
-                    [
-                        "msg" => "thêm sản phẩm thành công",
-                        "status" => true,
-                        "status_code" => 200
-                    ],
-                    200
-                );
+
+                return  response()->json( [ "msg" => "thêm sản phẩm thành công"], 200 );
             }
         } catch (Exception $e) {
-            return response()->json(
-                [
-                    "msg" => $e->getMessage(),
-                    "status" => true,
-                    "status_code" => 500
-                ],
-                500
-            );
+            return  response()->json( [ "msg" => "thêm sản phẩm thất bại"], 200 );
         }
     }
 
