@@ -593,4 +593,7 @@ p {
     cursor: pointer;
 }
 
-
+.toast:not(.show) {
+    display: flex !important;
+    background: #FFF !important;
+}

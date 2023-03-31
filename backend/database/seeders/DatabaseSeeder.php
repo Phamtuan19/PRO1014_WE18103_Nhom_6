@@ -43,37 +43,49 @@ class DatabaseSeeder extends Seeder
         //     'updated_at' => date('Y-m-d H:i:s'),
         // ]);
 
-        DB::table('order_status')->insert([
-            'name' => 'Chưa xác nhận',
-            'slug' => 'chua-xac-nhan',
+        // DB::table('order_status')->insert([
+        //     'name' => 'Chưa xác nhận',
+        //     'slug' => 'chua-xac-nhan',
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // DB::table('order_status')->insert([
+        //     'name' => 'Đã xác nhận',
+        //     'slug' => 'da-xac-nhan',
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // DB::table('order_status')->insert([
+        //     'name' => 'Đang vận chuyển',
+        //     'slug' => 'da-van-chuyen',
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // DB::table('order_status')->insert([
+        //     'name' => 'Thành công',
+        //     'slug' => 'thanh-cong',
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        // DB::table('order_status')->insert([
+        //     'name' => 'Hủy hàng',
+        //     'slug' => 'huy-hang',
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
+
+        DB::table('payment_status')->insert([
+            'name' => 'Đã thanh toán',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
-        DB::table('order_status')->insert([
-            'name' => 'Đã xác nhận',
-            'slug' => 'da-xac-nhan',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('order_status')->insert([
-            'name' => 'Đang vận chuyển',
-            'slug' => 'da-van-chuyen',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('order_status')->insert([
-            'name' => 'Thành công',
-            'slug' => 'thanh-cong',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('order_status')->insert([
-            'name' => 'Hủy hàng',
-            'slug' => 'huy-hang',
+        DB::table('payment_status')->insert([
+            'name' => 'Chưa thanh toán',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

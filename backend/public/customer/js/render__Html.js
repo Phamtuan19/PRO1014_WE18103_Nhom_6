@@ -1,4 +1,6 @@
 import { redirectUrl } from './service.js';
+import { formatCurrency } from './basie.js';
+import { runShoppingCart } from './shoppingCart.js';
 
 export const renderSubMenu = (data) => {
     const navBar = document.querySelector('.navbar-menu')
@@ -11,7 +13,7 @@ export const renderSubMenu = (data) => {
                 categories = [...categories, ` <li><a href="#">${child.name}</a></li> `]
             })
         } else {
-            categories= [];
+            categories = [];
         }
 
         return `
@@ -58,12 +60,12 @@ export function productsItem(data, element) {
 
     element.innerHTML = html.join('')
 }
-export function shoppintCart (data) {
+export function renderShoppingCart(data) {
     const html = data.map(e => {
         return `
             <tr style="vertical-align: middle;">
                 <td>
-                    <img src="${e.image[0].image_url}" alt="" style="width: 100%;">
+                    <img src="${e.image[0].image_url}" alt="" style="width: 65%;">
                 </td>
                 <td style="text-align: left !important;">
                     <div class="form-group">
@@ -77,8 +79,8 @@ export function shoppintCart (data) {
                     </div>
                 </td>
 
-                <th class="product-price" data-price="${(e.detail.price)}" style="font-size: 14px; text-align: left !important;">${(e.detail.price)} đ</th>
-                <th class="product-price__sale" data-price ="${(e.detail.promotion_price)}" style="font-size: 14px; text-align: left !important;">${(e.detail.promotion_price)} đ</th>
+                <th class="product-price" data-price="${(e.detail.price)}" style="font-size: 14px; text-align: left !important;">${formatCurrency(e.detail.price)}</th>
+                <th class="product-price__sale" data-price ="${(e.detail.promotion_price)}" style="font-size: 14px; text-align: left !important;">${formatCurrency(e.detail.promotion_price)} đ</th>
 
                 <td>
                     <div class="form-group quantity-product_item">
@@ -96,9 +98,10 @@ export function shoppintCart (data) {
     })
 
     document.querySelector('.cart-table_body').innerHTML = html.join('')
+    deleteProductItem()
 }
 
-export function order (data, element) {
+export function order(data, element) {
     const html = data.map(e => {
         return `
             <tr style="vertical-align: middle;">
@@ -134,14 +137,50 @@ export function order (data, element) {
     element.innerHTML = html.join('')
 }
 
-export function quantityShoppingCartItem (array) {
-    const html = array.map(e => {
-        return `
+
+// Dislable number product cart
+export function quantityShoppingCartItem(array) {
+
+    let disabled;
+
+    if (window.location.pathname === "/order") {
+        const html = array.map(e => {
+            return `
+                <input type="number" class="form-control edit_quantity" disabled="${disabled}" data-code="${e.code}" value="${e.quantity}" data-code="" min="1" max="99" style="width: 60px; padding: 6px 10px; background-color: #f5f5f7; font-size: 14px">
+            `
+        })
+        document.querySelectorAll(".quantity-product_item").forEach((item, index) => {
+            item.innerHTML = html[index];
+        })
+    } else {
+        const html = array.map(e => {
+            return `
             <input type="number" class="form-control edit_quantity" data-code="${e.code}" value="${e.quantity}" data-code="" min="1" max="99" style="width: 60px; padding: 6px 10px; background-color: #f5f5f7; font-size: 14px">
         `
-    })
+        })
+        document.querySelectorAll(".quantity-product_item").forEach((item, index) => {
+            item.innerHTML = html[index];
+        })
+    }
+}
 
-    document.querySelectorAll(".quantity-product_item").forEach((item, index) => {
-        item.innerHTML = html[index];
+
+// Xóa sản phẩm trong giỏ hàng
+function deleteProductItem () {
+    const deleteItem = document.querySelectorAll('.remove_product');
+    const localCart = JSON.parse(localStorage.getItem("local-cart"));
+
+    deleteItem.forEach((e) => {
+        e.onclick = () => {
+            const code = e.getAttribute('data-code');
+
+            const cartItem = localCart.filter(value => value.code !== code);
+
+            if(cartItem) {
+                localStorage.setItem("local-cart", JSON.stringify(cartItem));
+                runShoppingCart()
+            }
+
+        }
     })
 }

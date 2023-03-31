@@ -22,7 +22,13 @@
         <div class="detail">
             <div class="detail-box1">
                 <div class="detail-box1_img">
-                    <img src="{{ $product->image[0]->image_url }}" width="350" alt="" srcset="" />
+
+
+                    <div class="slideshow">
+                        <a class="prev next_lr">❮</a>
+                        <img src="" width="350" alt="" srcset="" class="image_product__detail" />
+                        <a class="next next_lr">❯</a>
+                    </div>
                 </div>
 
                 <div class="detail-introduce">
@@ -51,14 +57,13 @@
                         <a href="#">Click để đánh giá</a>
                     </span>
                     <div class="detail2-price">
-                        <p class="detail2-price__reduced" data-price="{{ $product->detail->price }}">{{ $product->detail->price }}đ</p>
-                        <del class="detali2-price__original" data-sale="{{ $product->detail->promotion_price }}">{{ $product->detail->promotion_price }}đ</del>
+                        <p class="detail2-price__reduced" data-price="{{ $product->detail->price }}">
+                            {{ $product->detail->price }}đ</p>
+                        <del class="detali2-price__original"
+                            data-sale="{{ $product->detail->promotion_price }}">{{ $product->detail->promotion_price }}đ</del>
                     </div>
 
                     <p class="transport">Giảm 30% phí vận chuyển bởi Nhất Tín Express(NTX)</p>
-
-
-                    {{-- @dd($product->warehouses) --}}
                     <div class="detail2-status">
                         {{-- <p class="status">Tình trạng: <span>{{ $product->warehouses->quantity_stock > 0 ||  ? 'Còn hàng': 'Hết hàng' }}</span></p> --}}
                     </div>
@@ -198,7 +203,5 @@
 @section('js')
     <script type="module" src="{{ asset('customer/js/productDetail.js') }}"></script>
 
-    <script>
-
-    </script>
+    <script></script>
 @endsection

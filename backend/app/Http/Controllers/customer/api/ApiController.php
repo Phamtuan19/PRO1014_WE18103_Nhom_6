@@ -8,6 +8,7 @@ use App\Models\StoreCatalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 
 class ApiController extends Controller
 {
@@ -79,18 +80,7 @@ class ApiController extends Controller
 
         $arrayCode = explode(',', request()->code);
 
-        if(is_array($arrayCode)){
-            // $products = DB::table('products')
-            //     ->whrerIn('product_code', $arrayCode)
-            //     // ->select(
-            //     //     'products.*',
-            //     //     'products_detail.price as price',
-            //     //     'products_detail.promotion_price as promotion_price',
-            //     //     'image.image_url as image_url',
-            //     // )
-            //     // ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
-            //     // ->leftJoin('image', 'image.product_id', '=', 'products.id')
-            //     ->get();
+        if (is_array($arrayCode)) {
 
             $product = Product::with('detail', 'image', 'author')->whereIn('product_code', $arrayCode)->get();
         }
@@ -98,5 +88,16 @@ class ApiController extends Controller
 
 
         return  $product;
+    }
+
+    function imageProductDetail($code)
+    {
+        $image = DB::table('products')
+            ->select('image.id as image_id', 'image.image_url')
+            ->where('product_code', '=', $code)
+            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            ->get();
+
+        return response()->json(["data" => $image,], 200);
     }
 }
