@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\customer\auth\loginController;
 use App\Http\Controllers\customer\CustomerPageController;
 use App\Http\Controllers\customer\auth\RegisterController;
 

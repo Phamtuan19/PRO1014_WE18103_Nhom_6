@@ -65,6 +65,7 @@ html {
     border-right: unset;
     height: 100%;
     padding: 0 0 0 24px;
+    font-size: 14px;
 }
 
 .header__search input[type='text']:focus-visible {
@@ -97,7 +98,7 @@ html {
 }
 
 .header-icons {
-    font-size: 28px !important;
+    font-size: 24px !important;
     color: var(--white-color);
 }
 

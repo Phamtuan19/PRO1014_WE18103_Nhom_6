@@ -45,8 +45,8 @@ class ApiController extends Controller
             ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
-            ->orderBy('quantity_sold', 'desc')
-            // ->limit(6)
+            ->orderBy('created_at', 'desc')
+            ->limit(6)
             ->get();
 
         return $products;
@@ -67,8 +67,8 @@ class ApiController extends Controller
             ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
-            ->orderBy('quantity_sold', 'desc')
-            ->limit(6)
+            ->orderBy('promotion_price', 'ASC')
+            ->limit(12)
             ->get();
 
         return $products;
@@ -90,13 +90,29 @@ class ApiController extends Controller
         return  $product;
     }
 
-    function imageProductDetail($code)
+    function productDetail($code)
     {
         $image = DB::table('products')
-            ->select('image.id as image_id', 'image.image_url')
+            ->select(
+                'products.*',
+                'products_detail.price',
+                'products_detail.promotion_price',
+                'products_detail.size',
+                'products_detail.page_number',
+                'products_detail.weight',
+            )
             ->where('product_code', '=', $code)
-            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
             ->get();
+
+        return response()->json(["data" => $image,], 200);
+    }
+
+    public function imageProduct($code)
+    {
+        $product = Product::where('product_code', $code)->get();
+
+        $image = Image::select('image_url')->where('product_id', $product[0]->id)->get();
 
         return response()->json(["data" => $image,], 200);
     }

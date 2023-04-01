@@ -38,26 +38,39 @@ export function productsItem(data, element) {
     const html = data.map(e => {
         // console.log();
         return `
-        <div class="item-child">
-            <div class="item-img">
-                <a href="${redirectUrl.productDetail + e.product_code}">
-                    <img src="${e.image_url}"
-                    alt="" width="100%" height="280px"/>
-                </a>
-            </div>
-            <div class="item-name">
-                <h4>${e.name}</h4>
-            </div>
-            <div class="item-author">
-                <a href="#">${e.author_name}</a>
-            </div>
-            <div class="item-price">
-                <div class="discount">
-                    <span>${e.price}</span>
-                    <p>${e.promotion_price}</p>
+                <div class="product-item">
+                    <div class="item">
+                        <div class="image">
+                            <a href=""
+                                title="${e.name}">
+                                <img src="${e.image_url}"
+                                    alt="${e.name}">
+                            </a>
+                            <div class="extend-content"></div>
+                        </div>
+                        <div class="title">
+                            <a href="#" title="${e.name}">
+                                <h3>${e.name}</h3>
+                            </a>
+                        </div>
+                        <div class="price-group">
+                            <div class="">
+                                <span class="price sale-price">${formatCurrency(e.promotion_price)}</span>
+                                <span class="old-price">${formatCurrency(e.price)}</span>
+                            </div>
+
+                            <span class="button-like">
+                                <i class="fa-regular fa-heart "></i>
+                            </span>
+                        </div>
+                        <div class="button-group">
+                            <span data-id="${e.id}" data-code="${e.product_code}" class="button-buy-now add-to__cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Thêm vào giỏ hàng
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
         `
     })
 
@@ -107,7 +120,7 @@ export function renderShoppingCart(data) {
 }
 
 // Render trang đặt hàng
-export function order(data, element) {
+export function renderOrder(data, element) {
     const html = data.map(e => {
         return `
             <tr style="vertical-align: middle;">
@@ -120,9 +133,6 @@ export function order(data, element) {
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" value="Tác giả: ${e.author.name}" disabled style="border: none; padding: 3px 0; background-color: #fff; color: #86868B; font-size: 14px">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Màu sắc: RED" disabled style="border: none; padding: 3px 0; background-color: #fff;  color: #86868B;font-size: 14px">
                     </div>
                 </td>
 

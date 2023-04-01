@@ -4,7 +4,7 @@
 @endsection
 @section('contents')
     <div class="container-ct" id="container-ct">
-        <div class="breadcrumb">
+        {{-- <div class="breadcrumb">
             <div class="breadcrumb-bound">
                 <ul class="breadcrumb-navigation">
                     <li><a href="#" title="Trang chủ">Trang chủ</a></li>
@@ -17,13 +17,11 @@
 
                 </ul>
             </div>
-        </div>
+        </div> --}}
 
         <div class="detail">
             <div class="detail-box1">
                 <div class="detail-box1_img">
-
-
                     <div class="slideshow">
                         <a class="prev next_lr">❮</a>
                         <img src="" width="350" alt="" srcset="" class="image_product__detail" />
@@ -121,66 +119,6 @@
             <h2>Sách Cùng Lĩnh Vực</h2>
         </div>
         <div class="related-book">
-            <div class="product">
-                <div class="product-img">
-                    <img class="image"
-                        src="https://th.bing.com/th/id/OIP.qWOnNYv8xJF0P_JApoPZjAHaHE?w=174&h=184&c=7&r=0&o=5&pid=1.7"
-                        width="100%" alt="" />
-                </div>
-                <div class="product-title">
-                    <a class="product-name">Lời thú tội mới của một sát thủ kinh tế</a>
-                    <a class="product-author"> John Perkins</a>
-                    <div class="product-price">
-                        <p class="product-price__reduced">100.000 đ</p>
-                        <del class="product-price__original">150.000 đ</del>
-                    </div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-img">
-                    <img class="image"
-                        src="https://th.bing.com/th/id/OIP.qWOnNYv8xJF0P_JApoPZjAHaHE?w=174&h=184&c=7&r=0&o=5&pid=1.7"
-                        width="100%" alt="" />
-                </div>
-                <div class="product-title">
-                    <a class="product-name">Lời thú tội mới của một sát thủ kinh tế</a>
-                    <a class="product-author"> John Perkins</a>
-                    <div class="product-price">
-                        <p class="product-price__reduced">100.000 đ</p>
-                        <del class="product-price__original">150.000 đ</del>
-                    </div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-img">
-                    <img class="image"
-                        src="https://th.bing.com/th/id/OIP.qWOnNYv8xJF0P_JApoPZjAHaHE?w=174&h=184&c=7&r=0&o=5&pid=1.7"
-                        width="100%" alt="" />
-                </div>
-                <div class="product-title">
-                    <a class="product-name">Lời thú tội mới của một sát thủ kinh tế</a>
-                    <a class="product-author"> John Perkins</a>
-                    <div class="product-price">
-                        <p class="product-price__reduced">100.000 đ</p>
-                        <del class="product-price__original">150.000 đ</del>
-                    </div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-img">
-                    <img class="image"
-                        src="https://th.bing.com/th/id/OIP.qWOnNYv8xJF0P_JApoPZjAHaHE?w=174&h=184&c=7&r=0&o=5&pid=1.7"
-                        width="100%" alt="" />
-                </div>
-                <div class="product-title">
-                    <a class="product-name">Lời thú tội mới của một sát thủ kinh tế</a>
-                    <a class="product-author"> John Perkins</a>
-                    <div class="product-price">
-                        <p class="product-price__reduced">100.000 đ</p>
-                        <del class="product-price__original">150.000 đ</del>
-                    </div>
-                </div>
-            </div>
             <div class="product">
                 <div class="product-img">
                     <img class="image"

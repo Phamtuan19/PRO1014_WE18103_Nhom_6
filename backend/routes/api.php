@@ -27,4 +27,6 @@ Route::get('search', [ApiController::class, 'search']);
 Route::get('list/products/sale', [ApiController::class, 'listProductsSale']);
 Route::get('list/products', [ApiController::class, 'listProducts']);
 Route::get('shopping/cart', [ApiController::class, 'shoppingCart']);
-Route::get('product-detail/list-image/{code}', [ApiController::class, 'imageProductDetail']);
+Route::get('image-product/{code}', [ApiController::class, 'imageProduct']);
+Route::get('product-detail/{code}', [ApiController::class, 'productDetail']);
+

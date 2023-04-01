@@ -5,18 +5,7 @@ import { renderShoppingCart, quantityShoppingCartItem, renderSubMenu } from './r
 
 // console.log(renderSubMenu);
 
-service.getMenu()
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        renderSubMenu(data)
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-
-export function renderTotalCard() {
+function renderTotalCard() {
     let localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
 
     document.querySelector('.cart-total__quantity').innerText = localCart.length
@@ -25,7 +14,7 @@ renderTotalCard()
 
 
 // Render tổng tiền 1 sản phẩm và nhiều sản phẩm
-export function cartTotals() {
+function cartTotals() {
     const productPrice = document.querySelectorAll('.product-price')
     const productPriceSale = document.querySelectorAll('.product-price__sale')
     const editQuantity = document.querySelectorAll('.edit_quantity')
@@ -55,7 +44,7 @@ export function cartTotals() {
 
 
 // Tăng giảm số lượng sản phẩm và giới hạn số sản phẩm
-export function hendleClickQuantity() {
+function hendleClickQuantity() {
     const editQuantity = document.querySelectorAll('.edit_quantity')
 
     editQuantity.forEach(e => {
@@ -67,7 +56,7 @@ export function hendleClickQuantity() {
 
             if (cartItem) {
 
-                if(e.value <= 20){
+                if (e.value <= 20) {
                     cartItem.id = cartItem.id;
                     cartItem.code = cartItem.code;
                     cartItem.quantity = e.value;
@@ -75,7 +64,7 @@ export function hendleClickQuantity() {
                     // renderShoppingCart()
                     renderTotalCard()
                     cartTotals()
-                }else {
+                } else {
                     console.log("vui lòng liên hệ với quản trị viên để đặt hàng số lượng lớn");
                     e.value = 20;
                 }
@@ -133,7 +122,7 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
     }
 }
 
-export function showSuccessToast(message) {
+function showSuccessToast(message) {
     toast({
         title: "Thành công!",
         message: message,
@@ -142,7 +131,7 @@ export function showSuccessToast(message) {
     });
 }
 
-export function showErrorToast(message) {
+function showErrorToast(message) {
     toast({
         title: "Thất bại!",
         message: message,
@@ -152,7 +141,61 @@ export function showErrorToast(message) {
 }
 
 
-export function formatCurrency(money){
-    let formattedMoney = money.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+function formatCurrency(money) {
+    let formattedMoney = money.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     return formattedMoney;
+}
+
+
+
+// console.log(addCart);
+
+function hendleClickAddToCart() {
+    const addCart = document.querySelectorAll('.add-to__cart');
+    console.log(addCart);
+    if (addCart) {
+        addCart.forEach((item) => {
+            item.addEventListener('click', () => {
+                const id = item.dataset.id;
+                const code = item.dataset.code;
+
+                const localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
+
+                const cartItem = localCart.find(value => value.code === code);
+
+                if (cartItem) {
+                    cartItem.id = id;
+                    cartItem.code = code;
+                    cartItem.quantity = cartItem.quantity;
+                    localStorage.setItem('local-cart', JSON.stringify(localCart));
+                    showErrorToast("Sản phẩm đã tồn tại")
+                    renderTotalCard()
+                }
+                else {
+                    localCart.push(
+                        {
+                            id,
+                            code,
+                            quantity: 1,
+                        }
+                    );
+
+                    localStorage.setItem('local-cart', JSON.stringify(localCart));
+                    showSuccessToast("Thêm sản phẩm thành công")
+                    renderTotalCard()
+                }
+            })
+        })
+    }
+}
+
+
+export {
+    renderTotalCard,
+    cartTotals,
+    hendleClickQuantity,
+    showSuccessToast,
+    showErrorToast,
+    formatCurrency,
+    hendleClickAddToCart
 }

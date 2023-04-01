@@ -8,7 +8,7 @@ export const enpoint = {
     homeListProduct: 'list/products',
     shoppingCart: 'shopping/cart',
     order: 'order',
-    imageProduct: 'product-detail/list-image/',
+    imageProduct: 'image-product/',
 }
 
 export const redirectUrl = {

@@ -49,13 +49,14 @@
                     {{-- Api Render --}}
                 </div>
             </div>
+
             <div class="banner">
                 <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
             </div>
 
             {{-- List new products --}}
             <div class="show">
-                <div class="product">
+                <div class="product-list">
                     {{-- Product list --}}
                 </div>
             </div>
@@ -69,5 +70,4 @@
 
 @section('js')
     <script src="{{ asset('customer/js/main.js') }}"></script>
-    <script type="module" src="{{ asset('customer/js/homePage.js') }}"></script>
 @endsection

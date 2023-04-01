@@ -1,5 +1,5 @@
 import { service } from './service.js';
-import { shoppintCart, quantityShoppingCartItem } from './render__Html.js';
+import { renderOrder, quantityShoppingCartItem } from './render__Html.js';
 import { hendleClickQuantity, cartTotals, showSuccessToast, showErrorToast } from './basie.js';
 
 function apiProvinces() {
@@ -118,8 +118,8 @@ if (localCart.length > 0) {
             return response.json();
         })
         .then(function (data) {
-            // console.log(localCart);
-            order(data);
+            const elem = document.querySelector('.cart-table_body');
+            renderOrder(data, elem);
             quantityShoppingCartItem(localCart);
             cartTotals()
             hendleClickQuantity()
@@ -170,7 +170,8 @@ if (localCart.length > 0) {
                 return response.json();
             })
             .then(function (data) {
-                localStorage.clear();
+                console.log(data);
+                // localStorage.clear();
             })
             .catch(function (error) {
                 console.log(error);

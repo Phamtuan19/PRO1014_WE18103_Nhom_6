@@ -4,12 +4,10 @@ namespace App\Http\Controllers\customer\api;
 
 use Exception;
 use App\Models\Order;
-use App\Models\Product;
 use App\Models\OrderNote;
 use App\Models\Warehouse;
 use App\Models\OrderDetail;
 use App\Models\DiscountCode;
-use Illuminate\Http\Request;
 use App\Models\ProductDetail;
 use App\Models\DeliveryAddress;
 use App\Http\Controllers\Controller;
@@ -19,17 +17,19 @@ class OrderController extends Controller
 {
     public function store(OrderRequest $request)
     {
+        // return  response()->json(["data" => $request->all(),], 200);
+        // $products = json_decode($request->products, true);
         $products = $request->products;
 
         $discount = null;
 
-        return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
+        // return  response()->json(["msg" => "thêm sản phẩm thành công"], 200);
 
-        if (!empty($request->discount_code)) {
-            $discount = DiscountCode::where('discount_code', $request->discount_code)
-                ->where('remaining_quantity', '>', 0)
-                ->get();
-        }
+        // if (!empty($request->discount_code)) {
+        //     $discount = DiscountCode::where('discount_code', $request->discount_code)
+        //         ->where('remaining_quantity', '>', 0)
+        //         ->get();
+        // }
 
         $total = array_reduce($products, function ($accumulator, $item) {
             $productItem = ProductDetail::where("product_id", $item['id'])->get();
@@ -44,7 +44,6 @@ class OrderController extends Controller
 
         $newOrder = $this->storeOrder($request, $discount, $total);
 
-
         if ($newOrder) {
 
             $newDeliveryAddress = $this->deliveryAddress($request, $newOrder);
@@ -58,6 +57,7 @@ class OrderController extends Controller
 
             $newNotes = $this->orderNote($request, $newOrder);
 
+
             try {
                 if ($newDeliveryAddress && $newNotes) {
                     // if ($discount !== null) {
@@ -65,23 +65,24 @@ class OrderController extends Controller
                     //     if ($discount->save())
                     //         return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
                     // }
+                    // return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
+
 
                     foreach ($products as $item) {
+
                         $wareHouse = Warehouse::where("product_id", $item['id'])->get();
 
-                        $wareHouse->quantity_stock = $wareHouse->quantity_stock - $item['quantity'];
-                        $wareHouse->quantity_sold = $wareHouse->quantity_sold + $item['quantity'];
+                        $wareHouse[0]->quantity_stock = $wareHouse[0]->quantity_stock !== null ? $wareHouse[0]->quantity_stock - $item['quantity'] : 0;
+                        $wareHouse[0]->quantity_sold = $wareHouse[0]->quantity_sold !== null ? $wareHouse[0]->quantity_sold + $item['quantity'] : $item['quantity'];
 
-                        $wareHouse->save();
+                        $wareHouse[0]->save();
                     }
+
 
                     return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
                 }
             } catch (Exception $e) {
-                return response()->json(
-                    ["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"],
-                    500
-                );
+                return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 500);
             }
         } else {
             return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
@@ -182,7 +183,7 @@ class OrderController extends Controller
 
         try {
             if ($result)
-                return $result;;
+                return $result;
         } catch (Exception $e) {
             return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
         }

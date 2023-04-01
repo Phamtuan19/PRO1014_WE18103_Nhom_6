@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\HomeController;
-
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Admin\OrderController;
@@ -17,15 +15,14 @@ use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\Admin\CategoryController;
+
 use App\Http\Controllers\Email\SendMailController;
+
 use App\Http\Controllers\Admin\CustomersController;
 
 use App\Http\Controllers\Admin\StoreCatalogController;
-use App\Http\Controllers\customer\auth\LoginController;
 
 use App\Http\Controllers\Admin\PublishingHouseController;
-use App\Http\Controllers\customer\CustomerPageController;
-use App\Http\Controllers\customer\auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +45,6 @@ Route::middleware('custom.auth')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
 
-        Route::get('/', function () {
-            return "<h1>Trang Admin</h1>";
-        });
-
         Route::resource('/users', AdminController::class);
         Route::patch('/users/replay/{user}', [AdminController::class, 'replay'])->name('users.replay');
 
@@ -60,11 +53,10 @@ Route::middleware('custom.auth')->group(function () {
 
         Route::resource('categories', CategoryController::class);
 
-        Route::get('submenu', function () {
-            $categories = Categories::orderBy('created_at', 'DESC')->get();
-
-            return view('admin.categories.submenu', compact('categories'));
-        });
+        // Route::get('submenu', function () {
+        //     $categories = Categories::orderBy('created_at', 'DESC')->get();
+        //     return view('admin.categories.submenu', compact('categories'));
+        // });
 
         Route::resource('author', AuthorController::class);
 

@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="header__search">
-            <input type="text" />
+            <input type="text" value="" placeholder="Nhập tên sản phẩm để tìm kiếm ...." />
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
