@@ -7,15 +7,14 @@ export const enpoint = {
     homeProductSale: 'list/products/sale',
     homeListProduct: 'list/products',
     shoppingCart: 'shopping/cart',
-    order: 'order'
+    order: 'order',
+    imageProduct: 'image-product/',
 }
 
 export const redirectUrl = {
     home: `${baseUrl}home`,
     productDetail: `product-detail/`,
 }
-
-console.log(baseUrlAPi + enpoint.order);
 
 export const service = {
     getMenu() {
@@ -38,6 +37,9 @@ export const service = {
             },
             body: JSON.stringify(data)
         })
+    },
+    getImgaeProduct(id) {
+        return fetch(baseUrlAPi + enpoint.imageProduct + id)
     }
 }
 

@@ -1,6 +1,6 @@
 import { service } from './service.js';
-import { shoppintCart, quantityShoppingCartItem } from './render__Html.js';
-import { hendleClickQuantity, cartTotals, showSuccessToast } from './basie.js';
+import { renderOrder, quantityShoppingCartItem } from './render__Html.js';
+import { hendleClickQuantity, cartTotals, showSuccessToast, showErrorToast } from './basie.js';
 
 function apiProvinces() {
 
@@ -25,7 +25,7 @@ function apiProvinces() {
 
             const province = $(this).val().split("-");
 
-            $("#specific_address").val(province[1])
+            $(this).attr('data-province', province[1])
 
             $("#district").empty();
 
@@ -58,11 +58,7 @@ function apiProvinces() {
 
             const district = $(this).val().split("-");
 
-            const province = $("#province").val().split("-");
-
-            $("#specific_address").val(province[1] + ' - ' + district[1])
-
-            console.log($("#specific_address").val());
+            $(this).attr('data-district', district[1])
 
             $("#ward").empty();
 
@@ -92,26 +88,15 @@ function apiProvinces() {
         $("#ward").change(function () {
             if ($(this).val() != null) {
                 $("#house_number").prop("disabled", false)
+                $(this).attr("data-ward", $(this).val());
             }
-            const province = $("#province").val().split("-");
-
-            const district = $("#district").val().split("-");
 
             const ward = $(this).val();
-
-            $("#specific_address").val(province[1] + '-' + district[1] + '-' + ward)
         })
 
-        $("#house_number").keyup(function () {
-            const province = $("#province").val().split("-");
-
-            const district = $("#district").val().split("-");
-
-            const ward = $("#ward").val();
-
-            const house_number = $(this).val()
-
-            $("#specific_address").val(province[1] + ' - ' + district[1] + ' - ' + ward + ' - ' + house_number)
+        $("#house_number").change(function () {
+            console.log($(this).val());
+            $(this).attr("data-houseNumber", $(this).val());
         })
 
     });
@@ -121,24 +106,9 @@ apiProvinces()
 
 // ===================================
 
-const orderNote = document.querySelector('.order_note');
 
 const localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
 
-const dataOrder = {
-    user_id: $('.order_name').data('userid'),
-    name: $('.order_name').val(),
-    email: $(".order_email").val(),
-    phone: $(".order_phone").val(),
-    province_city: 'đâsdasas',
-    county_district: 'adasdsada',
-    house_number_street_name: 'ádasdsad',
-    content_note: 'coment',
-    products: localCart,
-    total_product_quantity: localCart.length,
-    payment_form: "COD",
-    discount_code_id: '',
-}
 let listProductCode = localCart.map(e => e.code).join(',');
 
 if (localCart.length > 0) {
@@ -148,7 +118,8 @@ if (localCart.length > 0) {
             return response.json();
         })
         .then(function (data) {
-            shoppintCart(data);
+            const elem = document.querySelector('.cart-table_body');
+            renderOrder(data, elem);
             quantityShoppingCartItem(localCart);
             cartTotals()
             hendleClickQuantity()
@@ -161,18 +132,49 @@ if (localCart.length > 0) {
 
     const btnOrder = document.querySelector('#order');
     btnOrder.onclick = () => {
-        console.log(orderNote.value);
 
-        console.log(dataOrder);
+        const name = document.querySelector('.order_name').value;
+        const phone = document.querySelector('.order_phone').value;
+        const email = document.querySelector('.order_email').value;
+        const province = document.querySelector('#province').getAttribute("data-province");
+        const district = document.querySelector('#district').getAttribute("data-district");
+        const house_number = document.querySelector('#house_number').getAttribute("data-houseNumber");
+        const ward = document.querySelector('#ward').getAttribute("data-ward");
+        const orderNote = document.querySelector('#order_note').value;
+
+        const delivery_form = document.querySelector('input[name="delivery_form"]:checked').value;
+
+        let dataOrder = {
+            user_id: $('.order_name').data('userid'),
+            name: name,
+            email: email,
+            phone: phone,
+            province_city: province,
+            county_district: district,
+            ward: ward,
+            house_number_street_name: house_number,
+            content_note: orderNote,
+            products: localCart,
+            total_product_quantity: localCart.length,
+            payment_form: delivery_form,
+            discount_code_id: null,
+        }
+
         service.postOrder(dataOrder)
             .then(function (response) {
+                if (response.status !== 200) {
+                    showErrorToast("Đã có lỗi xảy ra. Vui lòng kiểm tra lại")
+                    throw new Error(response.status);
+                }
+                showSuccessToast("Đặt hàng thành công");
                 return response.json();
             })
             .then(function (data) {
-                if(data.status_code === 200) {
-                    localStorage.clear();
-                    
-                }
+                console.log(data);
+                // localStorage.clear();
+            })
+            .catch(function (error) {
+                console.log(error);
             })
     }
 }

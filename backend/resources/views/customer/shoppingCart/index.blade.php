@@ -11,7 +11,6 @@
             @csrf
             <div class="row">
                 <div class="col-lg-9 pb-4" style="padding-right: 24px;">
-                    {{-- danh sách giỏ hàng --}}
                     <div class="cart-detail" style="background-color: #fff; border-radius: 5px; padding: 24px 12px;">
                         <table class="table table-bordered">
                             <thead>
@@ -88,6 +87,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </form>
     </div>

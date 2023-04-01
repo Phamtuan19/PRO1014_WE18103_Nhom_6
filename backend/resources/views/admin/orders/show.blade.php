@@ -75,70 +75,68 @@
                                 <div class="track">
                                     @foreach ($status as $value)
                                         <div class="step">
-                                            {{-- <span class="step-time">10-03-2023 14:50</span> --}}
                                             <span class="icon">
                                                 <i class="fa fa-check"></i>
                                             </span>
                                             <span class="text">{{ $value->name }}</span>
                                         </div>
                                     @endforeach
-                                    {{-- <div class="step active">
-                                        <span class="step-time">10-03-2023 14:50</span>
-                                        <span class="icon">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                        <span class="text">chờ xử lý</span>
-                                    </div>
-                                    <div class="step active">
-                                        <span class="icon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <span class="text">đang xử lý</span>
-                                    </div>
-                                    <div class="step">
-                                        <span class="icon">
-                                            <i class="fa fa-truck"></i>
-                                        </span>
-                                        <span class="text">đã vận chuyển</span>
-                                    </div>
-                                    <div class="step">
-                                        <span class="icon">
-                                            <i class="fa fa-box"></i>
-                                        </span>
-                                        <span class="text">Thành công</span>
-                                    </div>
-                                    <div class="step">
-                                        <span class="icon">
-                                            <i class="fa fa-box"></i>
-                                        </span>
-                                        <span class="text">Hủy</span>
-                                    </div> --}}
-
                                 </div>
                             </div>
                         </div>
 
+
                         <div class="col-12 mt-4">
                             <div class="row">
+                                {{-- Thông tin người mua hàng --}}
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label for="user_name">Người nhận: </label>
+                                        <input type="text" class="form-control" id="user_name" placeholder="Username"
+                                            value="{{ $deliveryAddress->name }}" style="line-height: 32px" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_phone">Email: </label>
+                                        <input type="text" class="form-control" id="user_phone" placeholder="Username"
+                                            value="{{ $deliveryAddress->email }}" style="line-height: 32px" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_email">Email: </label>
+                                        <input type="text" class="form-control" id="user_email" placeholder="Username"
+                                            value="{{ $deliveryAddress->email }}" style="line-height: 32px" disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="user_addres">Email: </label>
+                                        <input type="text" class="form-control" id="user_addres" placeholder="Username"
+                                            value="{{ $deliveryAddress->province_city . ' - ' . $deliveryAddress->county_district . ' - ' . $deliveryAddress->house_number_street_name }}"
+                                            style="line-height: 32px" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <label for="">Ghi chú: </label>
+                                    @foreach ($order[0]->note as $note)
+                                        <div style="padding: 15px 0; line-height: 1.5rem; border-bottom: 1px solid #f2edf3">
+                                            <span
+                                                style="font-size: 14px; margin-right: 12px; font-family: ubuntu-medium, sans-serif; font-weight: initial">
+                                                {{ $note->note_takers }}
+                                                : </span>
+                                            <span class="text-danger"
+                                                style="font-size: 14px; font-family: ubuntu-medium, sans-serif; font-weight: initial">{{ $note->content }}
+                                            </span>
+                                        </div>
+                                    @endforeach
+                                    <button type="button" class="btn btn-gradient-primary mt-3" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal" style="height: 40px !important">
+                                        Thêm ghi chú
+                                    </button>
+                                </div>
+                                {{-- END --}}
+
                                 {{-- Danh sách sản phẩm --}}
                                 <div class="col-8">
-
-                                    <div class="d-flex"
-                                        style="flex-direction: column; justify-content: flex-end; align-items: center">
-                                        <table class="table table-hover" style="border: 1px solid #ccc">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tổng tiền:</th>
-                                                    <th>{{ $order[0]->total_price }} VND</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Mã giảm giá:</th>
-                                                    <th>0 VND</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <table class="table table-hover" style="cursor: pointer; border: 1px solid #ccc">
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th> # </th>
@@ -158,7 +156,7 @@
                                                     <td> {{ $item->product->name }} </td>
                                                     <td>
                                                         <img src="{{ $item->product->image[0]->image_url }}" alt=""
-                                                            style=" width: 120px !important; height: 150px !important; border-radius: 0!important;">
+                                                            style=" width: 80px !important; height: 100px !important; border-radius: 0!important;">
                                                     </td>
                                                     <td> {{ $item->price }} VND </td>
                                                     <td> {{ $item->price_sale }} VND </td>
@@ -171,58 +169,10 @@
                                     </table>
                                 </div>
                                 {{-- END --}}
-                                {{-- Thông tin người mua hàng --}}
-                                <div class="col-4">
-                                    <table class="table table-hover" style="border: 1px solid #ccc">
-                                        <thead>
-                                            <tr>
-                                                <th style="padding: 15px !important">Người nhận:</th>
-                                                <th class="text-danger" style="padding: 15px !important">
-                                                    {{ $deliveryAddress->name }}</th>
 
-                                            </tr>
-                                            <tr>
-                                                <th style="padding: 15px !important">Email:</th>
-                                                <th class="text-danger" style="padding: 15px !important">
-                                                    {{ $deliveryAddress->email }}</th>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding: 15px !important">Phone:</th>
-                                                <th class="text-danger" style="padding: 15px !important">
-                                                    {{ $deliveryAddress->phone }}</th>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding: 15px !important">Address:</th>
-                                                <th class="text-danger" style="padding: 15px !important">
-                                                    {{ $deliveryAddress->province_city . ' - ' . $deliveryAddress->county_district . ' - ' . $deliveryAddress->house_number_street_name }}
-                                                </th>
-                                            </tr>
-                                        </thead>
-
-                                    </table>
-                                    <div class="" style="border: 1px solid #ccc">
-                                        @foreach ($order[0]->note as $note)
-                                            <div
-                                                style="padding: 15px; line-height: 1.5rem; border-bottom: 1px solid #f2edf3">
-                                                <span
-                                                    style="margin-right: 12px; font-family: ubuntu-medium, sans-serif; font-weight: initial">Notes
-                                                    ({{ $note->note_takers }})
-                                                    : </span>
-                                                <span class="text-danger"
-                                                    style="font-family: ubuntu-medium, sans-serif; font-weight: initial">{{ $note->content }}
-                                                </span>
-                                            </div>
-                                        @endforeach
-                                        <button type="button" class="btn btn-gradient-primary me-2 m-3"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                            style="height: 40px !important">
-                                            Thêm ghi chú
-                                        </button>
-                                    </div>
-                                </div>
-                                {{-- END --}}
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

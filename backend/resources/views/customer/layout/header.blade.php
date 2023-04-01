@@ -4,12 +4,12 @@
 <div class="header" >
     <div class="header-with-search">
         <div class="header__logo">
-            <a href="#">
+            <a href="{{ route('customer.home') }}">
                 <img src="https://bookbuy.vn/Images/frontend/base/logo-new.png" alt="" />
             </a>
         </div>
         <div class="header__search">
-            <input type="text" />
+            <input type="text" value="" placeholder="Nhập tên sản phẩm để tìm kiếm ...." />
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -47,7 +47,7 @@
                         <a href="#">
                             Đăng ký
                         </a>
-                        <a href="#" class="header-login">
+                        <a href="{{ route('customer.login') }}" class="header-login">
                             Đăng nhập
                         </a>
                     @endif

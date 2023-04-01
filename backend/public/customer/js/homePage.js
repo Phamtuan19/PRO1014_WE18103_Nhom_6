@@ -1,6 +1,18 @@
-import { productsItem } from './render__Html.js';
-import {service} from './service.js';
+import { productsItem, renderSubMenu } from './render__Html.js';
+import { service } from './service.js';
+import { hendleClickAddToCart } from './basie.js'
 
+service.getMenu()
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        renderSubMenu(data)
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
 
 // Api render products sale home page
 service.getHomeProductSale()
@@ -10,6 +22,7 @@ service.getHomeProductSale()
     .then(function (data) {
         const item_body = document.querySelector('.item-body')
         productsItem(data, item_body)
+        hendleClickAddToCart()
     })
     .catch(function (error) {
         console.log(error);
@@ -21,9 +34,18 @@ service.getHomeProductList()
         return response.json();
     })
     .then(function (data) {
-        const product = document.querySelector('.product')
+        const product = document.querySelector('.product-list')
         productsItem(data, product)
+        hendleClickAddToCart()
+
     })
     .catch(function (error) {
         console.log(error);
     })
+
+
+const headerUser = document.querySelector('.header__register-item');
+const downUser = document.querySelector('.register__title');
+headerUser.onclick = () => {
+    downUser.classList.toggle('d-none');
+}
