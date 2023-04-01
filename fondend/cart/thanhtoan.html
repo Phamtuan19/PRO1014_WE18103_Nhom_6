@@ -75,6 +75,41 @@
                     </div>
                     <input type="submit" value="Thay đổi" class="btn">
                 </form>
+                <!-- ẩn đi form này để validate được form -->
+                <div style="display: none;">
+                    <form action="" class="form" id="form">           
+                    <div class="edit_password">
+                        <div><span>Edit Password</span></div><br><br>
+                        <div  class="form-control"><label class="labes" >Tên đăng nhập</label><br><input type="text"  readonly  value="lamnt"></div> <br>
+                        <input type="checkbox"  class="thaydoi_password" name="" id=""><label for="">Thay đổi mật khẩu</label>
+
+                        <label class="thaydoi_hien" >
+                            <div class="form-control">
+                                <label class="labes">Mật khẩu cũ</label>
+                                <input type="password" name="" id="password_old" placeholder="Enter Your Password" autocomplete="off">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message</small>
+                            </div>
+                            <div class="form-control">
+                                <label class="labes">Mật khẩu mới</label>
+                                <input type="password" name="" id="password_new" placeholder="Enter Your Password" autocomplete="off">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message</small>
+                            </div>
+                            <div class="form-control">
+                                <label class="labes">Nhập lại mật khẩu mới</label>
+                                <input type="password" name="" id="cpassword" placeholder="Confirm Password" autocomplete="off">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error Message</small>
+                            </div>
+                        </label>
+                    </div>
+                </form> 
+                </div>
+                <!-- hết phần ẩn -->
             </div>
             <div class="cart_bottom mx px-3">
                 <!-- //nếu có sản phẩm  -->

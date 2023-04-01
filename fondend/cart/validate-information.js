@@ -21,10 +21,10 @@ const sendData = (usernameVal, sRate, Count) => {
 }
 
 const SuccessMsg = (usernameVal) => {
-    let formContr = document.getElementsByClassName('form-control');
+    let formContr = document.getElementsByClassName('form-control' );
     var Count = formContr.length - 1;
     for(var i = 0; i < formContr.length; i++){
-        if(formContr[i].className === "form-control success"){
+        if(formContr[i].className === 'form-control success'){
             var sRate = 0 + i;
             console.log(sRate);
             sendData(usernameVal, sRate, Count);
@@ -153,4 +153,13 @@ function send() {
 
 function reset_msg() {
     document.getElementById('msg').innerHTML = '';
+}
+function changeTypePassword(){
+    document.getElementById('password_old').type = document.getElementById('password_old').type == 'text' ? 'password' : 'text';
+}
+function changeTypePassword2(){
+    document.getElementById('password_new').type = document.getElementById('password_new').type == 'text' ? 'password' : 'text';
+}
+function changeTypePassword3(){
+    document.getElementById('cpassword').type = document.getElementById('cpassword').type == 'text' ? 'password' : 'text';
 }

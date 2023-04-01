@@ -133,3 +133,40 @@
 #img_user{
     border-radius: 50%;
 }
+.thaydoi_hien i{
+    display: block;
+}
+.form-control2{
+    margin-bottom: 10px;
+    width: 100%;
+    position: relative;
+}
+.form-control2 input {
+    width: 100%;
+    border: 2px solid #f0f0f0;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 12px;
+    display: block;
+}
+.form-control2 i {
+    position: absolute;
+    right: 12px;
+    top: 40px;
+}
+.form-control2 input[type="text"] ~ .fa-eye-slash{
+    display: none;
+}
+.form-control2 input[type="password"] ~ .fa-eye{
+    display: none;
+}
+.form-control2.error small {
+    visibility: visible;
+}
+
+.form-control2 small {
+    color: #df3434;
+    /* position: absolute; */
+    left: 0;
+    visibility: hidden;
+}

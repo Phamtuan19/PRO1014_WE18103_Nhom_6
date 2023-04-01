@@ -22,6 +22,9 @@
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
+    .form-control{
+        position: relative;
+    }
     </style>
 </head>
 <body>
@@ -223,25 +226,25 @@
             <input type="checkbox"  class="thaydoi_password" name="" id=""><label for="">Thay đổi mật khẩu</label>
             
             <label class="thaydoi_hien" >
-                <div class="form-control">
+                <div class="form-control2">
                     <label class="labes">Mật khẩu cũ</label>
                     <input type="password" name="" id="password_old" placeholder="Enter Your Password" autocomplete="off">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fa-regular fa-eye"onclick="changeTypePassword()"></i>
+                    <i class="fa-regular fa-eye-slash"onclick="changeTypePassword()"></i>
                     <small>Error Message</small>
                 </div>
-                <div class="form-control">
+                <div class="form-control2">
                     <label class="labes">Mật khẩu mới</label>
                     <input type="password" name="" id="password_new" placeholder="Enter Your Password" autocomplete="off">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fa-regular fa-eye"onclick="changeTypePassword2()"></i>
+                    <i class="fa-regular fa-eye-slash"onclick="changeTypePassword2()"></i>
                     <small>Error Message</small>
                 </div>
-                <div class="form-control">
+                <div class="form-control2">
                     <label class="labes">Nhập lại mật khẩu mới</label>
                     <input type="password" name="" id="cpassword" placeholder="Confirm Password" autocomplete="off">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fa-regular fa-eye"onclick="changeTypePassword3()"></i>
+                    <i class="fa-regular fa-eye-slash"onclick="changeTypePassword3()"></i>
                     <small>Error Message</small>
                 </div>
             </label>
