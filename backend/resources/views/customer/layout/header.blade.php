@@ -28,7 +28,7 @@
 
                             <div class="product-rows"></div>
                             <div class="total">
-                                <h1 class="cart-total">Tổng</h1>
+                                <span class="cart-total">Tổng</span>
                                 <span class="total-price">$0</span>
                                 <!-- <button class="purchase-btn">Đặt hàng</button> -->
                             </div>

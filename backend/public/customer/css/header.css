@@ -186,6 +186,11 @@
     padding: 12px 0;
 }
 
+.cart-total {
+    font-size: 16px;
+    font-weight: 600;
+}
+
 .total-price {
     font-size: 16px;
 }

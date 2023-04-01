@@ -38,44 +38,41 @@ export function productsItem(data, element) {
     const html = data.map(e => {
         // console.log();
         return `
-                <div class="product-item">
-                    <div class="item">
-                        <div class="image">
-                            <a href=""
-                                title="${e.name}">
-                                <img src="${e.image_url}"
-                                    alt="${e.name}">
-                            </a>
-                            <div class="extend-content"></div>
-                        </div>
-                        <div class="title">
-                            <a href="#" title="${e.name}">
-                                <h3>${e.name}</h3>
-                            </a>
-                        </div>
-                        <div class="price-group">
-                            <div class="">
-                                <span class="price sale-price">${formatCurrency(e.promotion_price)}</span>
-                                <span class="old-price">${formatCurrency(e.price)}</span>
-                            </div>
+        <div class="item-child">
+            <div class="item-img">
+                <div class="sale">30%</div>
+                <!-- <div class="sale">30%</div> -->
+                <img class="product-image"
+                    src="${e.image_url}"
+                    alt="" />
 
-                            <span class="button-like">
-                                <i class="fa-regular fa-heart "></i>
-                            </span>
-                        </div>
-                        <div class="button-group">
-                            <span data-id="${e.id}" data-code="${e.product_code}" class="button-buy-now add-to__cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                Thêm vào giỏ hàng
-                            </span>
-                        </div>
+                <button class="btn add-to__cart" data-id="${e.id}" data-code="${e.product_code}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Thêm giỏ hàng
+                </button>
+            </div>
+            <div class="item-title">
+                <div class="item-name">
+                     <p class="product_name">${e.name}</p>
+                </div>
+                <div class="item-author">
+                    <a href="#">${e.author_name}</a>
+                </div>
+                <div class="item-price">
+                    <div class="discount">
+                        <p class="price_sale">${e.price}</p>
+                        <span class="price">${e.promotion_price}</span>
                     </div>
                 </div>
+            </div>
+        </div>
         `
     })
 
     element.innerHTML = html.join('')
 }
+
+
 
 // Render trang giỏ hàng
 export function renderShoppingCart(data) {

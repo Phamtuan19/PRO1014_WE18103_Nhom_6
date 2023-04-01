@@ -2,21 +2,29 @@
 
 namespace App\Http\Controllers\customer\api;
 
+use App\Models\Image;
+use App\Models\Author;
 use App\Models\Product;
+use App\Models\PublishingHouse;
 use App\Models\Categories;
 use App\Models\StoreCatalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Image;
 
 class ApiController extends Controller
 {
     public function subMenu()
     {
-        $categories = StoreCatalog::with('categories', 'author', 'publishingHouse')->orderBy('location', 'ASC')->get()->toArray();
+        $catalog = StoreCatalog::select('name', 'slug')
+            ->orderBy('location', 'DESC')
+            ->get();
 
-        return $categories;
+        $categories = Categories::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
+        $athor = Author::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
+        $PublishingHouse = PublishingHouse::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
+
+        return $PublishingHouse;
     }
 
     public function search(Request $request)
@@ -46,7 +54,7 @@ class ApiController extends Controller
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->orderBy('created_at', 'desc')
-            ->limit(6)
+            // ->limit(6)
             ->get();
 
         return $products;

@@ -1,7 +1,8 @@
 @extends('customer.layout.index')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('customer/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('customer/css/homepage.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 @endsection
 
 @section('contents')
@@ -33,7 +34,7 @@
                 </div>
             </div>
         </div>
-        {{-- Product sale --}}
+        
         <div class="home-item">
             <div class="home-title">
                 <div class="title-icon">
@@ -45,8 +46,9 @@
                 <div class="title-border"></div>
             </div>
             <div class="show" id="slider">
-                <div class="item-body" id="slide">
-                    {{-- Api Render --}}
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                    </div>
                 </div>
             </div>
 
@@ -69,5 +71,17 @@
 
 
 @section('js')
-    <script src="{{ asset('customer/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    {{-- <script src="{{ asset('customer/js/main.js') }}"></script> --}}
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 5,
+            spaceBetween: 24,
+            freeMode: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
 @endsection

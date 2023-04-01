@@ -241,7 +241,6 @@ p {
     margin-right: auto;
     display: flex;
     align-items: center;
-    height: 3.6vw;
 }
 
 .home-title div:not(:last-child) {
