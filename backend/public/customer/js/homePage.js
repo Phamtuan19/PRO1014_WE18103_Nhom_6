@@ -43,9 +43,3 @@ service.getHomeProductList()
         console.log(error);
     })
 
-
-const headerUser = document.querySelector('.header__register-item');
-const downUser = document.querySelector('.register__title');
-headerUser.onclick = () => {
-    downUser.classList.toggle('d-none');
-}
