@@ -24,14 +24,14 @@
                     </a>
                     <div class="cart-modal-overlay">
                         <div class="cart-modal">
-                            <h1 class="cart-is-empty">Giỏ hàng trống</h1>
+                            <h6 class="cart-is-empty">Giỏ hàng trống</h6>
 
                             <div class="product-rows"></div>
                             <div class="total">
                                 <span class="cart-total">Tổng</span>
                                 <span class="total-price">$0</span>
-                                <!-- <button class="purchase-btn">Đặt hàng</button> -->
                             </div>
+                            <a href="" class="purchase-btn">Đi đến giỏ hàng</a>
                         </div>
                     </div>
                 </div>
@@ -69,39 +69,7 @@
         </div>
     </div>
     <div class="header-with-menu">
-        <ul>
-            <li class="menu-child active">
-                <a href="#">Sàn sách in</a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Sách điện tử</a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Sàn giao dịch bản quyền </a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Gian hàng sách</a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Các cơ sở thông tin và truyền thông</a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Đại sứ thắp lửa</a>
-                <ul class="sub-menu">
-                    <li class="sub-menu__li"><a class="sub-menu__a" href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li class="sub-menu__li"><a class="sub-menu__a" href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                    <li class="sub-menu__li"><a class="sub-menu__a" href="#">Đại sứ thắp lửa Jimmii Nguyễn</a></li>
-                </ul>
-            </li>
-            <li class="menu-child">
-                <a href="#">Nhà tài trợ</a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Tin tức - Sự kiện</a>
-            </li>
-            <li class="menu-child">
-                <a href="#">Sách đã xem</a>
-            </li>
+        <ul class="nav-categories">
         </ul>
     </div>
 </div>

@@ -5,25 +5,11 @@ import { runShoppingCart } from './shoppingCart.js';
 
 // Render menu header
 export const renderSubMenu = (data) => {
-    const navBar = document.querySelector('.navbar-menu')
-    const menu = [];
+    const navBar = document.querySelector('.nav-categories')
     const render = data.map((e) => {
-        let categories = []
-
-        if (e.categories.length > 0) {
-            e.categories.map((child) => {
-                categories = [...categories, ` <li><a href="#">${child.name}</a></li> `]
-            })
-        } else {
-            categories = [];
-        }
-
         return `
             <li class="menu-child" data-id="${e.id}">
                 <a href="#">${e.name}</a>
-                <ul>
-                    ${categories}
-                </ul>
             </li>
             `
     })
@@ -35,33 +21,28 @@ export const renderSubMenu = (data) => {
 // Render product page home
 export function productsItem(data, element) {
 
-    const html = data.map(e => {
-        // console.log();
+    const html = data.map( (e) => {
         return `
-        <div class="item-child">
-            <div class="item-img">
-                <div class="sale">30%</div>
-                <!-- <div class="sale">30%</div> -->
-                <img class="product-image"
-                    src="${e.image_url}"
-                    alt="" />
-
-                <button class="btn add-to__cart" data-id="${e.id}" data-code="${e.product_code}">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    Thêm giỏ hàng
-                </button>
-            </div>
-            <div class="item-title">
-                <div class="item-name">
-                     <p class="product_name">${e.name}</p>
-                </div>
-                <div class="item-author">
-                    <a href="#">${e.author_name}</a>
-                </div>
-                <div class="item-price">
-                    <div class="discount">
-                        <p class="price_sale">${e.price}</p>
-                        <span class="price">${e.promotion_price}</span>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="product__item">
+                <a href="${redirectUrl.productDetail(e.product_code)}">
+                    <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg"
+                        style="background-image: url('${e.image_url}')">
+                    </div>
+                </a>
+                <div class="product__item__text">
+                    <h6 class="product__item__name">${e.name}</h6>
+                    <span class="add-cart add-to__cart" data-id="${e.id}" data-code="${e.product_code}">+ Add To Cart</span>
+                    <div class="rating">
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <h5 class="product-price" style="margin-right: 12px">${formatCurrency(e.price)}</h5>
+                        <h6 class="product-price__sale" style="color:red">${formatCurrency(e.promotion_price)}</h6>
                     </div>
                 </div>
             </div>

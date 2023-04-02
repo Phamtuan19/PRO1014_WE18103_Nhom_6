@@ -152,7 +152,6 @@ function formatCurrency(money) {
 
 function hendleClickAddToCart() {
     const addCart = document.querySelectorAll('.add-to__cart');
-    console.log(addCart);
     if (addCart) {
         addCart.forEach((item) => {
             item.addEventListener('click', () => {

@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="home-item">
             <div class="home-title">
                 <div class="title-icon">
@@ -45,27 +45,25 @@
                 </div>
                 <div class="title-border"></div>
             </div>
-            <div class="show" id="slider">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                    </div>
+            <div class="container-fluid">
+                <div class="row product-sale__test">
                 </div>
             </div>
 
-            <div class="banner">
-                <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
-            </div>
-
-            {{-- List new products --}}
-            <div class="show">
-                <div class="product-list">
-                    {{-- Product list --}}
-                </div>
-            </div>
             <div class="banner">
                 <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
             </div>
         </div>
+
+        <div class="container-fluid">
+            <div class="row product-list__test">
+            </div>
+        </div>
+
+        <div class="banner">
+            <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
+        </div>
+    </div>
     </div>
 @endsection
 

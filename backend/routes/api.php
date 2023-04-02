@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\customer\api\ApiController;
 use App\Http\Controllers\customer\api\OrderController;
+use App\Http\Controllers\customer\api\ShopProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::get('list/products', [ApiController::class, 'listProducts']);
 Route::get('shopping/cart', [ApiController::class, 'shoppingCart']);
 Route::get('image-product/{code}', [ApiController::class, 'imageProduct']);
 Route::get('product-detail/{code}', [ApiController::class, 'productDetail']);
+
+Route::get('shop-list-products', [ShopProductsController::class, 'index']);
+Route::geT('categories-shop-list-products', [ShopProductsController::class, 'categories']);
 

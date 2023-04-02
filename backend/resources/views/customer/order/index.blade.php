@@ -181,6 +181,7 @@
 
                         <div class="col-7">
                             <div class="cart-detail">
+                               
                                 <h4 style="padding: 24px 0; text-align: center;">Thông tin sản phẩm</h4>
                                 <table class="table">
                                     <thead>

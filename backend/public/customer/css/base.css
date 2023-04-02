@@ -13,8 +13,8 @@
 }
 
 html {
-    font-size: 62.5%;
-    line-height: 1.6rem;
+    /* font-size: 62.5%;
+    line-height: 1.6rem; */
     box-sizing: border-box;
 }
 
@@ -129,7 +129,7 @@ p {
 }
 
 .page-main {
-    width: 95%;
+    width: 80%;
     margin: 0 auto;
 }
 

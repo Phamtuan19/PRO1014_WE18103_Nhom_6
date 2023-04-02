@@ -24,7 +24,7 @@ class ApiController extends Controller
         $athor = Author::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
         $PublishingHouse = PublishingHouse::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
 
-        return $PublishingHouse;
+        return $catalog;
     }
 
     public function search(Request $request)
@@ -54,6 +54,7 @@ class ApiController extends Controller
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->orderBy('created_at', 'desc')
+            ->whereNull('is_deleted')
             // ->limit(6)
             ->get();
 
@@ -76,6 +77,7 @@ class ApiController extends Controller
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->orderBy('promotion_price', 'ASC')
+            ->whereNull('is_deleted')
             ->limit(12)
             ->get();
 

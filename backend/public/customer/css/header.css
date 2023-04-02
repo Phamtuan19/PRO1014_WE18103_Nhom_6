@@ -1,3 +1,14 @@
+dl,
+ol,
+ul {
+    margin: 0 !important;
+}
+
+ol,
+ul {
+    padding-left: 0 !important;
+}
+
 .header {
     background-color: #02bbff;
     height: 25%;
@@ -26,7 +37,7 @@
 .header__search {
     display: flex;
     align-items: center;
-    height: 4rem;
+    height: 42px;
     width: 40%;
 }
 
@@ -144,13 +155,15 @@
 }
 
 .header-with-menu ul li a {
-    font-size: 16px;
+    font-size: 15px !important;
     color: var(--black-color);
+    text-decoration: none !important;
 }
 
 .header-with-menu ul .active a {
     color: red;
     font-weight: 600;
+
 }
 
 .cart-modal-overlay {
@@ -232,4 +245,29 @@
 .sub-menu__li:hover .sub-menu__a {
     transition: all 0.25s;
     color: #02bbff !important;
+}
+
+
+.purchase-btn {
+    font-size: 15px;
+    color: #e53637;
+    font-weight: 700;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    display: block;
+    padding: 12px 0;
+    text-align: center;
+}
+
+.purchase-btn::after {
+    content: "\f061 ";
+    font-family: "FontAwesome";
+    font-size: 15px;
+    font-weight: 700;
+    color: #e53637;
+    position: absolute;
+    right: 110px;
+    bottom: 15px;
+    line-height: 20px;
 }

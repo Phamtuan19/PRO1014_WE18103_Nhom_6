@@ -27,6 +27,8 @@
                             <tbody class="cart-table_body">
 
                             </tbody>
+
+                            
                         </table>
                     </div>
                 </div>
@@ -90,6 +92,7 @@
 
 
             </div>
+            
         </form>
     </div>
 @endsection

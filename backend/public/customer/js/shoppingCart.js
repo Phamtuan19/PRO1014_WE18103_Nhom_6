@@ -6,7 +6,7 @@ export function runShoppingCart() {
     const localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
 
     // console.log();
-    if (localCart.length > 0) {
+    // if (localCart.length > 0) {
         let listProductCode = localCart.map(e => e.code).join(',');
 
         service.getShoppingCart(listProductCode)
@@ -23,9 +23,9 @@ export function runShoppingCart() {
             .catch(function (error) {
                 console.log(error);
             })
-    }else {
-        document.querySelector('.row').innerHTML = '<h1>hello</h1>'
-    }
+    // }else {
+    //     // document.querySelector('.cart-table_body').innerHTML = ''
+    // }
 }
 
 runShoppingCart()
