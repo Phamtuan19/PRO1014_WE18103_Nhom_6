@@ -14,6 +14,7 @@ class PublishingHouse extends Model
     protected $fillable = [
         'name',
         'slug',
+        'storecatalog_id',
     ];
 
     public function queryPublishingHouse($query, $orderBy = null, $orderType = null)

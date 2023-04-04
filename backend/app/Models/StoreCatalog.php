@@ -17,6 +17,7 @@ class StoreCatalog extends Model
         'lug',
         'path',
         'parent_id',
+        'location',
     ];
 
     public function children()

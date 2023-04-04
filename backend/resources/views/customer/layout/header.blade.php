@@ -24,9 +24,25 @@
                     </a>
                     <div class="cart-modal-overlay">
                         <div class="cart-modal">
-                            <h6 class="cart-is-empty">Giỏ hàng trống</h6>
-
-                            <div class="product-rows"></div>
+                            <h6 class="cart-is-empty">Có <span class="cart_quantity_total"></span> sản phẩm trong giỏ
+                                hàng</h6>
+                            <div class="product-rows">
+                                {{-- <div class="cart-item">
+                                    <div class="cart-item__image"
+                                        style="background-image: url('');">
+                                    </div>
+                                    <div class="cart-item__info">
+                                        <p class="item__info__name">Nuốt Ngược Nước Mắt Để Trưởng Thành Hơn</p>
+                                        <div class="cart-item__price">
+                                            <p class="item__price">165.000 ₫</p>
+                                            <p class="item__price__original">135.000 ₫</p>
+                                        </div>
+                                    </div>
+                                    <div class="cart-item__quantity">
+                                        <span class="item__quantity">1</span>
+                                    </div>
+                                </div> --}}
+                            </div>
                             <div class="total">
                                 <span class="cart-total">Tổng</span>
                                 <span class="total-price">$0</span>

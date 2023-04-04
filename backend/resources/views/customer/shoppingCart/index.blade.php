@@ -1,9 +1,7 @@
 @extends('customer.layout.index')
 @section('link')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="{{ asset('customer/css/shoppingCart.css') }}">
+    <link rel="stylesheet" href="{{ asset('customer/css/shoppingCart.css') }}">
 @endsection
 @section('contents')
     <div class="container mt-4" id="container-cart">
@@ -19,7 +17,8 @@
                                     <th scope="col" style="text-align: left !important;">Tên sản phẩm</th>
                                     <th scope="col" style="text-align: left !important;">Giá gốc</th>
                                     <th scope="col" style="text-align: left !important;">Giá sale</th>
-                                    <th class="total__money" scope="col" style="text-align: left !important;">Số lượng</th>
+                                    <th class="total__money" scope="col" style="text-align: left !important;">Số lượng
+                                    </th>
                                     <th scope="col" style="text-align: left !important;">Thành tiền</th>
                                     <th scope="col" width="50px" style="text-align: left !important;"></th>
                                 </tr>
@@ -28,7 +27,7 @@
 
                             </tbody>
 
-                            
+
                         </table>
                     </div>
                 </div>
@@ -73,9 +72,10 @@
                                                 <label>Tổng cộng:</label>
                                             </td>
                                             <td class="cart-total-right">
-                                                <input type="text" class="form-control total-payment"
+                                                <input type="text" class="form-control total-payment "
                                                     name="total_payment" value="0" readonly
-                                                    style="border: none; text-align: end; padding: 3px 0; font-size: 16px;font-weight: 500;" disabled>
+                                                    style="border: none; text-align: end; padding: 3px 0; font-size: 16px;font-weight: 500;"
+                                                    disabled>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -83,8 +83,8 @@
                             </div>
 
                             <div class="checkout-buttons">
-                                <a href="{{ route('order') }}"
-                                    class="btn btn-primary checkout-button">Tiến hành đặt hàng</a>
+                                <a href="{{ route('order') }}" class="btn btn-primary checkout-button">Tiến hành đặt
+                                    hàng</a>
                             </div>
                         </div>
                     </div>
@@ -92,14 +92,11 @@
 
 
             </div>
-            
+
         </form>
     </div>
 @endsection
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous">
-</script>
-<script type="module" src="{{ asset('customer/js/shoppingCart.js') }}"></script>
+    <script type="module" src="{{ asset('customer/js/Layout/ShoppingPage/index.js') }}"></script>
 @endsection

@@ -20,10 +20,6 @@ class ApiController extends Controller
             ->orderBy('location', 'DESC')
             ->get();
 
-        $categories = Categories::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
-        $athor = Author::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
-        $PublishingHouse = PublishingHouse::select('name', 'slug', 'storecatalog_id')->whereNotNull('storecatalog_id')->get();
-
         return $catalog;
     }
 
@@ -35,14 +31,16 @@ class ApiController extends Controller
             $products = Product::with(['detail', 'image'])->orderBy('created_at', 'DESC')->get();
         }
 
-        return $products;
+        return response()->json($products, 200);
     }
 
     public function listProducts(Request $request)
     {
         $products = DB::table('products')
             ->select(
-                'products.*',
+                'products.id',
+                'products.product_code',
+                'products.name',
                 'products_detail.price as price',
                 'products_detail.promotion_price as promotion_price',
                 'image.image_url as image_url',
@@ -53,19 +51,36 @@ class ApiController extends Controller
             ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('products.created_at', 'desc')
             ->whereNull('is_deleted')
-            // ->limit(6)
+            ->limit(8)
             ->get();
 
-        return $products;
+        return response()->json($products, 200);
     }
 
-    public function listProductsSale()
+    public function homeProductSale(Request $request)
     {
+        $orderBy = 'warehouses.quantity_sold';
+        $orderType = 'ASC';
+
+        if ($request->orderBy == 'bestseller') {
+            $orderBy = 'warehouses.quantity_sold';
+        }
+
+        if ($request->orderBy == 'newest') {
+            $orderBy = 'products.created_at';
+        }
+
+        if ($request->orderBy == 'bestPrice') {
+            $orderBy = 'products_detail.promotion_price';
+        }
+
         $products = DB::table('products')
             ->select(
-                'products.*',
+                'products.id',
+                'products.product_code',
+                'products.name',
                 'products_detail.price as price',
                 'products_detail.promotion_price as promotion_price',
                 'image.image_url as image_url',
@@ -76,54 +91,39 @@ class ApiController extends Controller
             ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
-            ->orderBy('promotion_price', 'ASC')
+            ->orderBy($orderBy, $orderType)
             ->whereNull('is_deleted')
-            ->limit(12)
+            ->limit(4)
             ->get();
 
-        return $products;
+        return response()->json($products, 200);
     }
 
     public function shoppingCart(Request $request)
     {
-
-
         $arrayCode = explode(',', request()->code);
 
         if (is_array($arrayCode)) {
 
-            $product = Product::with('detail', 'image', 'author')->whereIn('product_code', $arrayCode)->get();
+            $products = DB::table('products')
+                ->select(
+                    'products.id',
+                    'products.product_code',
+                    'products.name',
+                    'products_detail.price as price',
+                    'products_detail.promotion_price as promotion_price',
+                    'image.image_url as image_url',
+                    'author.name as author_name',
+                    'warehouses.quantity_sold as quantity_sold'
+                )
+                ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
+                ->leftJoin('image', 'image.product_id', '=', 'products.id')
+                ->leftJoin('author', 'author.id', '=', 'products.author_id')
+                ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
+                ->whereNull('is_deleted')
+                ->whereIn('product_code', $arrayCode)
+                ->get();
         }
-
-
-
-        return  $product;
-    }
-
-    function productDetail($code)
-    {
-        $image = DB::table('products')
-            ->select(
-                'products.*',
-                'products_detail.price',
-                'products_detail.promotion_price',
-                'products_detail.size',
-                'products_detail.page_number',
-                'products_detail.weight',
-            )
-            ->where('product_code', '=', $code)
-            ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
-            ->get();
-
-        return response()->json(["data" => $image,], 200);
-    }
-
-    public function imageProduct($code)
-    {
-        $product = Product::where('product_code', $code)->get();
-
-        $image = Image::select('image_url')->where('product_id', $product[0]->id)->get();
-
-        return response()->json(["data" => $image,], 200);
+        return  response()->json($products, 200);
     }
 }

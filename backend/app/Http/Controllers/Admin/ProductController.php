@@ -73,8 +73,6 @@ class ProductController extends Controller
      */
     public function store(CreateRequest $request)
     {
-
-
         $products = new Product();
 
         $productDetail = new ProductDetail();
@@ -137,10 +135,12 @@ class ProductController extends Controller
                     ];
 
                     Image::insert($dataImage);
-                    // dd('ok');
                 }
             }
         }
+
+
+        dd('ok');
 
         return back()->with('msg', 'successfully');
     }
@@ -198,7 +198,6 @@ class ProductController extends Controller
         $product->title = $request->title;
         $product->introduction = $request->introduction;
         $product->publication_date = $request->publication_date;
-        $product->created_at = date("Y-m-d H:i:s");
         $product->updated_at = date("Y-m-d H:i:s");
 
         if ($product->save()) {

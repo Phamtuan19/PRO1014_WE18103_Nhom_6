@@ -36,7 +36,7 @@ use App\Http\Controllers\Admin\PublishingHouseController;
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('trang-chu');
 });
 
 Auth::routes();

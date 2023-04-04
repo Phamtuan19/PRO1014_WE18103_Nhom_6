@@ -15,6 +15,7 @@ class Categories extends Model
         'name',
         'slug',
         'parent_id',
+        'storecatalog_id'
     ];
 
     public function queryCategory($query, $orderBy = null, $orderType = null)

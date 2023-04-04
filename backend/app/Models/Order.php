@@ -21,7 +21,6 @@ class Order extends Model
     protected $fillable = [
         'code_order',
         'user_id',
-        'anonymous_id',
         'discount_code_id',
         'order_status_id',
         'payment_form',
@@ -32,11 +31,6 @@ class Order extends Model
     ];
 
     public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
-
-    public function anonymous()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

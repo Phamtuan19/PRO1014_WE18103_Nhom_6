@@ -74,7 +74,7 @@ img {
     line-height: 1.6rem;
 }
 
-.product__item__text .add-cart {
+.product__item__text .add-to__cart {
     font-size: 15px;
     color: #e53637;
     font-weight: 700;
@@ -117,7 +117,7 @@ img {
     opacity: 0;
 }
 
-.product__item:hover .product__item__text .add-cart {
+.product__item:hover .product__item__text .add-to__cart {
     left: 25px;
     top: 22px;
     opacity: 1;

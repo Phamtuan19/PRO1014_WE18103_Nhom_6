@@ -19,6 +19,7 @@ class CreateStoreCatalogTable extends Migration
             $table->string('slug');
             $table->string('path');
             $table->integer('parent_id');
+            $table->integer('location');
             $table->timestamps();
         });
     }

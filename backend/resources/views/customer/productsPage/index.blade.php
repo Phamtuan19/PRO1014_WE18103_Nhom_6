@@ -1,13 +1,12 @@
 @extends('customer.layout.index')
 
 @section('link')
-
     <link rel="stylesheet" href="{{ asset('customer/css/products-list.css') }}">
 @endsection
 
 @section('contents')
-    <div class="container my-4">
-        <div class="row">
+    <div class="container my-4" style="background: #FFF">
+        <div class="row" style="padding-top: 24px">
             <div class="col-lg-3 col-md-2">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
@@ -29,15 +28,6 @@
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll sidebar__categories" tabindex="1"
                                                 style="overflow-y: hidden; outline: none;">
-                                                <li><a href="#">Men (20)</a></li>
-                                                <li><a href="#">Women (20)</a></li>
-                                                <li><a href="#">Bags (20)</a></li>
-                                                <li><a href="#">Clothing (20)</a></li>
-                                                <li><a href="#">Shoes (20)</a></li>
-                                                <li><a href="#">Accessories (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -45,16 +35,12 @@
                             </div>
                             <div class="card">
                                 <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                                    <a data-toggle="collapse" data-target="#collapseTwo">Tác giả</a>
                                 </div>
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
-                                            <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
+                                            <ul class="sidebar__author">
                                             </ul>
                                         </div>
                                     </div>
@@ -79,7 +65,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            {{-- <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseFour">Size</a>
                                 </div>
@@ -169,7 +155,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -180,25 +166,31 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__left">
-                                {{-- <p>Showing 1–12 of 126 results</p> --}}
+                                {{-- <span class="btn">
+                                    danh mục
+                                    <i class="fa-solid fa-xmark delete__option"></i>
+                                </span> --}}
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-end align-items-center">
-                            <div class="shop__product__option__right">
+
+                            <div class=" shop__product__option__right ">
                                 <p>Xắp xếp theo:</p>
-                                <select>
-                                    <option value="">Giá thấp nhất</option>
-                                    <option value="">Giá thấp nhất</option>
-                                    <option value="">Sản phẩm mới nhất</option>
-                                    <option value="">Sản phẩm cũ nhất</option>
+                                <select id="order__by" class="query__shop__products__select" data-key="sort"
+                                    data-value="san-pham-moi">
+                                    <option value="gia-thap-nhat">Giá thấp nhất</option>
+                                    <option value="gia-cao-nhat">Giá cao nhất</option>
+                                    <option value="san-pham-moi" selected>Sản phẩm mới nhất</option>
+                                    <option value="san-pham-cu">Sản phẩm cũ nhất</option>
                                 </select>
                             </div>
-                            <div class="shop__product__option__right" style="margin-left: 12px">
+                            <div class=" shop__product__option__right " style="margin-left: 12px">
                                 <p>Hiển thị :</p>
-                                <select>
-                                    <option value="">12</option>
-                                    <option value="">24</option>
-                                    <option value="">36</option>
+                                <select id="pagination" class="query__shop__products__select" data-key="pagination"
+                                    data-value="2">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </div>
                         </div>
@@ -211,7 +203,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="product__pagination">
-                            <a class="active" href="#">1</a>
+                            <a class="active" href="#" data-key="page" data-value="1">1</a>
                             <a href="#">2</a>
                             <a href="#">3</a>
                             <span>...</span>
@@ -225,7 +217,7 @@
 @endsection
 
 @section('js')
-    <script type="module" src="{{ asset('customer/js/list-products.js') }}"></script>
+    <script type="module" src="{{ asset('customer/js/Layout/ProductPage/index.js') }}"></script>
 
-    <script></script>
+    {{-- <script></script> --}}
 @endsection
