@@ -6,8 +6,9 @@ use App\Models\Image;
 
 use App\Models\Author;
 
-use App\Models\ProductDetail;
+use App\Models\Warehouse;
 
+use App\Models\ProductDetail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -40,9 +41,9 @@ class Product extends Model
             $orderType = "DESC";
         }
 
-        if(empty($isDelete)){
+        if (empty($isDelete)) {
             $query = $query->whereNull('is_deleted');
-        }else {
+        } else {
             $query = $query->whereNotNull('is_deleted');
         }
 
@@ -80,5 +81,10 @@ class Product extends Model
     public function image()
     {
         return $this->hasMany(Image::class, 'product_id', 'id');
+    }
+
+    public function warehouses()
+    {
+        return $this->hasMany(Warehouse::class);
     }
 }
