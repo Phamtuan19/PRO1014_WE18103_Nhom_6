@@ -31,6 +31,14 @@ class OrderController extends Controller
         //         ->get();
         // }
 
+        foreach ($products as $key => $value) {
+            $warehouse = Warehouse::where('product_id', $value['id'])->get();
+
+            if($warehouse[0]->quantity_stock < $value['quantity']){
+                return response()->json(["msg" => "Số lượng sản phẩm vượt quá số lượng trong kho"], 205);
+            }
+        }
+
         $total = array_reduce($products, function ($accumulator, $item) {
             $productItem = ProductDetail::where("product_id", $item['id'])->get();
 
@@ -60,24 +68,14 @@ class OrderController extends Controller
 
             try {
                 if ($newDeliveryAddress && $newNotes) {
-                    // if ($discount !== null) {
-                    //     // $discount->remaining_quantity = $discount->remaining_quantity - 1;
-                    //     if ($discount->save())
-                    //         return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
-                    // }
-                    // return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
-
-
                     foreach ($products as $item) {
-
                         $wareHouse = Warehouse::where("product_id", $item['id'])->get();
 
-                        $wareHouse[0]->quantity_stock = $wareHouse[0]->quantity_stock !== null ? $wareHouse[0]->quantity_stock - $item['quantity'] : 0;
-                        $wareHouse[0]->quantity_sold = $wareHouse[0]->quantity_sold !== null ? $wareHouse[0]->quantity_sold + $item['quantity'] : $item['quantity'];
+                        $wareHouse[0]->quantity_stock = $wareHouse[0]->quantity_stock - $item['quantity'];
+                        $wareHouse[0]->quantity_sold = $wareHouse[0]->quantity_sold + $item['quantity'];
 
                         $wareHouse[0]->save();
                     }
-
 
                     return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
                 }
@@ -96,7 +94,7 @@ class OrderController extends Controller
                 'code_order' => CodeOrder(),
                 'user_id' => !empty($request->user_id) ? $request->user_id : null,
                 'discount_code_id' => !empty($discount) > 0 ? $discount->id : null,
-                'order_status' => 1,
+                'order_status_id' => 1,
                 'payment_form' => $request->payment_form,
                 'payment_status_id' => 2,
                 'quantity' => $total["total_quantity"], // default
@@ -148,7 +146,6 @@ class OrderController extends Controller
         if ($newOrder && !empty($request->content_note)) {
             $data = [
                 'order_id' => $newOrder->id,
-                'user_id' => !isset($request->user_id) ? $request->user_id : 1,
                 'note_takers' => $request->name . ' (khách hàng)',
                 'content' => $request->content_note,
             ];
@@ -169,7 +166,6 @@ class OrderController extends Controller
     public function deliveryAddress($request, $newOrder)
     {
         $data = [
-            'user_id' => $request->user_id,
             'order_id' => $newOrder->id,
             'name' => $request->name,
             'email' => $request->email,

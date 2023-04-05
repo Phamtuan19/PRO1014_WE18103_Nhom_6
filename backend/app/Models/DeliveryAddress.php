@@ -14,7 +14,6 @@ class DeliveryAddress extends Model
     protected $table = 'delivery_address';
 
     protected $fillable = [
-        'user_id',
         'order_id',
         'name',
         'email',

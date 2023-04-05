@@ -96,6 +96,8 @@ class ProductController extends Controller
         $dataWarehouse = [
             'product_id' => $saveProduct->id,
             'import_quantity' => $request->quantity,
+            'quantity_stock' => $request->quantity,
+            'quantity_sold' => 0,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ];
