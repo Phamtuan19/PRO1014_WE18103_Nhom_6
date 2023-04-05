@@ -57,7 +57,7 @@ body {
 
 .input-group input {
    font-size: .9rem;
-   padding: 8px;
+   padding: 10px 10px 5px 10px;
    border: none;
    outline: none;
    border-bottom: 2px solid hsl(0, 0%, 83%);
