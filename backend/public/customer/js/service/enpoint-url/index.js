@@ -1,7 +1,8 @@
 import { baseUrl } from "../baseUrl/index.js";
 
 const enpointUrl = {
-    home: `${baseUrl}home`,
+    home: `${baseUrl}trang-chu`,
+    login: `${baseUrl}customer/login`,
     pageProducts() {
         return baseUrl + 'danh-sach-san-pham?';
     },

@@ -9,6 +9,10 @@ ul {
     padding-left: 0 !important;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .header {
     background-color: #02bbff;
     height: 25%;
@@ -102,7 +106,7 @@ ul {
     display: none;
     position: absolute;
     top: 75%;
-    right: 0;
+    right: -25px;
     min-width: 200px;
     padding: 6px 0;
     background-color: #FFF;

@@ -3,6 +3,26 @@ import { baseUrlAPi } from "../baseUrl/index.js";
 import enpointApi from "../enpoint-api/index.js";
 
 const serviceApi = {
+    // Auth
+    postLogin(data) {
+        return fetch(baseUrlAPi + enpointApi.login, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    },
+    postLogout(data) {
+        return fetch(baseUrlAPi + enpointApi.logout, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${data}`
+            },
+        })
+    },
+    //
     getMenu() {
         return fetch(baseUrlAPi + enpointApi.menu)
     },

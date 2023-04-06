@@ -1,4 +1,9 @@
 const enpointApi = {
+
+    // Auth
+    login: 'customer/login',
+    logout: 'customer/logout',
+    //
     menu: 'submenu/',
     pageHomeProductFilter: 'page-home/products-filter-controls',
     pageHomeProductList: 'page-home/products-list',

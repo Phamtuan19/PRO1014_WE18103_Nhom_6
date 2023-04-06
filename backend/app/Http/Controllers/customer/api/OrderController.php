@@ -12,6 +12,10 @@ use App\Models\ProductDetail;
 use App\Models\DeliveryAddress;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\OrderRequest;
+use App\Mail\Order\Successfully;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class OrderController extends Controller
 {
@@ -76,6 +80,8 @@ class OrderController extends Controller
 
                         $wareHouse[0]->save();
                     }
+
+                    $this->sendEmailOrderSuccess($newDeliveryAddress, $newOrder);
 
                     return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
                 }
@@ -183,5 +189,16 @@ class OrderController extends Controller
         } catch (Exception $e) {
             return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
         }
+    }
+
+    function sendEmailOrderSuccess ($deliveryAddress, $newOrder) {
+        $data = [
+            'order' => $newOrder,
+            'address' => $deliveryAddress,
+        ];
+
+        $send = $deliveryAddress->email;
+
+        return Mail::to($send)->send(new Successfully($data)) ? true : false;
     }
 }

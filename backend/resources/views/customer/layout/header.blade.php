@@ -57,29 +57,10 @@
                 <div class="header-nav__icon">
                     <i class="fa-solid fa-user header-icons"></i>
                 </div>
-                <div class="register__title d-none">
-                    @if (Auth::guard('customers')->check())
-                        <a href="#">
-                            {{ Auth::guard('customers')->user()->name }}
-                        </a>
-                        <div>
-                            <a href="{{ route('customer.logout') }}" class="login-link"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Đăng xuất
-                            </a>
-                            <form id="logout-form" action="{{ route('customer.logout') }}" method="POST"
-                                class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    @else
-                        <a href="#">
-                            Đăng ký
-                        </a>
-                        <a href="{{ route('customer.login') }}" class="header-login">
-                            Đăng nhập
-                        </a>
-                    @endif
+                <div class="register__title">
+
+                    
+
                 </div>
             </div>
         </div>

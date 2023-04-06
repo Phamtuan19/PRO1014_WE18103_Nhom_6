@@ -6,6 +6,7 @@ use App\Http\Controllers\customer\api\ApiController;
 use App\Http\Controllers\customer\api\OrderController;
 use App\Http\Controllers\customer\api\HomeProductListController;
 use App\Http\Controllers\customer\api\ProductDetailController;
+use App\Http\Controllers\customer\auth\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,12 @@ Route::get('page-product/products-list', [HomeProductListController::class, 'ind
 Route::geT('page-product/fliter-categories', [HomeProductListController::class, 'categories']);
 
 Route::geT('page-product/fliter-auhtor', [HomeProductListController::class, 'author']);
+
+
+// API đăng ký đăng && đăng nhập && quên mật khẩu
+
+Route::post('customer/login', [loginController::class, 'login']);
+Route::middleware('auth:api') -> group(function () {
+    Route::post('customer/logout', [loginController::class, 'logout']);
+});
+

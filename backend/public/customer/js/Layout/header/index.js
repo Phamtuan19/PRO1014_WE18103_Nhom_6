@@ -1,6 +1,6 @@
 
 
-import { serviceApi } from '../../service/index.js';
+import { serviceApi, enpointUrl } from '../../service/index.js';
 import { cartItem, renderTotalCard } from '../../render/index.js';
 
 renderTotalCard()
@@ -28,24 +28,41 @@ document.querySelector(".header__cart-item").onmouseover = () => {
     }
 }
 
+const authUser = localStorage.getItem('authUser') ? JSON.parse(localStorage.getItem('authUser')) : null;
+const register__title = document.querySelector(".register__title");
 
+console.log(register__title);
+if (authUser !== null) {
+    register__title.innerHTML = `
+        <a href="#"> Thông tin tài khoản </a>
+        <div>
+            <a href="#" class="logout-link"> Đăng xuất </a>
+        </div>
+    `
+    handleLogout(authUser)
 
-// function renderCartMiniTotalMoney() {
-//     const price_sale = document.querySelectorAll(".item__price__original");
-//     const price = document.querySelectorAll(".item__price ");
-//     const quantity = document.querySelectorAll(".item__quantity ");
+} else {
+    register__title.innerHTML = `
+    <a href="#"> Đăng ký </a>
+    <a href="${enpointUrl.login}" class="header-login"> Đăng nhập </a>
+    `
+}
 
-//     const total__money = 0
-
-//     let a = quantity.forEach((e, index) => {
-//         let total = 0;
-//         let money =  Number(price_sale[index].dataset.sale) * Number(quantity[index].dataset.quantity)
-
-//         document.querySelector(".total-price").innerText = formatCurrency(total + money)
-//     });
-
-//     console.log(a);
-
-//     // document.querySelector(".total-price").innerText = formatCurrency(total)
-// }
+function handleLogout(data) {
+    const logout = document.querySelector(".logout-link");
+    // console.log(authUser.token);
+    logout.onclick = (event) => {
+        event.preventDefault();
+        serviceApi.postLogout(authUser.token)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                localStorage.removeItem('authUser');
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+}
 
