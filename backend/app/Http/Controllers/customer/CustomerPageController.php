@@ -47,4 +47,8 @@ class CustomerPageController extends Controller
     public function order () {
         return view('customer.order.index');
     }
+
+    public function listProducts () {
+        return view('customer.productsPage.index');
+    }
 }

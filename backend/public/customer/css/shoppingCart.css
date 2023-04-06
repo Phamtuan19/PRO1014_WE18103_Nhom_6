@@ -166,8 +166,6 @@ input {
     line-height: 45px;
 }
 
-
-
 .container-cart_h1 {
     text-align: center;
     margin-bottom: 24px;
@@ -175,12 +173,24 @@ input {
     font-weight: 600;
 }
 
-
-
 .input-group {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
+}
+
+.total__money {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.total-payment {
+    flex: 3;
+    border: none;
+    text-align: end;
+    padding: 3px 0;
+    font-size: 16px;
+    font-weight: 600;
 }
