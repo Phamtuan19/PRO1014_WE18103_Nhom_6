@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStoreTable extends Migration
+class CreateAdvertiseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('store', function (Blueprint $table) {
+        Schema::create('advertise', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->integer('user_id');
             $table->string('name')->nullable();
@@ -21,7 +21,7 @@ class CreateStoreTable extends Migration
             $table->text('public_id');
             $table->string('location');
             $table->text('describe');
-            $table->date('deleted');
+            $table->date('is_deleted');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateStoreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store');
+        Schema::dropIfExists('advertise');
     }
 }

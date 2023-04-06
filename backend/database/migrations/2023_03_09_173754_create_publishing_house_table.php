@@ -17,6 +17,7 @@ class CreatePublishingHouseTable extends Migration
             $table->integerIncrements('id');
             $table->string('name');
             $table->string('slug');
+            $table->integer('storecatalog_id')->nullable();
             $table->timestamps();
         });
     }

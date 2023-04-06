@@ -14,6 +14,7 @@ class Author extends Model
     protected $fillable = [
         'name',
         'slug',
+        'storecatalog_id'
     ];
 
     public function queryAuthor($query, $orderBy = null, $orderType = null)
@@ -33,6 +34,6 @@ class Author extends Model
     }
 
     public function product (){
-        return $this->hasMany(Product::class, 'id', 'author_id');
+        return $this->hasMany(Product::class, 'author_id', 'id');
     }
 }

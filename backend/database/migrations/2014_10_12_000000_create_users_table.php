@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->text('image_public_id')->nullable();
             $table->integer('position_id');
             $table->string('password');
+            $table->string('discount_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->date('is_deleted')->nullable();
