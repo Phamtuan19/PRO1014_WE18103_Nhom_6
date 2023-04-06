@@ -1,7 +1,8 @@
 @extends('customer.layout.index')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('customer/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('customer/css/homepage.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 @endsection
 
 @section('contents')
@@ -33,41 +34,49 @@
                 </div>
             </div>
         </div>
-        {{-- Product sale --}}
+
         <div class="home-item">
-            <div class="home-title">
-                <div class="title-icon">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <div class="title-text">
-                    <h3>Sách giảm giá</h3>
-                </div>
-                <div class="title-border"></div>
+            <div class="home__title">
+                <span class="home__title__text active" data-filter="bestseller">Bán chạy nhất</span>
+                <span class="home__title__text" data-filter="newest">Mới nhất</span>
+                <span class="home__title__text" data-filter="bestPrice">Giá tốt nhất</span>
             </div>
-            <div class="show" id="slider">
-                <div class="item-body" id="slide">
-                    {{-- Api Render --}}
+            <div class="container-fluid">
+                <div class="row product-sale__test">
+                    {{-- API Render --}}
                 </div>
-            </div>
-
-            <div class="banner">
-                <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
-            </div>
-
-            {{-- List new products --}}
-            <div class="show">
-                <div class="product-list">
-                    {{-- Product list --}}
-                </div>
-            </div>
-            <div class="banner">
-                <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
             </div>
         </div>
+
+        <div class="container-fluid">
+            <div class="product__title">
+                <span class="product__title__text active">Gợi ý cho bạn</span>
+            </div>
+            <div class="row product-list__test">
+            </div>
+        </div>
+
+        <div class="banner">
+            <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
+        </div>
+    </div>
     </div>
 @endsection
 
 
 @section('js')
-    <script src="{{ asset('customer/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script type="module" src="{{ asset('customer/js/Layout/HomePage/index.js') }}"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 5,
+            spaceBetween: 24,
+            freeMode: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
 @endsection

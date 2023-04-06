@@ -16,7 +16,6 @@ class CreateProductsDetailTable extends Migration
         Schema::create('products_detail', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->integer('product_id');
-            $table->text('image_id');
             $table->string('size');
             $table->integer('page_number');
             $table->string('weight'); // cân nặng

@@ -20,4 +20,6 @@ class ProductDetail extends Model
         'price',
         'promotion_price'
     ];
+
+    
 }

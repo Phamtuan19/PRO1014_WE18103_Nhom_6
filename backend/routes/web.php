@@ -36,7 +36,7 @@ use App\Http\Controllers\Admin\PublishingHouseController;
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('trang-chu');
 });
 
 Auth::routes();
@@ -72,8 +72,14 @@ Route::middleware('custom.auth')->group(function () {
         Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
         Route::patch('order/status/{order}', [OrderController::class, 'orderStatusUpdate'])->name('orders.status.update');
 
-        Route::get('send/mail', [SendMailController::class, 'send_email']);
+
+
+
     });
+});
+
+Route::get('send-mail-order', function () {
+    return view('mails.Order.Order-successfully');
 });
 
 

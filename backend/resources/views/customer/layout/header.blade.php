@@ -1,7 +1,7 @@
 <div id="toast">
 
 </div>
-<div class="header" >
+<div class="header">
     <div class="header-with-search">
         <div class="header__logo">
             <a href="{{ route('customer.home') }}">
@@ -22,6 +22,34 @@
                         <span class="cart-total__quantity">0</span>
                         <i class="fa-solid fa-cart-shopping header-icons"></i>
                     </a>
+                    <div class="cart-modal-overlay">
+                        <div class="cart-modal">
+                            <h6 class="cart-is-empty">Có <span class="cart_quantity_total"></span> sản phẩm trong giỏ
+                                hàng</h6>
+                            <div class="product-rows">
+                                {{-- <div class="cart-item">
+                                    <div class="cart-item__image"
+                                        style="background-image: url('');">
+                                    </div>
+                                    <div class="cart-item__info">
+                                        <p class="item__info__name">Nuốt Ngược Nước Mắt Để Trưởng Thành Hơn</p>
+                                        <div class="cart-item__price">
+                                            <p class="item__price">165.000 ₫</p>
+                                            <p class="item__price__original">135.000 ₫</p>
+                                        </div>
+                                    </div>
+                                    <div class="cart-item__quantity">
+                                        <span class="item__quantity">1</span>
+                                    </div>
+                                </div> --}}
+                            </div>
+                            <div class="total">
+                                <span class="cart-total">Tổng</span>
+                                <span class="total-price">$0</span>
+                            </div>
+                            <a href="" class="purchase-btn">Đi đến giỏ hàng</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -29,35 +57,16 @@
                 <div class="header-nav__icon">
                     <i class="fa-solid fa-user header-icons"></i>
                 </div>
-                <div class="register__title d-none">
-                    @if (Auth::guard('customers')->check())
-                        <a href="#">
-                            {{ Auth::guard('customers')->user()->name }}
-                        </a>
-                        <div>
-                            <a href="{{ route('customer.logout') }}" class="login-link"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Đăng xuất
-                            </a>
-                            <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    @else
-                        <a href="#">
-                            Đăng ký
-                        </a>
-                        <a href="{{ route('customer.login') }}" class="header-login">
-                            Đăng nhập
-                        </a>
-                    @endif
+                <div class="register__title">
+
+                    
+
                 </div>
             </div>
         </div>
     </div>
     <div class="header-with-menu">
-        <ul class="navbar-menu">
-
+        <ul class="nav-categories">
         </ul>
     </div>
 </div>

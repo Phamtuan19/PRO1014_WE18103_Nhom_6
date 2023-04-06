@@ -21,7 +21,7 @@ class CreateAdvertiseTable extends Migration
             $table->text('public_id');
             $table->string('location');
             $table->text('describe');
-            $table->date('deleted');
+            $table->date('is_deleted');
             $table->timestamps();
         });
     }

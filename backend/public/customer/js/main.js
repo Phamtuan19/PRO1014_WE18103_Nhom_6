@@ -1,4 +1,3 @@
-// bodyshow banner
 var counter = 1;
 setInterval(function () {
     document.getElementById('radio' + counter).checked = true;
@@ -7,8 +6,8 @@ setInterval(function () {
         counter = 1;
     }
 }, 3000);
-// bodyshow product
-// ('use strict');
+// slideshow product
+('use strict');
 
 productScroll();
 
@@ -52,7 +51,7 @@ function productScroll() {
 
 function translateX(position) {
     //translate items
-    slide.style.left = position * 100 + '%';
+    slide.style.left = position * -210 + 'px';
 }
 
 function getCount(parent, getChildrensChildren) {
