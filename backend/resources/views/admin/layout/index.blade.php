@@ -22,6 +22,7 @@
 
     <link rel="stylesheet" href="{{ asset('admin/custom_admin/custom.css') }}">
 
+    @yield('link_css')
 
 
 </head>

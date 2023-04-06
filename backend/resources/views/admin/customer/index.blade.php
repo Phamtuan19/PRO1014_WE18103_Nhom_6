@@ -77,7 +77,7 @@
                                         <td> {{ $user->phone }} </td>
                                         <td> {{ $user->positions->name }} </td>
                                         <td> {{ $user->address }} </td>
-                                        <td> {{ date_format($user->created_at, 'd-m-Y') }} </td>
+                                        <td> {{ ($user->created_at) }} </td>
                                         <td>
                                             <div class="d-flex justify-content-between">
 

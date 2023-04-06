@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="pay.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <link rel="stylesheet" href="css-infor-user.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
@@ -302,12 +303,23 @@
                     </table>
                 </div>
                 <div class="xacnhan_dathang">
-                    <a href="trangthaidonhang.html">
-                        <p onclick='return confirm("Bạn chắc chắn đặt hàng?")'' >Xác nhận và đặt hàng</p>
-                    </a>
+                        <button id="submit_donhang" >Xác nhận và đặt hàng</button>
             </div>
         </div>
     </div>
 </body>
+<script>
+    document.getElementById('submit_donhang').addEventListener('click',function(){
+        Swal.fire({
+title: 'Bạn chắc chắn muốn đặt hàng',
+showCancelButton: true,
+confirmButtonText: 'OK',
+}).then((result) => {
+if (result.isConfirmed) {
+window.location="trangthaidonhang.html"
+}
+})
+    })
+</script>
 <script src="validate-information.js"></script>
 </html>
