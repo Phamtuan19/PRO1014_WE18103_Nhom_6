@@ -4,10 +4,9 @@ import { formatCurrency } from '../../method/index.js';
 import { handleClickAddToCart } from '../../handle/index.js';
 
 function productItem(data, element, colNumber) {
-
     const html = data.map(e => {
         return `
-            <div class="col-lg-${colNumber} col-md-4 col-sm-6">
+            <div class="col-lg-${colNumber ? colNumber : 3} col-md-4 col-sm-6">
                 <div class="product__item">
                     <a href="${enpointUrl.productDetail(e.product_code)}">
                         <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg"
@@ -31,9 +30,8 @@ function productItem(data, element, colNumber) {
                     </div>
                 </div>
             </div>
-            `
+        `
     });
-
     element.innerHTML = html.join('');
 
     handleClickAddToCart();

@@ -19,10 +19,11 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Email\SendMailController;
 
 use App\Http\Controllers\Admin\CustomersController;
-
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\StoreCatalogController;
 
 use App\Http\Controllers\Admin\PublishingHouseController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,7 @@ Route::middleware('custom.auth')->group(function () {
         Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
         Route::patch('order/status/{order}', [OrderController::class, 'orderStatusUpdate'])->name('orders.status.update');
 
-
+        Route::get('dashboard', [DashboardController::class, 'index'])->name("dashboard");
 
 
     });

@@ -1,5 +1,14 @@
 
+
+/*
+*
+*   Validation Page Order
+*
+*/
+
+
 import { validation } from "../../../method/index.js";
+import callApiOrder from "../call-api-order/index.js";
 
 const name = document.querySelector(".order_name")
 const email = document.querySelector(".order_email")
@@ -32,49 +41,34 @@ function handleBlur() {
     ward.onblur = () => {
         validation(['required'], ward, 'Số nhà');
     }
-    order_note.onblur = () => {
-        validation(['required'], order_note, 'ghi chú');
-    }
 }
 
 function handleClickSubmit() {
 
-    let isValidOrder = false;
+    let isCheck = false;
+    const input_radio = document.querySelectorAll(".delivery_form");
 
-    const delivery_form = document.querySelectorAll(".delivery_form");
-    let isValid = {
-        is: false,
-        value: ''
-    };
-    for (let i = 0; i < delivery_form.length; i++) {
-        if (validation(['required'], delivery_form[i], 'Hình thức thanh toán')) {
-            isValid.is = true;
-            isValid.value = delivery_form[i].dataset.value;
+    for (let i = 0; i < input_radio.length; i++) {
+        if (input_radio[i].checked) {
+            isCheck = true;
+            console.log(input_radio[i].dataset.value);
+            document.querySelector(".error_delivery_form").innerText = "";
             break;
+        } else {
+            document.querySelector(".error_delivery_form").innerText = "Loại thanh toán không được để trống.";
         }
     }
 
-    if (!isValid.is) {
-        console.log('không được để trống!!!');
-    } else {
-        console.log(isValid.value);
-    }
+    if (validation(['required', 'min|6'], name, 'Tên khách hàng') &&
+        validation(['required', 'email'], email, 'email') &&
+        validation(['required', 'phone'], phone, 'Số điện thoại') &&
+        validation(['required'], province, 'TỈnh') &&
+        validation(['required'], district, 'Huyện') &&
+        validation(['required'], house_number, 'Xã') &&
+        validation(['required'], ward, 'Số nhà') &&  isCheck) {
 
-    if (validation(['required', 'min|6'], name, 'Tên khách hàng') ||
-        validation(['required', 'email'], email, 'email') ||
-        validation(['required', 'phone'], phone, 'Số điện thoại') ||
-        validation(['required'], province, 'TỈnh') ||
-        validation(['required'], district, 'Huyện') ||
-        validation(['required'], house_number, 'Xã') ||
-        validation(['required'], ward, 'Số nhà') ||
-        validation(['required'], order_note, 'ghi chú')) {
-        isValidOrder = true
-    }
+        callApiOrder();
 
-    if (isValid.is && isValidOrder) {
-        console.log(true);
-    } else {
-        console.log(false);
     }
 }
 

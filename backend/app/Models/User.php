@@ -30,6 +30,7 @@ class User extends Authenticatable
         'position_id',
         'password',
         'is_deleted',
+        'token_verify',
     ];
 
     /**

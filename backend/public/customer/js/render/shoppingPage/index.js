@@ -18,9 +18,6 @@ function shoppingCart(data, array) {
                     <div class="form-group">
                         <input type="text" class="form-control" value="Tác giả: ${e.author_name}" disabled style="border: none; padding: 3px 0; background-color: #fff; color: #86868B; font-size: 14px">
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Màu sắc: RED" disabled style="border: none; padding: 3px 0; background-color: #fff;  color: #86868B;font-size: 14px">
-                    </div>
                 </td>
 
                 <th class="product-price__sale" data-price ="${(e.promotion_price)}" style="font-size: 14px; text-align: left !important;">${formatCurrency(e.promotion_price)} đ</th>
@@ -47,5 +44,7 @@ function shoppingCart(data, array) {
 
     deleteCartItem()
 }
+
+function renderTotal () {}
 
 export default shoppingCart

@@ -146,30 +146,33 @@
                                     </tbody>
                                 </table>
 
-                                <div class="d-flex justify-content-between" style="flex: 1">
+                                <div class="d-flex justify-content-between align-items-baseline" style="flex: 1">
                                     <p class="total__money">Tổng Cộng:</p>
                                     <input type="text" class="total-payment" name="total_money" value="0"
                                         readonly>
                                 </div>
 
-                                <p class="mt-3" style="font-weight: 600; font-size: 16px">
-                                    Hình thức giao hàng
-                                </p>
-                                <div class="form-check mt-1">
-                                    <input class="form-check-input delivery_form" type="radio" name="delivery_form"
-                                        id="delivery_form_1" data-value="Pay">
-                                    <label class="form-check-label" for="delivery_form_1">
-                                        Chuyển khoản
-                                    </label>
-                                </div>
+                                <div class="">
+                                    <p class="mt-3" style="font-weight: 600; font-size: 16px">
+                                        Hình thức giao hàng
+                                    </p>
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input delivery_form" type="radio" name="delivery_form"
+                                            id="delivery_form_1" data-value="Pay">
+                                        <label class="form-check-label" for="delivery_form_1">
+                                            Chuyển khoản
+                                        </label>
+                                    </div>
 
-                                <div class="form-check mt-1">
-                                    <input class="form-check-input delivery_form" type="radio" name="delivery_form"
-                                        id="delivery_form_2" data-value="COD">
-                                    <label class="form-check-label" for="delivery_form_2">
-                                        Thanh toán khi nhận hàng
-                                    </label>
-                                    <span></span>
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input delivery_form" type="radio" name="delivery_form"
+                                            id="delivery_form_2" data-value="COD">
+                                        <label class="form-check-label" for="delivery_form_2">
+                                            Thanh toán khi nhận hàng
+                                        </label>
+                                    </div>
+
+                                    <span class="error error_delivery_form"></span>
                                 </div>
                             </div>
 

@@ -13,15 +13,63 @@ const serviceApi = {
             body: JSON.stringify(data)
         })
     },
-    postLogout(data) {
+    postLogout(token) {
         return fetch(baseUrlAPi + enpointApi.logout, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${data}`
+                'Authorization': `Bearer ${token}`
             },
         })
     },
+    postRegister(data) {
+        return fetch(baseUrlAPi + enpointApi.register, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    },
+    patchResetPassword(email) {
+        return fetch(baseUrlAPi + enpointApi.resetPassword, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(email),
+        })
+    },
+    patchComfirmPassword(password) {
+        return fetch(baseUrlAPi + enpointApi.confirmPassword, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(password),
+        })
+    },
+    patchUpdateUser(id, token, data) {
+        return fetch(baseUrlAPi + enpointApi.userUpdate + id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        })
+    },
+    patchUpdatePassword(id, token, data) {
+        return fetch(baseUrlAPi + enpointApi.userUpdatePassword + id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        })
+    },
+
     //
     getMenu() {
         return fetch(baseUrlAPi + enpointApi.menu)

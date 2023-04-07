@@ -19,8 +19,10 @@ use App\Http\Controllers\customer\auth\loginController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    // API Thay đổi thông tin người dùng
+    Route::patch('user/update/{user}', [loginController::class, 'update']);
+    Route::patch('user/update/password/{user}', [loginController::class, 'updatePassword']);
 });
 
 // Auto Render
@@ -61,7 +63,13 @@ Route::geT('page-product/fliter-auhtor', [HomeProductListController::class, 'aut
 // API đăng ký đăng && đăng nhập && quên mật khẩu
 
 Route::post('customer/login', [loginController::class, 'login']);
-Route::middleware('auth:api') -> group(function () {
+
+Route::middleware('auth:api')->group(function () {
     Route::post('customer/logout', [loginController::class, 'logout']);
 });
 
+Route::post("customer/register", [loginController::class, 'register']);
+
+Route::patch("rest-password", [loginController::class, 'resetPassword']);
+
+Route::patch("comfirm-password", [loginController::class, 'comfirmPassword']);

@@ -13,7 +13,7 @@
 
             <div class="col-4" style="margin-top: 25px;">
                 <div class="product_detail__info">
-
+                    {{-- Render APi --}}
                 </div>
             </div>
         </div>
