@@ -26,7 +26,9 @@ class loginController extends Controller
 
     public function login(loginRequest $request)
     {
-        $user = User::select('id', 'name', 'email', 'phone', 'password')->where('email', $request->email)->where('position_id', 2)->first();
+        $user = User::select('id', 'name', 'email', 'phone', 'password', 'address')
+            ->where('email', $request->email)
+            ->where('position_id', 2)->first();
 
         if ($user->count() === 0) {
             return response()->json(['msg' => "Tài khoản không tồn tại"], 402);
@@ -42,21 +44,31 @@ class loginController extends Controller
 
     public function logout(Request $request)
     {
-
-        // $user = User::find($request->user['id']);
-
-        // return response()->json($user, 200);
-        // if ($user->token()->revoke()) {
-        //     return response()->json(["msg" => "Đăng xuất thành công!"], 200);
-        // } else {
-        //     return response()->json(["msg" => "Đăng xuất Thất bại!"], 402);
-        // }
-
         try {
             if ($request->user()->token()->revoke())
                 return response()->json(["msg" => "Đăng xuất thành công!"], 200);
         } catch (Exception $e) {
             return response()->json(["msg" => "Đăng xuất thành công!"], 200);
+        }
+    }
+
+    public function update(Request $request, User $user)
+    {
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json(["msg" => "Email hoặc mật khẩu không chính xác!"], 402);
+        } else {
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->address = $request->address;
+
+            try {
+                $user->save();
+                return response()->json(["msg" => "Cập nhật thành công!", 'user' => $user], 200);
+            } catch (\Throwable $th) {
+                return response()->json(["msg" => "Cập nhật thông tin thất bại!"], 402);
+            }
         }
     }
 }

@@ -98,5 +98,5 @@
 @endsection
 
 @section('js')
-    <script type="module" src="{{ asset('customer/js/Layout/ShoppingPage/index.js') }}"></script>
+    <script type="module" src="{{ asset('customer/js/Layout/UserInfo/index.js') }}"></script>
 @endsection
