@@ -7,7 +7,7 @@ renderTotalCard()
 const filterControls = document.querySelectorAll('.home__title__text')
 const filter = "bestseller";
 CallApiProductSale(filter)
-
+const item_body = document.querySelector('.product-sale__test')
 // Call APi render Product sale
 function CallApiProductSale(filter) {
     serviceApi.getHomeProductSale(filter)
@@ -15,7 +15,6 @@ function CallApiProductSale(filter) {
             return response.json();
         })
         .then(function (data) {
-            const item_body = document.querySelector('.product-sale__test')
             productItem(data, item_body, 3)
             filterControls.forEach((e) => {
                 e.onclick = () => {
@@ -27,6 +26,9 @@ function CallApiProductSale(filter) {
                     CallApiProductSale(e.dataset.filter)
                 }
             })
+
+
+
         })
         .catch(function (error) {
             console.log(error);

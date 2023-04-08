@@ -27,3 +27,4 @@ Route::post('customer/logout', function () {
 Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->name('shopping/cart');
 Route::get('order', [CustomerPageController::class, 'order'])->name('order');
 Route::get('danh-sach-san-pham', [CustomerPageController::class, 'listProducts'])->name('listProducts');
+Route::get('tai-khoan', [CustomerPageController::class, 'userInfo']);

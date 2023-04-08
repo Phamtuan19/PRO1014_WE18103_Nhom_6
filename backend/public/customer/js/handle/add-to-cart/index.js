@@ -1,7 +1,7 @@
 
 import {showErrorToast, showSuccessToast } from '../../message/index.js';
 import { renderTotalCard } from '../../render/index.js';
-
+import callApiMiniCart from '../../Layout/header/car-mini/index.js';
 
 // Add To Cart
 function handleClickAddToCart() {
@@ -9,7 +9,6 @@ function handleClickAddToCart() {
     if (addCart) {
         addCart.forEach((item, index) => {
             item.addEventListener('click', (event) => {
-                console.log(index + ": " + item);
                 event.preventDefault();
 
                 const id = item.dataset.id;
@@ -29,10 +28,12 @@ function handleClickAddToCart() {
                     );
 
                     localStorage.setItem('local-cart', JSON.stringify(localCart));
+                    callApiMiniCart()
                     showSuccessToast("Thêm sản phẩm thành công")
                     renderTotalCard()
                 }
-                else {
+
+                if (cartItem) {
                     showErrorToast("Sản phẩm đã tồn tại trong giỏ hàng!")
                 }
             })

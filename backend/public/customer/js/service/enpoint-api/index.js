@@ -3,6 +3,7 @@ const enpointApi = {
     // Auth
     login: 'customer/login',
     logout: 'customer/logout',
+    userUpdate: 'user/update/',
     //
     menu: 'submenu/',
     pageHomeProductFilter: 'page-home/products-filter-controls',
@@ -21,6 +22,7 @@ const enpointApi = {
     pageProductDetailIntroduce: 'page-product-detail-introduce/',
     pageProductDetailInformation: 'page-product-detail-information/',
     pageProductDetailSuggest: 'page-product-details-suggest/',
+
 }
 
 export default enpointApi;
