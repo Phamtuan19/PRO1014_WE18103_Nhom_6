@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\customer\auth\loginController;
@@ -30,3 +31,6 @@ Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->na
 Route::get('order', [CustomerPageController::class, 'order'])->name('order');
 Route::get('danh-sach-san-pham', [CustomerPageController::class, 'listProducts'])->name('listProducts');
 Route::get('tai-khoan', [CustomerPageController::class, 'userInfo']);
+Route::get('san-pham-da-mua', [CustomersController::class, 'listProducts']);
+
+Route::get('danh-sách-bai-viet', [CustomersController::class, 'index']);

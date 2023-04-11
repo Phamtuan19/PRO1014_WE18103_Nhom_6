@@ -33,10 +33,10 @@ class loginController extends Controller
     {
         $user = User::select('id', 'name', 'email', 'phone', 'password', 'address')
             ->where('email', $request->email)
-            ->where('position_id', 2)->get();
+            ->where('position_id', 2)->first();
 
-        return response()->json(['msg' => $request->password], 200);
-        if (!$user) {
+        // return response()->json($user->count(), 200);
+        if ($user->count() === 0) {
 
             return response()->json(['msg' => "Tài khoản không tồn tại"], 402);
         } else if (!Hash::check($request->password, $user->password)) {

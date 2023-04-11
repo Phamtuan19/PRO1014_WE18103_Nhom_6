@@ -173,4 +173,9 @@ class CustomersController extends Controller
 
         return back()->with('msg', 'successfully');
     }
+
+    public function listProducts()
+    {
+        return view("customer.authListOrder.index");
+    }
 }

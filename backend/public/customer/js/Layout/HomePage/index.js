@@ -26,9 +26,6 @@ function CallApiProductSale(filter) {
                     CallApiProductSale(e.dataset.filter)
                 }
             })
-
-
-
         })
         .catch(function (error) {
             console.log(error);

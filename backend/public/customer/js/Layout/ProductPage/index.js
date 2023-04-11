@@ -9,7 +9,7 @@ function callApiRenderProducts(filter = '') {
         .then(function (data) {
             console.log(data);
             const elements = document.querySelector('.products_list__items');
-            productItem(data.data, elements);
+            productItem(data.data, elements, 4);
             pagination(data)
             rederOptionFilter()
         })

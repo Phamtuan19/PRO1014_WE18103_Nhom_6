@@ -238,7 +238,7 @@
         const logOut = document.querySelector('.no-arrow');
         const adminName = document.querySelector('.admin_name-dropdown');
 
-        console.log([adminName]);
+        // console.log([adminName]);
 
         logOut.onclick = () => {
             adminName.classList.remove('d-none')

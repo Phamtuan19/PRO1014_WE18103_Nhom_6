@@ -30,7 +30,7 @@
                         <span class="error"></span>
                     </div>
 
-                    <button class="button">Đăng nhập</button>
+                    <button class="button">Xác nhận</button>
                     <h3 class="forgotpass"><a href="./forgotpass.html">Đăng nhập</a></h3>
                     <h3 class="signup-header"><a href="{{ route('customer.register') }}">Đăng ký tài khoản</a></h3>
 

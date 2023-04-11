@@ -1,6 +1,6 @@
-.edit-profile {}
-
-.edit-password {}
+.order__table {
+    text-align: center !important;
+}
 
 .btn_save_password {
     margin-top: 12px;
@@ -114,3 +114,12 @@
     background-color: #0858f7 !important;
     color: #fff;
 }
+
+.set-bg {
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+

@@ -13,6 +13,9 @@
                     <button class="btn user__action__password">
                         Edit Password
                     </button>
+                    <button class="btn user__action__order">
+                        Order
+                    </button>
                 </div>
             </div>
             <div class="col-12 user__title"></div>
@@ -127,8 +130,8 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="current_password" class="form-label">Mật khẩu cũ</label>
-                                <input type="text" class="form-control from-custom current_password" id="current_password"
-                                    placeholder="Nhập mật khẩu hiện tại ...">
+                                <input type="text" class="form-control from-custom current_password"
+                                    id="current_password" placeholder="Nhập mật khẩu hiện tại ...">
                                 <span class="error"></span>
                             </div>
                         </div>
@@ -143,13 +146,52 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="new_password__confirm" class="form-label">Nhập lại mật khẩu mới</label>
-                                <input type="text" class="form-control from-custom new_password__confirm" id="new_password__confirm"
-                                    placeholder="Nhập lại mật khẩu mới">
+                                <input type="text" class="form-control from-custom new_password__confirm"
+                                    id="new_password__confirm" placeholder="Nhập lại mật khẩu mới">
                                 <span class="error"></span>
                             </div>
                         </div>
                         <div class="col-12" style="text-align: end;">
                             <button class="btn btn-primary btn_save_password" id="btn_save_password">Lưu thay đổi</button>
+                        </div>
+                    </div>
+
+                    <div class="row edit-order d-none">
+                        <div class="col-12">
+                            <h5 style="text-align: center">Sản phẩm đã đặt gần đây</h5>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="order__table" width='5%'>STT</th>
+                                                <th class="order__table" width='20%'>Mã đơn hàng</th>
+                                                <th class="order__table" width='15%'>Số loại SP</th>
+                                                <th class="order__table" width='15%'>Tổng SP</th>
+                                                <th class="order__table" width='15%'>Thành tiền</th>
+                                                <th class="order__table" width='15%'>Thanh toán</th>
+                                                <th class="order__table" width='15%'>Trạng thái</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="col-12">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="order__table" width='5%'>1</th>
+                                                <th class="order__table" width='20%'>OD171700</th>
+                                                <th class="order__table" width='15%'>7</th>
+                                                <th class="order__table" width='15%'>7</th>
+                                                <th class="order__table" width='15%'>945000</th>
+                                                <th class="order__table" width='15%'>PAY</th>
+                                                <th class="order__table" width='20%'>chưa xác nhận</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

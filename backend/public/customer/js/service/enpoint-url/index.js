@@ -4,6 +4,7 @@ const enpointUrl = {
     home: `${baseUrl}trang-chu`,
     login: `${baseUrl}customer/login`,
     register: `${baseUrl}customer/dang-ky`,
+    resetPassword: `${baseUrl}quen-mat-khau`,
     userInfo: `${baseUrl}tai-khoan`,
     pageProducts() {
         return baseUrl + 'danh-sach-san-pham?';
@@ -11,6 +12,8 @@ const enpointUrl = {
     productDetail(code) {
         return baseUrl + 'san-pham/' + code;
     },
+    shoppingCart: `${baseUrl}shopping/cart`,
+    order: `${baseUrl}order`,
 }
 
 export default enpointUrl;

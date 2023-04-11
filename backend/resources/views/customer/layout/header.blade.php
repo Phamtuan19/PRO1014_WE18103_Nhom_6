@@ -59,7 +59,7 @@
                 </div>
                 <div class="register__title">
 
-                    
+
 
                 </div>
             </div>
@@ -67,6 +67,26 @@
     </div>
     <div class="header-with-menu">
         <ul class="nav-categories">
+            <li>
+                <a href="http://127.0.0.1:8000/trang-chu">
+                    Trang chủ
+                </a>
+            </li>
+            <li>
+                <a href="http://127.0.0.1:8000/danh-sach-san-pham">
+                    Sản phẩm
+                </a>
+            </li>
+            <li>
+                <a href="http://127.0.0.1:8000/danh-sach-san-pham">
+                    Tác giả
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    Bài viết
+                </a>
+            </li>
         </ul>
     </div>
 </div>

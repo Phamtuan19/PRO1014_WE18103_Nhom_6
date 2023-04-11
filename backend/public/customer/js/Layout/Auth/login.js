@@ -51,8 +51,8 @@ document.querySelector(".button").onclick = () => {
                     return response.json();
                 })
                 .then(function (data) {
-                    console.log(data);
                     if (data.token) {
+                        showSuccessToast('Đăng nhập thành công!');
                         let address = data.user.address === null ? null : (data.user.address).split(' - ') ;
                         const authUser = {
                             token: data.token,

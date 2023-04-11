@@ -36,6 +36,8 @@ function handleCheckLogin() {
     if (authUser !== null) {
         register__title.innerHTML = `
             <a href="${enpointUrl.userInfo}"> Thông tin tài khoản </a>
+            <a href="http://127.0.0.1:8000/san-pham-da-mua"> Sản phẩm đã mua </a>
+
             <div>
                 <a href="${baseUrl} + "customer/logout" class="logout-link"> Đăng xuất </a>
             </div>
@@ -44,7 +46,7 @@ function handleCheckLogin() {
 
     } else {
         register__title.innerHTML = `
-        <a href="#"> Đăng ký </a>
+        <a href="${enpointUrl.register}"> Đăng ký </a>
         <a href="${enpointUrl.login}" class="header-login"> Đăng nhập </a>
         `
     }

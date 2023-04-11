@@ -1,6 +1,6 @@
 
-import {formatCurrency} from '../../method/index.js';
-import {deleteCartItem} from '../../handle/index.js';
+import { formatCurrency } from '../../method/index.js';
+import { deleteCartItem } from '../../handle/index.js';
 import quantityShoppingCartItem from './input-quantity-cart/index.js';
 
 // Render trang đặt hàng
@@ -45,6 +45,5 @@ function shoppingCart(data, array) {
     deleteCartItem()
 }
 
-function renderTotal () {}
 
 export default shoppingCart

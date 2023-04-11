@@ -50,7 +50,7 @@
 
         <div class="container-fluid">
             <div class="product__title">
-                <span class="product__title__text active">Gợi ý cho bạn</span>
+                <span class="product__title__text active" style="margin: 0;">Gợi ý cho bạn</span>
             </div>
             <div class="row product-list__test">
             </div>

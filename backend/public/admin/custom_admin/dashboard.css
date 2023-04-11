@@ -1,0 +1,44 @@
+.header-filter {
+    background-color: #fff;
+    padding: 12px 24px;
+    margin: 0 0 1.5rem 0;
+}
+
+label {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.product_items {
+    display: flex;
+    gap: 0 12px;
+}
+
+.product__item__text {
+    width: 80%;
+}
+
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+    width: 70px;
+    height: 90px;
+}
+
+.product__item__text h6 {
+    max-width: 99%;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    line-height: 1.6rem;
+}

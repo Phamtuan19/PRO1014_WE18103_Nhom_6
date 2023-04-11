@@ -14,7 +14,7 @@ import { windowLoading } from '../../../message/index.js';
 
 
 windowLoading()
-// middlewareAuth();
+middlewareAuth();
 
 const email = document.querySelector(".email");
 

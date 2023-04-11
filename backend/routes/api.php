@@ -7,6 +7,7 @@ use App\Http\Controllers\customer\api\OrderController;
 use App\Http\Controllers\customer\api\HomeProductListController;
 use App\Http\Controllers\customer\api\ProductDetailController;
 use App\Http\Controllers\customer\auth\loginController;
+use App\Http\Controllers\Admin\Api\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,9 @@ Route::post("customer/register", [loginController::class, 'register']);
 Route::patch("rest-password", [loginController::class, 'resetPassword']);
 
 Route::patch("comfirm-password", [loginController::class, 'comfirmPassword']);
+
+
+
+// Dashboard Admin
+
+Route::get('admin/dashboard', [DashboardController::class, 'index']);

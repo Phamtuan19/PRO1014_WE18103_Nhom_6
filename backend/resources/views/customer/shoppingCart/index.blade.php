@@ -1,6 +1,5 @@
 @extends('customer.layout.index')
 @section('link')
-
     <link rel="stylesheet" href="{{ asset('customer/css/shoppingCart.css') }}">
 @endsection
 @section('contents')
@@ -38,8 +37,10 @@
                             <div class="cart-collaterals_detail">
                                 <div class="input-group discount-code">
                                     <input type="text" class="form-control discount-code_input" placeholder="Mã giảm giá"
-                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                    <button class="btn btn-secondary discount-code_btn" id="basic-addon2">Áp dụng</button>
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        style="width: 80%;">
+                                    <button type="button" class="btn btn-secondary discount-code_btn " id="basic-addon2"
+                                        style="width: 20%;">Áp dụng</button>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +54,9 @@
                                                 <label>Tổng phụ:</label>
                                             </td>
                                             <td class="cart-total-right">
-                                                <input type="text" class="form-control total-money" value="0"
-                                                    readonly style="border: none; text-align: end; padding: 3px 0;"
+                                                <input type="text" class="form-control total-products"
+                                                    name="total_payment" value="0"
+                                                    style="border: none; text-align: end; padding: 3px 0; font-size: 16px;font-weight: 500;"
                                                     disabled>
                                             </td>
                                         </tr>
@@ -63,17 +65,18 @@
                                                 <label>Mã giảm giá:</label>
                                             </td>
                                             <td class="cart-total-right">
-                                                <input type="text" class="form-control" value="0" readonly
+                                                <input type="text" class="form-control code" data-value="20000"
+                                                    value="- 100.000đ"
                                                     style="border: none; text-align: end; padding: 3px 0;" disabled>
                                             </td>
                                         </tr>
                                         <tr class="order-total">
                                             <td class="cart-total-left">
-                                                <label>Tổng cộng:</label>
+                                                <label>Thành tiền:</label>
                                             </td>
                                             <td class="cart-total-right">
-                                                <input type="text" class="form-control total-payment "
-                                                    name="total_payment" value="0" readonly
+                                                <input type="text" class="form-control total-payment"
+                                                    name="total_payment" value="0"
                                                     style="border: none; text-align: end; padding: 3px 0; font-size: 16px;font-weight: 500;"
                                                     disabled>
                                             </td>

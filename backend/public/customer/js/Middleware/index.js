@@ -6,7 +6,7 @@ function middlewareAuth() {
     const getUrl = window.location.href;
 
     if (authUser !== null) {
-        if (getUrl === enpointUrl.login || getUrl === enpointUrl.register) {
+        if (getUrl === enpointUrl.login || getUrl === enpointUrl.register || getUrl === enpointUrl.resetPassword) {
             window.location.href = enpointUrl.home
         }
     }else {
