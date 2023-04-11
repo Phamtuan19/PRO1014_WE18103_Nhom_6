@@ -40,6 +40,15 @@ const serviceApi = {
             body: JSON.stringify(email),
         })
     },
+    getAuthListOrder(token) {
+        return fetch(baseUrlAPi + enpointApi.authListOrder, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+    },
     patchComfirmPassword(password) {
         return fetch(baseUrlAPi + enpointApi.confirmPassword, {
             method: 'PATCH',

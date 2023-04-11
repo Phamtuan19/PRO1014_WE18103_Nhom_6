@@ -24,6 +24,7 @@ Route::middleware('auth:api')->group(function () {
     // API Thay đổi thông tin người dùng
     Route::patch('user/update/{user}', [loginController::class, 'update']);
     Route::patch('user/update/password/{user}', [loginController::class, 'updatePassword']);
+    Route::get('list-order', [ApiController::class, 'listOrder']);
 });
 
 // Auto Render

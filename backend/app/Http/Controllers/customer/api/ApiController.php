@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\customer\api;
 
+use App\Models\User;
 use App\Models\Image;
 use App\Models\Author;
 use App\Models\Product;
-use App\Models\PublishingHouse;
 use App\Models\Categories;
 use App\Models\StoreCatalog;
 use Illuminate\Http\Request;
+use App\Models\PublishingHouse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -125,5 +126,21 @@ class ApiController extends Controller
                 ->get();
         }
         return  response()->json($products, 200);
+    }
+
+    public function listOrder(Request $request)
+    {
+        $user = $request->user();
+        $orders = DB::table('orders')
+            ->select(
+                'orders.*',
+                'order_status.name as order_status_name'
+            )
+            ->where('user_id', $user->id)
+            ->leftJoin('order_status', 'order_status.id', '=', 'orders.order_status_id')
+            ->orderBy('order_status_id')
+            ->get();
+
+        return  response()->json($orders, 200);
     }
 }

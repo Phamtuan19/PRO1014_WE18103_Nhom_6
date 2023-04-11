@@ -8,6 +8,7 @@ const enpointApi = {
     confirmPassword: 'comfirm-password',
     userUpdate: 'user/update/',
     userUpdatePassword: 'user/update/password/',
+    authListOrder: 'list-order',
     //
     menu: 'submenu/',
     pageHomeProductFilter: 'page-home/products-filter-controls',
