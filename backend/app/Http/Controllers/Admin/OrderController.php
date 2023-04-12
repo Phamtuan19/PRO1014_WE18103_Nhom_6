@@ -11,6 +11,7 @@ use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Warehouse;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -56,7 +57,21 @@ class OrderController extends Controller
 
     public function orderStatusUpdate(Request $request, Order $order)
     {
-        // dd($order);
+
+        if ($request->order_status == 5) {
+            $detail = OrderDetail::where('order_id', $order->id)->get();
+            // dd($detail);
+            foreach ($detail as $item) {
+                $warehouses = Warehouse::where('product_id', $item->product->id)->get();
+
+                $warehouses[0]->quantity_stock = $warehouses[0]->quantity_stock + $item->quantity;
+                $warehouses[0]->quantity_sold = $warehouses[0]->quantity_sold - $item->quantity;
+
+                $warehouses[0]->save();
+            }
+        }
+
+
         $order->order_status_id = $request->order_status;
 
         try {

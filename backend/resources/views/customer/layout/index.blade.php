@@ -31,9 +31,9 @@
 
         {{-- Footer --}}
         {{-- @dd(request()->path()) --}}
-        {{-- @if (request()->path() !== 'shopping/cart' && request()->path() !== 'order')
+        @if (request()->path() == 'danh-sach-san-pham' || request()->path() == 'trang-chu' || request()->path() == 'bai-viet')
             @include('customer.layout.footer')
-        @endif --}}
+        @endif
     </div>
     <div class="loading_2 d-none">
 

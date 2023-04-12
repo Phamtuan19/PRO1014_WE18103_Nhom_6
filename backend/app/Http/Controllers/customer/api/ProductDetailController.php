@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 
 class ProductDetailController extends Controller
 {
@@ -101,5 +102,39 @@ class ProductDetailController extends Controller
             ->get();
 
         return response()->json($products, 200);
+    }
+
+    public function listComment($productId)
+    {
+        $comment = DB::table('comments')
+            ->select('comments.*',
+                'users.name as user_name',
+                'users.image_url'
+            )
+            ->join('users', 'users.id', '=', 'comments.user_id')
+            ->where('comments.product_id', '=', $productId)
+            ->get();
+
+            return response()->json($comment, 200);
+    }
+
+    public function comment(Request $request)
+    {
+        $data = [
+            'product_id' => $request->productId,
+            'user_id' => $request->user_id,
+            'content' => $request->comment,
+            'parent_id' => null,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ];
+
+        try {
+            Comment::insert($data);
+
+            return response()->json(['msg' => 'thành công'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['msg' => $e], 402);
+        }
     }
 }

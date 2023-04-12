@@ -42,9 +42,8 @@ function renderTotalOrder(data) {
                 </h4>
                 <h2 class="mb-5">${formatCurrency(data.totalOrder.total)}</h2>
                 <div class="d-flex">
-                    <h6 class="card-text rate__order" data-rate="${data.totalOrder.rate}"
+                    <h6 class="card-text rate__order" data-rate=""
                         data-detail="${data.totalOrder.detail}">
-
                     </h6>
                     <span style="font-size: 14px; font-weight: 600; margin-left: 8px"></span>
                 </div>
@@ -61,7 +60,7 @@ function renderTotalOrderSuccess(data) {
         totalOrderSuccess.innerHTML = `
             <div class="card-body">
                 <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                <h4 class="font-weight-normal mb-3">Đơn đặt hàng <i
+                <h4 class="font-weight-normal mb-3">Đơn hàng thành công <i
                         class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                 </h4>
                 <h2 class="mb-5">${formatCurrency(data.totalOrderSuccess.total)}</h2>
@@ -82,16 +81,10 @@ function renderTotalOrderSuccess(data) {
 function rateMoney() {
     const rate = document.querySelectorAll(".rate")[0];
 
-    if (rate.dataset.rate > 0) {
-        rate.innerText = `Tăng ${Math.round(rate.dataset.rate)}%`;
-    } else {
-        rate.innerText = `Giảm ${Math.round(Math.abs(rate.dataset.rate))}%`;
-    }
-
     if (Number(rate.dataset.detail) > 0) {
-        rate.nextElementSibling.innerText = `( Tăng ${formatCurrency(Number(rate.dataset.detail))})`;
+        rate.nextElementSibling.innerText = `Tăng ${formatCurrency(Number(rate.dataset.detail))}`;
     } else {
-        rate.nextElementSibling.innerText = `( Giảm ${formatCurrency(Math.abs(Number(rate.dataset.detail)))})`;
+        rate.nextElementSibling.innerText = `Giảm ${formatCurrency(Math.abs(Number(rate.dataset.detail)))}`;
     }
 }
 
@@ -99,18 +92,35 @@ function rate() {
     const rate = document.querySelectorAll(".rate__order");
 
     rate.forEach((e) => {
-        if (e.dataset.rate > 0) {
-            e.innerText = `Tăng ${Math.round(Number(e.dataset.rate))}%`;
-        } else {
-            e.innerText = `Giảm ${Math.round(Math.abs(Number((e.dataset.rate).trim())))}%`;
-        }
 
         if (e.dataset.detail > 0) {
-            e.nextElementSibling.innerText = `( Tăng ${(Number(e.dataset.detail))} đơn )`;
+            e.nextElementSibling.innerText = `Tăng ${(Number(e.dataset.detail))} đơn `;
         } else {
-            e.nextElementSibling.innerText = `( Giảm ${(Math.abs(Number(e.dataset.detail)))} đơn )`;
+            e.nextElementSibling.innerText = `Giảm ${(Math.abs(Number(e.dataset.detail)))} đơn `;
         }
     })
 }
 
-export { renderTurnover, renderTotalOrder, renderTotalOrderSuccess };
+function renderTopProduct(data) {
+    document.querySelector('.top__products').innerHTML = data.map(e => {
+        return `
+            <div class="product_items">
+                <div class="set-bg"
+                    style=" background-image: url('${e.image_url}')">
+                </div>
+                <div class="product__item__text">
+                    <h6 class="product__item__name">${e.name}</h6>
+                    <h6 class="product__item__name">Tác giả: ${e.author_name}</h6>
+                    <div class="d-flex align-items-center">
+                        <h5 class="product-price" data-price="135000" style="margin: 0 12px 0 0">${formatCurrency(e.promotion_price)}</h5>
+                        <h6 class="product-price__sale" data-price="165000" style="color:red; margin: 0">
+                            ${formatCurrency(e.price)}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        `
+    }).join('')
+}
+
+export { renderTurnover, renderTotalOrder, renderTotalOrderSuccess,renderTopProduct };

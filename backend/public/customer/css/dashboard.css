@@ -1,0 +1,13 @@
+
+td, th {
+    max-width: 136px;
+    overflow: hidden !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center !important;
+}
+
+.table-responsive {
+    overflow-x: hidden !important;
+    /* -webkit-overflow-scrolling: touch; */
+}

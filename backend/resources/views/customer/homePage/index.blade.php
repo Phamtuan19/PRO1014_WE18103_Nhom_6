@@ -56,10 +56,94 @@
             </div>
         </div>
 
-        <div class="banner">
-            <img src="https://book365.vn/upload/iblock/669/6696dbbd088e57488296cca11766025c.jpg" alt="" />
+        <div class="container-fluid">
+            <div class="row" style="padding-bottom: 24px;">
+                <div class="col-12 product__title">
+                    <span class="product__title__text active" style="margin: 0; background-color: #fff">Bài viết nổi
+                        bật</span>
+                </div>
+
+                <div class="col-4 " style="">
+                    <div class="post_items">
+                        <a href="" style="color: #111111;">
+                            <div class=" set-bg"
+                                style="width: 100%;height: 200px; background-image: url('https://book365.vn/upload/resize_cache/iblock/4f0/950_290_1/4f0558744f4e4797ee554882fdaae33c.jpg');">
+                            </div>
+                            <div class="">
+                                <h5 class="post_item_name">Bài dự thi Viết cảm nhận về một cuốn sách mà em yêu thích (25
+                                    mẫu)
+                                </h5>
+                                <p class="introduction">Đọc sách là một trong những cách giúp bạn học thêm nhiều thứ về cuộc
+                                    sống,
+                                    những trải nghiệm mà có thể bạn chưa từng có. Đây cũng là thói quen tìm thấy ở rất nhiều
+                                    người
+                                    thành công. Sau đây Hải Triều sẽ review TOP những cuốn sách hay nên đọc nhất mọi thời
+                                    đại.
+                                </p>
+                                <div class="post_item__detail">
+                                    <p class="post_item_author">Admin</p>
+                                    <p class="post_item_created_at">2023-04-12 17:06:03</p>
+                                    <p class="post_item_created_view">view: 12</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 " style="">
+                    <div class="post_items">
+                        <a href="" style="color: #111111;">
+                            <div class=" set-bg"
+                                style="width: 100%;height: 200px; background-image: url('https://book365.vn/upload/resize_cache/iblock/4f0/950_290_1/4f0558744f4e4797ee554882fdaae33c.jpg');">
+                            </div>
+                            <div class="">
+                                <h5 class="post_item_name">Bài dự thi Viết cảm nhận về một cuốn sách mà em yêu thích (25
+                                    mẫu)
+                                </h5>
+                                <p class="introduction">Đọc sách là một trong những cách giúp bạn học thêm nhiều thứ về cuộc
+                                    sống,
+                                    những trải nghiệm mà có thể bạn chưa từng có. Đây cũng là thói quen tìm thấy ở rất nhiều
+                                    người
+                                    thành công. Sau đây Hải Triều sẽ review TOP những cuốn sách hay nên đọc nhất mọi thời
+                                    đại.
+                                </p>
+                                <div class="post_item__detail">
+                                    <p class="post_item_author">Admin</p>
+                                    <p class="post_item_created_at">2023-04-12 17:06:03</p>
+                                    <p class="post_item_created_view">view: 12</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 " style="">
+                    <div class="post_items">
+                        <a href="" style="color: #111111;">
+                            <div class=" set-bg"
+                                style="width: 100%;height: 200px; background-image: url('https://book365.vn/upload/resize_cache/iblock/4f0/950_290_1/4f0558744f4e4797ee554882fdaae33c.jpg');">
+                            </div>
+                            <div class="">
+                                <h5 class="post_item_name">Bài dự thi Viết cảm nhận về một cuốn sách mà em yêu thích (25
+                                    mẫu)
+                                </h5>
+                                <p class="introduction">Đọc sách là một trong những cách giúp bạn học thêm nhiều thứ về cuộc
+                                    sống,
+                                    những trải nghiệm mà có thể bạn chưa từng có. Đây cũng là thói quen tìm thấy ở rất nhiều
+                                    người
+                                    thành công. Sau đây Hải Triều sẽ review TOP những cuốn sách hay nên đọc nhất mọi thời
+                                    đại.
+                                </p>
+                                <div class="post_item__detail">
+                                    <p class="post_item_author">Admin</p>
+                                    <p class="post_item_created_at">2023-04-12 17:06:03</p>
+                                    <p class="post_item_created_view">view: 12</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 

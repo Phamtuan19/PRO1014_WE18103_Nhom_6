@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+.btn {
+    background-color: #3B3B98;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #212159;
+}
+
+.featured {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: white;
+    padding: 24px;
+}
+
+.featured_fluid {
+    display: flex;
+}
+
+
+.featured article.featured_fluid img {
+    width: 100%;
+    padding: 16px 24px;
+    height: 0 auto;
+    border-radius: 30px;
+}
+
+.overlay {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.overlay h2 {
+    color: #2F4F4F;
+}
+
+.overlay h3 {
+    color: #080808;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.overlay p {
+    font-size: 14px;
+}
+
+.secondary-news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    padding: 16px 16px;
+}
+
+.news-item {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+
+}
+
+.news-item img {
+    width: 20%;
+    height: auto;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: white;
+    padding: 24px 12px;
+}
+
+.search-box {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.post__introduction {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-height: 1.2rem;
+}
+
+
+.search-box input[type="text"] {
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    margin-bottom: 10px;
+    padding: 10px 40px 10px 10px;
+    width: 100%;
+}
+
+.search-box button {
+    background-color: #3B3B98;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.2em;
+    position: absolute;
+    right: 0;
+    height: 80%;
+    cursor: pointer;
+
+    text-align: center;
+}
+
+.search-box_button {
+    position: absolute;
+    margin-bottom: 100px;
+}
+
+.categories {
+    margin-bottom: 40px;
+}
+
+.categories h2 {
+    margin-bottom: 10px;
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.categories li {
+
+    line-height: 1.9;
+}
+
+.categories a {
+    color: #3B3B98;
+}
+
+.categories a:hover {
+    color: #212159;
+}
+
+.top-sellers {
+    margin-bottom: 10px;
+}
+
+
+
+.top-sellers ol {
+    list-style: decimal;
+    padding-left: 20px;
+}
+
+.top-sellers li {
+    line-height: 1.9;
+}
+
+.top-sellers a {
+    color: #3B3B98;
+}
+
+.top-sellers a:hover {
+    color: #212159;
+}
+
+.post__item_image {
+    width: 50%;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+.top_view__name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    line-height: 1.3rem;
+}

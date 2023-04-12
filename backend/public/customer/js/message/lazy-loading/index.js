@@ -13,10 +13,13 @@ function windowLoading () {
         <span></span>
     `
 
-    setInterval(() => {
+    const intervalLoading = setTimeout(() => {
         loading_1.classList.add("d-none")
         content.classList.remove("d-none")
     }, 2000);
+
+    // clearInterval(intervalLoading);
+
 }
 
 export default windowLoading;

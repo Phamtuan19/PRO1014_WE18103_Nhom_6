@@ -70,38 +70,17 @@
                     <h3>BÌNH LUẬN</h3>
                 </div>
                 <div class="user-form">
-                    <form action="">
-                        <div class="form-group">
-                            <textarea name="" id="" placeholder="Nhập nội dung bình luận (tiếng Việt có dấu)..."></textarea>
-                            <button type="submit" class="user-button">GỬI BÌNH LUẬN</button>
-                        </div>
-                    </form>
+                    {{-- <form action=""> --}}
+                    <div class="form-group" style="flex-direction: column;">
+                        <textarea class="comment_content" id="" placeholder="Nhập nội dung bình luận (tiếng Việt có dấu)..."></textarea>
+                        <span class="error mt-3"></span>
+                        <button type="submit" class="user-button">GỬI BÌNH LUẬN</button>
+                    </div>
+                    {{-- </form> --}}
                 </div>
-                <div class="user-wrapper">
-                    <div class="user-avatar">
-                        <img src="/fondend/phungps24202/assets/image/avatar-facebook-doc.jpg" alt="User Avatar" />
-                    </div>
-                    <div class="comment-body">
-                        <h4 class="comment-user">John Doe</h4>
-                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor
-                            incididunt ut labore et dolore magna aliqua.</p>
-                        <span class="comment-time">2 hours ago</span>
-                    </div>
-                </div>
-                <div class="user-wrapper">
-                    <div class="user-avatar">
-                        <img src="/fondend/phungps24202/assets/image/avatar-facebook-doc.jpg" alt="User Avatar" />
-                    </div>
-                    <div class="comment-body">
-                        <h4 class="comment-user">John Doe</h4>
-                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor
-                            incididunt ut labore et dolore magna aliqua.</p>
-                        <span class="comment-time">2 hours ago</span>
-                    </div>
-                </div>
+                <div class="comment">
 
+                </div>
             </div>
             <div class="col-12">
                 <div class="related-title">

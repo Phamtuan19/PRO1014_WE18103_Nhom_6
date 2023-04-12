@@ -28,9 +28,13 @@ Route::post('customer/logout', function () {
 
 
 Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->name('shopping/cart');
-Route::get('order', [CustomerPageController::class, 'order'])->name('order');
-Route::get('danh-sach-san-pham', [CustomerPageController::class, 'listProducts'])->name('listProducts');
-Route::get('tai-khoan', [CustomerPageController::class, 'userInfo']);
-Route::get('san-pham-da-mua', [CustomersController::class, 'listProducts']);
 
-Route::get('danh-sách-bai-viet', [CustomersController::class, 'index']);
+Route::get('danh-sach-san-pham', [CustomerPageController::class, 'listProducts'])->name('listProducts');
+
+Route::get('tai-khoan', [CustomerPageController::class, 'userInfo']);
+
+Route::get('san-pham-da-mua', [CustomerPageController::class, 'authListOrder']);
+
+Route::get('bai-viet', [CustomerPageController::class, 'listPosts']);
+Route::get('bai-viet/{slug}', [CustomerPageController::class, 'postItem']);
+// Route::get('chi-tiet-bai-viet', [])

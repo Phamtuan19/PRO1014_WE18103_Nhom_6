@@ -32,20 +32,17 @@ class DashboardController extends Controller
 
         $turnover = [
             'total' => $totalAllOrder != null ? $totalAllOrder : $this->totalMoney($this->getOrderSuccessStartEnd($startMonth, $endMonth)),
-            'rate' => $this->growthRate($endTotalMoney, $startTotalMoney),
             'detail' => $endTotalMoney - $startTotalMoney,
         ];
 
         // tổng các đơn hàng
         $totalOrder = [
             'total' => count($this->getOrderStartEnd($startMonth, $endMonth)),
-            'rate' => $this->growthRate(count($this->getOrder($endMonth)), count($this->getOrder($startMonth))),
             'detail' => count($this->getOrder($endMonth)) - count($this->getOrder($startMonth)),
         ];
 
         $totalOrderSuccess = [
             'total' => count($this->getOrderSuccessStartEnd($startMonth, $endMonth)),
-            'rate' => $this->growthRate(count($this->getOrderSuccess($startMonth)), count($this->getOrderSuccess($endMonth))),
             'detail' => count($this->getOrderSuccess($startMonth)) - count($this->getOrderSuccess($endMonth)),
         ];
 
@@ -55,7 +52,9 @@ class DashboardController extends Controller
             'totalOrderSuccess' => $totalOrderSuccess
         ];
 
-        return response()->json($data, 200);
+        // return $this->topProducts();
+
+        return response()->json(['statistic' => $data, 'topProducts' => $this->topProducts()], 200);
     }
 
     // lấy tất cả đơn hàng thành công từ ngày Y-m đến ngày Y-m
@@ -123,5 +122,26 @@ class DashboardController extends Controller
         } else {
             return (($number_1 - $number_2) / $number_2) * 100;
         }
+    }
+
+    public function topProducts () {
+        $product = DB::table('products')
+            ->select(
+                'products.*',
+                'products_detail.price',
+                'products_detail.promotion_price',
+                'author.name as author_name',
+                'warehouses.quantity_sold as quantity_sold',
+                'image.image_url'
+            )
+            ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
+            ->leftJoin('author', 'author.id', '=', 'products.author_id')
+            ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
+            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            ->orderBy('warehouses.quantity_sold', 'DESC')
+            ->take(5)
+            ->get();
+
+            return $product;
     }
 }

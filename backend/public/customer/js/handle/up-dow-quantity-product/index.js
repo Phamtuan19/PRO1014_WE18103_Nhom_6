@@ -1,5 +1,6 @@
 
 import { cartTotalsMoney, renderTotalCard } from '../../render/index.js';
+import { showErrorToast } from '../../message/index.js';
 
 // Tăng giảm số lượng sản phẩm và giới hạn số sản phẩm
 function hendleClickQuantity() {
@@ -23,7 +24,7 @@ function hendleClickQuantity() {
                     renderTotalCard()
                     cartTotalsMoney()
                 } else {
-                    console.log("vui lòng liên hệ với quản trị viên để đặt hàng số lượng lớn");
+                    showErrorToast("vui lòng liên hệ với quản trị viên để đặt hàng số lượng lớn");
                     e.value = 20;
                 }
 

@@ -73,7 +73,7 @@
         </div>
         {{-- Chart JS --}}
         <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="clearfix">
@@ -89,40 +89,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Top sản phẩm bán chạy nhất</h4>
-                        <div class="d-flex mt-4 flex-column" style="gap: 12px 0;">
-                            <div class="product_items">
-                                <div class="set-bg"
-                                    style=" background-image: url('https://res.cloudinary.com/dizwixa7c/image/upload/v1680499616/PRO1014_WE18103_Nhom_6/Products/efqd6pvuigl6ld1jynpl.jpg')">
-                                </div>
-                                <div class="product__item__text">
-                                    <h6 class="product__item__name">Nuốt Ngược Nước Mắt Để Trưởng Thành Hơn</h6>
-                                    <h6 class="product__item__name">Tác giả</h6>
-                                    <div class="d-flex align-items-center">
-                                        <h5 class="product-price" data-price="135000" style="margin: 0 12px 0 0">
-                                            135.000&nbsp;₫</h5>
-                                        <h6 class="product-price__sale" data-price="165000" style="color:red; margin: 0">
-                                            165.000&nbsp;₫
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="d-flex mt-4 flex-column top__products" style="gap: 12px 0;">
 
-                            <div class="product_items">
-                                <div class="set-bg"
-                                    style=" background-image: url('https://res.cloudinary.com/dizwixa7c/image/upload/v1680499616/PRO1014_WE18103_Nhom_6/Products/efqd6pvuigl6ld1jynpl.jpg')">
-                                </div>
-                                <div class="product__item__text">
-                                    <h6 class="product__item__name">Nuốt Ngược Nước Mắt Để Trưởng Thành Hơn</h6>
-                                    <h6 class="product__item__name">Tác giả</h6>
-                                    <div class="d-flex align-items-center">
-                                        <h5 class="product-price" data-price="135000" style="margin: 0 12px 0 0">
-                                            135.000&nbsp;₫</h5>
-                                        <h6 class="product-price__sale" data-price="165000" style="color:red; margin: 0">
-                                            165.000&nbsp;₫
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,70 +100,68 @@
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Recent Tickets</h4>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+                        <h4 class="card-title">Đơn hàng mới nhất</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Mã đơn </th>
+                                    <th> Người đặt </th>
+                                    <th> Email </th>
+                                    <th> Phone </th>
+                                    <th> Tổng SP </th>
+                                    <th> Tổng tiền </th>
+                                    <th> Trạng thái </th>
+                                    <th> Created_at </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $index => $order)
                                     <tr>
-                                        <th> Assignee </th>
-                                        <th> Subject </th>
-                                        <th> Status </th>
-                                        <th> Last Update </th>
-                                        <th> Tracking ID </th>
+                                        <td> {{ $index + 1 }} </td>
+                                        <td> {{ $order->code_order }} </td>
+                                        <td> {{ $order->deliveryAddress->name }} </td>
+                                        <td>{{ $order->deliveryAddress->email }}</td>
+                                        <td>{{ $order->deliveryAddress->phone }}</td>
+                                        <td> {{ $order->quantity }} </td>
+                                        <td> {{ $order->total_price }} </td>
+                                        <td>
+                                            @if ($order->order_status_id == 1)
+                                                <div class="badge btn-gradient-secondary">
+                                                    {{ $order->orderStatus->name }}
+                                                </div>
+                                            @elseif ($order->order_status_id == 2)
+                                                <div class="badge btn-gradient-info">
+                                                    {{ $order->orderStatus->name }}
+                                                </div>
+                                            @elseif ($order->order_status_id == 3)
+                                                <div class="badge btn-gradient-primary">
+                                                    {{ $order->orderStatus->name }}
+                                                </div>
+                                            @elseif ($order->order_status_id == 4)
+                                                <div class="badge btn-gradient-success">
+                                                    {{ $order->orderStatus->name }}
+                                                </div>
+                                            @elseif ($order->order_status_id == 5)
+                                                <div class="badge btn-gradient-danger">
+                                                    {{ $order->orderStatus->name }}
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td> {{ date_format($order->created_at, 'd-m-Y') }} </td>
+                                        <td>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="{{ route('admin.orders.show', $order->code_order) }}"
+                                                    class="" style="color: black; padding: 6px">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </a>
+                                            </div>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img src="assets/images/faces/face1.jpg" class="me-2" alt="image">
-                                            David Grey
-                                        </td>
-                                        <td> Fund is not recieved </td>
-                                        <td>
-                                            <label class="badge badge-gradient-success">DONE</label>
-                                        </td>
-                                        <td> Dec 5, 2017 </td>
-                                        <td> WD-12345 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="assets/images/faces/face2.jpg" class="me-2" alt="image">
-                                            Stella Johnson
-                                        </td>
-                                        <td> High loading time </td>
-                                        <td>
-                                            <label class="badge badge-gradient-warning">PROGRESS</label>
-                                        </td>
-                                        <td> Dec 12, 2017 </td>
-                                        <td> WD-12346 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="assets/images/faces/face3.jpg" class="me-2" alt="image">
-                                            Marina Michel
-                                        </td>
-                                        <td> Website down for one week </td>
-                                        <td>
-                                            <label class="badge badge-gradient-info">ON HOLD</label>
-                                        </td>
-                                        <td> Dec 16, 2017 </td>
-                                        <td> WD-12347 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="assets/images/faces/face4.jpg" class="me-2" alt="image"> John
-                                            Doe
-                                        </td>
-                                        <td> Loosing control on server </td>
-                                        <td>
-                                            <label class="badge badge-gradient-danger">REJECTED</label>
-                                        </td>
-                                        <td> Dec 3, 2017 </td>
-                                        <td> WD-12348 </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -247,92 +213,90 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Project Status</h4>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th> # </th>
-                                        <th> Name </th>
-                                        <th> Due Date </th>
-                                        <th> Progress </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> Herman Beck </td>
-                                        <td> May 15, 2015 </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-success" role="progressbar"
-                                                    style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 2 </td>
-                                        <td> Messsy Adam </td>
-                                        <td> Jul 01, 2015 </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar"
-                                                    style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 3 </td>
-                                        <td> John Richards </td>
-                                        <td> Apr 12, 2015 </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar"
-                                                    style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 4 </td>
-                                        <td> Peter Meggik </td>
-                                        <td> May 15, 2015 </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar"
-                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 5 </td>
-                                        <td> Edward </td>
-                                        <td> May 03, 2015 </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar"
-                                                    style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 5 </td>
-                                        <td> Ronald </td>
-                                        <td> Jun 05, 2015 </td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info" role="progressbar"
-                                                    style="width: 65%" aria-valuenow="65" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Name </th>
+                                    <th> Due Date </th>
+                                    <th> Progress </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> 1 </td>
+                                    <td> Herman Beck </td>
+                                    <td> May 15, 2015 </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-success" role="progressbar"
+                                                style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> 2 </td>
+                                    <td> Messsy Adam </td>
+                                    <td> Jul 01, 2015 </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-danger" role="progressbar"
+                                                style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> 3 </td>
+                                    <td> John Richards </td>
+                                    <td> Apr 12, 2015 </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-warning" role="progressbar"
+                                                style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> 4 </td>
+                                    <td> Peter Meggik </td>
+                                    <td> May 15, 2015 </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-primary" role="progressbar"
+                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> 5 </td>
+                                    <td> Edward </td>
+                                    <td> May 03, 2015 </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-danger" role="progressbar"
+                                                style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> 5 </td>
+                                    <td> Ronald </td>
+                                    <td> Jun 05, 2015 </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-info" role="progressbar"
+                                                style="width: 65%" aria-valuenow="65" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

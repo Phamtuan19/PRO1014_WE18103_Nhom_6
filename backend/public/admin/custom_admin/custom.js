@@ -27,10 +27,14 @@ function renSlug(title) {
     return slug;
 }
 
-function uploadImage () {
-    $("#upload").onchange = function (e) {
-        console.log(e);
-    }
-}
+const collapsed = document.querySelectorAll('.collapsed');
+const general_pages = document.querySelectorAll('.collapse_sub');
 
-uploadImage();
+collapsed.forEach( (e, index) => {
+    console.log(e);
+    e.onclick = () => {
+        general_pages[index].classList.toggle('d-none')
+    }
+})
+
+console.log(window.location.pathname);

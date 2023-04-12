@@ -70,7 +70,7 @@ class User extends Authenticatable
         }
 
         // dd($orderType);
-        $query = $query->where('position_id', '!=', 3)
+        $query = $query->where('position_id', '!=', 2)
             ->orderBy($orderBy, $orderType);
 
         return $query;
@@ -94,7 +94,7 @@ class User extends Authenticatable
         }
 
         // dd($orderType);
-        $query = $query->where('position_id', 3)
+        $query = $query->where('position_id', 2)
             ->orderBy($orderBy, $orderType);
 
         return $query;

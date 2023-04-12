@@ -11,10 +11,10 @@ import { cartItem, renderTotalCard } from '../../render/index.js';
 import { windowLoading } from '../../message/index.js';
 import { cartMinidata } from './car-mini/index.js';
 import middlewareAuth from '../../Middleware/index.js';
+import { formatCurrency } from '../../method/index.js';
 
 windowLoading();
 renderTotalCard()
-
 
 // Render CartMini
 document.querySelector(".header__cart-item").onmouseover = () => {
@@ -30,10 +30,10 @@ document.querySelector(".header__cart-item").onmouseover = () => {
 
 // Đăng xuất
 function handleCheckLogin() {
-    const authUser = localStorage.getItem('authUser') ? JSON.parse(localStorage.getItem('authUser')) : null;
+    const authUser = JSON.parse(localStorage.getItem('authUser'));
     const register__title = document.querySelector(".register__title");
 
-    if (authUser !== null) {
+    if (authUser) {
         register__title.innerHTML = `
             <a href="${enpointUrl.userInfo}"> Thông tin tài khoản </a>
             <a href="http://127.0.0.1:8000/san-pham-da-mua"> Sản phẩm đã mua </a>
@@ -78,3 +78,44 @@ function handleLogout(authUser) {
     }
 }
 
+const input__search = document.querySelector(".input__search");
+
+input__search.addEventListener('focus', () => {
+    document.querySelector('.header__search__list__item').classList.remove('d.none')
+
+    input__search.onkeyup = () => {
+        console.log(input__search.value);
+        console.log(document.querySelector('.header__search__list__item'));
+        fetch('http://127.0.0.1:8000/api/search?q=' + input__search.value)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                renderSearch(data);
+            })
+    }
+})
+
+function renderSearch(data) {
+    console.log(data);
+    document.querySelector('.header__search__list__item').innerHTML = data.map(e => {
+        return `
+            <a href="${enpointUrl.productDetail(e.product_code)}" class="header__search_product__item">
+                <div class="item__image set-bg"
+                    style="background-image: url('${e.image_url}');">
+                </div>
+                <div class="item__detail">
+                    <p class="item__detail__name">${e.name}</p>
+                    <p class="item__detail__author">
+                        <span>Tác giả:</span>
+                        ${e.author_name}
+                    </p>
+                    <div class="cart-item__price">
+                        <p class="item__price__original" data-sale="${e.price}">${formatCurrency(e.price)}</p>
+                        <p class="item__price" data.price="${e.promotion_price}">${formatCurrency(e.promotion_price)}</p>
+                    </div>
+                </div>
+            </a>
+        `
+    }).join('')
+}

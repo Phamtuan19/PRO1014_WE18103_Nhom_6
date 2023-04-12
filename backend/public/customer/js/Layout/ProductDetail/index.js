@@ -4,8 +4,11 @@ import { handleClickAddToCart } from '../../handle/index.js';
 import { serviceApi } from '../../service/index.js';
 import { productItem } from '../../render/index.js';
 import { renderDetail, renderInformation, renderImage } from './reder/information/index.js';
+import { callApiComment, comment } from './comment/index.js'
 
 const code = window.location.pathname.replace('/san-pham/', '');
+
+let productId;
 
 serviceApi.getPageProductDetail(code)
     .then(function (response) {
@@ -15,8 +18,10 @@ serviceApi.getPageProductDetail(code)
         return response.json();
     })
     .then(function (data) {
+        productId = data[0].id
         renderDetail(data)
         handleClickAddToCart()
+        callApiComment()
     })
     .catch(function (error) {
         console.log(error);
@@ -30,7 +35,7 @@ serviceApi.getPageProductDetailImage(code)
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+
         renderImage(data)
     })
     .catch(function (error) {
@@ -76,7 +81,7 @@ serviceApi.getPageProductDetailSuggest(code)
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+
         const elem = document.querySelector('.related-book')
         productItem(data, elem)
     })
@@ -98,3 +103,8 @@ keepReading.onclick = () => {
         document.querySelector(".detail__introduction").classList.remove('active');
     }
 }
+
+setTimeout(() => {
+
+    comment(productId)
+}, 2000)

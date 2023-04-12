@@ -10,7 +10,7 @@ function renderDetail(data) {
     const html = data.map((e) => {
         return `
             <div class="detail2-title">
-                <h3 class="product__name">${e.name}</h3>
+                <h3 class="product__name" data-productId="${e.id}">${e.name}</h3>
             </div>
             <div class="detail2-author">
                 <p>Tác giả: <a href="#">${e.author_name}</a></p>

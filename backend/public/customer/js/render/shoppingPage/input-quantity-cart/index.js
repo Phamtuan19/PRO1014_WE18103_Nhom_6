@@ -1,9 +1,18 @@
 
+
+/*
+*
+*   Render input number quantity product items
+*
+*/
+
+
+
 import { enpointUrl } from "../../../service/index.js";
 
 // Dislable number product cart
 export default function quantityShoppingCartItem(array) {
-    console.log('a');
+
     if (window.location.href === enpointUrl.order) {
         const html = array.map(e => {
             return `
@@ -13,7 +22,6 @@ export default function quantityShoppingCartItem(array) {
 
         document.querySelectorAll(".quantity-product_item").forEach((item, index) => {
             item.innerHTML = html[index];
-            console.log(item);
         })
     } else {
         const html = array.map(e => {

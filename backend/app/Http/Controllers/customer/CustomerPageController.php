@@ -21,19 +21,32 @@ class CustomerPageController extends Controller
         return view('customer.productDetail.index', compact('product'));
     }
 
-    public function shoppingCart () {
+    public function shoppingCart()
+    {
         return view('customer.shoppingCart.index');
     }
 
-    public function order () {
-        return view('customer.order.index');
-    }
-
-    public function listProducts () {
+    public function listProducts()
+    {
         return view('customer.productsPage.index');
     }
 
-    public function userInfo () {
+    public function userInfo()
+    {
         return view('customer.userInfo.index');
+    }
+    public function authListOrder()
+    {
+        return view('customer.authListOrder.index');
+    }
+
+    public function listPosts()
+    {
+        return view('customer.post.list-post');
+    }
+
+    public function postItem()
+    {
+        return view('customer.post.post-item');
     }
 }

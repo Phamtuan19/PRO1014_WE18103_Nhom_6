@@ -6,6 +6,11 @@ const enpointUrl = {
     register: `${baseUrl}customer/dang-ky`,
     resetPassword: `${baseUrl}quen-mat-khau`,
     userInfo: `${baseUrl}tai-khoan`,
+    userOrderPage: `${baseUrl}san-pham-da-mua`,
+    postList: `${baseUrl}bai-viet`,
+    postItem(slug) {
+        return `${baseUrl}bai-viet/${slug}`;
+    },
     pageProducts() {
         return baseUrl + 'danh-sach-san-pham?';
     },

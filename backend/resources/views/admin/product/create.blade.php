@@ -3,10 +3,6 @@
 @section('contents')
     <div class="content-wrapper">
         <div class="page-header">
-
-
-        </div>
-        <div class="page-header">
             <h3 class="page-title"> Thêm mới sản phẩm </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">

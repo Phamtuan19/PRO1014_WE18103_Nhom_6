@@ -3,10 +3,11 @@ import {formatCurrency} from '../../method/index.js';
 
 // Render tổng tiền 1 sản phẩm và nhiều sản phẩm
 function cartTotalsMoney() {
-    const productPrice = document.querySelectorAll('.product-price')
-    const productPriceSale = document.querySelectorAll('.product-price__sale')
-    const editQuantity = document.querySelectorAll('.edit_quantity')
-    const totalMoney = document.querySelectorAll('.product-total__money')
+    const productPrice = document.querySelectorAll('.product-price');
+    const productPriceSale = document.querySelectorAll('.product-price__sale');
+    const editQuantity = document.querySelectorAll('.edit_quantity');
+    const totalMoney = document.querySelectorAll('.product-total__money');
+    const code = document.querySelector('.code');
 
     totalMoney.forEach((e, index) => {
         let money = productPriceSale[index].dataset.price ?
@@ -22,12 +23,18 @@ function cartTotalsMoney() {
         totalMoneyItems.push(e.dataset.money);
     })
 
-    const totalMoneyCart = totalMoneyItems.reduce(
+    const totalMoneyProductCart = totalMoneyItems.reduce(
         (accumulator, currentValue) => accumulator + Number(currentValue),
         0
     )
 
-    document.querySelector('.total-payment').value = formatCurrency(totalMoneyCart)
+    console.log(code);
+
+    const totalMoneyCart = totalMoneyProductCart - Number(code.dataset.value)
+
+    document.querySelector('.total-payment').value = formatCurrency(totalMoneyProductCart)
+    document.querySelector(".total__money__payment").value = totalMoneyCart < 0 ? 0 : formatCurrency(totalMoneyCart);
+
 }
 
 export default cartTotalsMoney

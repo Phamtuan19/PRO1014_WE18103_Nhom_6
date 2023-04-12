@@ -25,6 +25,8 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('user/update/{user}', [loginController::class, 'update']);
     Route::patch('user/update/password/{user}', [loginController::class, 'updatePassword']);
     Route::get('list-order', [ApiController::class, 'listOrder']);
+    Route::get('list-order-detail/{orderId}', [ApiController::class, 'listOrderDetail']);
+    Route::patch('order-cancellation/{orderId}', [ApiController::class, 'orderCancellation']);
 });
 
 // Auto Render
@@ -81,3 +83,13 @@ Route::patch("comfirm-password", [loginController::class, 'comfirmPassword']);
 // Dashboard Admin
 
 Route::get('admin/dashboard', [DashboardController::class, 'index']);
+
+
+// Api Posts
+Route::get('bai-viet', [ApiController::class, 'postList']);
+Route::get('bai-viet/{slug}', [ApiController::class, 'postItem']);
+Route::patch('view-post/{slug}', [ApiController::class, 'postView']);
+
+
+Route::post('binh-luan', [ProductDetailController::class, 'comment']);
+Route::get('binh-luan/{productId}', [ProductDetailController::class, 'listComment']);

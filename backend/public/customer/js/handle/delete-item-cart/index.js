@@ -7,18 +7,20 @@ function deleteCartItem() {
     const deleteItem = document.querySelectorAll('.remove_product');
     const localCart = JSON.parse(localStorage.getItem("local-cart"));
 
-    deleteItem.forEach((e) => {
-        e.onclick = () => {
-            const code = e.getAttribute('data-code');
-            const cartItem = localCart.filter(value => value.code !== code);
+    if (localCart.length > 0) {
+        deleteItem.forEach((e) => {
+            e.onclick = () => {
+                const code = e.getAttribute('data-code');
+                const cartItem = localCart.filter(value => value.code !== code);
 
-            if (cartItem) {
-                localStorage.setItem("local-cart", JSON.stringify(cartItem));
-                runShoppingCart()
-                renderTotalCard()
+                if (cartItem) {
+                    localStorage.setItem("local-cart", JSON.stringify(cartItem));
+                    runShoppingCart()
+                    renderTotalCard()
+                }
             }
-        }
-    })
+        })
+    }
 }
 
 export default deleteCartItem;
