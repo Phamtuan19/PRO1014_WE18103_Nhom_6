@@ -18,8 +18,6 @@ function handleEditPassword(authUser) {
         validation(['required', 'min|6', 'passwordConfirm'], new_password, "Mật khẩu nhập lại", new_password__confirm);
     }
 
-    console.log('edit password');
-
     btn_save_passworl.onclick = () => {
         if (validation(['required', 'min|6'], current_password, "Mật khẩu hiện tại") &&
             validation(['required', 'min|6'], new_password, "Mật khẩu mới") &&

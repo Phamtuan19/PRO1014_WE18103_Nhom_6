@@ -42,6 +42,10 @@ h3 {
 
 .featured_fluid {
     display: flex;
+    margin-bottom: 12px;
+    padding-bottom: 24px;
+    border: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
@@ -57,7 +61,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 12px;
-
+    flex: 1;
 }
 
 .overlay h2 {
@@ -68,10 +72,20 @@ h3 {
     color: #080808;
     font-size: 18px;
     font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    line-height: 1.6rem;
 }
 
 .overlay p {
-    font-size: 14px;
+    font-size: 1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-height: 1.6rem;
 }
 
 .secondary-news {
@@ -193,7 +207,7 @@ h3 {
 }
 
 .post__item_image {
-    width: 50%;
+    flex: 0.6;
     height: 180px;
     background-repeat: no-repeat;
     background-size: contain;

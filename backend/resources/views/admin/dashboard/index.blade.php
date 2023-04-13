@@ -28,10 +28,9 @@
             {{-- @csrf --}}
 
             <div class="header-filter row">
-                <div class="form-group col-5 d-flex" style="margin: 0">
+                {{-- <div class="form-group col-5 d-flex" style="margin: 0">
                     <label style="width: 30%;">Chọn thời gian từ</label>
                     <div class="">
-                        {{-- @dd($startMonth) --}}
                         <input type="month" class="form-control form-control-sm month" name="startMonth"
                             value="{{ request()->startMonth ? request()->startMonth : $startMonth }}" min="2018-03">
                         <span style="color: red; font-size: 12px"></span>
@@ -50,7 +49,7 @@
 
                 <div class="col-2">
                     <button type="submit" class="btn btn-gradient-info btn-fw btn-filter">Xác nhận</button>
-                </div>
+                </div> --}}
             </div>
         </form>
 

@@ -31,10 +31,10 @@ const collapsed = document.querySelectorAll('.collapsed');
 const general_pages = document.querySelectorAll('.collapse_sub');
 
 collapsed.forEach( (e, index) => {
-    console.log(e);
+    // console.log(e);
     e.onclick = () => {
         general_pages[index].classList.toggle('d-none')
     }
 })
 
-console.log(window.location.pathname);
+// console.log(window.location.pathname);

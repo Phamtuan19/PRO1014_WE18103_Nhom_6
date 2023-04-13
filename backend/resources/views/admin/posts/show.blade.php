@@ -56,7 +56,8 @@
 
         <h4 class="card-title">Chỉnh sửa bài viết</h4>
 
-        <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+            @method("PATCH")
             @csrf
 
             <div class="row" style="background: #fff; padding: 42px 24px;">

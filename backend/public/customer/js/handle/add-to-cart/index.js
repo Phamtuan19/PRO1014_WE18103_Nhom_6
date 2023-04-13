@@ -6,8 +6,10 @@ import callApiMiniCart from '../../Layout/header/car-mini/index.js';
 // Add To Cart
 function handleClickAddToCart() {
     const addCart = document.querySelectorAll('.add-to__cart');
+    console.log(addCart);
     if (addCart) {
         addCart.forEach((item, index) => {
+
             item.addEventListener('click', (event) => {
                 event.preventDefault();
 

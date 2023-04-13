@@ -9,21 +9,13 @@
     <div class="page-main">
         <div class="home-page">
             <div class="slider">
+                <div class="">
+                    <div class="next"></div>
+                    <div class="prev"></div>
+                </div>
                 <div class="slides">
-                    <input type="radio" name="radio-btn" id="radio1" value="" />
-                    <input type="radio" name="radio-btn" id="radio2" value="" />
-                    <input type="radio" name="radio-btn" id="radio3" value="" />
-
                     <div class="slide first">
-                        <img src="https://book365.vn/upload/resize_cache/iblock/4f0/950_290_1/4f0558744f4e4797ee554882fdaae33c.jpg"
-                            alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="https://book365.vn/upload/resize_cache/iblock/62c/950_290_1/62ca20282dc5fe64b2ce32480f1523e4.png"
-                            alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="https://book365.vn/upload/resize_cache/iblock/59c/950_290_1/59cb7d6365c2cc89ece83671d912638b.jpg"
+                        <img class="image_product__detail" src="https://book365.vn/upload/resize_cache/iblock/4f0/950_290_1/4f0558744f4e4797ee554882fdaae33c.jpg"
                             alt="" />
                     </div>
                 </div>

@@ -3,7 +3,9 @@ import { enpointUrl } from '../../service/index.js';
 import { formatCurrency } from '../../method/index.js';
 import { handleClickAddToCart } from '../../handle/index.js';
 
-function productItem(data, element, colNumber) {
+
+function productItem(data, element, colNumber, callBack) {
+
     const html = data.map(e => {
         return `
             <div class="col-lg-${colNumber ? colNumber : 3} col-md-4 col-sm-6">
@@ -15,7 +17,7 @@ function productItem(data, element, colNumber) {
                     </a>
                     <div class="product__item__text">
                         <h6 class="product__item__name">${e.name}</h6>
-                        <span class="add-to__cart" data-id="${e.id}" data-code="${e.product_code}">+ Add To Cart</span>
+                        <span class="add-to__cart" data-id="${e.id}" data-code="${e.product_code}">+ Thêm vào giỏ hàng</span>
                         <div class="rating">
                             <i class="fa fa-star-o"></i>
                             <i class="fa fa-star-o"></i>
@@ -34,7 +36,9 @@ function productItem(data, element, colNumber) {
     });
     element.innerHTML = html.join('');
 
-    handleClickAddToCart();
+    handleClickAddToCart()
 }
+
+
 
 export default productItem;

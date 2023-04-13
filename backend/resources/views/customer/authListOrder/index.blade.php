@@ -22,21 +22,6 @@
                         </tr>
                     </thead>
                     <tbody class="table_lis_order">
-                        {{-- <tr>
-                            <td>2</td>
-                            <td>MX03223537</td>
-                            <td id="fontbold"> 148.250 đ</td>
-                            <td>
-                                <p><i class="fa-solid fa-check"></i> Đã thanh toán</p>
-                            </td>
-                            <td>
-                                <p>Giao Hàng Thành Công <i class="fa-sharp fa-solid fa-circle-check"></i> </p>
-                            </td>
-                            <td>2023-12-3</td>
-                            <td>
-                                <button type="button" class="btn btn-primary">Chi tiết đơn hàng</button>
-                            </td>
-                        </tr> --}}
                     </tbody>
                 </table>
                 <div class="modal d-none" style="display: block; transition: all 0.5s;">

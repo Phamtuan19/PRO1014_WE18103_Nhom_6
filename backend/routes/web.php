@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CustomersController;
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\StoreCatalogController;
 use App\Http\Controllers\Admin\PublishingHouseController;
 
@@ -76,6 +77,7 @@ Route::middleware('custom.auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name("dashboard");
 
         Route::resource('posts', PostController::class);
+        Route::resource('discountcode', DiscountCodeController::class);
     });
 });
 
@@ -84,4 +86,5 @@ Route::get('send-mail-order', function () {
 });
 
 
-include __DIR__.'/customer.php';
+include __DIR__ . '/customer.php';
+    

@@ -10,10 +10,11 @@ use App\Models\OrderDetail;
 use App\Models\DiscountCode;
 use App\Models\ProductDetail;
 use App\Models\DeliveryAddress;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Order\OrderRequest;
 use App\Mail\Order\Successfully;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\Order\OrderRequest;
 
 
 
@@ -25,20 +26,12 @@ class OrderController extends Controller
         // $products = json_decode($request->products, true);
         $products = $request->products;
 
-        $discount = null;
-
-        // return  response()->json(["msg" => "thêm sản phẩm thành công"], 200);
-
-        // if (!empty($request->discount_code)) {
-        //     $discount = DiscountCode::where('discount_code', $request->discount_code)
-        //         ->where('remaining_quantity', '>', 0)
-        //         ->get();
-        // }
+        $discount = !empty($request->discount_code) ? $request->discount_code : null;
 
         foreach ($products as $key => $value) {
             $warehouse = Warehouse::where('product_id', $value['id'])->get();
 
-            if($warehouse[0]->quantity_stock < $value['quantity']){
+            if ($warehouse[0]->quantity_stock < $value['quantity']) {
                 return response()->json(["msg" => "Số lượng sản phẩm vượt quá số lượng trong kho"], 205);
             }
         }
@@ -66,10 +59,7 @@ class OrderController extends Controller
                 $this->orderDetail($newOrder, $product['code'], $productItem[0], $product['quantity']);
             }
 
-
             $newNotes = $this->orderNote($request, $newOrder);
-
-
             try {
                 if ($newDeliveryAddress && $newNotes) {
                     foreach ($products as $item) {
@@ -83,28 +73,48 @@ class OrderController extends Controller
 
                     $this->sendEmailOrderSuccess($newDeliveryAddress, $newOrder);
 
-                    return  response()->json(["msg" => "thêm sản phẩm thành công",], 200);
+                    $this->storeDiscountCode($discount);
+
+                    return  response()->json(["msg" => 'Đặt hàng thành công'], 200);
                 }
             } catch (Exception $e) {
-                return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 500);
+                return response()->json(["msg" => $e], 500);
             }
         } else {
             return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
         }
     }
 
+    public function storeDiscountCode($discount_id)
+    {
+        if (!empty($discount_id)) {
+            try {
+                $discount = DiscountCode::find($discount_id);
+                $discount->remaining_quantity = $discount->remaining_quantity - 1;
+                $discount->save();
+            } catch (Exception $e) {
+                return response()->json(["msg" => $e], 500);
+            }
+        }
+    }
+
     public function storeOrder($request, $discount, $total)
     {
         if (is_array($total) && !empty($total["total_quantity"]) && !empty($total["total_price"])) {
+
+            if (!empty($discount)) {
+                $discountMoney = DiscountCode::find($discount);
+            }
+
             $data = [
                 'code_order' => CodeOrder(),
                 'user_id' => !empty($request->user_id) ? $request->user_id : null,
-                'discount_code_id' => !empty($discount) > 0 ? $discount->id : null,
+                'discount_code_id' => !empty($discount) ? $discount : null,
                 'order_status_id' => 1,
                 'payment_form' => $request->payment_form,
                 'payment_status_id' => 2,
                 'quantity' => $total["total_quantity"], // default
-                'total_price' => $total["total_price"], // default
+                'total_price' => !empty($discountMoney) ? $total["total_price"] - $discountMoney->percentage_decrease : $total["total_price"], // default
                 'shipping_fee' => null,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -191,7 +201,8 @@ class OrderController extends Controller
         }
     }
 
-    function sendEmailOrderSuccess ($deliveryAddress, $newOrder) {
+    function sendEmailOrderSuccess($deliveryAddress, $newOrder)
+    {
         $data = [
             'order' => $newOrder,
             'address' => $deliveryAddress,

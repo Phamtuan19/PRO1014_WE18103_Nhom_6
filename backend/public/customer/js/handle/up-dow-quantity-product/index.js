@@ -20,7 +20,6 @@ function hendleClickQuantity() {
                     cartItem.code = cartItem.code;
                     cartItem.quantity = e.value;
                     localStorage.setItem('local-cart', JSON.stringify(localCart));
-                    // renderShoppingCart()
                     renderTotalCard()
                     cartTotalsMoney()
                 } else {

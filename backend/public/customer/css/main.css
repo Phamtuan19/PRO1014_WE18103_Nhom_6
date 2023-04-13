@@ -88,6 +88,20 @@ img {
     transition: all, 0.3s;
     cursor: pointer;
 }
+.product__item__text .add-to__cart_list {
+    font-size: 15px;
+    color: #e53637;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    cursor: pointer;
+}
 
 .product__item__text .rating {
     display: flex;
@@ -118,6 +132,12 @@ img {
 }
 
 .product__item:hover .product__item__text .add-to__cart {
+    left: 25px;
+    top: 22px;
+    opacity: 1;
+    visibility: visible;
+}
+.product__item:hover .product__item__text .add-to__cart_list {
     left: 25px;
     top: 22px;
     opacity: 1;

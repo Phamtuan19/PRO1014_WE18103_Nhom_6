@@ -16,7 +16,7 @@ function callApiDashboard() {
             return response.json('');
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
             renderTurnover(data.statistic);
             renderTotalOrder(data.statistic);
             renderTotalOrderSuccess(data.statistic);

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class CustomerPageController extends Controller
 {
@@ -48,5 +49,21 @@ class CustomerPageController extends Controller
     public function postItem()
     {
         return view('customer.post.post-item');
+    }
+
+    public function contact ()
+    {
+        return view('customer.contact.index');
+    }
+
+    public function policyRegulations (Request $request)
+    {
+        if($request->atc){
+            $atc = $request->atc;
+
+            $policyRegulation = Post::where('slug', $atc)->get();
+
+            return view('customer.policyRegulations.index', compact('policyRegulation'));
+        }
     }
 }

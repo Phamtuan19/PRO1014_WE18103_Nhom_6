@@ -28,8 +28,6 @@ function cartTotalsMoney() {
         0
     )
 
-    console.log(code);
-
     const totalMoneyCart = totalMoneyProductCart - Number(code.dataset.value)
 
     document.querySelector('.total-payment').value = formatCurrency(totalMoneyProductCart)

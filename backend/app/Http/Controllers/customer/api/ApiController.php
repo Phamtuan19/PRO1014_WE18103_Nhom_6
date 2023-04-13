@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\PublishingHouse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\DiscountCode;
 
 class ApiController extends Controller
 {
@@ -284,5 +285,17 @@ class ApiController extends Controller
         // DB::update('UPDATE post SET view= ? WHERE id = ?', [$id,  $view]);
 
         return  response()->json(['mssg' => 'thành công'], 200);
+    }
+
+    public function discountCode($code)
+    {
+        try {
+            $discountCode = DiscountCode::where('discount_code', $code)->first();
+            if ($discountCode->remaining_quantity > 0) {
+                return  response()->json(['msg' => 'success', 'code' => $discountCode], 200);
+            }
+        } catch (\Throwable $th) {
+            return  response()->json(['msg' => 'error'], 200);
+        }
     }
 }

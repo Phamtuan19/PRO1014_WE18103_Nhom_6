@@ -93,3 +93,5 @@ Route::patch('view-post/{slug}', [ApiController::class, 'postView']);
 
 Route::post('binh-luan', [ProductDetailController::class, 'comment']);
 Route::get('binh-luan/{productId}', [ProductDetailController::class, 'listComment']);
+
+Route::get('discount/code/{code}', [ApiController::class, 'discountCode']);

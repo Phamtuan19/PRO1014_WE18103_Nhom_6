@@ -6,7 +6,7 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Thống kê</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
@@ -47,6 +47,24 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.products.index') }}"> Danh sách sản phẩm </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" aria-expanded="false"
+                aria-controls="ui-basic">
+                <span class="menu-title">Mã giảm giá</span>
+                <i class="mdi mdi-contacts menu-icon"></i>
+            </a>
+
+            <div class="collapse_sub d-none " id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.discountcode.create') }}"> Thêm Mã giảm giá </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.discountcode.index') }}"> Danh sách mã giảm giá </a>
                     </li>
                 </ul>
             </div>

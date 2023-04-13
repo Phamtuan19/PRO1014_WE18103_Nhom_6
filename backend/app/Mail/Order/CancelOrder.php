@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Successfully extends Mailable
+class CancelOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,8 +30,8 @@ class Successfully extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.Order.Order')
-            ->subject('Cập nhật đơn hàng thành công')
+        return $this->view('mails.Order.Cancel-Order')
+            ->subject('Hủy đơn hàng')
             ->with($this->data);
     }
 }

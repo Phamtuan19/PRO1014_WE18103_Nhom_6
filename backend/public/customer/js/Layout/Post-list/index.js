@@ -43,15 +43,15 @@ function renderList(data) {
 function rederPostView(data) {
     post_top__view.innerHTML = data.map((e) => {
         return `
-            <a class="featured_fluid" href="${enpointUrl.postItem(e.slug)}" style="margin-bottom: 24px;">
+            <a class="featured_fluid" href="${enpointUrl.postItem(e.slug)}">
                 <div class="set-bg"
-                    style="width: 365px; height: 100px; margin-right: 12px; background-image: url(${e.image_url})">
+                    style="flex: 0.6; margin-right: 12px; background-image: url(${e.image_url})">
                 </div>
 
                 <div class="overlay" style="gap: 10px;">
                     <h3 class="top_view__name">${e.title}</h3>
                     <p class="post__introduction">${e.introduction}</p>
-                    <div class="d-flex gap-3">
+                    <div class="d-flex flex-wrap" style="gap: 12px;">
                         <p>${e.user_name}</p>
                         <p>${e.created_at}</p>
                         <p>view: ${e.view === null ? 0 : e.view}</p>

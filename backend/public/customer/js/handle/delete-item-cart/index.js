@@ -1,6 +1,14 @@
-import { runShoppingCart } from '../../Layout/ShoppingPage/index.js';
-import { renderTotalCard } from '../../render/index.js';
 
+
+/*
+*
+*   Delete product cart items
+*
+*/
+
+import runShoppingCart from '../../Layout/ShoppingPage/index.js';
+import { renderTotalCard } from '../../render/index.js';
+import callApiMiniCart from '../../Layout/header/car-mini/index.js'
 
 // Xóa sản phẩm trong giỏ hàng
 function deleteCartItem() {
@@ -17,6 +25,7 @@ function deleteCartItem() {
                     localStorage.setItem("local-cart", JSON.stringify(cartItem));
                     runShoppingCart()
                     renderTotalCard()
+                    callApiMiniCart()
                 }
             }
         })

@@ -42,11 +42,11 @@
             </div>
 
             <div class="header__register-item">
-                <div class="header-nav__icon">
-                    <i class="fa-solid fa-user header-icons"></i>
+                <div class="header-nav__icon user__active">
+                    {{-- <i class="fa-solid fa-right-to-bracket  header-icons" style="transform: rotate(180deg);"></i> --}}
+                    {{-- <i class="fa-solid fa-user header-icons"></i> --}}
                 </div>
-                <div class="register__title">
-
+                <div class="register__title" style="padding: 8px 24px">
 
 
                 </div>
@@ -55,25 +55,45 @@
     </div>
     <div class="header-with-menu">
         <ul class="nav-categories">
-            <li>
-                <a href="http://127.0.0.1:8000/trang-chu">
+            <li class="nav-categories__li">
+                <a class="navbar-item__a" href="trang-chu">
                     Trang chủ
                 </a>
             </li>
-            <li>
-                <a href="http://127.0.0.1:8000/danh-sach-san-pham">
+            <li class="nav-categories__li">
+                <a class="navbar-item__a" href="danh-sach-san-pham">
                     Sản phẩm
                 </a>
             </li>
-            <li>
-                <a href="http://127.0.0.1:8000/danh-sach-san-pham">
-                    Tác giả
-                </a>
-            </li>
-            <li>
-                <a href="#">
+
+            <li class="nav-categories__li">
+                <a class="navbar-item__a" href="bai-viet">
                     Bài viết
                 </a>
+            </li>
+            <li class="nav-categories__li">
+                <a class="navbar-item__a" href="lien-he">
+                    Liên Hệ
+                </a>
+            </li>
+            <li class="navbar nav-categories__li">
+                <a class="navbar-item__a" href="#">
+                   Chính sách & Quy định
+                </a>
+                <ul class="nav-item">
+                    <li class="nav-item__li">
+                        <a class="nav-item__li__a" href="chinh-sach-quy-dinh?atc=bao-mat-thong-tin">Bảo mật thông tin</a>
+                    </li>
+                    <li class="nav-item__li">
+                        <a class="nav-item__li__a" href="chinh-sach-quy-dinh?atc=huong-dan-mua-hang">Hướng dẫn mua hàng</a>
+                    </li>
+                    <li class="nav-item__li">
+                        <a class="nav-item__li__a" href="chinh-sach-quy-dinh?atc=chinh-sach-kiem-hang">Chính sách kiểm hàng</a>
+                    </li>
+                    <li class="nav-item__li">
+                        <a class="nav-item__li__a" href="chinh-sach-quy-dinh?atc=chinh-sach-doi-tra">Chính sách đổi trả</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

@@ -5,6 +5,8 @@
 @section('contents')
     <div class="container mt-4" id="container-cart">
         <div class="row shopping_page">
+
+
             <div class="col-lg-9 pb-4" style="padding-right: 24px;">
                 <div class="cart-detail" style="background-color: #fff; border-radius: 5px; padding: 24px 12px;">
                     <table class="table table-bordered">
@@ -127,11 +129,12 @@
                     <div class="cart-collaterals">
                         <div class="cart-collaterals_detail">
                             <div class="input-group discount-code">
-                                <input type="text" class="form-control discount-code_input" placeholder="Mã giảm giá"
+                                <input type="text" class="form-control discount-code_input" data-id="" placeholder="Mã giảm giá"
                                     aria-label="Recipient's username" aria-describedby="basic-addon2"
-                                    style="width: 80%;">
+                                    style="width: 100% !important; border-radius: 0 5px 5px 0; padding: 6px 75px 6px 12px;">
+                                <span class="error"></span>
                                 <button type="button" class="btn btn-secondary discount-code_btn " id="basic-addon2"
-                                    style="width: 20%;">Áp dụng</button>
+                                    style="position: absolute; right: 7px;height: 45px; z-index: 9999">Áp dụng</button>
                             </div>
                         </div>
                     </div>
@@ -195,5 +198,6 @@
 
 @section('js')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <script type="module" src="{{ asset('customer/js/Layout/ShoppingPage/index.js') }}"></script>
 @endsection

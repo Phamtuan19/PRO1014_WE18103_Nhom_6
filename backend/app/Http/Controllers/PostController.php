@@ -91,6 +91,17 @@ class PostController extends Controller
      */
     public function edit(Request $request, Post $post)
     {
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Post $post)
+    {
         if ($request->hasFile('image')) {
             $image = $request->file('image');
 
@@ -125,18 +136,6 @@ class PostController extends Controller
         } else {
             return back()->with(['msg' => 'Cập nhật Thất bại']);
         }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
