@@ -2,7 +2,7 @@
 import { serviceApi } from '../../service/index.js';
 import { productItem, renderTotalCard } from '../../render/index.js';
 import { handleClickAddToCart } from '../../handle/index.js';
-import productItemList from './products-item-list/index.js'
+import { productItemList, renderPostList } from './products-item-list/index.js'
 renderTotalCard()
 
 const filterControls = document.querySelectorAll('.home__title__text')
@@ -45,7 +45,8 @@ serviceApi.getHomeProductList()
     .then(function (data) {
         isChecList = true
         const location = document.querySelector('.product-list__test')
-        productItemList(data, location, 3)
+        productItemList(data.products, location, 3)
+        renderPostList(data.topView)
     })
     .catch(function (error) {
         console.log(error);

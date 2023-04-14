@@ -45,7 +45,7 @@ function runShoppingCart() {
     }
     else {
         if (document.querySelector('.shopping_page')) {
-            document.querySelector('.shopping_page').innerHTML = '<h5 style="text-align: center;">không có sản phẩm nào</h5>'
+            document.querySelector('.shopping_page').innerHTML = '<h5 style="text-align: center; margin: 30px 0 200px 0;">không có sản phẩm nào</h5>'
         }
     }
 }

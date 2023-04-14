@@ -32,7 +32,7 @@ function renderDetail(data) {
             <div class="btn-add__cart" style="justify-content: flex-start">
                 <button class="add-to__cart btn" data-id="${e.id}"
                     data-code="${e.product_code}">
-                    Cho vào giỏ hàng
+                    Thêm vào giỏ hàng
                     <i class="fa-solid fa-cart-shopping"></i>
                 </button>
             </div>
@@ -42,10 +42,6 @@ function renderDetail(data) {
     document.querySelector(".product_detail__info").innerHTML = html.join("")
 }
 
-// <button class="btn add__cart btn-primary">
-//     <i class="fa-solid fa-cart-shopping"></i>
-//     Mua ngay
-// </button>
 
 function renderImage(data) {
     const html = data.map((e) => {

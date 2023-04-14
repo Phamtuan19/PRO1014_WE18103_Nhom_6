@@ -20,7 +20,7 @@ serviceApi.getPageProductDetail(code)
     .then(function (data) {
         productId = data[0].id
         renderDetail(data)
-        handleClickAddToCart()
+        // handleClickAddToCart()
         callApiComment()
     })
     .catch(function (error) {
@@ -83,7 +83,7 @@ serviceApi.getPageProductDetailSuggest(code)
     .then(function (data) {
 
         const elem = document.querySelector('.related-book')
-        productItem(data, elem)
+        productItem(data, elem, 4)
     })
     .catch(function (error) {
         console.log(error);
@@ -103,6 +103,8 @@ keepReading.onclick = () => {
         document.querySelector(".detail__introduction").classList.remove('active');
     }
 }
+
+
 
 setTimeout(() => {
 

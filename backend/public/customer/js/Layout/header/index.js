@@ -40,7 +40,7 @@ function handleCheckLogin() {
         user__active.innerHTML = `<i class="fa-solid fa-user header-icons"></i>`
         register__title.innerHTML = `
             <div class="user_menu">
-                <div class="user_menu_image" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSfjRp8wZGknTyJrPQP2T7qoPw0t-TyR_moh990W9PgBfDb7jxP)"></div>
+                <div class="user_menu_image set-bg" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQR0-qTibWaJ6u111_aqX76V8yWrtZojeaBqcrnogq0xumt76ru)"></div>
                 <div class="user_menu_info">
                     <span class="user_menu_name">${authUser.user.name}</span>
                     <span class="user_menu_email">${authUser.user.email}</span>
@@ -94,19 +94,34 @@ function handleLogout(authUser) {
 const input__search = document.querySelector(".input__search");
 
 input__search.addEventListener('focus', () => {
-    document.querySelector('.header__search__list__item').classList.remove('d.none')
-
     input__search.onkeyup = () => {
-
-        fetch('http://127.0.0.1:8000/api/search?q=' + input__search.value)
+        if((input__search.value).trim() !== '') {
+            fetch('http://127.0.0.1:8000/api/search?q=' + input__search.value)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
-                renderSearch(data);
+                if(data){
+                    document.querySelector('.header__search__list__item').classList.remove('d-none')
+                    renderSearch(data);
+                }
             })
+            .catch(function(data) {
+                console.log(data);
+            })
+        }else {
+            document.querySelector('.header__search__list__item').classList.add('d-none')
+        }
     }
 })
+
+document.querySelector('.header__search').onclick = () => {
+    document.querySelector('.header_input_search').classList.remove('d-none')
+}
+
+document.querySelector('.header_input_search__close').onclick = () => {
+    document.querySelector('.header_input_search').classList.add('d-none')
+}
 
 function renderSearch(data) {
 
@@ -127,7 +142,14 @@ function renderSearch(data) {
                         <p class="item__price" data.price="${e.promotion_price}">${formatCurrency(e.promotion_price)}</p>
                     </div>
                 </div>
+
             </a>
         `
     }).join('')
 }
+
+const categories__li = document.querySelectorAll('.nav-categories__li');
+
+// categories__li.forEach(e => {
+//     if()
+// })

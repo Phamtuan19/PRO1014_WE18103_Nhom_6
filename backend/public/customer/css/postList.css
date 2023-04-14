@@ -126,6 +126,7 @@ h3 {
     overflow: hidden;
     -webkit-line-clamp: 2;
     line-height: 1.2rem;
+    color: #111111;
 }
 
 
@@ -221,3 +222,4 @@ h3 {
     -webkit-line-clamp: 1;
     line-height: 1.3rem;
 }
+

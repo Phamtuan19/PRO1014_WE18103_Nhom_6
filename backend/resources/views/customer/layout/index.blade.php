@@ -27,14 +27,17 @@
         @include('customer.layout.header')
 
         {{-- Content --}}
-        @yield('contents')
+        <div class="layout__content">
+            @yield('contents')
+        </div>
 
         {{-- Footer --}}
         {{-- @dd(request()->path()) --}}
         @if (request()->path() == 'danh-sach-san-pham' ||
                 request()->path() == 'trang-chu' ||
                 request()->path() == 'bai-viet' ||
-                request()->path() == 'chinh-sach-quy-dinh')
+                request()->path() == 'chinh-sach-quy-dinh' ||
+                request()->path() == 'shopping/cart')
             @include('customer.layout.footer')
         @endif
     </div>

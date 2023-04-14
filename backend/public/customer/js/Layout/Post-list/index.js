@@ -45,16 +45,16 @@ function rederPostView(data) {
         return `
             <a class="featured_fluid" href="${enpointUrl.postItem(e.slug)}">
                 <div class="set-bg"
-                    style="flex: 0.6; margin-right: 12px; background-image: url(${e.image_url})">
+                    style="flex: 0.3; margin-right: 12px; background-image: url(${e.image_url})">
                 </div>
 
                 <div class="overlay" style="gap: 10px;">
                     <h3 class="top_view__name">${e.title}</h3>
-                    <p class="post__introduction">${e.introduction}</p>
-                    <div class="d-flex flex-wrap" style="gap: 12px;">
-                        <p>${e.user_name}</p>
-                        <p>${e.created_at}</p>
-                        <p>view: ${e.view === null ? 0 : e.view}</p>
+                    <p class="post__introduction" style="font-size: 0.9rem;">${e.introduction}</p>
+                    <div class="d-flex flex-wrap" style="gap: 12px; color: #111111; ">
+                        <p style="font-size: 0.9rem;">${e.user_name}</p>
+                        <p style="font-size: 0.9rem;">${e.created_at}</p>
+                        <p style="font-size: 0.9rem;">view: ${e.view === null ? 0 : e.view}</p>
                     </div>
                 </div>
             </a>

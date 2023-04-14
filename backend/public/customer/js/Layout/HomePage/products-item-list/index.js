@@ -41,9 +41,6 @@ function productItemList(data, element, colNumber, callBack) {
     handleClickAddToCart();
 }
 
-
-
-
 // Add To Cart
 function handleClickAddToCart() {
     const addCart = document.querySelectorAll('.add-to__cart_list');
@@ -84,6 +81,35 @@ function handleClickAddToCart() {
     }
 }
 
+function renderPostList (data) {
+    const html = data.map(e => {
+        return `
+            <div class="col-4 " style="">
+                <div class="post_items">
+                    <a href="" style="color: #111111;">
+                        <div class="mt-3 set-bg"
+                            style="width: 100%;height: 200px; background-image: url('${e.image_url}');">
+                        </div>
+                        <div class="mt-3">
+                            <h5 class="post_item_name">
+                                ${e.title}
+                            </h5>
+                            <p class="introduction">
+                                ${e.introduction}
+                            </p>
+                            <div class="post_item__detail">
+                                <p class="post_item_author">${e.user_name}</p>
+                                <p class="post_item_created_at">${e.created_at}</p>
+                                <p class="post_item_created_view">view: ${e.view}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        `
+    })
 
+    document.querySelector('.featured_posts').innerHTML = html.join('')
+}
 
-export default productItemList;
+export { productItemList, renderPostList };

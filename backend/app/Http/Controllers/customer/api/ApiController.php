@@ -76,7 +76,20 @@ class ApiController extends Controller
             ->limit(8)
             ->get();
 
-        return response()->json($products, 200);
+        $topView =  DB::table('post')
+            ->select('post.*', 'users.name as user_name')
+            ->join('users', 'users.id', '=', 'post.user_id')
+            ->whereNotIn('post.id', [4, 5, 7, 8])
+            ->orderBy('view', 'DESC')
+            ->take(5)
+            ->get();
+
+        $data = [
+            'products' => $products,
+            'topView' => $topView,
+        ];
+
+        return response()->json($data, 200);
     }
 
     public function homeProductSale(Request $request)
@@ -246,12 +259,14 @@ class ApiController extends Controller
         $posts = DB::table('post')
             ->select('post.*', 'users.name as user_name')
             ->join('users', 'users.id', '=', 'post.user_id')
+            ->whereNotIn('post.id', [4, 5, 7, 8])
             ->orderBy('created_at', 'DESC')
             ->get();
 
         $topView =  DB::table('post')
             ->select('post.*', 'users.name as user_name')
             ->join('users', 'users.id', '=', 'post.user_id')
+            ->whereNotIn('post.id', [4, 5, 7, 8])
             ->orderBy('view', 'DESC')
             ->take(5)
             ->get();
