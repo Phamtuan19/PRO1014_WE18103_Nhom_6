@@ -64,16 +64,6 @@ class OrderController extends Controller
                 if ($newDeliveryAddress && $newNotes) {
                     foreach ($products as $item) {
                         $wareHouse = Warehouse::where("product_id", $item['id'])->get();
-
-<<<<<<< HEAD
-        try {
-            if ($newOrder && $newDeliveryAddress && $newNotes) {
-
-                return  response()->json( [ "msg" => "thêm sản phẩm thành công"], 200 );
-            }
-        } catch (Exception $e) {
-            return  response()->json( [ "msg" => "thêm sản phẩm thất bại"], 200 );
-=======
                         $wareHouse[0]->quantity_stock = $wareHouse[0]->quantity_stock - $item['quantity'];
                         $wareHouse[0]->quantity_sold = $wareHouse[0]->quantity_sold + $item['quantity'];
 
@@ -91,7 +81,6 @@ class OrderController extends Controller
             }
         } else {
             return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
->>>>>>> 6faf90aa204ab78b71ccdc1acc674777cf3c2200
         }
     }
 
