@@ -30,6 +30,7 @@ class ApiController extends Controller
         return $catalog;
     }
 
+    // Tìm kiếm sản phẩm phần header
     public function search(Request $request)
     {
 
@@ -48,12 +49,14 @@ class ApiController extends Controller
                 ->join('image', 'image.product_id', '=', 'products.id')
                 ->join('author', 'author.id', '=', 'products.author_id')
                 ->where('products.name', 'like', '%' . $request->q . '%')
-                ->take(4)->get();
+                ->take(4)
+                ->get();
 
             return response()->json($data, 200);
         }
     }
 
+    // danh sách sản phẩm (Gợi ý cho bạn, topview)
     public function listProducts(Request $request)
     {
         $products = DB::table('products')
@@ -81,7 +84,7 @@ class ApiController extends Controller
             ->join('users', 'users.id', '=', 'post.user_id')
             ->whereNotIn('post.id', [4, 5, 7, 8])
             ->orderBy('view', 'DESC')
-            ->take(5)
+            ->take(3)
             ->get();
 
         $data = [
@@ -92,6 +95,7 @@ class ApiController extends Controller
         return response()->json($data, 200);
     }
 
+    // danh sách sản phẩm (Bán chạy nhất , Mới nhất, Giá tốt nhất)
     public function homeProductSale(Request $request)
     {
         $orderBy = 'warehouses.quantity_sold';
@@ -132,9 +136,11 @@ class ApiController extends Controller
         return response()->json($products, 200);
     }
 
+    // Sản phẩm giỏ hàng trên thanh header
     public function shoppingCart(Request $request)
     {
         $arrayCode = explode(',', request()->code);
+        // [1, 2, 4]
 
         if (is_array($arrayCode)) {
 

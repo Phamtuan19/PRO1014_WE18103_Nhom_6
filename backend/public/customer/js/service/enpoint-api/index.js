@@ -10,7 +10,7 @@ const enpointApi = {
     userUpdatePassword: 'user/update/password/',
     authListOrder: 'list-order',
     //
-    menu: 'submenu/',
+    // menu: 'submenu/',
     pageHomeProductFilter: 'page-home/products-filter-controls',
     pageHomeProductList: 'page-home/products-list',
     shoppingCart: 'shopping/cart',

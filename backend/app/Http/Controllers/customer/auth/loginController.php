@@ -16,7 +16,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use SebastianBergmann\Type\TrueType;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\admin\User\CreateRequest;
 use App\Http\Requests\Customer\Auth\loginRequest;
@@ -33,9 +32,9 @@ class loginController extends Controller
     {
         $user = User::select('id', 'name', 'email', 'phone', 'password', 'address')
             ->where('email', $request->email)
-            ->where('position_id', 2)->first();
+            ->where('position_id', 2)
+            ->first();
 
-        // return response()->json($user->count(), 200);
         if ($user->count() === 0) {
 
             return response()->json(['msg' => "Tài khoản không tồn tại"], 402);
@@ -129,7 +128,7 @@ class loginController extends Controller
     public function resetPassword(Request $request)
     {
         // return response()->json(["msg" => $request->email], 200);
-        $checkUser = User::where('email', $request->email)->get();
+        $checkUser = User::where('email', $request->email)->where('postition_id', 2)->get();
 
         if ($checkUser->count() > 0) {
 

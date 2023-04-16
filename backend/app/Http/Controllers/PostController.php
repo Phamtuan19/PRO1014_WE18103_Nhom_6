@@ -146,6 +146,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Post::destroy($id)) {
+            return back()->with('msg', "successfully");
+        }
+
+        return back()->with('msg', "error");
     }
 }
