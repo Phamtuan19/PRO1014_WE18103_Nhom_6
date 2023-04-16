@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -30,6 +30,7 @@ class User extends Authenticatable
         'position_id',
         'password',
         'is_deleted',
+        'token_verify',
     ];
 
     /**
@@ -69,7 +70,7 @@ class User extends Authenticatable
         }
 
         // dd($orderType);
-        $query = $query->where('position_id', '!=', 3)
+        $query = $query->where('position_id', '!=', 2)
             ->orderBy($orderBy, $orderType);
 
         return $query;
@@ -93,7 +94,7 @@ class User extends Authenticatable
         }
 
         // dd($orderType);
-        $query = $query->where('position_id', 3)
+        $query = $query->where('position_id', 2)
             ->orderBy($orderBy, $orderType);
 
         return $query;

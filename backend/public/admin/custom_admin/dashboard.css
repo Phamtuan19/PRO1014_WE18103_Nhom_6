@@ -1,0 +1,65 @@
+.card .card-body {
+    padding: 1.5rem 1.5rem !important;
+}
+
+.dash-widget {
+    background: #fff;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    padding: 20px;
+    border: 1px solid #E8EBED;
+    display: flex;
+}
+
+.dash-widget .dash-widgetimg span {
+    width: 48px;
+    height: 48px;
+    background: rgba(249, 110, 111, 0.12);
+    border-radius: 50px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dash-widget .dash-widgetcontent {
+    margin-left: 20px;
+}
+
+.dash-widgetcontent__title {
+    font-size: 14px !important;
+}
+
+.dash-widget.dash1 .dash-widgetimg span {
+    background: rgba(40, 199, 111, 0.12);
+}
+
+.table th img,
+.table td img {
+    width: 40px;
+    height: 55px;
+    border-radius: 0%;
+}
+
+.productimgname {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+}
+
+.productimgname a {
+    color: #212B36;
+    font-weight: 500;
+}
+
+.productimgname__name {
+    max-width: 130px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+}

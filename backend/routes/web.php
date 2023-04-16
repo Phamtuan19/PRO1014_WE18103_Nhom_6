@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\Admin\AdminController;
 
@@ -16,16 +16,15 @@ use App\Http\Controllers\Admin\AuthorController;
 
 use App\Http\Controllers\Admin\ProductController;
 
+
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Email\SendMailController;
 use App\Http\Controllers\Admin\CustomersController;
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\StoreCatalogController;
-use App\Http\Controllers\customer\auth\LoginController;
-
 use App\Http\Controllers\Admin\PublishingHouseController;
-use App\Http\Controllers\customer\CustomerPageController;
-use App\Http\Controllers\customer\auth\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +38,7 @@ use App\Http\Controllers\customer\auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('trang-chu');
 });
 
 Auth::routes();
@@ -47,10 +46,6 @@ Auth::routes();
 Route::middleware('custom.auth')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
-
-        Route::get('/', function () {
-            return "<h1>Trang Admin</h1>";
-        });
 
         Route::resource('/users', AdminController::class);
         Route::patch('/users/replay/{user}', [AdminController::class, 'replay'])->name('users.replay');
@@ -60,11 +55,10 @@ Route::middleware('custom.auth')->group(function () {
 
         Route::resource('categories', CategoryController::class);
 
-        Route::get('submenu', function () {
-            $categories = Categories::orderBy('created_at', 'DESC')->get();
-
-            return view('admin.categories.submenu', compact('categories'));
-        });
+        // Route::get('submenu', function () {
+        //     $categories = Categories::orderBy('created_at', 'DESC')->get();
+        //     return view('admin.categories.submenu', compact('categories'));
+        // });
 
         Route::resource('author', AuthorController::class);
 
@@ -80,28 +74,17 @@ Route::middleware('custom.auth')->group(function () {
         Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
         Route::patch('order/status/{order}', [OrderController::class, 'orderStatusUpdate'])->name('orders.status.update');
 
-        Route::get('send/mail', [SendMailController::class, 'send_email']);
+        Route::get('dashboard', [DashboardController::class, 'index'])->name("dashboard");
+
+        Route::resource('posts', PostController::class);
+        Route::resource('discountcode', DiscountCodeController::class);
     });
 });
 
+Route::get('send-mail-order', function () {
+    return view('mails.Order.Order-successfully');
+});
 
 
-Route::get('home', [CustomerPageController::class, 'index'])->name('customer.home');
-Route::get('product-detail/{product}', [CustomerPageController::class, 'productDetail'])->name('customer.home');
-
-Route::get('customer/login', [LoginController::class, 'index'])->name('customer.login');
-Route::post('post/login', [LoginController::class, 'login'])->name('post.login');
-
-// đăng ký
-Route::get('customer/register', [RegisterController::class, 'index'])->name('customer.register');
-
-Route::post('post/register', [RegisterController::class, 'register'])->name('post.register');
-// logout
-Route::post('customer/logout', function () {
-    Auth::guard('customers')->logout();
-    return redirect(route('customer.login'));
-})->middleware('auth:customers')->name('customer.logout');
-
-
-Route::get('shopping/cart', [CustomerPageController::class, 'shoppingCart'])->name('shopping/cart');
-Route::get('order', [CustomerPageController::class, 'order'])->name('order');
+include __DIR__ . '/customer.php';
+    

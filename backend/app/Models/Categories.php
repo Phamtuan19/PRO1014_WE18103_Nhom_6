@@ -15,6 +15,7 @@ class Categories extends Model
         'name',
         'slug',
         'parent_id',
+        'storecatalog_id'
     ];
 
     public function queryCategory($query, $orderBy = null, $orderType = null)
@@ -35,7 +36,7 @@ class Categories extends Model
 
     public function product()
     {
-        return $this->hasMany(Product::class, 'id', 'category_id');
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
     public function children()
