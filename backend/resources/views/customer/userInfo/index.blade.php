@@ -105,7 +105,7 @@
                                             <div class="" style="text-align: initial">
                                                 <label for="user_password__authentication" class="form-label">Mật
                                                     khẩu</label>
-                                                <input type="text"
+                                                <input type="password"
                                                     class="form-control from-custom user_password__authentication"
                                                     id="user_password__authentication" placeholder="Nhập mật khẩu">
                                                 <span class="error"></span>

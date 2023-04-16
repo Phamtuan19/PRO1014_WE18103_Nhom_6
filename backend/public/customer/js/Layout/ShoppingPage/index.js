@@ -30,6 +30,7 @@ function runShoppingCart() {
         handleBlur()
 
         let listProductCode = localCart.map(e => e.code).join(',');
+        console.log(listProductCode);
         rederProductsItem(listProductCode);
 
         if (document.querySelector('.checkout-button')) {
@@ -50,12 +51,14 @@ function runShoppingCart() {
     }
 }
 
+// call api loading
 function rederProductsItem(listProductCode) {
     serviceApi.getShoppingCart(listProductCode)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             shoppingCart(data);
             cartTotalsMoney()
             hendleClickQuantity()
