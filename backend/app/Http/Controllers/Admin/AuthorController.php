@@ -38,7 +38,7 @@ class AuthorController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $authors = $query->queryAuthor($query, $orderBy, $orderType)->paginate(1);
+        $authors = $query->queryAuthor($query, $orderBy, $orderType)->paginate(4);
 
         return view('admin.author.index', compact('authors'));
     }
@@ -123,12 +123,12 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
-    {
-        if ($author->delete()) {
-            return back()->with('msg', 'successfully');
-        }
+    // public function destroy(Author $author)
+    // {
+    //     if ($author->delete()) {
+    //         return back()->with('msg', 'successfully');
+    //     }
 
-        return back()->with('msg', 'error');
-    }
+    //     return back()->with('msg', 'error');
+    // }
 }

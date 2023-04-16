@@ -4,55 +4,68 @@ namespace App\Http\Controllers\customer\api;
 
 use Exception;
 use App\Models\Order;
-use App\Models\Product;
 use App\Models\OrderNote;
 use App\Models\Warehouse;
 use App\Models\OrderDetail;
-use Illuminate\Http\Request;
+use App\Models\DiscountCode;
 use App\Models\ProductDetail;
 use App\Models\DeliveryAddress;
+use App\Mail\Order\Successfully;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\Order\OrderRequest;
+
+
 
 class OrderController extends Controller
 {
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
-
-        // return $request->all();
-
+        // return  response()->json(["data" => $request->all(),], 200);
+        // $products = json_decode($request->products, true);
         $products = $request->products;
 
-        // return response()->json(
-        //     [
-        //         'products' => $request->products,
-        //         "msg" => "thêm sản phẩm thành công",
-        //         "status" => true
-        //     ],
-        //     200
-        // );
+        $discount = !empty($request->discount_code) ? $request->discount_code : null;
 
-        $total_price = array_reduce($products, function ($accumulator, $item) {
-            return $accumulator + ($item['quantity'] * $item['sale']);
-        }, 0);
+        foreach ($products as $key => $value) {
+            $warehouse = Warehouse::where('product_id', $value['id'])->get();
 
-        $total_quantity = array_reduce($products, function ($accumulator, $item) {
-            return $accumulator + $item['quantity'];
-        }, 0);
+            if ($warehouse[0]->quantity_stock < $value['quantity']) {
+                return response()->json(["msg" => "Số lượng sản phẩm vượt quá số lượng trong kho"], 205);
+            }
+        }
 
-        $newOrder = $this->storeOrder($request, $total_quantity, $total_price);
+        $total = array_reduce($products, function ($accumulator, $item) {
+            $productItem = ProductDetail::where("product_id", $item['id'])->get();
+
+            $productPrice = $productItem[0]['promotion_price'] ? $productItem[0]['promotion_price'] : $productItem[0]['price'];
+
+            return [
+                "total_price" => $accumulator['total_price'] + ($item['quantity'] *  $productPrice),
+                "total_quantity" => $accumulator['total_quantity'] + $item['quantity'],
+            ];
+        }, ["total_price" => 0, "total_quantity" => 0]);
+
+        $newOrder = $this->storeOrder($request, $discount, $total);
 
         if ($newOrder) {
 
             $newDeliveryAddress = $this->deliveryAddress($request, $newOrder);
 
-            foreach ($products as $index => $product) {
+            foreach ($products as  $product) {
                 $productItem = ProductDetail::where('product_id', $product['id'])->get();
+
                 $this->orderDetail($newOrder, $product['code'], $productItem[0], $product['quantity']);
             }
 
             $newNotes = $this->orderNote($request, $newOrder);
-        }
+            try {
+                if ($newDeliveryAddress && $newNotes) {
+                    foreach ($products as $item) {
+                        $wareHouse = Warehouse::where("product_id", $item['id'])->get();
 
+<<<<<<< HEAD
         try {
             if ($newOrder && $newDeliveryAddress && $newNotes) {
 
@@ -60,29 +73,74 @@ class OrderController extends Controller
             }
         } catch (Exception $e) {
             return  response()->json( [ "msg" => "thêm sản phẩm thất bại"], 200 );
+=======
+                        $wareHouse[0]->quantity_stock = $wareHouse[0]->quantity_stock - $item['quantity'];
+                        $wareHouse[0]->quantity_sold = $wareHouse[0]->quantity_sold + $item['quantity'];
+
+                        $wareHouse[0]->save();
+                    }
+
+                    $this->sendEmailOrderSuccess($newDeliveryAddress, $newOrder);
+
+                    $this->storeDiscountCode($discount);
+
+                    return  response()->json(["msg" => 'Đặt hàng thành công'], 200);
+                }
+            } catch (Exception $e) {
+                return response()->json(["msg" => $e], 500);
+            }
+        } else {
+            return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
+>>>>>>> 6faf90aa204ab78b71ccdc1acc674777cf3c2200
         }
     }
 
-    public function storeOrder($request, $total_quantity, $total_price)
+    public function storeDiscountCode($discount_id)
     {
-        if (!empty($total_quantity) && !empty($total_price)) {
+        if (!empty($discount_id)) {
+            try {
+                $discount = DiscountCode::find($discount_id);
+                $discount->remaining_quantity = $discount->remaining_quantity - 1;
+                $discount->save();
+            } catch (Exception $e) {
+                return response()->json(["msg" => $e], 500);
+            }
+        }
+    }
+
+    public function storeOrder($request, $discount, $total)
+    {
+        if (is_array($total) && !empty($total["total_quantity"]) && !empty($total["total_price"])) {
+
+            if (!empty($discount)) {
+                $discountMoney = DiscountCode::find($discount);
+            }
+
             $data = [
-                'code_order' => rand(100000, 1000000),
+                'code_order' => CodeOrder(),
                 'user_id' => !empty($request->user_id) ? $request->user_id : null,
-                'discount_code_id' => $request->discount_code_id,
-                'order_status' => 'pending',
+                'discount_code_id' => !empty($discount) ? $discount : null,
+                'order_status_id' => 1,
                 'payment_form' => $request->payment_form,
-                'payment_status_id' => null,
-                'quantity' => $total_quantity, // default
-                'total_price' => $total_price, // default
+                'payment_status_id' => 2,
+                'quantity' => $total["total_quantity"], // default
+                'total_price' => !empty($discountMoney) ? $total["total_price"] - $discountMoney->percentage_decrease : $total["total_price"], // default
                 'shipping_fee' => null,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
-            $newOrder = Order::create($data);
-            return $newOrder;
+
+            $orderNew = Order::create($data);
+
+            try {
+                if ($orderNew)
+                    return $orderNew;
+            } catch (Exception $e) {
+                return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
+            }
         }
-        return 'error';
+
+        throw new Exception(response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422));
     }
 
     public function orderDetail($newOrder, $productCode, $product, $product_quantity)
@@ -98,21 +156,34 @@ class OrderController extends Controller
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        return OrderDetail::create($data);
+        $newOrderDetail = OrderDetail::create($data);
+
+        try {
+            if ($newOrderDetail)
+                return $newOrderDetail;
+        } catch (Exception $e) {
+            return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
+        }
     }
 
     public function orderNote($request, $newOrder)
     {
 
-        if ($newOrder) {
+        if ($newOrder && !empty($request->content_note)) {
             $data = [
                 'order_id' => $newOrder->id,
-                'user_id' => !empty($request->user_id) ? $request->user_id : 1,
                 'note_takers' => $request->name . ' (khách hàng)',
                 'content' => $request->content_note,
             ];
 
-            return OrderNote::create($data);
+            $newOrderNote = OrderNote::create($data);
+
+            try {
+                if ($newOrderNote)
+                    return $newOrderNote;
+            } catch (Exception $e) {
+                return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
+            }
         }
 
         return 'error order note';
@@ -121,7 +192,6 @@ class OrderController extends Controller
     public function deliveryAddress($request, $newOrder)
     {
         $data = [
-            'user_id' => $request->user_id,
             'order_id' => $newOrder->id,
             'name' => $request->name,
             'email' => $request->email,
@@ -131,6 +201,25 @@ class OrderController extends Controller
             'house_number_street_name' => $request->house_number_street_name
         ];
 
-        return DeliveryAddress::create($data);
+        $result = DeliveryAddress::create($data);
+
+        try {
+            if ($result)
+                return $result;
+        } catch (Exception $e) {
+            return response()->json(["msg" => "Đã có lỗi xảy ra khi đặt hàng, Vui lòng kiểm tra lại"], 422);
+        }
+    }
+
+    function sendEmailOrderSuccess($deliveryAddress, $newOrder)
+    {
+        $data = [
+            'order' => $newOrder,
+            'address' => $deliveryAddress,
+        ];
+
+        $send = $deliveryAddress->email;
+
+        return Mail::to($send)->send(new Successfully($data)) ? true : false;
     }
 }

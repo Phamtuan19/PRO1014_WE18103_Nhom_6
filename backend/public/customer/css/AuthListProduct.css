@@ -1,0 +1,112 @@
+p {
+    margin-bottom: 0 !important;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    font-size: 0.775rem;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 0.9375rem;
+}
+
+td,
+th {
+    max-width: 136px;
+    overflow: hidden !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center !important;
+}
+
+.image__products {
+    width: 60px !important;
+    height: 80px !important;
+    border-radius: 0 !important;
+}
+
+.detail__order {
+    display: flex;
+    font-size: 14px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.box__detail__order {
+    display: flex;
+    /* width: 49%; */
+}
+
+.title__order__detail {
+    font-weight: 600;
+    margin-right: 24px;
+    margin-bottom: 0;
+    flex: 1;
+    text-align: left;
+}
+
+.content__order_detail {
+    text-transform: capitalize;
+    margin-bottom: 0;
+    flex: 2;
+    text-align: left;
+}
+
+.badge {
+    border-radius: 0.125rem;
+    font-size: 11px;
+    font-weight: initial;
+    line-height: 1;
+    padding: 0.375rem 0.5625rem;
+    font-family: "ubuntu-medium", sans-serif;
+}
+
+.btn-gradient-success {
+    background: -webkit-gradient(linear, left top, right top, from(#84d9d2), to(#07cdae));
+    background: linear-gradient(to right, #84d9d2, #07cdae);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.btn-gradient-info {
+    background: -webkit-gradient(linear, left top, right top, from(#90caf9), color-stop(99%, #047edf));
+    background: linear-gradient(to right, #90caf9, #047edf 99%);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.btn-gradient-primary {
+    background: -webkit-gradient(linear, left top, right top, from(#da8cff), to(#9a55ff));
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.btn-gradient-success {
+    background: -webkit-gradient(linear, left top, right top, from(#84d9d2), to(#07cdae));
+    background: linear-gradient(to right, #84d9d2, #07cdae);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.btn-gradient-danger {
+    background: -webkit-gradient(linear, left top, right top, from(#ffbf96), to(#fe7096));
+    background: linear-gradient(to right, #ffbf96, #fe7096);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.btn-gradient-secondary {
+    background: -webkit-gradient(linear, left top, right top, from(#e7ebf0), to(#868e96));
+    background: linear-gradient(to right, #e7ebf0, #868e96);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
