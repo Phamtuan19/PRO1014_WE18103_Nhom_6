@@ -57,6 +57,7 @@ function validationUserInfo(authUser) {
             address: `${input_province.value} - ${input_district.value} - ${input_ward.value}`,
             password: user_auth_password.value,
         }
+        console.log(data);
 
         callAPILoading()
 

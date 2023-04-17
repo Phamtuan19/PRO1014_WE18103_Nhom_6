@@ -30,14 +30,15 @@ function runShoppingCart() {
         handleBlur()
 
         let listProductCode = localCart.map(e => e.code).join(',');
+        console.log(listProductCode);
         rederProductsItem(listProductCode);
         // console.log(listProductCode);
         if (document.querySelector('.checkout-button')) {
             document.querySelector('.checkout-button').onclick = (event) => {
                 event.preventDefault();
-                if(authUser){
+                if (authUser) {
                     handleClickSubmit();
-                }else {
+                } else {
                     showErrorToast('Yêu cầu đăng nhập tài khoản vào cửa hàng!')
                 }
             }
@@ -50,12 +51,14 @@ function runShoppingCart() {
     }
 }
 
+// call api loading
 function rederProductsItem(listProductCode) {
     serviceApi.getShoppingCart(listProductCode)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             shoppingCart(data);
             cartTotalsMoney()
             hendleClickQuantity()
@@ -71,6 +74,8 @@ if (window.location.href === enpointUrl.shoppingCart) {
 }
 
 valiBtnDiscountCode();
+
+
 
 export default runShoppingCart
 

@@ -1,12 +1,14 @@
 import { enpointUrl } from '../service/index.js';
 
 function middlewareAuth() {
-    const authUser = JSON.stringify(localStorage.getItem("authUser"));
+    const authUser = localStorage.getItem("authUser") ? JSON.stringify(localStorage.getItem("authUser")) : [];
 
     const getUrl = window.location.href;
     console.log(authUser !== 'null');
-    if (authUser === 'null') {
-        if (getUrl === enpointUrl.userOrderPage || getUrl === enpointUrl.userInfo) {
+    if (authUser.length > 0) {
+        if (getUrl === enpointUrl.login
+            || getUrl === enpointUrl.register
+            || getUrl === enpointUrl.resetPassword) {
             window.location.href = enpointUrl.home
         }
     }

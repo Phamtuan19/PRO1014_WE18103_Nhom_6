@@ -31,7 +31,7 @@ function cartItem(data, cartMini) {
                     </a>
                 `
             }
-        })
+        }).join('')
     // }
 }
 

@@ -59,9 +59,11 @@ Route::get('page-product-details-suggest/{code}', [ProductDetailController::clas
 // Page Product
 Route::get('page-product/products-list', [HomeProductListController::class, 'index']);
 
-Route::geT('page-product/fliter-categories', [HomeProductListController::class, 'categories']);
+Route::get('page-product/fliter-categories', [HomeProductListController::class, 'categories']);
 
-Route::geT('page-product/fliter-auhtor', [HomeProductListController::class, 'author']);
+Route::get('page-product/fliter-auhtor', [HomeProductListController::class, 'author']);
+
+Route::get('page-product/fliter-publishing-house', [HomeProductListController::class, 'publishingHouse']);
 
 
 // API đăng ký đăng && đăng nhập && quên mật khẩu
@@ -95,3 +97,4 @@ Route::post('binh-luan', [ProductDetailController::class, 'comment']);
 Route::get('binh-luan/{productId}', [ProductDetailController::class, 'listComment']);
 
 Route::get('discount/code/{code}', [ApiController::class, 'discountCode']);
+Route::get('discount/code', [ApiController::class, 'discountCodeList']);

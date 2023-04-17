@@ -46,7 +46,18 @@ class CustomersController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $users = $query->queryCustomer($query, $orderBy, $orderType, $isDelete)->paginate(1);
+        $users = $query->queryCustomer($query, $orderBy, $orderType, $isDelete);
+
+        if (isset($request->search)) {
+            // dd($request->search);
+            $users = $users->where(function ($query) use($request) {
+                $query->where('email', 'like', '%' . $request->search . '%')
+                ->orWhere('name', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $users = $users->paginate(5);
+
 
         return view('admin.customer.index', compact('users', 'orderType', 'orderBy'));
     }
@@ -99,7 +110,7 @@ class CustomersController extends Controller
     {
         $user = User::find($id);
 
-        $positions = Position::where('id', 3)->get();
+        $positions = Position::where('id', 2)->get();
 
         return view('admin.customer.show', compact('user', 'positions'));
     }
@@ -156,7 +167,7 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        if(User::destroy($id)) {
+        if (User::destroy($id)) {
             return back()->with('msg', "successfully");
         }
 

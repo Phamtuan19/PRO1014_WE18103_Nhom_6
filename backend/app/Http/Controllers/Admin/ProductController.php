@@ -42,7 +42,16 @@ class ProductController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete)->paginate(15);
+        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete);
+
+        if (isset($request->search)) {
+            // dd($request->search);
+            $products = $products->where(function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $products = $products->paginate(15);
 
         // dd($products);
 
@@ -76,20 +85,28 @@ class ProductController extends Controller
         $products = new Product();
 
         $productDetail = new ProductDetail();
+        if ($request->hasFile('image_avatar')) {
+            $image_avatar = $request->file('image_avatar');
+            $url_avatar = Cloudinary::upload($image_avatar->getRealPath(), [
+                'folder' => 'PRO1014_WE18103_Nhom_6/Products',
+            ]);
 
-        $dataProduct = [
-            'product_code' => rand(100000, 9000000),
-            'author_id' => $request->author,
-            'category_id' => $request->category,
-            'publishing_house_id' => $request->publishing_house,
-            'user_id' => Auth::user()->id,
-            'name' => $request->name,
-            'title' => $request->title,
-            'introduction' => $request->introduction,
-            'publication_date' => $request->publication_date,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
-        ];
+            $dataProduct = [
+                'product_code' => rand(100000, 9000000),
+                'author_id' => $request->author,
+                'category_id' => $request->category,
+                'publishing_house_id' => $request->publishing_house,
+                'user_id' => Auth::user()->id,
+                'name' => $request->name,
+                'title' => $request->title,
+                'introduction' => $request->introduction,
+                'publication_date' => $request->publication_date,
+                'image_url' => $url_avatar->getSecurePath(),
+                'image_public_id' => $url_avatar->getPublicId(),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ];
+        }
 
         $saveProduct = $products->create($dataProduct);
 
@@ -142,7 +159,7 @@ class ProductController extends Controller
         }
 
 
-        dd('ok');
+        // dd('ok');
 
         return back()->with('msg', 'successfully');
     }
@@ -161,7 +178,9 @@ class ProductController extends Controller
 
         $allPublishingHouse = PublishingHouse::all();
 
-        return view('admin.product.show', compact('product', 'authors', 'categories', 'allPublishingHouse'));
+        $image_products = Image::where('product_id', $product->id)->get();
+
+        return view('admin.product.show', compact('product', 'authors', 'categories', 'allPublishingHouse', 'image_products'));
     }
 
     /**
@@ -188,21 +207,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
         $productDetail = ProductDetail::where('product_id', $product->id)->get();
 
         $dbimage = Image::where('product_id', $product->id)->get();
 
-        $product->author_id = $request->author;
-        $product->category_id = $request->category;
-        $product->publishing_house_id = $request->publishing_house;
-        $product->user_id = Auth::user()->id;
-        $product->name = $request->name;
-        $product->title = $request->title;
-        $product->introduction = $request->introduction;
-        $product->publication_date = $request->publication_date;
-        $product->updated_at = date("Y-m-d H:i:s");
+        if ($request->hasFile('image_avatar')) {
+            $image_avatar = $request->file('image_avatar');
 
-        if ($product->save()) {
+            $url_avatar = Cloudinary::upload($image_avatar->getRealPath(), [
+                'folder' => 'PRO1014_WE18103_Nhom_6/Products',
+            ]);
+
+            $product->author_id = $request->author;
+            $product->category_id = $request->category;
+            $product->publishing_house_id = $request->publishing_house;
+            $product->user_id = Auth::user()->id;
+            $product->name = $request->name;
+            $product->title = $request->title;
+            $product->introduction = $request->introduction;
+            $product->publication_date = $request->publication_date;
+            $product->image_url = $url_avatar->getSecurePath();
+            $product->image_public_id = $url_avatar->getPublicId();
+            $product->updated_at = date("Y-m-d H:i:s");
+
+            $product->save();
 
             $dataDetail = [
                 'size' => $request->size,
@@ -215,39 +244,57 @@ class ProductController extends Controller
                 'updated_at' => date("Y-m-d H:i:s"),
             ];
 
-            if ($productDetail[0]->update($dataDetail)) {
-                if ($request->hasFile('images')) {
-                    $images = $request->file('images');
+            $productDetail[0]->update($dataDetail);
 
-                    if (empty($images)) {
-                        return back()->with('msg', 'successfully uploaded');
-                    }
+            return back()->with('msg', 'cập nhật thành công!');
+        } else {
+            $product->author_id = $request->author;
+            $product->category_id = $request->category;
+            $product->publishing_house_id = $request->publishing_house;
+            $product->user_id = Auth::user()->id;
+            $product->name = $request->name;
+            $product->title = $request->title;
+            $product->introduction = $request->introduction;
+            $product->publication_date = $request->publication_date;
+            $product->updated_at = date("Y-m-d H:i:s");
 
+            $product->save();
 
-                    foreach ($dbimage as $image) {
-                        $image->delete();
-                    }
+            $dataDetail = [
+                'size' => $request->size,
+                'page_number' => $request->page_number,
+                'weight' => $request->weight,
+                'import_price' => $request->import_price,
+                'price' => $request->price,
+                'promotion_price' => $request->promotion_price,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ];
 
+            $productDetail[0]->update($dataDetail);
+            if ($request->hasFile('images')) {
+                $images = $request->file('images');
 
-                    foreach ($images as $index => $image) {
-                        $url = Cloudinary::upload($image->getRealPath(), [
-                            'folder' => 'PRO1014_WE18103_Nhom_6/Products',
-                        ]);
-
-                        $dataImage = [
-                            'product_id' => $product->id,
-                            'image_url' => $url->getSecurePath(),
-                            'public_id' => $url->getPublicId(),
-                            'created_at' => date('Y-m-d H:i:s'),
-                            'updated_at' => date('Y-m-d H:i:s'),
-                        ];
-
-                        Image::insert($dataImage);
-                    }
+                if (empty($images)) {
                     return back()->with('msg', 'successfully uploaded');
-
                 }
+                foreach ($dbimage as $image) {
+                    $image->delete();
+                }
+                foreach ($images as $index => $image) {
+                    $url = Cloudinary::upload($image->getRealPath(), [
+                        'folder' => 'PRO1014_WE18103_Nhom_6/Products',
+                    ]);
+                    $dataImage = [
+                        'product_id' => $product->id,
+                        'image_url' => $url->getSecurePath(),
+                        'public_id' => $url->getPublicId(),
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ];
 
+                    Image::insert($dataImage);
+                }
                 return back()->with('msg', 'successfully uploaded');
             }
         }
@@ -261,7 +308,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        if(Product::destroy($id)) {
+        if (Product::destroy($id)) {
             return back()->with('msg', "successfully");
         }
 

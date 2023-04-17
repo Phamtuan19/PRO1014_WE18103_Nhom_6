@@ -69,7 +69,7 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" aria-expanded="false"
                 aria-controls="ui-basic">
                 <span class="menu-title">Danh mục bán hàng</span>
@@ -86,7 +86,7 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-toggle="collapse" href="#" aria-expanded="false"
                 aria-controls="general-pages">

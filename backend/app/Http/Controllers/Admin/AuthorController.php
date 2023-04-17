@@ -38,7 +38,7 @@ class AuthorController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $authors = $query->queryAuthor($query, $orderBy, $orderType)->paginate(4);
+        $authors = $query->queryAuthor($query, $orderBy, $orderType)->paginate(10);
 
         return view('admin.author.index', compact('authors'));
     }

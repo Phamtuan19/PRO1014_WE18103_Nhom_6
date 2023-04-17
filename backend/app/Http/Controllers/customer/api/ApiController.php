@@ -42,11 +42,11 @@ class ApiController extends Controller
                     'products.name',
                     'products_detail.price',
                     'products_detail.promotion_price',
-                    'image.image_url',
+                    'products.image_url',
                     'author.name as author_name',
                 )
                 ->join('products_detail', 'products_detail.product_id', '=', 'products.id')
-                ->join('image', 'image.product_id', '=', 'products.id')
+                // ->join('image', 'image.product_id', '=', 'products.id')
                 ->join('author', 'author.id', '=', 'products.author_id')
                 ->where('products.name', 'like', '%' . $request->q . '%')
                 ->take(4)
@@ -66,12 +66,12 @@ class ApiController extends Controller
                 'products.name',
                 'products_detail.price as price',
                 'products_detail.promotion_price as promotion_price',
-                'image.image_url as image_url',
+                'products.image_url as image_url',
                 'author.name as author_name',
                 'warehouses.quantity_sold as quantity_sold'
             )
             ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
-            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            // ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->orderBy('products.created_at', 'desc')
@@ -120,12 +120,12 @@ class ApiController extends Controller
                 'products.name',
                 'products_detail.price as price',
                 'products_detail.promotion_price as promotion_price',
-                'image.image_url as image_url',
+                'products.image_url as image_url',
                 'author.name as author_name',
                 'warehouses.quantity_sold as quantity_sold'
             )
             ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
-            ->leftJoin('image', 'image.product_id', '=', 'products.id')
+            // ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->orderBy($orderBy, $orderType)
@@ -151,12 +151,11 @@ class ApiController extends Controller
                     'products.name',
                     'products_detail.price as price',
                     'products_detail.promotion_price as promotion_price',
-                    'image.image_url as image_url',
+                    'products.image_url as image_url',
                     'author.name as author_name',
                     'warehouses.quantity_sold as quantity_sold'
                 )
                 ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
-                ->leftJoin('image', 'image.product_id', '=', 'products.id')
                 ->leftJoin('author', 'author.id', '=', 'products.author_id')
                 ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
                 ->whereNull('is_deleted')
@@ -218,10 +217,10 @@ class ApiController extends Controller
             ->select(
                 'order_detail.*',
                 'products.name as product_name',
-                'image.image_url'
+                'products.image_url'
             )
             ->join('products', 'order_detail.product_code', '=', 'products.product_code')
-            ->join('image', 'image.product_id', '=', 'products.id')
+            // ->join('image', 'image.product_id', '=', 'products.id')
             ->where('order_detail.order_id', $orderId)
             ->get();
 
@@ -312,11 +311,24 @@ class ApiController extends Controller
     {
         try {
             $discountCode = DiscountCode::where('discount_code', $code)->first();
+
             if ($discountCode->remaining_quantity > 0) {
                 return  response()->json(['msg' => 'success', 'code' => $discountCode], 200);
             }
         } catch (\Throwable $th) {
             return  response()->json(['msg' => 'error'], 200);
         }
+    }
+
+    public function discountCodeList()
+    {
+        $currentDate = date('Y-m-d');
+
+        $discountCode = DiscountCode::where('remaining_quantity', '>', 0)
+            ->where('expired', '>=', $currentDate)
+            ->where('time_application', '<=', $currentDate)
+            ->get();
+
+            return  response()->json($discountCode, 200);
     }
 }
