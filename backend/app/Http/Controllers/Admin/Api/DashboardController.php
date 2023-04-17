@@ -11,5 +11,11 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        // $products =  DB::table('order')
+        //     ->select(
+        //         'order.*',
+        //     )
+
+        // return $products;
     }
 }

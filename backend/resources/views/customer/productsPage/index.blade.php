@@ -26,9 +26,10 @@
                                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
-                                            <ul class="nice-scroll sidebar__categories" tabindex="1"
+                                            <ul class="nice-scroll sidebar__categories children-categories" tabindex="1"
                                                 style="overflow-y: hidden; outline: none;">
                                             </ul>
+                                            <span class="m-show-more-action">Xem thêm</span>
                                         </div>
                                     </div>
                                 </div>
@@ -40,8 +41,9 @@
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
-                                            <ul class="sidebar__author">
+                                            <ul class="nice-scroll sidebar__author children-categories">
                                             </ul>
+                                            <span class="m-show-more-action">Xem thêm</span>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +81,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-end align-items-center">
 
-                            <div class=" shop__product__option__right "> 
+                            <div class=" shop__product__option__right ">
                                 <select id="order__by" class="query__shop__products__select" data-key="sort"
                                     data-value="san-pham-moi">
                                     <option value="gia-thap-nhat">Giá thấp nhất</option>

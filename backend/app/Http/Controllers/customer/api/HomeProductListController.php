@@ -23,17 +23,16 @@ class HomeProductListController extends Controller
                 'products.product_code',
                 'products.name',
                 'products.title',
+                'products.image_url as image_url',
                 'products.is_deleted',
                 'products_detail.price as price',
                 'products_detail.promotion_price as promotion_price',
-                'image.image_url as image_url',
                 'author.name as author_name',
                 'author.slug as author_slug',
                 'warehouses.quantity_sold as quantity_sold',
                 'categories.slug as category_slug',
             )
             ->leftJoin('products_detail', 'products_detail.product_id', '=', 'products.id')
-            ->leftJoin('image', 'image.product_id', '=', 'products.id')
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->leftJoin('categories', 'categories.id', '=', 'products.category_id')

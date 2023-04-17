@@ -27,20 +27,20 @@ serviceApi.getPageProductDetail(code)
         console.log(error);
     })
 
-serviceApi.getPageProductDetailImage(code)
-    .then(function (response) {
-        if (response.status !== 200) {
-            throw new Error(response.status);
-        }
-        return response.json();
-    })
-    .then(function (data) {
+// serviceApi.getPageProductDetailImage(code)
+//     .then(function (response) {
+//         if (response.status !== 200) {
+//             throw new Error(response.status);
+//         }
+//         return response.json();
+//     })
+//     .then(function (data) {
 
-        renderImage(data)
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
+//         renderImage(data)
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     })
 
 serviceApi.getPageProductDetailIntroduce(code)
     .then(function (response) {

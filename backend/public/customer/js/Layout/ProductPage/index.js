@@ -53,6 +53,7 @@ serviceApi.getShopProductsCategories()
         return response.json();
     })
     .then(function (data) {
+        console.log(data);
         document.querySelector('.sidebar__categories').innerHTML = data.map((e) => {
             return `
                 <li>
@@ -80,6 +81,17 @@ serviceApi.getProductsAuthor()
 
         handleFilter()
     })
+
+
+const see_more = document.querySelectorAll('.m-show-more-action');
+const children_categories = document.querySelectorAll('.children-categories');
+
+see_more.forEach((e, index) => {
+    e.onclick = () => {
+        children_categories[index].classList.toggle('height-auto');
+        e.innerText == 'Thu gọn' ? e.innerText = 'Xem thêm' : e.innerText = 'Thu gọn';
+    }
+})
 
 
 function handleFilter() {

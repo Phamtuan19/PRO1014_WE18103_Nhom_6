@@ -1,5 +1,6 @@
 @extends('customer.layout.index')
 @section('link')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('customer/css/productDetail.css') }}">
 @endsection
 @section('contents')
@@ -7,7 +8,26 @@
         <div class="row">
             <div class="col-6">
                 <div class="detail-box1_img">
-                    {{-- Render APi --}}
+                    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="image__detail" src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="image__detail" src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div thumbsSlider="" class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="width: 100px;">
+                                <img class="image_thumbsSlider" src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="image_thumbsSlider" src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -96,5 +116,27 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script type="module" src="{{ asset('customer/js/Layout/ProductDetail/index.js') }}"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 6,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
+            },
+        });
+    </script>
 @endsection

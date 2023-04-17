@@ -37,7 +37,7 @@ class PublishingHouseController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $allPublishingHouse = $query->queryPublishingHouse($query, $orderBy, $orderType)->paginate(1);
+        $allPublishingHouse = $query->queryPublishingHouse($query, $orderBy, $orderType)->paginate(10);
 
         return view('admin.publishing_house.index', compact('allPublishingHouse'));
     }
