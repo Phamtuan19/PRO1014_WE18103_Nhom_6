@@ -31,7 +31,7 @@ function runShoppingCart() {
 
         let listProductCode = localCart.map(e => e.code).join(',');
         rederProductsItem(listProductCode);
-
+        // console.log(listProductCode);
         if (document.querySelector('.checkout-button')) {
             document.querySelector('.checkout-button').onclick = (event) => {
                 event.preventDefault();
