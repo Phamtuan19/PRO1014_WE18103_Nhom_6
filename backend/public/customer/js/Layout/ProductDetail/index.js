@@ -20,7 +20,6 @@ serviceApi.getPageProductDetail(code)
     .then(function (data) {
         productId = data[0].id
         renderDetail(data)
-        // handleClickAddToCart()
         callApiComment()
     })
     .catch(function (error) {
@@ -103,8 +102,6 @@ keepReading.onclick = () => {
         document.querySelector(".detail__introduction").classList.remove('active');
     }
 }
-
-
 
 setTimeout(() => {
 

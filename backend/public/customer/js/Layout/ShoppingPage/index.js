@@ -36,9 +36,9 @@ function runShoppingCart() {
         if (document.querySelector('.checkout-button')) {
             document.querySelector('.checkout-button').onclick = (event) => {
                 event.preventDefault();
-                if(authUser){
+                if (authUser) {
                     handleClickSubmit();
-                }else {
+                } else {
                     showErrorToast('Yêu cầu đăng nhập tài khoản vào cửa hàng!')
                 }
             }
@@ -74,6 +74,8 @@ if (window.location.href === enpointUrl.shoppingCart) {
 }
 
 valiBtnDiscountCode();
+
+
 
 export default runShoppingCart
 

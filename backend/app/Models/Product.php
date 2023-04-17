@@ -29,6 +29,8 @@ class Product extends Model
         'introduction',
         'publication_date',
         'is_deleted',
+        'image_url',
+        'image_public_id',
     ];
 
     public function queryProduct($query, $orderBy = null, $orderType = null, $isDelete = null)

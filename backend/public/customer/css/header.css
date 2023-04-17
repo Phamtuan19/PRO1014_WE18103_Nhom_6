@@ -241,7 +241,7 @@ p {
     text-transform: capitalize;
 }
 
-.header-with-menu ul .active a {
+.header-with-menu ul .active .navbar-item__a {
     color: red;
     font-weight: 600;
 

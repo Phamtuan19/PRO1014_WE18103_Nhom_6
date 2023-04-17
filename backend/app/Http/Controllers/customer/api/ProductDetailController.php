@@ -43,7 +43,7 @@ class ProductDetailController extends Controller
     {
         $product = Product::select('id')->where('product_code', $code)->get();
 
-        $image = Image::select('id', 'image_url')->where('id', $product[0]->id)->get();
+        $image = Image::select('id', 'image_url')->where('product_id', $product[0]->id)->get();
 
         return response()->json($image, 200);
     }

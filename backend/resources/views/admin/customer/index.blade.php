@@ -25,8 +25,19 @@
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card" >
+
+                    <div class="col-6 mt-3" style="padding: 0 2.5rem;">
+                        <form action="" class="forms-sample d-flex">
+                            <div class="form-group" style="flex: 1; margin-right: 6px;">
+                                <input type="text" class="form-control" name="search"
+                                    placeholder="Nhập tên hoặc Email người cần tìm kiếm ...">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Tìm kiếm" style="padding: 16px 40px;">
+                        </form>
+                    </div>
+
+                    <div class="card-body" style="padding: 0 2.5rem 2.5rem;">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -76,8 +87,10 @@
                                         <td> {{ $user->email }} </td>
                                         <td> {{ $user->phone }} </td>
                                         <td> {{ $user->positions->name }} </td>
-                                        <td> {{ $user->address }} </td>
-                                        <td> {{ ($user->created_at) }} </td>
+                                        <td
+                                            style="max-width: 136px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                            {{ $user->address }} </td>
+                                        <td> {{ $user->created_at }} </td>
                                         <td>
                                             <div class="d-flex justify-content-between">
 

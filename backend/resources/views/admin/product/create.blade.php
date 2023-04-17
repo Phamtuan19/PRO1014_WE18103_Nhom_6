@@ -1,5 +1,53 @@
 @extends('admin.layout.index')
 
+@section('links')
+    <style>
+        #picture__input {
+            display: none;
+        }
+
+        .picture {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            border: 2px dashed currentcolor;
+            cursor: pointer;
+            font-family: sans-serif;
+            transition: color 300ms ease-in-out, background 300ms ease-in-out;
+            outline: none;
+            overflow: hidden;
+        }
+
+        .picture:hover {
+            color: #777;
+            background: #ccc;
+        }
+
+        .picture:active {
+            border-color: turquoise;
+            color: turquoise;
+            background: #eee;
+        }
+
+        .picture:focus {
+            color: #777;
+            background: #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .picture__img {
+            width: 150px !important;
+            height: 200px !important;
+            /* display: block; */
+        }
+
+    </style>
+@endsection
+
 @section('contents')
     <div class="content-wrapper">
         <div class="page-header">
@@ -120,7 +168,6 @@
                             </div>
 
                             <div class="row">
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Kích thước</label>
@@ -207,7 +254,23 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group ">
+                                <div class="col-6 form-group d-flex flex-column" style="position: relative;">
+                                    <label for="">Thêm hình ảnh đại điện</label>
+                                    <label class="picture" for="picture__input" tabIndex="0">
+                                        <span class="picture__image"></span>
+                                    </label>
+
+                                    <input type="file" name="image_avatar" id="picture__input">
+
+                                    <div class="image_reder">
+                                        <img class="picture__img" src="" alt="" style="width: 150px; position: absolute; top: 65px;">
+                                    </div>
+                                    @error('image_avatar')
+                                        <span class="text-danger" style="font-size: 16px">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-6 form-group ">
                                     <label for="images">Ảnh sản phẩm</label>
                                     <div class="my-2 box-reset_images d-flex">
                                         <input type="file" class="form-control" id="images" name="images[]"
@@ -250,5 +313,36 @@
             $("#image_preview").html("");
             return true;
         }
+    </script>
+
+    <script>
+        const inputFile = document.querySelector("#picture__input");
+        const image_reder = document.querySelector(".image_reder");
+        const picture__img = document.querySelector(".picture__img");
+        const pictureImage = document.querySelector(".picture__image");
+        const pictureImageTxt = "Choose an image";
+        pictureImage.innerHTML = pictureImageTxt;
+
+        inputFile.addEventListener("change", function(e) {
+            const inputTarget = e.target;
+            const file = inputTarget.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function(e) {
+                    const readerTarget = e.target;
+
+                    picture__img.src = readerTarget.result;
+
+                    pictureImage.innerHTML = "";
+                    image_reder.appendChild(img);
+                });
+
+                reader.readAsDataURL(file);
+            } else {
+                pictureImage.innerHTML = pictureImageTxt;
+            }
+        });
     </script>
 @endsection

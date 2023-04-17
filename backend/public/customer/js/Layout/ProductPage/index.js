@@ -7,7 +7,6 @@ function callApiRenderProducts(filter = '') {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             const elements = document.querySelector('.products_list__items');
             productItem(data.data, elements, 4);
             pagination(data)
@@ -22,18 +21,16 @@ callApiRenderProducts()
 
 function pagination(data) {
     const html = data.links.map((e, index) => {
-        if (index !== 0 && index !== data.links.length - 1 && index < 3 || index === data.links.length -2 ) {
+        if (index !== 0 && index !== data.links.length - 1 && index < 3 || index === data.links.length - 2) {
             return `
                 <a class="product__pagination__links ${index === data.current_page ? "active" : ""}" href="${e.url}" data-key="page" data-value="${e.label}">${e.label}</a>
             `
-        }else if (index > 3 && index < data.links.length - 2 ) {
+        } else if (index > 3 && index < data.links.length - 2) {
             return `
                 <span>....</span>
             `
         }
     })
-
-    console.log(html);
 
     document.querySelector(".product__pagination").innerHTML = html.join('')
 
@@ -73,7 +70,24 @@ serviceApi.getProductsAuthor()
         document.querySelector('.sidebar__author').innerHTML = data.map((e) => {
             return `
             <li>
-                <a class="query__shop__products" href="?danh-muc=${e.slug}" data-key="tac-gia" data-value="${e.slug}">${e.name} (${e.product_count})</a>
+                <a class="query__shop__products" href="?tac-gia=${e.slug}" data-key="tac-gia" data-value="${e.slug}">${e.name} (${e.product_count})</a>
+            </li>
+        `
+        }).join('')
+
+        handleFilter()
+    })
+
+fetch('http://127.0.0.1:8000/api/page-product/fliter-publishing-house')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        document.querySelector('.sidebar__publishing-house').innerHTML = data.map((e) => {
+            return `
+            <li>
+                <a class="query__shop__products" href="?nha-xuat-ban=${e.slug}" data-key="nha-xuat-ban" data-value="${e.slug}">${e.name} (${e.product_count})</a>
             </li>
         `
         }).join('')
@@ -82,15 +96,29 @@ serviceApi.getProductsAuthor()
     })
 
 
-function handleFilter() {
-    document.querySelectorAll('.query__shop__products').forEach((item) => {
-        item.onclick = (event) => {
-            item.localName === 'a' ? event.preventDefault() : false;
+const see_more = document.querySelectorAll('.m-show-more-action');
+const children_categories = document.querySelectorAll('.children-categories');
 
-            const queryString = fliterSiderBar(item)
-            callApiRenderProducts(queryString)
-        };
-    });
+see_more.forEach((e, index) => {
+    e.onclick = () => {
+        children_categories[index].classList.toggle('height-auto');
+        e.innerText == 'Thu gọn' ? e.innerText = 'Xem thêm' : e.innerText = 'Thu gọn';
+    }
+})
+
+
+function handleFilter() {
+    setTimeout(() => {
+        // console.log(document.querySelectorAll('.query__shop__products'));
+        document.querySelectorAll('.query__shop__products').forEach((item) => {
+            item.onclick = (event) => {
+                item.localName === 'a' ? event.preventDefault() : false;
+
+                const queryString = fliterSiderBar(item)
+                callApiRenderProducts(queryString)
+            };
+        });
+    }, 2000);
 }
 
 
@@ -102,17 +130,17 @@ function handleChangeSort() {
         callApiRenderProducts(queryString)
     }
 }
-function handleChangePagination() {
-    const pagination = document.querySelector("#pagination");
-    pagination.onchange = (event) => {
-        pagination.dataset.value = pagination.value
-        const queryString = fliterSiderBar(pagination)
-        callApiRenderProducts(queryString)
-    }
-}
+// function handleChangePagination() {
+//     const pagination = document.querySelector("#pagination");
+//     pagination.onchange = (event) => {
+//         pagination.dataset.value = pagination.value
+//         const queryString = fliterSiderBar(pagination)
+//         callApiRenderProducts(queryString)
+//     }
+// }
 
 handleChangeSort()
-handleChangePagination()
+// handleChangePagination()
 
 function fliterSiderBar(item) {
     const obj = getUrlToObject(item);
@@ -182,8 +210,6 @@ function handleRemoveOption() {
     const url = enpointUrl.pageProducts(); // Url Call Api
 
     const delete__option = document.querySelectorAll(".delete__option");
-
-    console.log([delete__option]);
 
     if (delete__option.length > 0) {
         delete__option.forEach(e => {

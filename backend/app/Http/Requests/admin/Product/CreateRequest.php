@@ -39,6 +39,7 @@ class CreateRequest extends FormRequest
             'promotion_price' => 'required|integer',
             'images' => 'required',
             'quantity' => 'required|integer',
+            'image_avatar' => 'required'
         ];
     }
 
@@ -70,6 +71,7 @@ class CreateRequest extends FormRequest
             'promotion_price' => 'Giá khuyến mại',
             'images' => 'Hình ảnh',
             'quantity' => 'Số lượng',
+            'image_avatar' => 'Ảnh đại diện sản phẩm'
         ];
     }
 }

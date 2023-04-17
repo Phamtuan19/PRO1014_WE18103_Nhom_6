@@ -44,13 +44,24 @@ function renderDetail(data) {
 
 
 function renderImage(data) {
-    const html = data.map((e) => {
+    const html = data.map((e, index) => {
+        console.log(index);
         return `
-            <img src="${e.image_url}" class="image_product__detail" />
+            <div class="swiper-slide" aria-label="${index} / ${data.length}">
+                <img class="image__detail" src="${e.image_url}" />
+            </div>
+        `
+    })
+    const html_2 = data.map((e, index) => {
+        return `
+            <div class="swiper-slide" style="width: 100px;" aria-label="1 / ${data.length}">
+                <img class="image_thumbsSlider" src="${e.image_url}" />
+            </div>
         `
     })
 
-    document.querySelector('.detail-box1_img').innerHTML = html.join("")
+    document.querySelector('.swiper-wrapper__1').innerHTML = html.join("")
+    document.querySelector('.swiper-wrapper__2').innerHTML = html_2.join("")
 }
 
 function renderInformation(data) {

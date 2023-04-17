@@ -76,16 +76,16 @@ class DashboardController extends Controller
             ->select(
                 'products.id',
                 'products.name',
-                'image.image_url',
+                'products.image_url',
                 'products_detail.price',
                 'products_detail.promotion_price',
                 'warehouses.quantity_sold'
             )
-            ->join('image', 'image.product_id', '=', 'products.id')
             ->join('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->join('products_detail', 'products_detail.product_id', '=', 'products.id')
+            ->where('warehouses.quantity_sold', '>', 0)
             ->orderBy('warehouses.quantity_sold', 'DESC')
-            ->take(5)
+            ->limit(5)
             ->get();
 
         return $products;
