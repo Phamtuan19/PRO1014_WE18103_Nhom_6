@@ -1,6 +1,9 @@
 import { serviceApi, enpointUrl } from '../../service/index.js';
 import { productItem } from '../../render/index.js';
 
+let url = window.location.search;
+
+
 function callApiRenderProducts(filter = '') {
     serviceApi.getPageProducts(filter)
         .then(function (response) {
@@ -17,25 +20,27 @@ function callApiRenderProducts(filter = '') {
         })
 }
 
-callApiRenderProducts()
+callApiRenderProducts(url)
 
 function pagination(data) {
-    const html = data.links.map((e, index) => {
-        if (index !== 0 && index !== data.links.length - 1 && index < 3 || index === data.links.length - 2) {
-            return `
-                <a class="product__pagination__links ${index === data.current_page ? "active" : ""}" href="${e.url}" data-key="page" data-value="${e.label}">${e.label}</a>
-            `
-        } else if (index > 3 && index < data.links.length - 2) {
-            return `
-                <span>....</span>
-            `
-        }
-    })
+    console.log(data);
 
-    document.querySelector(".product__pagination").innerHTML = html.join('')
+    const { current_page, last_page } = data;
+
+    document.querySelector(".product__pagination").innerHTML = `
+        <a class="product__pagination__links" href="#"
+            data-key="page" data-value="${current_page === 1 ? 1 : current_page - 1}" disabled="disabled">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <a class="product__pagination__links active" href="${window.location.href + '&page=' + current_page}"
+                data-key="page" data-value="${current_page}">${current_page}</a>
+        <a class="product__pagination__links" href="?&page= ${current_page + 1}"
+                data-key="page" data-value="${current_page === last_page ? last_page : current_page + 1}">
+                <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    `
 
     document.querySelectorAll(".product__pagination__links").forEach(e => {
-        // console.log(e);
         e.onclick = (event) => {
             event.preventDefault();
             const queryString = fliterSiderBar(e)
@@ -83,7 +88,7 @@ fetch('http://127.0.0.1:8000/api/page-product/fliter-publishing-house')
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+
         document.querySelector('.sidebar__publishing-house').innerHTML = data.map((e) => {
             return `
             <li>
@@ -109,18 +114,28 @@ see_more.forEach((e, index) => {
 
 function handleFilter() {
     setTimeout(() => {
-        // console.log(document.querySelectorAll('.query__shop__products'));
+
         document.querySelectorAll('.query__shop__products').forEach((item) => {
             item.onclick = (event) => {
-                item.localName === 'a' ? event.preventDefault() : false;
+                // item.localName === 'a' ? event.preventDefault() : false;
+                event.preventDefault();
 
                 const queryString = fliterSiderBar(item)
                 callApiRenderProducts(queryString)
             };
         });
-    }, 2000);
+    }, 1000);
 }
 
+function handleTogaleFilter () {
+    document.querySelectorAll('.card-heading').forEach((e, index) => {
+        e.onclick = () => {
+            document.querySelectorAll('.card-body')[index].classList.toggle('d-none');
+        }
+    })
+}
+
+handleTogaleFilter()
 
 function handleChangeSort() {
     const orderBy = document.querySelector("#order__by");
@@ -130,14 +145,14 @@ function handleChangeSort() {
         callApiRenderProducts(queryString)
     }
 }
-// function handleChangePagination() {
-//     const pagination = document.querySelector("#pagination");
-//     pagination.onchange = (event) => {
-//         pagination.dataset.value = pagination.value
-//         const queryString = fliterSiderBar(pagination)
-//         callApiRenderProducts(queryString)
-//     }
-// }
+function handleChangePagination() {
+    const pagination = document.querySelector("#pagination");
+    pagination.onchange = (event) => {
+        pagination.dataset.value = pagination.value
+        const queryString = fliterSiderBar(pagination)
+        callApiRenderProducts(queryString)
+    }
+}
 
 handleChangeSort()
 // handleChangePagination()
@@ -214,7 +229,6 @@ function handleRemoveOption() {
     if (delete__option.length > 0) {
         delete__option.forEach(e => {
             e.onclick = () => {
-                console.log(e);
 
                 let urlSearch = ((String(window.location.search)).replace("?", '')).split('&');
                 let obj = {};
@@ -230,7 +244,6 @@ function handleRemoveOption() {
 
                 delete obj[e.dataset.key];
 
-                console.log(obj);
                 const queryString = changeUrl(obj)
                 callApiRenderProducts(queryString)
 

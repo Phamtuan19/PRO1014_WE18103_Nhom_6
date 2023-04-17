@@ -7,6 +7,7 @@
 */
 
 
+import { showErrorToast } from "../../../message/index.js";
 import { validation } from "../../../method/index.js";
 import callApiOrder from "../call-api-order/index.js";
 
@@ -87,6 +88,8 @@ function handleClickSubmit() {
             discount_code: discountCode.dataset.id,
         }
         callApiOrder(dataOrder);
+    }else {
+        showErrorToast("Vui lòng điền đầy đủ thông tin cần thiết để đặt hàng!");
     }
 }
 

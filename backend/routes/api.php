@@ -57,7 +57,8 @@ Route::get('page-product-detail-information/{code}', [ProductDetailController::c
 Route::get('page-product-details-suggest/{code}', [ProductDetailController::class, 'productSuggest']);
 
 // Page Product
-Route::get('page-product/products-list', [HomeProductListController::class, 'index']);
+// Route::get('page-product/products-list', [HomeProductListController::class, 'index']);
+Route::get('danh-sach-san-pham', [HomeProductListController::class, 'index']);
 
 Route::get('page-product/fliter-categories', [HomeProductListController::class, 'categories']);
 
@@ -76,7 +77,7 @@ Route::middleware('auth:api')->group(function () {
 
 Route::post("customer/register", [loginController::class, 'register']);
 
-Route::patch("rest-password", [loginController::class, 'resetPassword']);
+Route::post("rest-password", [loginController::class, 'resetPassword']);
 
 Route::patch("comfirm-password", [loginController::class, 'comfirmPassword']);
 

@@ -163,10 +163,12 @@ function renderModal(data) {
     })
 
     document.querySelector(".content__table__order").innerHTML = html.join('')
-
+    console.log(data[0].order_status_id);
     if (data[0].order_status_id < 3) {
         document.querySelector('.modal-footer').innerHTML = `<button type="button" data-id="${data[0].id}" class="btn btn-danger btn__cancellation">Hủy đơn</button>`
         handleOrderCancellation()
+    }else {
+        document.querySelector('.modal-footer').innerHTML = '';
     }
 }
 
@@ -197,6 +199,7 @@ function handleOrderCancellation() {
                         }
                     })
                     .then(function (data) {
+                        location.reload()
                         console.log(data);
                     })
             }, 2000);

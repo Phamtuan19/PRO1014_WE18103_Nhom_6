@@ -80,9 +80,8 @@ serviceApi.getPageProductDetailSuggest(code)
         return response.json();
     })
     .then(function (data) {
-
         const elem = document.querySelector('.related-book')
-        productItem(data, elem, 4)
+        productItem(data, elem, 3)
     })
     .catch(function (error) {
         console.log(error);

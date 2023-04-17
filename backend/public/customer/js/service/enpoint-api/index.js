@@ -17,7 +17,8 @@ const enpointApi = {
     order: 'order',
 
     // Page Products
-    pageProducts: 'page-product/products-list?',
+    // pageProducts: 'page-product/products-list?',
+    pageProducts: 'danh-sach-san-pham?',
     shopProductsCategories: 'page-product/fliter-categories',
     pageProductsAuthor: 'page-product/fliter-auhtor',
 

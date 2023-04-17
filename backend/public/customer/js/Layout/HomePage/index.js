@@ -43,6 +43,7 @@ serviceApi.getHomeProductList()
         return response.json();
     })
     .then(function (data) {
+        console.log(data);
         isChecList = true
         const location = document.querySelector('.product-list__test')
         productItemList(data.products, location, 3)

@@ -31,13 +31,13 @@ const serviceApi = {
             body: JSON.stringify(data)
         })
     },
-    patchResetPassword(email) {
+    patchResetPassword(data) {
         return fetch(baseUrlAPi + enpointApi.resetPassword, {
-            method: 'PATCH',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(email),
+            body: JSON.stringify(data),
         })
     },
     getAuthListOrder(token) {

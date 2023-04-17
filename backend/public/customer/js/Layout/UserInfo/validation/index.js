@@ -17,74 +17,102 @@ const btn_saver = document.querySelector(".btn-save");
 
 function validationUserInfo(authUser) {
     input_name.onblur = () => {
-        validation(['required', 'min|6'], input_name, "Tên người dùng");
-        btn_saver.removeAttribute('disabled')
+        if (validation(['required', 'min|6'], input_name, "Tên người dùng")) {
+            if (input_name.value !== authUser.user.name) {
+                btn_saver.removeAttribute('disabled');
+            } else {
+                btn_saver.setAttribute('disabled', 'true')
+            }
+        }
     }
     input_phone.onblur = () => {
-        validation(['required', 'phone'], input_phone, 'Số điện thoại');
-        btn_saver.removeAttribute('disabled')
+        if (validation(['required', 'phone'], input_phone, 'Số điện thoại')) {
+            if (input_phone.value !== authUser.user.phone) {
+                btn_saver.removeAttribute('disabled');
+            } else {
+                btn_saver.setAttribute('disabled', 'true')
+            }
+        }
     }
     input_email.onblur = () => {
-        validation(['required', 'email'], input_email, "Địa chỉ Email");
-        btn_saver.removeAttribute('disabled')
+        if (validation(['required', 'email'], input_email, "Địa chỉ Email")) {
+            if (input_email.value !== authUser.user.email) {
+                btn_saver.removeAttribute('disabled');
+            } else {
+                btn_saver.setAttribute('disabled', 'true')
+            }
+        }
     }
     input_province.onblur = () => {
-        validation(['required'], input_province, 'Tỉnh / Thành Phố');
-        btn_saver.removeAttribute('disabled')
+        if (validation(['required'], input_province, 'Tỉnh / Thành Phố')) {
+            if (input_province.value !== authUser.user.province) {
+                btn_saver.removeAttribute('disabled');
+            } else {
+                btn_saver.setAttribute('disabled', 'true')
+            }
+        }
     }
     input_district.onblur = () => {
-        validation(['required'], input_district, 'Quận / Huyện');
-        btn_saver.removeAttribute('disabled')
+        if (validation(['required'], input_district, 'Quận / Huyện')) {
+            if (input_district.value !== authUser.user.district) {
+                btn_saver.removeAttribute('disabled');
+            } else {
+                btn_saver.setAttribute('disabled', 'true')
+            }
+        }
     }
     input_ward.onblur = () => {
-        validation(['required'], input_ward, 'Xã Phường');
-        btn_saver.removeAttribute('disabled')
+        if (validation(['required'], input_ward, 'Xã Phường')) {
+            if (input_ward.value !== authUser.user.ward) {
+                btn_saver.removeAttribute('disabled');
+            } else {
+                btn_saver.setAttribute('disabled', 'true')
+            }
+        }
     }
     input_password.onblur = () => {
-        validation(['required', 'min|6'], input_password, 'Mật khẩu');
-        btn_saver.removeAttribute('disabled')
-    }
+        if (validation(['required', 'min|6'], input_password, 'Mật khẩu')) {
+            btn_check_password.onclick = () => {
+                const id = authUser.user.id;
+                const token = authUser.token;
+                console.log(`${input_province.value} - ${input_district.value} - ${input_ward.value}`);
+                const data = {
+                    name: input_name.value,
+                    email: input_email.value,
+                    phone: input_phone.value,
+                    address: `${input_province.value} - ${input_district.value} - ${input_ward.value}`,
+                    password: user_auth_password.value,
+                }
+                console.log(data);
 
-    btn_check_password.onclick = () => {
+                callAPILoading()
 
-        const id = authUser.user.id;
-        const token = authUser.token;
-        console.log(`${input_province.value} - ${input_district.value} - ${input_ward.value}`);
-        const data = {
-            name: input_name.value,
-            email: input_email.value,
-            phone: input_phone.value,
-            address: `${input_province.value} - ${input_district.value} - ${input_ward.value}`,
-            password: user_auth_password.value,
+                setTimeout(() => {
+                    serviceApi.patchUpdateUser(id, token, data)
+                        .then(function (response) {
+                            clearApiLoading();
+                            if (response.status !== 200) {
+                                showErrorToast("Cập Nhật Thông tin thất bại");
+                            }
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            if (data) {
+                                handleAddressLocal(data, authUser);
+                                showSuccessToast("Cập nhật thành công!");
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            } else {
+                                input_password.nextElementSibling.innerText = "Mật khẩu không chính xác"
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                }, 2000);
+            }
         }
-        console.log(data);
-
-        callAPILoading()
-
-        setTimeout(() => {
-            serviceApi.patchUpdateUser(id, token, data)
-                .then(function (response) {
-                    clearApiLoading();
-                    if (response.status !== 200) {
-                        showErrorToast("Cập Nhật Thông tin thất bại");
-                    }
-                    return response.json();
-                })
-                .then(function (data) {
-                    if (data) {
-                        handleAddressLocal(data, authUser);
-                        showSuccessToast("Cập nhật thành công!");
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1000);
-                    }else {
-                        input_password.nextElementSibling.innerText = "Mật khẩu không chính xác"
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        }, 2000);
     }
 }
 

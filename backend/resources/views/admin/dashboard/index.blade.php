@@ -33,7 +33,7 @@
                     </div>
                     <div class="dash-widgetcontent">
                         <h5>
-                            <span class="counters" data-value="{{ $totalRevenue }}">{{ $totalRevenue }}</span>
+                            <span class="counters" data-value="{{ $totalRevenue }}">0</span>
                         </h5>
                         <span class="dash-widgetcontent__title">Tổng doanh thu</span>
                     </div>

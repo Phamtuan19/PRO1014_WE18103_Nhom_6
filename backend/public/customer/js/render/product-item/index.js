@@ -4,7 +4,7 @@ import { formatCurrency } from '../../method/index.js';
 import { handleClickAddToCart } from '../../handle/index.js';
 
 
-function productItem(data, element, colNumber, callBack) {
+function productItem(data, element, colNumber) {
 
     const html = data.map(e => {
         return `

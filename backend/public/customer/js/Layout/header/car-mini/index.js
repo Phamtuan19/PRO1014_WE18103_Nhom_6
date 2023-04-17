@@ -15,6 +15,7 @@ let cartMinidata;
 callApiMiniCart();
 
 function callApiMiniCart() {
+    
     let localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
     if (localCart.length > 0) {
 

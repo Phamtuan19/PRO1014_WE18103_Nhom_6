@@ -28,39 +28,6 @@
                                     Sách Chính trị - pháp luật
                                 </a>
                             </p>
-                            <p class="nav-item__li">
-                                <a class="nav-item__li__a"
-                                    href="/danh-sach-san-pham?danh-muc=sach-khoa-hoc-cong-nghe-kinh-te">
-                                    Sách Khoa học công nghệ - Kinh tế
-                                </a>
-                            </p>
-                            <p class="nav-item__li">
-                                <a class="nav-item__li__a" href="/danh-sach-san-pham?danh-muc=sach-van-hoc-nghe-thuat">
-                                    Sách Văn học nghệ thuật
-                                </a>
-                            </p>
-                            <p class="nav-item__li">
-                                <a class="nav-item__li__a" href="/danh-sach-san-pham?danh-muc=sach-giao-trinh">
-                                    Sách Giáo trình
-                                </a>
-                            </p>
-                            <p class="nav-item__li">
-                                <a class="nav-item__li__a" href="/danh-sach-san-pham?danh-muc=sach-truyen-tieu-thuyet">
-                                    Sách Truyện, tiểu thuyết
-                                </a>
-                            </p>
-                            <p class="nav-item__li">
-                                <a class="nav-item__li__a"
-                                    href="/danh-sach-san-pham?danh-muc=sach-tam-ly-tam-linh-ton-giao">
-                                    Sách Tâm lý, tâm linh, tôn giáo
-                                </a>
-                            </p>
-                            {{-- <p class="nav-item__li">
-                                <a class="nav-item__li__a" href="/danh-sach-san-pham?danh-muc=sach-truyen-tieu-thuyet">
-                                    Sách Sách thiếu nhi
-                                </a>
-                            </p> --}}
-
                         </div>
                     </li>
 

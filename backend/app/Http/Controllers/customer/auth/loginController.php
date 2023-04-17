@@ -80,11 +80,9 @@ class loginController extends Controller
 
     public function updatePassword(Request $request, User $user)
     {
-        // return response()->json(["msg" => $request->all()], 401);
         if (!Hash::check($request->currentPassword, $user->password)) {
             return response()->json(["msg" => "Mật khẩu không chính xác!"], 402);
         } else {
-
             $user->password = Hash::make($request->newPassword);
 
             try {
@@ -127,8 +125,10 @@ class loginController extends Controller
 
     public function resetPassword(Request $request)
     {
-        // return response()->json(["msg" => $request->email], 200);
-        $checkUser = User::where('email', $request->email)->where('postition_id', 2)->get();
+        $checkUser = User::where('email', $request->email)
+            ->where('position_id', 2)
+            ->get();
+        // return response()->json(["msg" => $checkUser], 200);
 
         if ($checkUser->count() > 0) {
 

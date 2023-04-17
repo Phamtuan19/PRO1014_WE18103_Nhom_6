@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::whereNotIn('id', ['4', '5', '7', '8'])->get();
 
         return view('admin.posts.index', compact('posts'));
     }

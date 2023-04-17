@@ -109,6 +109,7 @@ img {
     gap: 0 12px;
     margin-top: 6px;
     margin-bottom: 6px;
+    flex: 1;
 }
 
 .product__item__text .rating i {

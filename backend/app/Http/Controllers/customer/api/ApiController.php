@@ -23,9 +23,7 @@ class ApiController extends Controller
 {
     public function subMenu()
     {
-        $catalog = StoreCatalog::select('name', 'slug')
-            ->orderBy('location', 'DESC')
-            ->get();
+        $catalog = Categories::select('name', 'slug')->get();
 
         return $catalog;
     }

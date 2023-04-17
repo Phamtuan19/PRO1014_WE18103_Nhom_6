@@ -39,7 +39,7 @@ class DashboardController extends Controller
     public function totalRevenue()
     {
 
-        $orders = Order::where('order_status_id', 5)->get()->toArray();
+        $orders = Order::where('order_status_id', 4)->get()->toArray();
 
         $totalRevenue = array_reduce($orders, function ($accumulator, $item) {
             return $accumulator + $item['total_price'];

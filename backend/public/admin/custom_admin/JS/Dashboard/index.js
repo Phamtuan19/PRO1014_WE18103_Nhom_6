@@ -1,5 +1,9 @@
 
+import { formatCurrency } from "../../../../customer/js/method/index.js";
 
+const counters = document.querySelector('.counters');
+
+counters.innerText = formatCurrency(Number(counters.dataset.value));
 
 
 // // callApiDashboard()
@@ -55,7 +59,7 @@ function thongke() {
         new Chart(ctx,
             config_x
         )
-    }, 500)
+    }, 1000)
 
 
 }

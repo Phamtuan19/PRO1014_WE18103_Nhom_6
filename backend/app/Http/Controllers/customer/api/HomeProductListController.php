@@ -14,7 +14,7 @@ class HomeProductListController extends Controller
 {
     public function index(Request $request)
     {
-        $pagination = 2;
+        $pagination = 6;
         $orderBy = "promotion_price";
         $orderType = "ASC";
 

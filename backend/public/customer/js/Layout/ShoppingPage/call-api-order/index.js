@@ -29,10 +29,10 @@ function callApiOrder(dataOrder) {
                 console.log(data);
                 if (data) {
                     showSuccessToast("Đặt hàng thành công!");
-                    // localStorage.removeItem("local-cart");
-                    // setTimeout(() => {
-                    //     window.location.href = enpointUrl.home;
-                    // })
+                    localStorage.removeItem("local-cart");
+                    setTimeout(() => {
+                        window.location.href = enpointUrl.home;
+                    })
                 }
             })
             .catch(function (error) {

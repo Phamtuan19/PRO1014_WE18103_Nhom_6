@@ -11,12 +11,11 @@ function middlewareAuth() {
             || getUrl === enpointUrl.resetPassword) {
             window.location.href = enpointUrl.home
         }
+    }else {
+        if(getUrl === enpointUrl.userInfo || getUrl === enpointUrl.userOrderPage){
+            window.location.href = enpointUrl.home
+        }
     }
-    // else {
-    //     if (getUrl === enpointUrl.userOrderPage) {
-    //         window.location.href = enpointUrl.home
-    //     }
-    // }
 }
 
 export default middlewareAuth;

@@ -5,7 +5,7 @@ import { showErrorToast, showSuccessToast } from '../../../message/index.js';
 import { renderTotalCard } from '../../../render/index.js';
 import callApiMiniCart from '../../../Layout/header/car-mini/index.js';
 
-function productItemList(data, element, colNumber, callBack) {
+function productItemList(data, element, colNumber) {
 
     const html = data.map(e => {
 
@@ -86,7 +86,7 @@ function renderPostList (data) {
         return `
             <div class="col-4 " style="">
                 <div class="post_items">
-                    <a href="" style="color: #111111;">
+                    <a href="http://127.0.0.1:8000/bai-viet/${e.slug}" style="color: #111111;">
                         <div class="mt-3 set-bg"
                             style="width: 100%;height: 200px; background-image: url('${e.image_url}');">
                         </div>

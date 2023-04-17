@@ -167,6 +167,7 @@ ol {
 .product__pagination {
     padding-top: 25px;
     text-align: center;
+    padding-bottom: 25px;
 }
 
 .product__pagination a.active {

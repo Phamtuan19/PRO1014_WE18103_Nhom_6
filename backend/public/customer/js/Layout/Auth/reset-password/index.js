@@ -37,10 +37,17 @@ document.querySelector(".button").onclick = () => {
             serviceApi.patchResetPassword(dataReset)
                 .then(function (response) {
                     clearApiLoading();
+                    if (response.status !== 200) {
+                        showErrorToast('Email không tồn tại!');
+                        document.querySelector('.email').nextElementSibling.innerText = "Email không tồn tại!";
+                    }
                     return response.json();
                 })
                 .then(function (data) {
-                    console.log(data);
+                    if (data) {
+                        showSuccessToast("Vui lòng kiểm tra email để thay đổi mật khẩu!");
+                        console.log(data);
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);

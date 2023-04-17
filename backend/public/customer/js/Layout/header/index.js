@@ -14,7 +14,8 @@ import middlewareAuth from '../../Middleware/index.js';
 import { formatCurrency } from '../../method/index.js';
 
 windowLoading();
-renderTotalCard()
+renderTotalCard();
+middlewareAuth();
 
 // Render CartMini
 document.querySelector(".header__cart-item").onmouseover = () => {
@@ -80,10 +81,10 @@ function handleLogout(authUser) {
                 localStorage.removeItem('authUser');
                 handleCheckLogin()
                 showSuccessToast("Đăng Xuất thành công!")
-                setTimeout(() => {
-                    // middlewareAuth();
-                    location.reload();
-                }, 1500)
+                // setTimeout(() => {
+                middlewareAuth();
+                // location.reload();
+                // }, 1500)
             })
             .catch(function (error) {
                 console.log(error);
@@ -95,21 +96,21 @@ const input__search = document.querySelector(".input__search");
 
 input__search.addEventListener('focus', () => {
     input__search.onkeyup = () => {
-        if((input__search.value).trim() !== '') {
+        if ((input__search.value).trim() !== '') {
             fetch('http://127.0.0.1:8000/api/search?q=' + input__search.value)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                if(data){
-                    document.querySelector('.header__search__list__item').classList.remove('d-none')
-                    renderSearch(data);
-                }
-            })
-            .catch(function(data) {
-                console.log(data);
-            })
-        }else {
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    if (data) {
+                        document.querySelector('.header__search__list__item').classList.remove('d-none')
+                        renderSearch(data);
+                    }
+                })
+                .catch(function (data) {
+                    console.log(data);
+                })
+        } else {
             document.querySelector('.header__search__list__item').classList.add('d-none')
         }
     }
@@ -149,6 +150,28 @@ function renderSearch(data) {
 }
 
 const categories__li = document.querySelectorAll('.nav-categories__li');
+
+document.querySelector('.nav-item__products')
+fetch('http://127.0.0.1:8000/api/menu-shop')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        if (data) {
+            document.querySelector('.nav-item__products').innerHTML = data.map(e => {
+                return `
+                    <p class="nav-item__li">
+                        <a class="nav-item__li__a" href="/danh-sach-san-pham?danh-muc=${e.slug}">
+                            ${e.name}
+                        </a>
+                    </p>
+                `
+            }).join('')
+        }
+    })
+    .catch(function (data) {
+        console.log(data);
+    })
 
 // categories__li.forEach(e => {
 //     if()

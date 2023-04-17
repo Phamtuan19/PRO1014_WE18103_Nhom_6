@@ -8,12 +8,15 @@
 import { formatCurrency } from '../../../method/index.js';
 import { enpointUrl } from '../../../service/index.js';
 
+
+
 function cartItem(data, cartMini) {
-    // console.log(data);
+
     // if (data.length > 0) {
-        cartMini.innerHTML = data.map((e, index) => {
-            if (index <= 2) {
-                return `
+    cartMini.innerHTML = data.map((e, index) => {
+
+        if (index <= 2) {
+            return `
                     <a class="cart__mini__item" href="${enpointUrl.productDetail(e.product_code)}">
                         <div class="cart-item">
                             <div class="cart-item__image" style="background-image: url('${e.image_url}');"></div>
@@ -25,14 +28,26 @@ function cartItem(data, cartMini) {
                                 </div>
                             </div>
                             <div class="cart-item__quantity">
-                                <span class="item__quantity" data-quantity="1">1</span>
+                                <span class="item__quantity" data-code="${e.product_code}" data-quantity="1">1</span>
                             </div>
                         </div>
                     </a>
                 `
+        }
+    }).join('')
+    renderQuantityCartMini();
+}
+
+function renderQuantityCartMini() {
+    const item__quantity = document.querySelectorAll('.item__quantity');
+    let localCart = localStorage.getItem('local-cart') ? JSON.parse(localStorage.getItem('local-cart')) : [];
+    item__quantity.forEach(e => {
+        localCart.find(item => {
+            if(item.code === e.dataset.code){
+                e.innerText = item.quantity
             }
-        }).join('')
-    // }
+        })
+    })
 }
 
 export default cartItem;
