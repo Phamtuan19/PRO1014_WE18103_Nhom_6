@@ -129,8 +129,9 @@
                     <div class="cart-collaterals">
                         <div class="cart-collaterals_detail">
                             <div class="input-group discount-code">
-                                <input type="text" class="form-control discount-code_input" data-id="" placeholder="Mã giảm giá"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                <input type="text" class="form-control discount-code_input" data-id=""
+                                    placeholder="Mã giảm giá" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2"
                                     style="width: 100% !important; border-radius: 0 5px 5px 0; padding: 6px 75px 6px 12px;">
                                 <span class="error"></span>
                                 <button type="button" class="btn btn-secondary discount-code_btn " id="basic-addon2"
@@ -189,6 +190,17 @@
                                 data-bs-target="#exampleModal">Tiến hành đặt hàng
                             </button>
                         </div>
+                    </div>
+                </div>
+
+                <div class="discount__list sidebar-cart" style="margin-top: 12px !important">
+                    <div class="discount__list__title">
+                        <h4 style="padding: 24px 0 12px 0; text-align: center;">Mã giảm giá</h4>
+                    </div>
+                    <div class="discount__list__item" style="padding: 0 12px;">
+
+
+
                     </div>
                 </div>
             </div>

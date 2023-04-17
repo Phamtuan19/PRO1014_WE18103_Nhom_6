@@ -8,6 +8,7 @@ use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\PublishingHouse;
 
 class HomeProductListController extends Controller
 {
@@ -36,6 +37,7 @@ class HomeProductListController extends Controller
             ->leftJoin('author', 'author.id', '=', 'products.author_id')
             ->leftJoin('warehouses', 'warehouses.product_id', '=', 'products.id')
             ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
+            ->join('publishing_house', 'publishing_house.id', '=', 'products.publishing_house_id')
             ->whereNull('is_deleted');
 
         if ($request->input('danh-muc') !== null) {
@@ -44,13 +46,24 @@ class HomeProductListController extends Controller
             $products = $products->where('categories.slug', '=', $searchCategory);
         }
 
-        if($request->input("tac-gia") !== null) {
+        if ($request->input("tac-gia") !== null) {
             $searchAuthor = $request->input('tac-gia');
 
             $products = $products->where('author.slug', '=', $searchAuthor);
         }
 
-        if($request->input("sort") !== null) {
+        if ($request->input('price') !== null) {
+            $price = explode('-', $request->input('price'));
+
+            $products = $products->where('products_detail.price', '>=', $price[0])
+                ->where('products_detail.promotion_price', '<=', $price[1]);
+        }
+
+        if ($request->input('nha-xuat-ban') !== null) {
+            $products = $products->where('publishing_house.slug', '=', $request->input('nha-xuat-ban'));
+        }
+
+        if ($request->input("sort") !== null) {
             $sort = $request->input('sort');
 
             switch ($sort) {
@@ -73,7 +86,7 @@ class HomeProductListController extends Controller
             }
         }
 
-        if($request->input("pagination") !== null) {
+        if ($request->input("pagination") !== null) {
             $pagination = $request->input("pagination");
         }
 
@@ -99,5 +112,15 @@ class HomeProductListController extends Controller
         }])->get();
 
         return response()->json($author, 200);
+    }
+
+    public function publishingHouse()
+    {
+        $publishingHouse = PublishingHouse::withCount(['product' => function ($query) {
+            $query->whereNull('is_deleted');
+        }])
+            ->get();
+
+        return response()->json($publishingHouse, 200);
     }
 }

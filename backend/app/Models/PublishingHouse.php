@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PublishingHouse extends Model
 {
@@ -34,6 +35,6 @@ class PublishingHouse extends Model
     }
 
     public function product (){
-        return $this->hasMany(Product::class, 'id', 'publishing_house_id');
+        return $this->hasMany(Product::class, 'publishing_house_id', 'id');
     }
 }

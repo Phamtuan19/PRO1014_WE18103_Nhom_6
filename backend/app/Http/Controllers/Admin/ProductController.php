@@ -42,7 +42,16 @@ class ProductController extends Controller
             $orderBy = $request->orderBy;
         }
 
-        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete)->paginate(15);
+        $products = $query->queryProduct($query, $orderBy, $orderType, $isDelete);
+
+        if (isset($request->search)) {
+            // dd($request->search);
+            $products = $products->where(function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $products = $products->paginate(15);
 
         // dd($products);
 

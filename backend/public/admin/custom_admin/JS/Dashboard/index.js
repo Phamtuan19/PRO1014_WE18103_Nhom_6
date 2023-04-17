@@ -21,39 +21,43 @@ function thongke() {
             return response.json('');
         })
         .then(function (data) {
-            console.log(data);
-            dataCharJs = data;
+
+            return dataCharJs = data;
         })
-        .catch (function (error) {
+        .catch(function (error) {
             console.log(error);
         })
+    setTimeout(() => {
+        console.log(Object.values(dataCharJs.total_price));
+        var data_x = {
+            labels: Object.values(dataCharJs.month),
+            datasets: [{
+                label: 'danh số',
+                data: Object.values(dataCharJs.total_price),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                borderWidth: 1
+            }]
+        };
 
-    var data_x = {
-        labels: dataApi.label,
-        datasets: [{
-            label: dataApi.name,
-            data: dataApi.data,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            borderWidth: 1
-        }]
-    };
-
-    var config_x = {
-        type: 'bar',
-        data: data_x,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        var config_x = {
+            type: 'bar',
+            data: data_x,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-            }
-        },
-    };
-    // mixedChart.destroy()
-    mixedChart = new Chart(ctx,
-        config_x
-    )
+            },
+        };
+        // mixedChart.destroy()
+        new Chart(ctx,
+            config_x
+        )
+    }, 500)
+
+
 }
 thongke()
 

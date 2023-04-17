@@ -20,27 +20,26 @@ serviceApi.getPageProductDetail(code)
     .then(function (data) {
         productId = data[0].id
         renderDetail(data)
-        // handleClickAddToCart()
         callApiComment()
     })
     .catch(function (error) {
         console.log(error);
     })
 
-// serviceApi.getPageProductDetailImage(code)
-//     .then(function (response) {
-//         if (response.status !== 200) {
-//             throw new Error(response.status);
-//         }
-//         return response.json();
-//     })
-//     .then(function (data) {
+serviceApi.getPageProductDetailImage(code)
+    .then(function (response) {
+        if (response.status !== 200) {
+            throw new Error(response.status);
+        }
+        return response.json();
+    })
+    .then(function (data) {
 
-//         renderImage(data)
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     })
+        renderImage(data)
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
 
 serviceApi.getPageProductDetailIntroduce(code)
     .then(function (response) {
@@ -103,8 +102,6 @@ keepReading.onclick = () => {
         document.querySelector(".detail__introduction").classList.remove('active');
     }
 }
-
-
 
 setTimeout(() => {
 

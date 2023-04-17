@@ -9,7 +9,7 @@
             <div class="col-6">
                 <div class="detail-box1_img">
                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper swiper-wrapper__1">
                             <div class="swiper-slide">
                                 <img class="image__detail" src="https://swiperjs.com/demos/images/nature-1.jpg" />
                             </div>
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div thumbsSlider="" class="swiper mySwiper">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper swiper-wrapper__2">
                             <div class="swiper-slide" style="width: 100px;">
                                 <img class="image_thumbsSlider" src="https://swiperjs.com/demos/images/nature-1.jpg" />
                             </div>
@@ -120,23 +120,25 @@
     <script type="module" src="{{ asset('customer/js/Layout/ProductDetail/index.js') }}"></script>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            spaceBetween: 10,
-            slidesPerView: 6,
-            freeMode: true,
-            watchSlidesProgress: true,
-        });
-        var swiper2 = new Swiper(".mySwiper2", {
-            loop: true,
-            spaceBetween: 10,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            thumbs: {
-                swiper: swiper,
-            },
-        });
+        setTimeout(() => {
+            var swiper = new Swiper(".mySwiper", {
+                loop: true,
+                spaceBetween: 10,
+                slidesPerView: 6,
+                freeMode: true,
+                watchSlidesProgress: true,
+            });
+            var swiper2 = new Swiper(".mySwiper2", {
+                loop: true,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                thumbs: {
+                    swiper: swiper,
+                },
+            });
+        }, 3000);
     </script>
 @endsection

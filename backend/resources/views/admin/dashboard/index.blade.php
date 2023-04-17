@@ -154,10 +154,10 @@
                                         <td>#{{ $index + 1 }}</td>
                                         <td style="text-align: center;">{{ $product->quantity_sold }}</td>
                                         <td class="productimgname">
-                                            <a href="productlist.html" class="product-img">
+                                            <a href="{{ route('admin.products.show', $product->id) }}" class="product-img">
                                                 <img src="{{ $product->image_url }}" alt="product">
                                             </a>
-                                            <a href="#" class="productimgname__name">{{ $product->name }}</a>
+                                            <a href="{{ route('admin.products.show', $product->id) }}" class="productimgname__name">{{ $product->name }}</a>
                                         </td>
                                         <td class="text-danger">
                                             @if (!empty($product->promotion_price))
