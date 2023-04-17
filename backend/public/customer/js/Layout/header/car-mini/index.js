@@ -10,9 +10,7 @@ import { serviceApi } from '../../../service/index.js';
 import { formatCurrency } from '../../../method/index.js';
 
 
-export let cartMinidata;
-
-
+let cartMinidata;
 
 callApiMiniCart();
 
@@ -51,3 +49,4 @@ function totalMoneyCartMini(carMinidata) {
 
 
 export default callApiMiniCart;
+export {cartMinidata};

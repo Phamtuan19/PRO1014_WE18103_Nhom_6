@@ -2,56 +2,89 @@
 
 namespace App\Models;
 
-use http\Env\Request;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Image;
+
+use App\Models\Author;
+
+use App\Models\Warehouse;
+
+use App\Models\ProductDetail;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
 
-    public function create($params) {
-        DB::insert('INSERT INTO products
-    (name, short_description, id_directory, price, id_code_sale, is_status_product, id_user, id_cart, full_description, time_complete, id_img )
-    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', $params);
+    protected $table = 'products';
+
+    protected $fillable = [
+        'product_code',
+        'author_id',
+        'category_id',
+        'publishing_house_id',
+        'user_id',
+        'name',
+        'title',
+        'introduction',
+        'publication_date',
+        'is_deleted',
+    ];
+
+    public function queryProduct($query, $orderBy = null, $orderType = null, $isDelete = null)
+    {
+        if (empty($orderBy)) {
+            $orderBy = 'created_at';
+        }
+
+        if (empty($orderType)) {
+            $orderType = "DESC";
+        }
+
+        if (empty($isDelete)) {
+            $query = $query->whereNull('is_deleted');
+        } else {
+            $query = $query->whereNotNull('is_deleted');
+        }
+
+        // dd($orderType);
+        $query = $query->orderBy($orderBy, $orderType);
+
+        return $query;
     }
 
-    public function listsProduct($request) {
-        $search = $request -> get('q');
-        $sortDateCreateAt = $request -> get('sortCreateAt');
-        $limitPage = $request -> get('limit') ? $request -> get('limit'): 10;
-        $idDirectory = $request -> get('id_directory');
-        $priceFrom = $request -> get('priceFrom');
-        $priceTo = $request -> get('priceTo');
-        $product =  Product::query();
-        $data = $product
-            -> where('is_delete', '1')
-            -> where('name', 'like', '%' . $search . '%')
-            -> orderBy('create_at', $sortDateCreateAt);
-        if($idDirectory) $data = $product -> where('id_directory', $idDirectory);
-        if($priceFrom && $priceTo) $data = $product -> whereBetween('price', [$priceFrom, $priceTo]);
-        $data = $product -> paginate($limitPage);
-        return $data;
-    }
-    public function detailProduct($id) {
-        $data = Product::where('id', $id)->first();
-        return $data;
-    }
-    public function checkProductDeleted($id) {
-        $data = Product::query() -> where('id', $id)
-            -> where('is_delete', 2)
-         -> first();
-        return $data;
-    }
-    public function deleteProduct($params) {
-        DB::update("UPDATE products SET `is_delete` = ?, `delete_at` = ? WHERE `id` = ?", $params);
+    public function author()
+    {
+        return $this->belongsTo(Author::class, 'author_id', 'id');
     }
 
-    public function updateProduct($params) {
-        DB::update("UPDATE products SET `name` = ?, `short_description` = ?,`id_directory` = ?,
-                    `price` = ?, `id_code_sale` = ?, `is_status_product` = ?,`id_cart` = ?,
-                    `full_description` = ?,`time_complete` = ?,`id_user` = ?, `update_at` = ?
-                    WHERE `id` = ?", $params);
+    public function categories()
+    {
+        return $this->belongsTo(Categories::class, 'category_id', 'id');
+    }
+
+    public function publishing_house()
+    {
+        return $this->belongsTo(PublishingHouse::class, 'publishing_house_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function detail()
+    {
+        return $this->hasOne(ProductDetail::class, 'product_id', 'id');
+    }
+
+    public function image()
+    {
+        return $this->hasMany(Image::class, 'product_id', 'id');
+    }
+
+    public function warehouses()
+    {
+        return $this->hasMany(Warehouse::class);
     }
 }

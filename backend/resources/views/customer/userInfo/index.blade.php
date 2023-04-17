@@ -25,8 +25,8 @@
                 </div>
             </div>
             <div class="col-8">
-                <div class="container-fluid">
-                    <div class="row">
+                <div class="container-fluid container_edit__profile">
+                    <div class="row edit-profile">
                         <div class="col-6 mt-3">
                             <div class="mb-3">
                                 <label for="user_name" class="form-label">Tên người dùng</label>
@@ -103,8 +103,10 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="" style="text-align: initial">
-                                                <label for="user_password__authentication" class="form-label">Mật khẩu</label>
-                                                <input type="text" class="form-control from-custom user_password__authentication"
+                                                <label for="user_password__authentication" class="form-label">Mật
+                                                    khẩu</label>
+                                                <input type="text"
+                                                    class="form-control from-custom user_password__authentication"
                                                     id="user_password__authentication" placeholder="Nhập mật khẩu">
                                                 <span class="error"></span>
                                             </div>
@@ -112,11 +114,42 @@
                                         <div class="modal-footer" style="border-top: none;">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Hủy</button>
-                                            <button type="button" class="btn btn-primary btn__check__password">Thực hiện</button>
+                                            <button type="button" class="btn btn-primary btn__check__password">Thực
+                                                hiện</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row edit-password d-none">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="current_password" class="form-label">Mật khẩu cũ</label>
+                                <input type="text" class="form-control from-custom current_password"
+                                    id="current_password" placeholder="Nhập mật khẩu hiện tại ...">
+                                <span class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="new_password" class="form-label">Mật khẩu mới</label>
+                                <input type="text" class="form-control from-custom new_password" id="new_password"
+                                    placeholder="Nhập mật khẩu mới ...">
+                                <span class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="new_password__confirm" class="form-label">Nhập lại mật khẩu mới</label>
+                                <input type="text" class="form-control from-custom new_password__confirm"
+                                    id="new_password__confirm" placeholder="Nhập lại mật khẩu mới">
+                                <span class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-12" style="text-align: end;">
+                            <button class="btn btn-primary btn_save_password" id="btn_save_password">Lưu thay đổi</button>
                         </div>
                     </div>
                 </div>

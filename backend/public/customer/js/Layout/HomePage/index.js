@@ -1,13 +1,17 @@
 
 import { serviceApi } from '../../service/index.js';
 import { productItem, renderTotalCard } from '../../render/index.js';
-
+import { handleClickAddToCart } from '../../handle/index.js';
+import { productItemList, renderPostList } from './products-item-list/index.js'
 renderTotalCard()
 
 const filterControls = document.querySelectorAll('.home__title__text')
 const filter = "bestseller";
 CallApiProductSale(filter)
 const item_body = document.querySelector('.product-sale__test')
+
+let isCheckSale = false;
+let isChecList = false
 // Call APi render Product sale
 function CallApiProductSale(filter) {
     serviceApi.getHomeProductSale(filter)
@@ -15,6 +19,7 @@ function CallApiProductSale(filter) {
             return response.json();
         })
         .then(function (data) {
+            isCheckSale = true
             productItem(data, item_body, 3)
             filterControls.forEach((e) => {
                 e.onclick = () => {
@@ -26,9 +31,6 @@ function CallApiProductSale(filter) {
                     CallApiProductSale(e.dataset.filter)
                 }
             })
-
-
-
         })
         .catch(function (error) {
             console.log(error);
@@ -41,9 +43,14 @@ serviceApi.getHomeProductList()
         return response.json();
     })
     .then(function (data) {
+        isChecList = true
         const location = document.querySelector('.product-list__test')
-        productItem(data, location, 3)
+        productItemList(data.products, location, 3)
+        renderPostList(data.topView)
     })
     .catch(function (error) {
         console.log(error);
     })
+
+
+

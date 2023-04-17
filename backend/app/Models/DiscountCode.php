@@ -12,7 +12,7 @@ class DiscountCode extends Model
     protected $table = 'discount_code';
 
     protected $fillable = [
-        'name',
+        'user_id',
         'discount_code',
         'percentage_decrease',
         'content',
@@ -20,5 +20,6 @@ class DiscountCode extends Model
         'remaining_quantity',
         'time_application',
         'expired',
+        'used_orders',
     ];
 }

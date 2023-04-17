@@ -1,78 +1,57 @@
-.track {
-    position: relative;
-    background-color: #ddd;
-    height: 4px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+.form-control {
+    border-radius: 2px !important;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+table,
+thead,
+tbody {
+    overflow: hidden;
+}
+
+td,
+th {
+    max-width: 136px;
+    overflow: hidden !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center !important;
+}
+
+.status__order {
     display: flex;
-    margin-bottom: 60px;
-    margin-top: 70px;
-    cursor: pointer;
 }
 
-.track .step {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    width: 25%;
-    margin-top: -18px;
+.status__date {
+    color: red;
+}
+
+.date__time__status {
+    min-width: 150px;
     text-align: center;
-    position: relative;
-}
-
-.track .step.active:before {
-    background: #FF5722;
-}
-
-.track .step::before {
-    height: 4px;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    content: "";
-    width: 100%;
-    left: 0;
-    top: 18px;
+    right: 0;
+    transform: translateY(50%) translateX(-25%);
 }
 
-.track .step.active .icon {
-    background: #ee5435;
-    color: #fff;
+.status__hour {
+    margin-bottom: 0;
 }
 
-.track .icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    position: relative;
-    border-radius: 100%;
-    background: #ddd;
-}
-
-.track .step.active .text {
-    color: #000;
-    text-transform: capitalize;
+.status__content {
+    flex: 1;
+    padding: 24px 24px;
+    border: 1px solid #ebedf2;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    line-height: 2;
+    border-right: 4px solid red !important;
+    border-radius: 13px;
+    font-size: 14px;
     font-weight: 600;
-}
-
-.track .text {
-    display: block;
-    margin-top: 7px;
-}
-
-.step-time {
-    min-width: 125px;
-    position: absolute;
-    left: 0;
-    top: -25px;
-    font-weight: 600;
-}
-
-.single-printr {
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.single-printr:hover {
-    color: #b66dff;
 }

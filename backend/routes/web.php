@@ -1,6 +1,30 @@
 <?php
 
+use App\Models\Categories;
+
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\Admin\AdminController;
+
+use App\Http\Controllers\Admin\OrderController;
+
+use App\Http\Controllers\Admin\AuthorController;
+
+use App\Http\Controllers\Admin\ProductController;
+
+
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomersController;
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DiscountCodeController;
+use App\Http\Controllers\Admin\StoreCatalogController;
+use App\Http\Controllers\Admin\PublishingHouseController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +38,56 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('trang-chu');
 });
+
+Auth::routes();
+
+Route::middleware('custom.auth')->group(function () {
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+
+        Route::resource('/users', AdminController::class);
+        Route::patch('/users/replay/{user}', [AdminController::class, 'replay'])->name('users.replay');
+
+        Route::resource('/customers', CustomersController::class);
+        Route::patch('/customers/replay/{user}', [CustomersController::class, 'replay'])->name('customers.replay');
+
+        Route::resource('categories', CategoryController::class);
+
+        // Route::get('submenu', function () {
+        //     $categories = Categories::orderBy('created_at', 'DESC')->get();
+        //     return view('admin.categories.submenu', compact('categories'));
+        // });
+
+        Route::resource('author', AuthorController::class);
+
+        Route::resource('publishing-house', PublishingHouseController::class);
+
+        Route::resource('products', ProductController::class);
+        Route::patch('/products/replay/{product}', [ProductController::class, 'replay'])->name('products.replay');
+
+        Route::resource('storecatalog', StoreCatalogController::class);
+
+        Route::get('orders', [OrderController::class, 'index'])->name('orders');
+        Route::get('orders/{code}', [OrderController::class, 'show'])->name('orders.show');
+        Route::post('notes/{code}', [OrderController::class, 'storeNote'])->name('orders.notes');
+        Route::patch('order/status/{order}', [OrderController::class, 'orderStatusUpdate'])->name('orders.status.update');
+
+        Route::get('dashboard', [DashboardController::class, 'index'])->name("dashboard");
+
+        Route::resource('posts', PostController::class);
+        Route::resource('discountcode', DiscountCodeController::class);
+    });
+});
+
+Route::get('send-mail-order', function () {
+    return view('mails.Order.Order-successfully');
+});
+
+
+include __DIR__ . '/customer.php';
+    
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

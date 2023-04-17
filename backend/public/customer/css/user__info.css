@@ -1,3 +1,13 @@
+.order__table {
+    text-align: center !important;
+}
+
+.btn_save_password {
+    margin-top: 12px;
+    padding: 9px 24px;
+    font-weight: 600;
+}
+
 .user__action {
     padding: 24px 12px;
     display: flex;
@@ -104,3 +114,12 @@
     background-color: #0858f7 !important;
     color: #fff;
 }
+
+.set-bg {
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+

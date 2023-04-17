@@ -9,6 +9,7 @@ import { formatCurrency } from '../../../method/index.js';
 import { enpointUrl } from '../../../service/index.js';
 
 function cartItem(data, cartMini) {
+    // console.log(data);
     // if (data.length > 0) {
         cartMini.innerHTML = data.map((e, index) => {
             if (index <= 2) {

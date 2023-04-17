@@ -70,11 +70,15 @@ function validationUserInfo(authUser) {
                     return response.json();
                 })
                 .then(function (data) {
-                    handleAddressLocal(data, authUser);
-                    showSuccessToast("Cập nhật thành công!");
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1000);
+                    if (data) {
+                        handleAddressLocal(data, authUser);
+                        showSuccessToast("Cập nhật thành công!");
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                    }else {
+                        input_password.nextElementSibling.innerText = "Mật khẩu không chính xác"
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);

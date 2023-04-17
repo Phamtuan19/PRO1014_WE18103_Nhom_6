@@ -1,4 +1,4 @@
-function validation(array = [], element, attribute = '') {
+function validation(array = [], element, attribute = '', password_confirm) {
     if (!Array.isArray(array) || array.length === 0 || array === undefined) {
         console.error("Đối số truyền vào không hợp lệ! Đối số phải là Array và có giữ liệu");
     }
@@ -21,10 +21,18 @@ function validation(array = [], element, attribute = '') {
             if (!rules[ruleName]) {
                 console.error("Phương thức không tồn tại");
             } else {
-                if (rules[ruleName](element, attribute) === true) {
-                    isValidation = true
+                if (ruleName === 'passwordConfirm') {
+                    if (rules[ruleName](element, attribute, password_confirm) === true) {
+                        isValidation = true
+                    } else {
+                        isValidation = false
+                    }
                 } else {
-                    isValidation = false
+                    if (rules[ruleName](element, attribute) === true) {
+                        isValidation = true
+                    } else {
+                        isValidation = false
+                    }
                 }
             }
         }
@@ -36,13 +44,13 @@ function validation(array = [], element, attribute = '') {
 const rules = {
     required(element, attribute = '') {
         const value = element.value.trim();
-        if(element.type === "radio"){
+        if (element.type === "radio") {
             if (element.checked) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }else {
+        } else {
             if (value === '') {
                 element.nextElementSibling.innerText = `${attribute} Không được để trống`;
                 return false;
@@ -65,7 +73,6 @@ const rules = {
         }
     },
     phone(element, attribute = '') {
-        console.log(element.value);
         const value = element.value.trim();
         const regex = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/
 
@@ -97,6 +104,22 @@ const rules = {
         } else {
             element.nextElementSibling.innerText = '';
             return true;
+        }
+    },
+    passwordConfirm(element, attribute = '', password_confirm) {
+        const valueElement = element.value.trim();
+        if (password_confirm) {
+            const valueConfirm = password_confirm.value.trim();
+
+            if (valueElement !== valueConfirm) {
+                password_confirm.nextElementSibling.innerText = `${attribute} không khớp`;
+                return false;
+            } else {
+                password_confirm.nextElementSibling.innerText = '';
+                return true;
+            }
+        } else {
+            console.error('Thiếu tham số :Confirm');
         }
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 
 class CustomerPageController extends Controller
 {
@@ -21,19 +22,48 @@ class CustomerPageController extends Controller
         return view('customer.productDetail.index', compact('product'));
     }
 
-    public function shoppingCart () {
+    public function shoppingCart()
+    {
         return view('customer.shoppingCart.index');
     }
 
-    public function order () {
-        return view('customer.order.index');
-    }
-
-    public function listProducts () {
+    public function listProducts()
+    {
         return view('customer.productsPage.index');
     }
 
-    public function userInfo () {
+    public function userInfo()
+    {
         return view('customer.userInfo.index');
+    }
+    public function authListOrder()
+    {
+        return view('customer.authListOrder.index');
+    }
+
+    public function listPosts()
+    {
+        return view('customer.post.list-post');
+    }
+
+    public function postItem()
+    {
+        return view('customer.post.post-item');
+    }
+
+    public function contact ()
+    {
+        return view('customer.contact.index');
+    }
+
+    public function policyRegulations (Request $request)
+    {
+        if($request->atc){
+            $atc = $request->atc;
+
+            $policyRegulation = Post::where('slug', $atc)->get();
+
+            return view('customer.policyRegulations.index', compact('policyRegulation'));
+        }
     }
 }

@@ -37,8 +37,8 @@
                     </div>
 
                     <button class="button">Đăng nhập</button>
-                    <h3 class="forgotpass"><a href="./forgotpass.html">Quên mật khẩu</a></h3>
-                    <h3 class="signup-header"><a href="./register.html">Đăng ký tài khoản</a></h3>
+                    <h3 class="forgotpass"><a href="{{ route('customer.rest.password') }}">Quên mật khẩu</a></h3>
+                    <h3 class="signup-header"><a href="{{ route('customer.register') }}">Đăng ký tài khoản</a></h3>
 
                     <div class="social-icons">
                         <ul class="social-list">

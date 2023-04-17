@@ -30,7 +30,7 @@ class Successfully extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.Order.Order-successfully')
+        return $this->view('mails.Order.Order')
             ->subject('Cập nhật đơn hàng thành công')
             ->with($this->data);
     }

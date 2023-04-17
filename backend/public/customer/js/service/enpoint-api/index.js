@@ -3,9 +3,14 @@ const enpointApi = {
     // Auth
     login: 'customer/login',
     logout: 'customer/logout',
+    register: 'customer/register',
+    resetPassword: 'rest-password',
+    confirmPassword: 'comfirm-password',
     userUpdate: 'user/update/',
+    userUpdatePassword: 'user/update/password/',
+    authListOrder: 'list-order',
     //
-    menu: 'submenu/',
+    // menu: 'submenu/',
     pageHomeProductFilter: 'page-home/products-filter-controls',
     pageHomeProductList: 'page-home/products-list',
     shoppingCart: 'shopping/cart',
