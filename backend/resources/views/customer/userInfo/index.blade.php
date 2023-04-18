@@ -127,7 +127,7 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="current_password" class="form-label">Mật khẩu cũ</label>
-                                <input type="text" class="form-control from-custom current_password"
+                                <input type="password" class="form-control from-custom current_password"
                                     id="current_password" placeholder="Nhập mật khẩu hiện tại ...">
                                 <span class="error"></span>
                             </div>
@@ -135,7 +135,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="new_password" class="form-label">Mật khẩu mới</label>
-                                <input type="text" class="form-control from-custom new_password" id="new_password"
+                                <input type="password" class="form-control from-custom new_password" id="new_password"
                                     placeholder="Nhập mật khẩu mới ...">
                                 <span class="error"></span>
                             </div>
@@ -143,7 +143,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="new_password__confirm" class="form-label">Nhập lại mật khẩu mới</label>
-                                <input type="text" class="form-control from-custom new_password__confirm"
+                                <input type="password" class="form-control from-custom new_password__confirm"
                                     id="new_password__confirm" placeholder="Nhập lại mật khẩu mới">
                                 <span class="error"></span>
                             </div>

@@ -69,11 +69,11 @@ class HomeProductListController extends Controller
             switch ($sort) {
                 case 'gia-thap-nhat':
                     $orderBy = "products_detail.promotion_price";
-                    $orderType = "ASC";
+                    $orderType = "DESC";
                     break;
                 case 'gia-cao-nhat':
                     $orderBy = "products_detail.promotion_price";
-                    $orderType = "DESC";
+                    $orderType = "ASC";
                     break;
                 case 'san-pham-moi':
                     $orderBy = 'products.created_at';

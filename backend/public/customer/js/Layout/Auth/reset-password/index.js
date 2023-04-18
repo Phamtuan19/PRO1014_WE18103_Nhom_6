@@ -40,11 +40,12 @@ document.querySelector(".button").onclick = () => {
                     if (response.status !== 200) {
                         showErrorToast('Email không tồn tại!');
                         document.querySelector('.email').nextElementSibling.innerText = "Email không tồn tại!";
+                    } else {
+                        return response.json();
                     }
-                    return response.json();
                 })
                 .then(function (data) {
-                    if (data) {
+                    if (data.status === 200) {
                         showSuccessToast("Vui lòng kiểm tra email để thay đổi mật khẩu!");
                         console.log(data);
                     }
